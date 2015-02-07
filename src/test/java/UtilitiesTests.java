@@ -81,7 +81,7 @@ public class UtilitiesTests {
         List<String> sampleText = new ArrayList<String>();
         sampleText.add(0, "The quick brown fox jumps over the lazy dog.");
         sampleText.add(1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit.");
-        String sampleFilePath = TestHelpers.getTestResourcesPath() + "/small-files";
+        String sampleFilePath = TestHelpers.getTestResourcesPath() + "/text-files";
         List<File> filesInSampleDirectory = Arrays.asList(new File(sampleFilePath).listFiles());
         List<String> fileText = Utilities.getFileContentsFromFiles(filesInSampleDirectory);
 
@@ -93,7 +93,7 @@ public class UtilitiesTests {
     @Test
     public void getFileContentsFromFile_SpecifiedExistingFileContents_AreReturned() {
         String sample1 = "The quick brown fox jumps over the lazy dog.";
-        String sampleFilePath = TestHelpers.getTestResourcesPath() + "/small-files/sample-1.txt";
+        String sampleFilePath = TestHelpers.getTestResourcesPath() + "/text-files/sample-1.txt";
         File file = new File(sampleFilePath);
         String returnedText = Utilities.getFileContentsFromFile(file);
         assertTrue(sample1.equalsIgnoreCase(returnedText));

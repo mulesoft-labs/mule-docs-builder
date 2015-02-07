@@ -59,7 +59,7 @@ public class Utilities {
             result = output.delete();
 
         } catch (SecurityException se) {
-            logger.fatal("Do not have permission to create directory \"" + directoryName + "\"", se);
+            logger.fatal("Do not have permission to delete directory \"" + directoryName + "\"", se);
         }
         return result;
     }
