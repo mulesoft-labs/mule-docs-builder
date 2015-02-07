@@ -4,10 +4,16 @@
 
 import org.jsoup.select.*;
 import org.jsoup.nodes.*;
-
 import java.io.IOException;
 import java.util.*;
 
+
+/**
+ * Table of contents builder for the Mule Doc site.
+ *
+ * @author Sean Osterberg
+ * @version 1.0
+ */
 public class TocBuilder {
 
     public String outputDirectoryForConvertedHtml = "/Users/sean.osterberg/Documents/MuleSoft Docs/New Doc Site/converted-output/";

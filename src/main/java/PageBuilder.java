@@ -16,10 +16,6 @@ public class PageBuilder {
 
     }
 
-    public void buildPages() {
-
-    }
-
     public StringBuilder generatePage(String templateFilePath,
                                    String contentHtml,
                                    String title,

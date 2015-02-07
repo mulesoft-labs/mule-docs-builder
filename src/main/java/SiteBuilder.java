@@ -7,13 +7,15 @@ import java.io.IOException;
 import java.io.*;
 import java.nio.file.*;
 import java.util.*;
+import java.util.logging.Logger;
+import org.apache.log4j.BasicConfigurator;
 import org.jsoup.*;
 import org.jsoup.select.*;
 import org.jsoup.nodes.*;
 
 
 public class SiteBuilder {
-
+    static Logger logger = Logger.getLogger(SiteBuilder.class.getName());
     public static Process _process;
     /*
     public static String sourceAsciiDocDirectory = "/Users/sean.osterberg/Documents/MuleSoft Docs/New Doc Site/source-asciidoc/";
@@ -29,6 +31,7 @@ public class SiteBuilder {
     public static String templateFilePath = "/Users/sean.osterberg/mulesoft-docs/_site/_templates/default.html";
 
     public static void main(String[] args) {
+        BasicConfigurator.configure();
         SiteBuilder builder = new SiteBuilder();
         builder.buildMuleDocs();
         //builder.buildToc();
