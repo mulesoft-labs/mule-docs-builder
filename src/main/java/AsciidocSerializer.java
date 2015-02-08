@@ -20,13 +20,12 @@ public class AsciidocSerializer {
 
     public List<String> getConvertedHtmlForAsciidocFiles(List<File> asciidocFiles) {
         String[] convertedFiles = asciidoctorProcessor.convertFiles(asciidocFiles, getOptionsForConversion());
-        logger.info("Successfully converted multiple Asciidoc files to html.");
         return Arrays.asList(convertedFiles);
     }
 
     public String getConvertedHtmlForSingleAsciidocPage(File asciidocFile) {
         String convertedFile = asciidoctorProcessor.convertFile(asciidocFile, getOptionsForConversion());
-        logger.info("Successfully converted an Asciidoc file to html.");
+        logger.info("Successfully converted an Asciidoc file to html string.");
         return convertedFile;
     }
 
@@ -43,22 +42,33 @@ public class AsciidocSerializer {
         return options;
     }
 
-    public List<DocPage> convertAndGetDocPagesFromAsciidocFiles(List<File> asciidocFiles) {
+    public List<DocPage> getConvertedDocPagesFromAsciidocFiles(File[] asciidocFiles, boolean excludeTocFile) {
         List<DocPage> docPages = new ArrayList<DocPage>();
         for(File file : asciidocFiles) {
-            String asciidocContent = Utilities.getFileContentsFromFile(file);
-            String htmlContent = getConvertedHtmlFromAsciidoc(asciidocContent);
-
-            DocPage page = new DocPage();
-            page.setAsciidocSource(asciidocContent);
-            page.setContentHtml(getOnlyContentDivFromHtml(htmlContent));
-            page.setTitle(getTitleFromHtml(htmlContent));
-            page.setFilename(FilenameUtils.getBaseName(file.getName()));
-            page.setSourceFilePath(file.getPath());
-
-            docPages.add(page);
+            if(excludeTocFile) {
+                if(!FilenameUtils.getBaseName(file.getName()).contentEquals("toc")) {
+                    docPages.add(getConvertedDocPageFromAsciidocFile(file));
+                }
+            } else {
+                docPages.add(getConvertedDocPageFromAsciidocFile(file));
+            }
         }
         return docPages;
+    }
+
+    public DocPage getConvertedDocPageFromAsciidocFile(File asciidocFile) {
+        String asciidocContent = Utilities.getFileContentsFromFile(asciidocFile);
+        String htmlContent = getConvertedHtmlFromAsciidoc(asciidocContent);
+
+        DocPage page = new DocPage();
+        page.setAsciidocSource(asciidocContent);
+        page.setContentHtml(getOnlyContentDivFromHtml(htmlContent));
+        page.setTitle(getTitleFromHtml(htmlContent));
+        page.setFilename(FilenameUtils.getBaseName(asciidocFile.getName()));
+        page.setSourceFilePath(asciidocFile.getPath());
+
+        logger.info("Converted Asciidoc file to html and created DocPage for \"" + page.getTitle() + "\".");
+        return page;
     }
 
     private String getConvertedHtmlFromAsciidoc(String asciidocContent) {

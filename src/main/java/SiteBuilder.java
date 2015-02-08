@@ -44,17 +44,6 @@ public class SiteBuilder {
         */
     }
 
-    public void buildToc() {
-        TocBuilder builder = new TocBuilder();
-        File tocFile = new File(outputDirectoryForProcessedHtml + "toc.html");
-        try {
-            Document doc = Jsoup.parse(tocFile, "UTF-8");
-            builder.generateHtmlToc(doc);
-        } catch (Exception e) {
-
-        }
-    }
-
     public void buildMuleDocs() {
         /*
         writeBookendsToLog("(!) Starting to build Mule Docs...");
@@ -276,6 +265,11 @@ public class SiteBuilder {
         writeToLog("Finished processing " + count + " files.");
     }
 
+    private void createProcessedFilesForDirectory(String sourceDirectory) {
+
+    }
+
+
     /**
      * Processes the original generated HTML files and modifies them for publishing to Jekyll.
      * @param sourceDirectory The source directory that contains the original HTML files.
@@ -308,7 +302,7 @@ public class SiteBuilder {
                             String resizedHtml = getResizedHtml(file);
 
                             PrintWriter output = new PrintWriter(new FileWriter(resizedFilePath));
-                            PageBuilder builder = new PageBuilder();
+                            PageBuilder builder = new PageBuilder(templateFilePath, "");
                             String title = getDocTitle(file);
 
                             TocBuilder tocBuilder = new TocBuilder();
@@ -316,7 +310,7 @@ public class SiteBuilder {
                             String resizedTocHtml = getResizedHtml(tocFile);
                             Document doc = Jsoup.parse(resizedTocHtml, "UTF-8");
                             TocNode firstNode = tocBuilder.processToc(doc);
-                            String sectionTitle = firstNode.title;
+                            String sectionTitle = firstNode.getTitle();
                             String tocHtml = tocBuilder.getTocHtml(firstNode, file.getName()).toString();
 
                             tocHtml = getTocForCurrentSectionAndTopic(sectionTitle, tocHtml, tocSections);
@@ -358,7 +352,7 @@ public class SiteBuilder {
         String resizedHtml = getResizedHtml(tocFile);
         Document doc = Jsoup.parse(resizedHtml, "UTF-8");
         TocNode firstNode = tocBuilder.processToc(doc);
-        String sectionTitle = firstNode.title;
+        String sectionTitle = firstNode.getTitle();
         String tocHtml = tocBuilder.getTocHtml(firstNode, "").toString();
         return new String[] { sectionTitle, tocHtml };
     }

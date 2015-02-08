@@ -74,4 +74,9 @@ public class Utilities {
         }
         return isValid;
     }
+
+    public static StringBuilder replaceText(StringBuilder original, String toReplace, String replacement) {
+        String modified = original.toString().replace(toReplace, replacement);
+        return new StringBuilder(modified);
+    }
 }

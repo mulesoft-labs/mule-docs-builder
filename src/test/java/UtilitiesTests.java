@@ -34,7 +34,7 @@ public class UtilitiesTests {
 
     @Test
     public void makeTargetDirectory_SpecifiedNonExistentDirectoryPath_IsCreated() {
-        String newFolderPath = TestHelpers.getTestResourcesPath() + "test-folder";
+        String newFolderPath = TestHelpers.getPathForTestResourcesFile(new String[] { "test-folder" });
         boolean result = Utilities.makeTargetDirectory(newFolderPath);
         File file = new File(newFolderPath);
         assertTrue(file.exists());
@@ -44,7 +44,7 @@ public class UtilitiesTests {
 
     @Test
     public void makeTargetDirectory_SpecifiedExistingDirectoryPath_IsNotCreated() {
-        String newFolderPath = TestHelpers.getTestResourcesPath() + "test-folder";
+        String newFolderPath = TestHelpers.getPathForTestResourcesFile(new String[] { "test-folder" });
         boolean result = Utilities.makeTargetDirectory(newFolderPath);
         if(result) {
             result = Utilities.makeTargetDirectory(newFolderPath);
@@ -57,7 +57,7 @@ public class UtilitiesTests {
 
     @Test
     public void deleteTargetDirectory_SpecifiedExistingDirectoryPath_IsDeleted() {
-        String newFolderPath = TestHelpers.getTestResourcesPath() + "test-folder";
+        String newFolderPath = TestHelpers.getPathForTestResourcesFile(new String[] { "test-folder" });
         Utilities.makeTargetDirectory(newFolderPath);
         File file = new File(newFolderPath);
         assertTrue(file.exists());
@@ -81,7 +81,7 @@ public class UtilitiesTests {
         List<String> sampleText = new ArrayList<String>();
         sampleText.add(0, "The quick brown fox jumps over the lazy dog.");
         sampleText.add(1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit.");
-        String sampleFilePath = TestHelpers.getTestResourcesPath() + "/text-files";
+        String sampleFilePath = TestHelpers.getPathForTestResourcesFile(new String[] { "text-files" });
         List<File> filesInSampleDirectory = Arrays.asList(new File(sampleFilePath).listFiles());
         List<String> fileText = Utilities.getFileContentsFromFiles(filesInSampleDirectory);
 
@@ -93,7 +93,7 @@ public class UtilitiesTests {
     @Test
     public void getFileContentsFromFile_SpecifiedExistingFileContents_AreReturned() {
         String sample1 = "The quick brown fox jumps over the lazy dog.";
-        String sampleFilePath = TestHelpers.getTestResourcesPath() + "/text-files/sample-1.txt";
+        String sampleFilePath = TestHelpers.getPathForTestResourcesFile(new String[] { "text-files", "sample-1.txt" });
         File file = new File(sampleFilePath);
         String returnedText = Utilities.getFileContentsFromFile(file);
         assertTrue(sample1.equalsIgnoreCase(returnedText));
