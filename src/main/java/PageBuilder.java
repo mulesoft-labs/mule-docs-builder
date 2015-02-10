@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.io.*;
 import java.util.*;
+
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -25,25 +26,31 @@ public class PageBuilder {
         List<DocPage> docPages = serializer.getConvertedDocPagesFromAsciidocFiles(directory.listFiles(), true);
 
         for(DocPage docPage : docPages) {
-            setTocHtmlForDocPage(directory, docPage);
-            setBreadcrumbHtmlForDocPage(directory, docPage);
+            setDestinationFilePath(docPage);
+            setTocHtml(directory, docPage);
+            setBreadcrumbHtml(directory, docPage);
             docPage.setContentHtml(buildPageFromTemplate(docPage));
         }
         return docPages;
     }
 
-    public void setBreadcrumbHtmlForDocPage(File directory, DocPage docPage) throws FileNotFoundException, IOException{
+    public void setBreadcrumbHtml(File directory, DocPage docPage) throws FileNotFoundException, IOException{
         DocPage tocFile = getTocFile(directory);
         TocNode root = getRootNodeInToc(tocFile);
-        BreadcrumbBuilder builder = new BreadcrumbBuilder(root, docPage.getFilename());
+        BreadcrumbBuilder builder = new BreadcrumbBuilder(root, docPage.getDestinationFilePath());
         docPage.setBreadcrumbHtml(builder.getBreadcrumbsForTopic());
         logger.info("Set breadcrumbs for doc \"" + docPage.getTitle() + "\"");
     }
 
-    public void setTocHtmlForDocPage(File directory, DocPage docPage) throws FileNotFoundException, IOException {
+    public void setDestinationFilePath(DocPage page) {
+        String path = baseUrl + Utilities.replaceFileExtension(page.getFilename(), ".html");
+        page.setDestinationFilePath(path);
+    }
+
+    public void setTocHtml(File directory, DocPage docPage) throws FileNotFoundException, IOException {
         DocPage tocFile = getTocFile(directory);
         TocNode root = getRootNodeInToc(tocFile);
-        TocBuilder builder = new TocBuilder();
+        TocBuilder builder = new TocBuilder(baseUrl);
         docPage.setTocHtml(builder.getTocHtml(root, docPage.getFilename()).toString());
         logger.info("Set TOC for doc \"" + docPage.getTitle() + "\"");
     }
@@ -60,10 +67,10 @@ public class PageBuilder {
 
     public TocNode getRootNodeInToc(DocPage tocFile) throws IOException {
         Document doc = Jsoup.parse(tocFile.getContentHtml(), "UTF-8");
-        TocBuilder builder = new TocBuilder();
+        TocBuilder builder = new TocBuilder(baseUrl);
         TocNode firstNode;
         try {
-            firstNode = builder.processToc(doc);
+            firstNode = builder.getRootNodeFromProcessedToc(doc);
         } catch (IOException ioe) {
             logger.fatal("Couldn't process TOC file in directory \"" + tocFile.getSourceFilePath() + "\"");
             throw new IOException(ioe.getMessage());
@@ -107,7 +114,4 @@ public class PageBuilder {
 
         return templateFile;
     }
-
-
-
 }

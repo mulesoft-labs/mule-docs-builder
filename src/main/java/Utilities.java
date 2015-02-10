@@ -79,4 +79,10 @@ public class Utilities {
         String modified = original.toString().replace(toReplace, replacement);
         return new StringBuilder(modified);
     }
+
+    public static String replaceFileExtension(String filename, String newExtension) {
+        String temp;
+        temp = FilenameUtils.removeExtension(filename);
+        return temp += newExtension;
+    }
 }

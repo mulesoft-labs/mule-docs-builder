@@ -44,6 +44,10 @@ public class SiteBuilder {
         */
     }
 
+    public void buildDocsInDirectory(String directory) {
+        
+    }
+
     public void buildMuleDocs() {
         /*
         writeBookendsToLog("(!) Starting to build Mule Docs...");
@@ -305,11 +309,11 @@ public class SiteBuilder {
                             PageBuilder builder = new PageBuilder(templateFilePath, "");
                             String title = getDocTitle(file);
 
-                            TocBuilder tocBuilder = new TocBuilder();
+                            TocBuilder tocBuilder = new TocBuilder("");
                             File tocFile = new File(dir + "/toc.html");
                             String resizedTocHtml = getResizedHtml(tocFile);
                             Document doc = Jsoup.parse(resizedTocHtml, "UTF-8");
-                            TocNode firstNode = tocBuilder.processToc(doc);
+                            TocNode firstNode = tocBuilder.getRootNodeFromProcessedToc(doc);
                             String sectionTitle = firstNode.getTitle();
                             String tocHtml = tocBuilder.getTocHtml(firstNode, file.getName()).toString();
 
@@ -347,11 +351,11 @@ public class SiteBuilder {
 
     // TOC Builder that creates a one-off TOC navigation per page, depending on the depth of the page and its parent/children
     public String[] getTocForInactiveSection(String sourceDirectory) throws IOException {
-        TocBuilder tocBuilder = new TocBuilder();
+        TocBuilder tocBuilder = new TocBuilder("");
         File tocFile = new File(sourceDirectory + "/toc.html");
         String resizedHtml = getResizedHtml(tocFile);
         Document doc = Jsoup.parse(resizedHtml, "UTF-8");
-        TocNode firstNode = tocBuilder.processToc(doc);
+        TocNode firstNode = tocBuilder.getRootNodeFromProcessedToc(doc);
         String sectionTitle = firstNode.getTitle();
         String tocHtml = tocBuilder.getTocHtml(firstNode, "").toString();
         return new String[] { sectionTitle, tocHtml };

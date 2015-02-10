@@ -15,7 +15,7 @@ public class BreadcrumbBuilder {
             String error = "Root node in BreadcrumbBuilder is null.";
             logger.fatal(error);
             throw new NullPointerException(error);
-        } if(!activeUrl.isEmpty()) {
+        } if(!activeUrl.isEmpty() && activeUrl != null) {
             this.activeUrl = activeUrl;
         } else {
             String error = "Active URL in BreadcrumbBuilder is an empty string.";
@@ -51,6 +51,6 @@ public class BreadcrumbBuilder {
         } else {
             return;
         }
-        html.append("<li><a href=\"" + immediateParent.getUrl() + "\">" + immediateParent.getUrl() + "</a></li>");
+        html.append("<li><a href=\"" + immediateParent.getUrl() + "\">" + immediateParent.getTitle() + "</a></li>");
     }
 }

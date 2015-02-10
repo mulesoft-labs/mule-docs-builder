@@ -64,7 +64,7 @@ public class AsciidocSerializer {
         page.setAsciidocSource(asciidocContent);
         page.setContentHtml(getOnlyContentDivFromHtml(htmlContent));
         page.setTitle(getTitleFromHtml(htmlContent));
-        page.setFilename(FilenameUtils.getBaseName(asciidocFile.getName()));
+        page.setFilename(asciidocFile.getName());
         page.setSourceFilePath(asciidocFile.getPath());
 
         logger.info("Converted Asciidoc file to html and created DocPage for \"" + page.getTitle() + "\".");

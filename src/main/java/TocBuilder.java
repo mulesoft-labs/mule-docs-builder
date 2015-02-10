@@ -1,7 +1,4 @@
-/**
- * Created by sean.osterberg on 1/18/15.
- */
-
+import org.apache.log4j.Logger;
 import org.jsoup.select.*;
 import org.jsoup.nodes.*;
 import java.io.IOException;
@@ -14,16 +11,24 @@ import java.util.*;
  * @version 1.0
  */
 public class TocBuilder {
+    private String baseUrl;
+    private static Logger logger = Logger.getLogger(TocBuilder.class);
 
-    public TocNode processToc(Document doc) throws IOException {
+    public TocBuilder(String baseUrl) {
+        this.baseUrl = baseUrl;
+    }
+
+    public TocNode getRootNodeFromProcessedToc(Document doc) throws IOException {
         Element firstElement = doc.select("ul").first();
         Element firstItem = firstElement.select("li").first();
-        String parentLink = firstItem.select("a").first().attr("href");
+        String parentLink = baseUrl + firstItem.select("a").first().attr("href");
         String parentTitle = firstItem.select("a").first().text();
         TocNode firstNode = new TocNode(parentLink, parentTitle, null);
         Elements firstChildren = firstItem.children().select("ul");
         if(firstChildren.size() == 0) {
-            throw new IOException("TOC does not have a single parent node.");
+            String error = "TOC does not have a single parent node.";
+            logger.fatal(error);
+            throw new IOException(error);
         }
         tocProcessor(firstChildren.first(), firstNode);
         firstItem.remove();
@@ -37,7 +42,7 @@ public class TocBuilder {
         if(firstItem == null) {
             return;
         }
-        String parentLink = firstItem.select("a").first().attr("href");
+        String parentLink = baseUrl + firstItem.select("a").first().attr("href");
         String parentTitle = firstItem.select("a").first().text();
 
         TocNode node = new TocNode(parentLink, parentTitle, parentNode);
@@ -63,7 +68,7 @@ public class TocBuilder {
     private void sectionProcessor(Elements siblings, TocNode parentNode) {
         for (Element sibling : siblings) {
             // Get the next sibling's url and title
-            String siblingLink = sibling.select("a").first().attr("href");
+            String siblingLink = baseUrl + sibling.select("a").first().attr("href");
             String siblingTitle = sibling.select("a").first().text();
 
             // Add the next sibling as a child of the parent node
@@ -100,13 +105,23 @@ public class TocBuilder {
 
     public StringBuilder getTocHtml(TocNode parent, String activeUrl) {
         StringBuilder builder = new StringBuilder();
-        generateTocHtml(parent, builder, true, activeUrl);
+        generateTocHtml(parent, builder, true, baseUrl + activeUrl);
         return builder;
+    }
+
+    private String getRandomString(int length) {
+        String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        Random rnd = new Random();
+
+        StringBuilder sb = new StringBuilder(length);
+        for( int i = 0; i < length; i++ )
+            sb.append( AB.charAt( rnd.nextInt(AB.length()) ) );
+        return sb.toString();
     }
 
     private void generateTocHtml(TocNode parent, StringBuilder html, boolean isFirstItem, String activeUrl) {
         Random random = new Random();
-        short sectionId = (short) random.nextInt(Short.MAX_VALUE + 1);
+        String sectionId = getRandomString(8);
         boolean isInSection = isActiveTopicInSection(parent, activeUrl);
 
         if(parent.getUrl().equalsIgnoreCase(activeUrl)) {
@@ -194,6 +209,6 @@ public class TocBuilder {
         } else {
             return;
         }
-        html.append("<li><a href=\"" + immediateParent.getUrl() + "\">" + immediateParent.getUrl() + "</a></li>");
+        html.append("<li><a href=\"" + immediateParent.getUrl() + "\">" + immediateParent.getTitle() + "</a></li>");
     }
 }
