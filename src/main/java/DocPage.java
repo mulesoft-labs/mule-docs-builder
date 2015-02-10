@@ -13,9 +13,10 @@ public class DocPage {
     private String ratingHtml;
     private String gitHubLink;
     private String asciidocSource;
-    private String filename;
+    private String sourceFilename;
+    private String outputFilename;
     private String sourceFilePath;
-    private String destinationFilePath;
+    private String finalRelativeUrl;
 
     public TocNode getNode() {
         return node;
@@ -105,12 +106,20 @@ public class DocPage {
         this.asciidocSource = asciidocSource;
     }
 
-    public String getFilename() {
-        return filename;
+    public String getSourceFilename() {
+        return sourceFilename;
     }
 
-    public void setFilename(String filename) {
-        this.filename = filename;
+    public void setSourceFilename(String sourceFilename) {
+        this.sourceFilename = sourceFilename;
+    }
+
+    public String getOutputFilename() {
+        return outputFilename;
+    }
+
+    public void setOutputFilename(String outputFilename) {
+        this.outputFilename = outputFilename;
     }
 
     public String getSourceFilePath() {
@@ -121,11 +130,11 @@ public class DocPage {
         this.sourceFilePath = sourceFilePath;
     }
 
-    public String getDestinationFilePath() {
-        return destinationFilePath;
+    public String getFinalRelativeUrl() {
+        return finalRelativeUrl;
     }
 
-    public void setDestinationFilePath(String destinationFilePath) {
-        this.destinationFilePath = destinationFilePath;
+    public void setFinalRelativeUrl(String finalRelativeUrl) {
+        this.finalRelativeUrl = finalRelativeUrl;
     }
 }

@@ -50,14 +50,14 @@ public class AsciidocSerializerTests {
         assertFalse(pageOne.getContentHtml().isEmpty());
         assertFalse(pageOne.getAsciidocSource().isEmpty());
         assertTrue(pageOne.getTitle().contentEquals("CloudHub"));
-        assertTrue(pageOne.getSourceFilePath().contentEquals(TestHelpers.getPathForTestResourcesFile(new String[] { "asciidoc-files-valid", pageOne.getFilename()})));
-        assertTrue(pageOne.getFilename().contentEquals("cloudhub.ad"));
+        assertTrue(pageOne.getSourceFilePath().contentEquals(TestHelpers.getPathForTestResourcesFile(new String[] { "asciidoc-files-valid", pageOne.getSourceFilename()})));
+        assertTrue(pageOne.getSourceFilename().contentEquals("cloudhub.ad"));
 
         assertFalse(pageTwo.getContentHtml().isEmpty());
         assertFalse(pageTwo.getAsciidocSource().isEmpty());
         assertTrue(pageTwo.getTitle().contentEquals("Deploying a CloudHub Application"));
-        assertTrue(pageTwo.getSourceFilePath().contentEquals(TestHelpers.getPathForTestResourcesFile(new String[] { "asciidoc-files-valid", pageTwo.getFilename()})));
-        assertTrue(pageTwo.getFilename().contentEquals("deploying-a-cloudhub-application.ad"));
+        assertTrue(pageTwo.getSourceFilePath().contentEquals(TestHelpers.getPathForTestResourcesFile(new String[] { "asciidoc-files-valid", pageTwo.getSourceFilename()})));
+        assertTrue(pageTwo.getSourceFilename().contentEquals("deploying-a-cloudhub-application.ad"));
     }
 
     @Test
@@ -86,8 +86,8 @@ public class AsciidocSerializerTests {
         assertFalse(docPage.getContentHtml().isEmpty());
         assertFalse(docPage.getAsciidocSource().isEmpty());
         assertTrue(docPage.getTitle().contentEquals("CloudHub"));
-        assertTrue(docPage.getSourceFilePath().contentEquals(TestHelpers.getPathForTestResourcesFile(new String[] { "asciidoc-files-valid", docPage.getFilename()})));
-        assertTrue(docPage.getFilename().contentEquals("cloudhub.ad"));
+        assertTrue(docPage.getSourceFilePath().contentEquals(TestHelpers.getPathForTestResourcesFile(new String[] { "asciidoc-files-valid", docPage.getSourceFilename()})));
+        assertTrue(docPage.getSourceFilename().contentEquals("cloudhub.ad"));
     }
 
     public File getTestFile() {

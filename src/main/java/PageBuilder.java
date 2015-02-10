@@ -1,7 +1,6 @@
 import java.io.IOException;
 import java.io.*;
 import java.util.*;
-
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -24,35 +23,37 @@ public class PageBuilder {
 
     public List<DocPage> getCompletedDocPagesFromDirectory(File directory) throws FileNotFoundException, IOException {
         List<DocPage> docPages = serializer.getConvertedDocPagesFromAsciidocFiles(directory.listFiles(), true);
-
+        DocPage tocPage = getTocFile(directory);
+        String sectionName = getRootNodeInToc(tocPage).getTitle();
+        logger.info("Started building " + docPages.size() + " pages for section \"" + sectionName + "\"...");
         for(DocPage docPage : docPages) {
             setDestinationFilePath(docPage);
-            setTocHtml(directory, docPage);
-            setBreadcrumbHtml(directory, docPage);
+            setTocHtml(tocPage, docPage);
+            setBreadcrumbHtml(tocPage, docPage);
             docPage.setContentHtml(buildPageFromTemplate(docPage));
+            logger.info("Completed building doc for \"" + docPage.getTitle() + "\".");
         }
+        logger.info("Finished building " + docPages.size() + " pages for section \"" + sectionName + "\".");
         return docPages;
     }
 
-    public void setBreadcrumbHtml(File directory, DocPage docPage) throws FileNotFoundException, IOException{
-        DocPage tocFile = getTocFile(directory);
-        TocNode root = getRootNodeInToc(tocFile);
-        BreadcrumbBuilder builder = new BreadcrumbBuilder(root, docPage.getDestinationFilePath());
+    public void setBreadcrumbHtml(DocPage tocPage, DocPage docPage) throws FileNotFoundException, IOException {
+        TocNode root = getRootNodeInToc(tocPage);
+        BreadcrumbBuilder builder = new BreadcrumbBuilder(root, docPage.getFinalRelativeUrl());
         docPage.setBreadcrumbHtml(builder.getBreadcrumbsForTopic());
-        logger.info("Set breadcrumbs for doc \"" + docPage.getTitle() + "\"");
+        logger.info("Set breadcrumbs for \"" + docPage.getTitle() + "\".");
     }
 
     public void setDestinationFilePath(DocPage page) {
-        String path = baseUrl + Utilities.replaceFileExtension(page.getFilename(), ".html");
-        page.setDestinationFilePath(path);
+        String path = baseUrl + Utilities.replaceFileExtension(page.getSourceFilename(), ".html");
+        page.setFinalRelativeUrl(path);
     }
 
-    public void setTocHtml(File directory, DocPage docPage) throws FileNotFoundException, IOException {
-        DocPage tocFile = getTocFile(directory);
-        TocNode root = getRootNodeInToc(tocFile);
+    public void setTocHtml(DocPage tocPage, DocPage docPage) throws FileNotFoundException, IOException {
+        TocNode root = getRootNodeInToc(tocPage);
         TocBuilder builder = new TocBuilder(baseUrl);
-        docPage.setTocHtml(builder.getTocHtml(root, docPage.getFilename()).toString());
-        logger.info("Set TOC for doc \"" + docPage.getTitle() + "\"");
+        docPage.setTocHtml(builder.getTocHtml(root, docPage.getFinalRelativeUrl()).toString());
+        logger.info("Set TOC for \"" + docPage.getTitle() + "\".");
     }
 
     public DocPage getTocFile(File directory) throws FileNotFoundException {
@@ -92,7 +93,7 @@ public class PageBuilder {
             logger.fatal(error);
             throw new IOException(error);
         }
-        logger.info("Created page from template for \"" + docPage.getTitle() + "\".");
+        logger.info("Built page from template for \"" + docPage.getTitle() + "\".");
         return html.toString();
     }
 

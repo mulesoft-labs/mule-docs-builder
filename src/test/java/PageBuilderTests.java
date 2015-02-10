@@ -76,9 +76,10 @@ public class PageBuilderTests {
     public void setBreadcrumbHtmlForRootDocPage_WithValidRootNode_ReturnsEmptyContent() throws FileNotFoundException, IOException {
         AsciidocSerializer serializer = new AsciidocSerializer();
         DocPage page = serializer.getConvertedDocPageFromAsciidocFile(new File(TestHelpers.getPathForTestResourcesFile(new String[] { "asciidoc-files-valid", "cloudhub.ad" })));
+        DocPage tocPage = serializer.getConvertedDocPageFromAsciidocFile(new File(TestHelpers.getPathForTestResourcesFile(new String[] { "asciidoc-files-valid", "toc.ad" })));
         PageBuilder builder = setup();
         builder.setDestinationFilePath(page);
-        builder.setBreadcrumbHtml(new File(TestHelpers.getPathForTestResourcesFile(new String[]{"asciidoc-files-valid"})), page);
+        builder.setBreadcrumbHtml(tocPage, page);
 
         assertTrue(page.getBreadcrumbHtml().isEmpty());
     }
@@ -87,9 +88,10 @@ public class PageBuilderTests {
     public void setBreadcrumbHtmlForChildDocPage_WithValidRootNode_ReturnsBreadcrumbContent() throws FileNotFoundException, IOException {
         AsciidocSerializer serializer = new AsciidocSerializer();
         DocPage page = serializer.getConvertedDocPageFromAsciidocFile(new File(TestHelpers.getPathForTestResourcesFile(new String[] { "asciidoc-files-valid", "deploying-a-cloudhub-application.ad" })));
+        DocPage tocPage = serializer.getConvertedDocPageFromAsciidocFile(new File(TestHelpers.getPathForTestResourcesFile(new String[] { "asciidoc-files-valid", "toc.ad" })));
         PageBuilder builder = setup();
         builder.setDestinationFilePath(page);
-        builder.setBreadcrumbHtml(new File(TestHelpers.getPathForTestResourcesFile(new String[]{"asciidoc-files-valid"})), page);
+        builder.setBreadcrumbHtml(tocPage, page);
 
         assertFalse(page.getBreadcrumbHtml().isEmpty());
         assertTrue(page.getBreadcrumbHtml().contains("Deploying a CloudHub Application"));
@@ -102,8 +104,8 @@ public class PageBuilderTests {
         DocPage page = serializer.getConvertedDocPageFromAsciidocFile(new File(TestHelpers.getPathForTestResourcesFile(new String[] { "asciidoc-files-valid", "cloudhub.ad" })));
         builder.setDestinationFilePath(page);
 
-        assertTrue(page.getFilename().contentEquals("cloudhub.ad"));
-        assertTrue(page.getDestinationFilePath().contentEquals("asciidoc-files-valid/cloudhub.html"));
+        assertTrue(page.getSourceFilename().contentEquals("cloudhub.ad"));
+        assertTrue(page.getFinalRelativeUrl().contentEquals("asciidoc-files-valid/cloudhub.html"));
     }
 
     @Test

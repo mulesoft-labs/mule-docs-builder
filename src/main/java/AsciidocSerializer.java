@@ -46,11 +46,13 @@ public class AsciidocSerializer {
         List<DocPage> docPages = new ArrayList<DocPage>();
         for(File file : asciidocFiles) {
             if(excludeTocFile) {
-                if(!FilenameUtils.getBaseName(file.getName()).contentEquals("toc")) {
+                if(!FilenameUtils.getBaseName(file.getName()).contentEquals("toc") && fileEndsWithDesiredExtension(file.getName())) {
                     docPages.add(getConvertedDocPageFromAsciidocFile(file));
                 }
             } else {
-                docPages.add(getConvertedDocPageFromAsciidocFile(file));
+                if(fileEndsWithDesiredExtension(file.getName())) {
+                    docPages.add(getConvertedDocPageFromAsciidocFile(file));
+                }
             }
         }
         return docPages;
@@ -64,8 +66,9 @@ public class AsciidocSerializer {
         page.setAsciidocSource(asciidocContent);
         page.setContentHtml(getOnlyContentDivFromHtml(htmlContent));
         page.setTitle(getTitleFromHtml(htmlContent));
-        page.setFilename(asciidocFile.getName());
+        page.setSourceFilename(asciidocFile.getName());
         page.setSourceFilePath(asciidocFile.getPath());
+        page.setOutputFilename(Utilities.replaceFileExtension(page.getSourceFilename(), ".html"));
 
         logger.info("Converted Asciidoc file to html and created DocPage for \"" + page.getTitle() + "\".");
         return page;
@@ -84,5 +87,12 @@ public class AsciidocSerializer {
     private String getTitleFromHtml(String html) {
         Document doc = Jsoup.parse(html, "UTF-8");
         return doc.title();
+    }
+
+    private static boolean fileEndsWithDesiredExtension(String fileName) {
+        String extension = FilenameUtils.getExtension(fileName);
+        if(extension.equalsIgnoreCase("ad") || extension.equalsIgnoreCase("asciidoc") || extension.equalsIgnoreCase("adoc"))
+            return true;
+        return false;
     }
 }

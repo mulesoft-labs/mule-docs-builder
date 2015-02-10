@@ -7,16 +7,20 @@ import java.io.IOException;
 import java.io.*;
 import java.nio.file.*;
 import java.util.*;
-import java.util.logging.Logger;
-import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
 import org.jsoup.*;
 import org.jsoup.select.*;
 import org.jsoup.nodes.*;
 
 
 public class SiteBuilder {
-    static Logger logger = Logger.getLogger(SiteBuilder.class.getName());
+    private static Logger logger = Logger.getLogger(SiteBuilder.class);
     public static Process _process;
+
+    public SiteBuilder() {
+        //BasicConfigurator.configure();
+    }
+
     /*
     public static String sourceAsciiDocDirectory = "/Users/sean.osterberg/Documents/MuleSoft Docs/New Doc Site/source-asciidoc/";
     public static String outputDirectoryForConvertedHtml = "/Users/sean.osterberg/Documents/MuleSoft Docs/New Doc Site/converted-output/";
@@ -30,9 +34,13 @@ public class SiteBuilder {
     public static String jekyllSiteDirectory = "/Users/sean.osterberg/mulesoft-docs/_site/";
     public static String templateFilePath = "/Users/sean.osterberg/mulesoft-docs/_site/_templates/default.html";
 
-    public static void main(String[] args) {
-        BasicConfigurator.configure();
+
+    public static void main(String[] args) throws FileNotFoundException, IOException {
+        File cloudhubDirectory = new File("/Users/sean.osterberg/mulesoft-docs/_source/cloudhub");
         SiteBuilder builder = new SiteBuilder();
+        builder.buildDocsInDirectory(cloudhubDirectory, new File(outputDirectoryForProcessedHtml));
+        builder.copyHtmlFilesToJekyllDirectory(outputDirectoryForProcessedHtml, jekyllSiteDirectory);
+        /*
         builder.buildMuleDocs();
         //builder.buildToc();
 
@@ -44,8 +52,19 @@ public class SiteBuilder {
         */
     }
 
-    public void buildDocsInDirectory(String directory) {
-        
+    public void buildDocsInDirectory(File sourceDirectory, File outputDirectory) throws FileNotFoundException, IOException {
+        PageBuilder builder = new PageBuilder(templateFilePath, "");
+        List<DocPage> docPages = builder.getCompletedDocPagesFromDirectory(sourceDirectory);
+        logger.info("Creating " + docPages.size() + " pages in directory: \"" + outputDirectory + "\"...");
+        for(DocPage docPage : docPages) {
+            writePageToDirectory(docPage, outputDirectory);
+            logger.info("Created page \"" + docPage.getTitle() + "\".");
+        }
+        logger.info("Finished creating " + docPages.size() + " pages in directory: \"" + outputDirectory + "\".");
+    }
+
+    public void writePageToDirectory(DocPage page, File directory) throws IOException {
+        Utilities.writeFileToDirectory(directory.getPath() + "/" + page.getOutputFilename(), page.getContentHtml());
     }
 
     public void buildMuleDocs() {

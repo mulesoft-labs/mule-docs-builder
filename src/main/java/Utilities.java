@@ -1,9 +1,7 @@
 import org.apache.commons.io.*;
 import org.apache.log4j.Logger;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+
+import java.io.*;
 import java.util.*;
 
 /**
@@ -84,5 +82,18 @@ public class Utilities {
         String temp;
         temp = FilenameUtils.removeExtension(filename);
         return temp += newExtension;
+    }
+
+    public static void writeFileToDirectory(String filePath, String fileContents) throws IOException {
+        BufferedWriter writer = null;
+        try {
+            writer = new BufferedWriter(new FileWriter(filePath));
+        } catch(IOException ioe) {
+            String error = "Could not create file in directory: \"" + filePath + "\".";
+            logger.fatal(error);
+            throw new IOException();
+        }
+        writer.write(fileContents);
+        writer.close();
     }
 }
