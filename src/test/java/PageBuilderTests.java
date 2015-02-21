@@ -1,6 +1,7 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
 import java.io.*;
+import java.util.List;
 
 /**
  * Created by sean.osterberg on 2/6/15.
@@ -8,8 +9,11 @@ import java.io.*;
 public class PageBuilderTests {
 
     private PageBuilder setup() {
-        String templateFilePath = TestHelpers.getPathForTestResourcesFile(new String[] { "template.html" });
-        return new PageBuilder(templateFilePath, "asciidoc-files-valid/");
+        String sourceDir = TestHelpers.getPathForTestResourcesFile(new String[] { "asciidoc-files-valid" });
+        String outputDir = TestHelpers.getPathForTestResourcesFile(new String[] { "output" });
+        SiteBuilder siteBuilder = new SiteBuilder(sourceDir, outputDir, "");
+        List<PageTemplate> templates = siteBuilder.getPageTemplates();
+        return new PageBuilder(templates, "");
     }
 
     @Test
@@ -21,10 +25,10 @@ public class PageBuilderTests {
         String toc = "pqmMAeUSUb";
         String breadcrumb = "ueVmXxt0uL";
         page.setTitle(title);
-        page.setContentHtml(content);
-        page.setTocHtml(toc);
+        page.setInitialContentHtml(content);
+        page.setFinalTocHtml(toc);
         page.setBreadcrumbHtml(breadcrumb);
-        String result = builder.buildPageFromTemplate(page);
+        String result = builder.getCompletePageContent(page);
 
         assertTrue(result.contains(title));
         assertTrue(result.contains(content));
@@ -32,17 +36,19 @@ public class PageBuilderTests {
         assertTrue(result.contains(breadcrumb));
     }
 
-    @Test(expected = IOException.class)
+    @Test(expected = DocBuilderException.class)
     public void buildPageFromTemplate_WithGivenTemplateAndInvalidPage_ThrowsException() throws IOException {
         PageBuilder builder = setup();
         DocPage page = new DocPage();
         String title = "aU2otg3oa7";
         String content = "YJts3zAknk";
         page.setTitle(title);
-        page.setContentHtml(content);
-        String result = builder.buildPageFromTemplate(page);
+        page.setInitialContentHtml(content);
+        String result = builder.getCompletePageContent(page);
     }
 
+
+    /*
     @Test
     public void getTocFile_WithValidDirectory_ReturnsDocPage() throws FileNotFoundException {
         PageBuilder builder = setup();
@@ -118,13 +124,13 @@ public class PageBuilderTests {
         assertTrue(root.getChildren().size() > 0);
         assertTrue(root.getParent() == null);
         assertTrue(root.getTitle().contentEquals("CloudHub"));
-    }
+    }*/
 
     private boolean isFreshDocPageValid(DocPage page) {
         boolean isValid = true;
         if(page.getTitle().isEmpty()) { isValid = false; }
-        if(page.getContentHtml().isEmpty()) { isValid = false; }
-        if(page.getSourceFilePath().isEmpty()) { isValid = false; }
+        if(page.getInitialContentHtml().isEmpty()) { isValid = false; }
+        if(page.getSourceFilepath().isEmpty()) { isValid = false; }
         return isValid;
     }
 

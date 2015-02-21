@@ -1,3 +1,4 @@
+import org.apache.commons.io.FilenameUtils;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import java.io.*;
@@ -97,5 +98,44 @@ public class UtilitiesTests {
         File file = new File(sampleFilePath);
         String returnedText = Utilities.getFileContentsFromFile(file);
         assertTrue(sample1.equalsIgnoreCase(returnedText));
+    }
+
+    @Test
+    public void getConcatenatedFilepath_WithValidDirectory_ReturnsValidPath() {
+        String newFolderPath = TestHelpers.getPathForTestResourcesFile(new String[] { "text-files" });
+        String result = Utilities.getConcatenatedFilepath(new String[]{newFolderPath});
+        assertTrue(FilenameUtils.getExtension(result).isEmpty());
+        assertTrue(result.endsWith("/"));
+    }
+
+    @Test
+    public void getConcatenatedFilepath_WithValidFile_ReturnsValidPath() {
+        String sampleFilepath = TestHelpers.getPathForTestResourcesFile(new String[] { "template.html" });
+        String result = Utilities.getConcatenatedFilepath(new String[]{sampleFilepath});
+        assertTrue(FilenameUtils.getExtension(result).contentEquals("html"));
+        assertTrue(result.endsWith("html"));
+    }
+
+    @Test
+    public void getConcatenatedFilepath_ForTwoDirectories_ReturnsValidPath() {
+        String sampleFilepath = TestHelpers.getPathForTestResourcesFile(new String[] { "asciidoc-files-valid" });
+        String result = Utilities.getConcatenatedFilepath(new String[]{sampleFilepath, "cloudhub"});
+        String desiredResult = TestHelpers.getTestResourcesPath().concat("asciidoc-files-valid/cloudhub");
+        assertTrue(result.contentEquals(desiredResult));
+        assertTrue(new File(result).isDirectory());
+    }
+
+    @Test
+     public void getConcatenatedFilepath_ForFolderWithPeriod_ReturnsValidPath() {
+        String sampleFilepath = TestHelpers.getPathForTestResourcesFile(new String[] { "asciidoc-files-valid", "cloudhub"});
+        String result = Utilities.getConcatenatedFilepath(new String[]{sampleFilepath, "v", "4.0" });
+        assertTrue(new File(result).isDirectory());
+    }
+
+    @Test
+    public void getConcatenatedUrl_ForValidUrl_ReturnsValidPath() {
+        String sampleUrl = "http://localhost:4000";
+        String result = Utilities.getConcatenatedUrl(new String[] { sampleUrl, "cloudhub.html"});
+        assertTrue(result.contentEquals("http://localhost:4000/cloudhub.html"));
     }
 }

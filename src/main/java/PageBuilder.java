@@ -1,7 +1,9 @@
-import java.io.IOException;
 import java.io.*;
 import java.util.*;
+
+import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -11,108 +13,90 @@ import org.jsoup.nodes.Document;
 
 public class PageBuilder {
     private static Logger logger = Logger.getLogger(PageBuilder.class);
-    private AsciidocSerializer serializer;
-    private String templateFileContents;
+    List<PageTemplate> pageTemplates;
     private String baseUrl;
+    private Map<String, String> inactiveTocHtml;
 
-    public PageBuilder(String templateFilePath, String baseUrl) {
-        templateFileContents = Utilities.getFileContentsFromFile(new File(templateFilePath));
-        serializer = new AsciidocSerializer();
+    public PageBuilder(List<PageTemplate> templates, String baseUrl) {
+        this.pageTemplates = templates;
         this.baseUrl = baseUrl;
     }
 
-    public List<DocPage> getCompletedDocPagesFromDirectory(File directory) throws FileNotFoundException, IOException {
-        List<DocPage> docPages = serializer.getConvertedDocPagesFromAsciidocFiles(directory.listFiles(), true);
-        DocPage tocPage = getTocFile(directory);
-        String sectionName = getRootNodeInToc(tocPage).getTitle();
-        logger.info("Started building " + docPages.size() + " pages for section \"" + sectionName + "\"...");
-        for(DocPage docPage : docPages) {
-            setDestinationFilePath(docPage);
-            setTocHtml(tocPage, docPage);
-            setBreadcrumbHtml(tocPage, docPage);
-            docPage.setContentHtml(buildPageFromTemplate(docPage));
-            logger.info("Completed building doc for \"" + docPage.getTitle() + "\".");
+    public List<DocPage> getInitialDocPagesForSection(DocSection section) {
+        List<DocPage> docPages = new ArrayList<DocPage>();
+        File[] pagesInSection = new File(section.getSourceFilepath()).listFiles();
+        for(File docFile : pagesInSection) {
+            if((Utilities.fileEndsWithValidAsciidocExtension(docFile.getName())) &&
+                    (!docFile.getName().contentEquals("toc.ad"))) {
+                docPages.add(getConvertedDocPageFromAsciidocFile(docFile, section));
+            }
         }
-        logger.info("Finished building " + docPages.size() + " pages for section \"" + sectionName + "\".");
         return docPages;
     }
 
-    public void setBreadcrumbHtml(DocPage tocPage, DocPage docPage) throws FileNotFoundException, IOException {
-        TocNode root = getRootNodeInToc(tocPage);
+    public String getBreadcrumbHtml(TocNode root, DocPage docPage) {
         BreadcrumbBuilder builder = new BreadcrumbBuilder(root, docPage.getFinalRelativeUrl());
-        docPage.setBreadcrumbHtml(builder.getBreadcrumbsForTopic());
-        logger.info("Set breadcrumbs for \"" + docPage.getTitle() + "\".");
+        return builder.getBreadcrumbsForTopic();
     }
 
     public void setDestinationFilePath(DocPage page) {
-        String path = baseUrl + Utilities.replaceFileExtension(page.getSourceFilename(), ".html");
+        String path = Utilities.getConcatenatedUrl(new String[] { this.baseUrl, Utilities.replaceFileExtension(page.getSourceFilename(), ".html") });
         page.setFinalRelativeUrl(path);
     }
 
-    public void setTocHtml(DocPage tocPage, DocPage docPage) throws FileNotFoundException, IOException {
-        TocNode root = getRootNodeInToc(tocPage);
-        TocBuilder builder = new TocBuilder(baseUrl);
-        docPage.setTocHtml(builder.getTocHtml(root, docPage.getFinalRelativeUrl()).toString());
-        logger.info("Set TOC for \"" + docPage.getTitle() + "\".");
+    public void updatePageWithCompleteTocHtml(DocPage page, String tocHtml) {
+        page.setInitialTocHtml(tocHtml);
+        page.setInitialContentHtml(getCompletePageContent(page));
     }
 
-    public DocPage getTocFile(File directory) throws FileNotFoundException {
-        File tocFile = new File(directory.getPath() + "/toc.ad");
-        if(!tocFile.exists()) {
-            String noTocError = "Cannot find table of contents file \"toc.ad\" in " + directory.getPath();
-            logger.fatal(noTocError);
-            throw new FileNotFoundException(noTocError);
-        }
-        return serializer.getConvertedDocPageFromAsciidocFile(tocFile);
-    }
-
-    public TocNode getRootNodeInToc(DocPage tocFile) throws IOException {
-        Document doc = Jsoup.parse(tocFile.getContentHtml(), "UTF-8");
-        TocBuilder builder = new TocBuilder(baseUrl);
+    public TocNode getRootNodeInToc(DocPage tocFile) {
+        Document doc = Jsoup.parse(tocFile.getInitialContentHtml(), "UTF-8");
+        TocBuilder builder = new TocBuilder(this.baseUrl, "");
         TocNode firstNode;
-        try {
-            firstNode = builder.getRootNodeFromProcessedToc(doc);
-        } catch (IOException ioe) {
-            logger.fatal("Couldn't process TOC file in directory \"" + tocFile.getSourceFilePath() + "\"");
-            throw new IOException(ioe.getMessage());
-        }
-
-        return firstNode;
+        return builder.getRootNode();
     }
 
-    public String buildPageFromTemplate(DocPage docPage) throws IOException {
-        StringBuilder html = new StringBuilder(templateFileContents);
-
-        if(docPage.getTitle() != null && docPage.getTocHtml() != null && docPage.getBreadcrumbHtml() != null && docPage.getContentHtml() != null) {
-            html = Utilities.replaceText(html, "{{ page.title }}", docPage.getTitle());
-            html = Utilities.replaceText(html, "{{ page.toc }}", docPage.getTocHtml());
-            html = Utilities.replaceText(html, "{{ page.breadcrumb }}", docPage.getBreadcrumbHtml());
-            html = Utilities.replaceText(html, "{{ page.content }}", docPage.getContentHtml());
-        } else {
-            String error = "Could not build DocPage because one or more required properties were null.";
-            logger.fatal(error);
-            throw new IOException(error);
-        }
-        logger.info("Built page from template for \"" + docPage.getTitle() + "\".");
+    public String getCompletePageContent(DocPage docPage) {
+        StringBuilder html = new StringBuilder(pageTemplates.get(0).getTemplateContents()); // Todo: Replace with logic that checks Asciidoc for specified template
+        validatePageComponents(docPage);
+        html = Utilities.replaceText(html, "{{ page.title }}", docPage.getTitle());
+        html = Utilities.replaceText(html, "{{ page.toc }}", docPage.getFinalTocHtml());
+        html = Utilities.replaceText(html, "{{ page.breadcrumb }}", docPage.getBreadcrumbHtml());
+        html = Utilities.replaceText(html, "{{ page.content }}", docPage.getInitialContentHtml());
+        this.logger.info("Built page from template for \"" + docPage.getTitle() + "\".");
         return html.toString();
     }
 
-    /*
-    Temporarily held for backwards compatability
-     */
-    public StringBuilder generatePage(String templateFilePath,
-                                      String contentHtml,
-                                      String title,
-                                      String tocHtml,
-                                      String breadcrumbHtml,
-                                      String fileName) throws FileNotFoundException, IOException {
-
-        StringBuilder templateFile = new StringBuilder(Utilities.getFileContentsFromFile(new File(templateFilePath)));
-        templateFile = Utilities.replaceText(templateFile, "{{ page.title }}", title);
-        templateFile = Utilities.replaceText(templateFile, "{{ page.toc }}", tocHtml);
-        templateFile = Utilities.replaceText(templateFile, "{{ page.breadcrumb }}", breadcrumbHtml);
-        templateFile = Utilities.replaceText(templateFile, "{{ page.content }}", contentHtml);
-
-        return templateFile;
+    private void validatePageComponents(DocPage page) {
+        if((Utilities.isStringNullOrEmptyOrWhitespace(page.getTitle()) ||
+            (Utilities.isStringNullOrEmptyOrWhitespace(page.getFinalTocHtml())) ||
+            (Utilities.isStringNullOrEmptyOrWhitespace(page.getBreadcrumbHtml()) ||
+            (Utilities.isStringNullOrEmptyOrWhitespace(page.getInitialContentHtml()))))) {
+                String error = "Could not build DocPage because one or more required properties were null or empty.";
+                this.logger.fatal(error);
+                throw new DocBuilderException(error);
+        }
     }
+
+    public DocPage getConvertedDocPageFromAsciidocFile(File asciidocFile, DocSection section) {
+        DocPage page = new DocPage();
+        String asciidocContent = Utilities.getFileContentsFromFile(asciidocFile);
+        String htmlContent = Utilities.getRawConvertedHtmlFromAsciidocString(asciidocContent);
+        String finalRelativeUrl = Utilities.getConcatenatedFilepath(new String[]{this.baseUrl, Utilities.replaceFileExtension(asciidocFile.getName(), ".html")});
+        TocBuilder builder = new TocBuilder(this.baseUrl, Utilities.getConcatenatedFilepath(new String[]{section.getSourceFilepath(), "toc.ad"}));
+
+        page.setAsciidocSource(asciidocContent);
+        page.setInitialContentHtml(Utilities.getOnlyContentDivFromHtml(htmlContent));
+        page.setTitle(Utilities.getTitleFromHtml(htmlContent));
+        page.setSourceFilename(asciidocFile.getName());
+        page.setSourceFilepath(asciidocFile.getPath());
+        page.setOutputFilename(Utilities.replaceFileExtension(page.getSourceFilename(), ".html"));
+        page.setFinalRelativeUrl(finalRelativeUrl);
+        page.setInitialTocHtml(builder.getTocHtmlForActiveUrl(finalRelativeUrl));
+        page.setBreadcrumbHtml(getBreadcrumbHtml(builder.getRootNode(), page));
+
+        this.logger.info("Converted Asciidoc file to html and created DocPage object for \"" + page.getTitle() + "\".");
+        return page;
+    }
+
 }

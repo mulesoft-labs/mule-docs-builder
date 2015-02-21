@@ -2,10 +2,11 @@
  * Created by sean.osterberg on 2/6/15.
  */
 public class DocPage {
-    private TocNode node;
     private String title;
-    private String tocHtml;
-    private String contentHtml;
+    private String initialTocHtml;
+    private String initialContentHtml;
+    private String finalTocHtml;
+    private String finalContentHtml;
     private String breadcrumbHtml;
     private String versionHtml;
     private String pdfLink;
@@ -15,16 +16,8 @@ public class DocPage {
     private String asciidocSource;
     private String sourceFilename;
     private String outputFilename;
-    private String sourceFilePath;
+    private String sourceFilepath;
     private String finalRelativeUrl;
-
-    public TocNode getNode() {
-        return node;
-    }
-
-    public void setNode(TocNode node) {
-        this.node = node;
-    }
 
     public String getTitle() {
         return title;
@@ -34,20 +27,36 @@ public class DocPage {
         this.title = title;
     }
 
-    public String getTocHtml() {
-        return tocHtml;
+    public String getInitialTocHtml() {
+        return initialTocHtml;
     }
 
-    public void setTocHtml(String tocHtml) {
-        this.tocHtml = tocHtml;
+    public void setInitialTocHtml(String initialTocHtml) {
+        this.initialTocHtml = initialTocHtml;
     }
 
-    public String getContentHtml() {
-        return contentHtml;
+    public String getFinalTocHtml() {
+        return finalTocHtml;
     }
 
-    public void setContentHtml(String contentHtml) {
-        this.contentHtml = contentHtml;
+    public void setFinalTocHtml(String finalTocHtml) {
+        this.finalTocHtml = finalTocHtml;
+    }
+
+    public String getFinalContentHtml() {
+        return finalContentHtml;
+    }
+
+    public void setFinalContentHtml(String finalContentHtml) {
+        this.finalContentHtml = finalContentHtml;
+    }
+
+    public String getInitialContentHtml() {
+        return initialContentHtml;
+    }
+
+    public void setInitialContentHtml(String initialContentHtml) {
+        this.initialContentHtml = initialContentHtml;
     }
 
     public String getBreadcrumbHtml() {
@@ -122,12 +131,12 @@ public class DocPage {
         this.outputFilename = outputFilename;
     }
 
-    public String getSourceFilePath() {
-        return sourceFilePath;
+    public String getSourceFilepath() {
+        return sourceFilepath;
     }
 
-    public void setSourceFilePath(String sourceFilePath) {
-        this.sourceFilePath = sourceFilePath;
+    public void setSourceFilepath(String sourceFilepath) {
+        this.sourceFilepath = sourceFilepath;
     }
 
     public String getFinalRelativeUrl() {

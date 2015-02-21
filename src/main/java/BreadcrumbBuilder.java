@@ -3,25 +3,17 @@ import org.apache.log4j.Logger;
 /**
  * Created by sean.osterberg on 2/7/15.
  */
+
 public class BreadcrumbBuilder {
     private static Logger logger = Logger.getLogger(BreadcrumbBuilder.class);
     private TocNode root;
     private String activeUrl;
 
     public BreadcrumbBuilder(TocNode root, String activeUrl) {
-        if(root != null) {
-            this.root = root;
-        } else {
-            String error = "Root node in BreadcrumbBuilder is null.";
-            logger.fatal(error);
-            throw new NullPointerException(error);
-        } if(!activeUrl.isEmpty() && activeUrl != null) {
-            this.activeUrl = activeUrl;
-        } else {
-            String error = "Active URL in BreadcrumbBuilder is an empty string.";
-            logger.fatal(error);
-            throw new NullPointerException(error);
-        }
+        validateRootNode(root);
+        this.root = root;
+        validateActiveUrl(activeUrl);
+        this.activeUrl = activeUrl;
     }
 
     public String getBreadcrumbsForTopic() {
@@ -31,14 +23,14 @@ public class BreadcrumbBuilder {
     }
 
     private void generateBreadcrumbsForTopic(TocNode parentNode, String activeUrl, StringBuilder html) {
-        for(TocNode node : parentNode.getChildren()) {
-            if(node.getUrl().equalsIgnoreCase(activeUrl)) {
-                html.append("<ol class=\"breadcrumb\">");
-                generateParentBreadcrumbsForTopic(node, html);
-                html.append("<li class=\"active\">" + node.getTitle() + "</li>");
-                html.append("</ol>");
-            }
-            else if(node.getChildren().size() > 0) {
+        if(parentNode.getUrl().equalsIgnoreCase(activeUrl)) {
+            html.append("<ol class=\"breadcrumb\"><li>MuleSoft Docs</li>");
+            generateParentBreadcrumbsForTopic(parentNode, html);
+            html.append("<li class=\"active\">" + parentNode.getTitle() + "</li>");
+            html.append("</ol>");
+        }
+        else if(parentNode.getChildren().size() > 0) {
+            for(TocNode node : parentNode.getChildren()) {
                 generateBreadcrumbsForTopic(node, activeUrl, html);
             }
         }
@@ -52,5 +44,23 @@ public class BreadcrumbBuilder {
             return;
         }
         html.append("<li><a href=\"" + immediateParent.getUrl() + "\">" + immediateParent.getTitle() + "</a></li>");
+    }
+
+    //---- Validations ----//
+
+    private void validateRootNode(TocNode root) {
+        if(root == null) {
+            String error = "Root node in BreadcrumbBuilder is null.";
+            this.logger.fatal(error);
+            throw new DocBuilderException(error);
+        }
+    }
+
+    private void validateActiveUrl(String activeUrl) {
+        if((activeUrl.isEmpty()) || (activeUrl == null)) {
+            String error = "Active URL in BreadcrumbBuilder is an empty string.";
+            this.logger.fatal(error);
+            throw new DocBuilderException(error);
+        }
     }
 }

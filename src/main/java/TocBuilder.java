@@ -1,8 +1,10 @@
+import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
+import org.jsoup.Jsoup;
 import org.jsoup.select.*;
 import org.jsoup.nodes.*;
-import java.io.IOException;
-import java.util.*;
+
+import java.io.*;
 
 /**
  * Table of contents builder for the Mule Doc site.
@@ -11,14 +13,36 @@ import java.util.*;
  * @version 1.0
  */
 public class TocBuilder {
-    private String baseUrl;
     private static Logger logger = Logger.getLogger(TocBuilder.class);
+    private String baseUrl;
+    private String tocFilepath;
+    private TocNode rootNode;
 
-    public TocBuilder(String baseUrl) {
-        this.baseUrl = baseUrl;
+    public TocBuilder(String baseUrl, String tocFilepath) {
+        this.baseUrl = validateBaseUrlValid(baseUrl);
+        this.tocFilepath = validateTocFilepath(tocFilepath);
     }
 
-    public TocNode getRootNodeFromProcessedToc(Document doc) throws IOException {
+    public TocNode getRootNode() {
+        if(rootNode == null) {
+            Document doc = Utilities.getProcessedJsoupDocFromConvertedAsciiDocHtml(tocFilepath);
+            rootNode = getRootNodeFromRawTocHtml(doc);
+        }
+        return rootNode;
+    }
+
+    public String getTocHtmlForActiveUrl(String activeUrl) {
+        StringBuilder builder = new StringBuilder();
+        generateTocHtml(getRootNode(), builder, true, baseUrl + activeUrl);
+        return builder.toString();
+    }
+
+    public String getTocHtmlForInactiveSection() {
+        return getTocHtmlForActiveUrl("");
+    }
+
+
+    private TocNode getRootNodeFromRawTocHtml(Document doc) {
         Element firstElement = doc.select("ul").first();
         Element firstItem = firstElement.select("li").first();
         String parentLink = baseUrl + firstItem.select("a").first().attr("href");
@@ -28,100 +52,52 @@ public class TocBuilder {
         if(firstChildren.size() == 0) {
             String error = "TOC does not have a single parent node.";
             logger.fatal(error);
-            throw new IOException(error);
+            throw new DocBuilderException(error);
         }
-        tocProcessor(firstChildren.first(), firstNode);
+        processToc(firstChildren.first(), firstNode);
         firstItem.remove();
-        tocProcessor(firstElement, firstNode);
+        processToc(firstElement, firstNode);
 
         return firstNode;
     }
 
-    private void tocProcessor(Element listElement, TocNode parentNode) {
+    private void processToc(Element listElement, TocNode parentNode) {
         Element firstItem = listElement.select("li").first();
         if(firstItem == null) {
             return;
         }
         String parentLink = baseUrl + firstItem.select("a").first().attr("href");
         String parentTitle = firstItem.select("a").first().text();
-
         TocNode node = new TocNode(parentLink, parentTitle, parentNode);
         parentNode.addChild(node);
-
         Elements firstChildren = firstItem.children().select("ul");
         Elements listItems = firstChildren.select("li");
 
         if(firstChildren.size() > 1) {
-            tocProcessor(firstChildren.first(), node);
+            processToc(firstChildren.first(), node);
             firstItem.remove();
-            tocProcessor(listElement, parentNode);
+            processToc(listElement, parentNode);
         } else if(firstChildren.size() == 0) {
             firstItem.remove();
-            tocProcessor(listElement, parentNode);
+            processToc(listElement, parentNode);
         } else {
-            sectionProcessor(listItems, node);
+            processSection(listItems, node);
             firstItem.remove();
-            tocProcessor(listElement, parentNode);
+            processToc(listElement, parentNode);
         }
     }
 
-    private void sectionProcessor(Elements siblings, TocNode parentNode) {
+    private void processSection(Elements siblings, TocNode parentNode) {
         for (Element sibling : siblings) {
-            // Get the next sibling's url and title
             String siblingLink = baseUrl + sibling.select("a").first().attr("href");
             String siblingTitle = sibling.select("a").first().text();
-
-            // Add the next sibling as a child of the parent node
             TocNode siblingNode = new TocNode(siblingLink, siblingTitle, parentNode);
             parentNode.addChild(siblingNode);
         }
     }
 
-    public void printTocNodes(TocNode parent) {
-        printNodesInToc(parent, 0);
-    }
-
-    private void printNodesInToc(TocNode parent, int indent) {
-        for(int i = 0; i < indent; i++) {
-            System.out.print('\t');
-        }
-        System.out.println(parent.getTitle());
-        if(parent.getChildren().size() == 0) {
-            return;
-        } else {
-            for(TocNode child : parent.getChildren()) {
-                if(child.getChildren().size() > 0) {
-                    printNodesInToc(child, indent + 1);
-                } else {
-                    int updated = indent + 1;
-                    for(int i = 0; i < updated; i++) {
-                        System.out.print('\t');
-                    }
-                    System.out.println(child.getTitle());
-                }
-            }
-        }
-    }
-
-    public StringBuilder getTocHtml(TocNode parent, String activeUrl) {
-        StringBuilder builder = new StringBuilder();
-        generateTocHtml(parent, builder, true, baseUrl + activeUrl);
-        return builder;
-    }
-
-    private String getRandomString(int length) {
-        String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        Random rnd = new Random();
-        StringBuilder sb = new StringBuilder(length);
-        for( int i = 0; i < length; i++ )
-            sb.append( AB.charAt( rnd.nextInt(AB.length()) ) );
-        return sb.toString();
-    }
-
     private void generateTocHtml(TocNode parent, StringBuilder html, boolean isFirstItem, String activeUrl) {
-        Random random = new Random();
-        String sectionId = getRandomString(8);
-        boolean isInSection = isActiveTopicInSection(parent, activeUrl);
+        String sectionId = Utilities.getRandomAlphaNumericString(8);
 
         if(parent.getUrl().equalsIgnoreCase(activeUrl)) {
             html.append("<li class=\"toc-section\"><div class=\"toc-section-header active\"><a href=\"");
@@ -132,12 +108,7 @@ public class TocBuilder {
             html.append("<li class=\"toc-section\"><div class=\"toc-section-header\"><a href=\"");
             html.append(parent.getUrl() + "\">" + parent.getTitle() + "</a>");
             html.append("<a href=\"#" + sectionId +  "\" data-toggle=\"collapse\" class=\"collapsed\"><div class=\"toc-section-header-arrow\"></div></a></div>");
-            html.append("<ul class=\"collapsed child-section collapse in\" id=\"" + sectionId + "\">");
-        } else if (isFirstItem) {
-            html.append("<li class=\"toc-section\"><div class=\"toc-section-header\"><a href=\"");
-            html.append(parent.getUrl() + "\">" + parent.getTitle() + "</a>");
-            html.append("<a href=\"#" + sectionId +  "\" data-toggle=\"collapse\" class=\"collapsed\"><div class=\"toc-section-header-arrow\"></div></a></div>");
-            html.append("<ul class=\"collapsed child-section collapse\" id=\"" + sectionId + "\" style=\"height: 0px;\">");
+            html.append("<ul class=\"collapsed child-section collapse in\" id=\"" + sectionId + "\" style=\"height: 0px;\">");
         } else if (isActiveTopicInSection(parent, activeUrl)) {
             html.append("<li class=\"toc-section\"><div class=\"toc-section-header child\"><a href=\"");
             html.append(parent.getUrl() + "\">" + parent.getTitle() + "</a>");
@@ -168,6 +139,7 @@ public class TocBuilder {
         html.append("</ul></li>");
     }
 
+
     private boolean isActiveTopicInSection(TocNode parentNode, String activeUrl) {
         for(TocNode node : parentNode.getChildren()) {
             if(node.getUrl().equalsIgnoreCase(activeUrl)) {
@@ -180,34 +152,58 @@ public class TocBuilder {
         return false;
     }
 
-    public StringBuilder getBreadcrumbsForTopic(TocNode parentNode, String activeUrl) {
-        StringBuilder builder = new StringBuilder();
-        generateBreadcrumbsForTopic(parentNode, activeUrl, builder);
-        return builder;
-    }
-
-    private void generateBreadcrumbsForTopic(TocNode parentNode, String activeUrl, StringBuilder html) {
-        for(TocNode node : parentNode.getChildren()) {
-            if(node.getUrl().equalsIgnoreCase(activeUrl)) {
-                html.append("<ol class=\"breadcrumb\">");
-
-                generateParentBreadcrumbsForTopic(node, html);
-                html.append("<li class=\"active\">" + node.getTitle() + "</li>");
-                html.append("</ol>");
-            }
-            else if(node.getChildren().size() > 0) {
-                generateBreadcrumbsForTopic(node, activeUrl, html);
-            }
-        }
-    }
-
-    private void generateParentBreadcrumbsForTopic(TocNode node, StringBuilder html) {
-        TocNode immediateParent = node.getParent();
-        if(immediateParent != null) {
-            generateParentBreadcrumbsForTopic(immediateParent, html);
+    private String validateTocFilepath(String tocFilepath) {
+        File tocFile = new File(tocFilepath);
+        if(!tocFile.exists()) {
+            String error = "TOC file does not exist at specified path: \"" + tocFilepath + "\".";
+            logger.fatal(error);
+            throw new DocBuilderException(error);
+        } else if(!Utilities.fileEndsWithValidAsciidocExtension(tocFilepath)) {
+            String error = "TOC file does not end with valid AsciiDoc extension: \"" + tocFilepath + "\".";
+            logger.fatal(error);
+            throw new DocBuilderException(error);
+        } else if (!FilenameUtils.getBaseName(tocFilepath).contentEquals("toc")) {
+            String error = "TOC file is not named \"toc\" and may not contain required structure. Specified file: \"" + tocFilepath + "\".";
+            logger.fatal(error);
+            throw new DocBuilderException(error);
         } else {
-            return;
+            return tocFilepath;
         }
-        html.append("<li><a href=\"" + immediateParent.getUrl() + "\">" + immediateParent.getTitle() + "</a></li>");
+    }
+
+    private String validateBaseUrlValid(String baseUrl) {
+        if(baseUrl != null) {
+            if(baseUrl.endsWith("/")) {
+                return baseUrl;
+            } else {
+                return baseUrl + "/";
+            }
+        } else {
+            String error = "BaseUrl for TocBuilder cannot be null.";
+            logger.fatal(error);
+            throw new DocBuilderException(error);
+        }
+    }
+
+    public void printNodesInToc(TocNode parent, int indent) {
+        for(int i = 0; i < indent; i++) {
+            logger.info('\t');
+        }
+        logger.info(parent.getTitle());
+        if(parent.getChildren().size() == 0) {
+            return;
+        } else {
+            for(TocNode child : parent.getChildren()) {
+                if(child.getChildren().size() > 0) {
+                    printNodesInToc(child, indent + 1);
+                } else {
+                    int updated = indent + 1;
+                    for(int i = 0; i < updated; i++) {
+                        logger.info('\t');
+                    }
+                    logger.info(child.getTitle());
+                }
+            }
+        }
     }
 }
