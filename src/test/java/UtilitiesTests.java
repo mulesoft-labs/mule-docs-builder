@@ -2,6 +2,7 @@ import org.asciidoctor.ast.Section;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import sun.jvm.hotspot.debugger.Page;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -125,6 +126,14 @@ public class UtilitiesTests {
     }
 
     @Test
+    public void validateCtorObjectsAreNotNull_WithNullObjectAndStringParams_ThrowsException() {
+        expectedException.expect(DocBuildException.class);
+        expectedException.expectMessage("Constructor input parameter for MyClass cannot be null, empty, or whitespace.");
+        String foo = "";
+        Utilities.validateCtorObjectsAreNotNull(new Object[] { foo, null }, "MyClass");
+    }
+
+    @Test
     public void getOnlyContentDivFromHtml_WithValidHtml_ReturnsDesiredContent() {
         File file = new File(Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub.ad"}));
         AsciiDocPage page = AsciiDocPage.fromFile(file);
@@ -168,6 +177,23 @@ public class UtilitiesTests {
     public void getFileContentsFromFile_FileDoesNotExist_ThrowsException() {
         String sampleFilePath = Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "text-files", "foo.txt"});
         Utilities.getFileContentsFromFile(new File(sampleFilePath));
+    }
+
+    @Test
+    public void getRandomAlphaNumericString_IsValid() {
+        List<String> randomStrings = new ArrayList<String>();
+        for(int i = 0; i < 10; i++) {
+            String random = Utilities.getRandomAlphaNumericString(10);
+            randomStrings.add(random);
+        }
+        for(int i = 0; i< 10; i++) {
+            for(int j = 0; j < 10; j++) {
+                if(i != j) {
+                    assertFalse(randomStrings.get(i).contentEquals(randomStrings.get(j)));
+                }
+            }
+            assertTrue(randomStrings.get(i).length() == 10);
+        }
     }
 
     @Rule

@@ -2,7 +2,6 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -12,6 +11,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by sean.osterberg on 2/20/15.
@@ -116,6 +116,18 @@ public class Utilities {
                 logger.fatal(error);
                 throw new DocBuildException(error);
             }
+            if(obj.getClass().getSimpleName().contentEquals("String")) {
+                validateCtorStringInputParam(new String[] {(String)obj}, className);
+            }
         }
+    }
+
+    public static String getRandomAlphaNumericString(int length) {
+        String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        Random rnd = new Random();
+        StringBuilder sb = new StringBuilder(length);
+        for( int i = 0; i < length; i++ )
+            sb.append( AB.charAt( rnd.nextInt(AB.length()) ) );
+        return sb.toString();
     }
 }

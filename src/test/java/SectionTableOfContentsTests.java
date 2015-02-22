@@ -29,7 +29,6 @@ public class SectionTableOfContentsTests {
         assertTrue(root.getChildren() != null && root.getChildren().size() > 0);
     }
 
-
     public File getValidTocFile() {
         String tocPath = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "toc.ad"});
         return new File(tocPath);
