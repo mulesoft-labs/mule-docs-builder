@@ -1,0 +1,298 @@
+= Deploying a CloudHub Application
+
+To deploy a CloudHub application, you simply upload it to CloudHub and
+the platform automatically deploys your application. 
+
+[cols=",",]
+|=======================================================================
+|image:/documentation/images/icons/emoticons/check.png[image] a|
+You can deploy an application to CloudHub directly from Anypoint™
+Studio, or you can deploy it using the CloudHub console.
+
+This page covers deployment via the console. For an example of deploying
+to CloudHub directly from Anypoint Studio, see
+the link:/documentation/display/current/Hello+World+on+CloudHub#HelloWorldonCloudHub-DeployingandRunningYourProject[Hello
+World on CloudHub Tutorial]. 
+
+|=======================================================================
+
+ Contents
+link:#DeployingaCloudHubApplication-CreatinganApplicationDomain[Creating
+an Application Domain]
+link:#DeployingaCloudHubApplication-ConfiguringApplicationSettings[Configuring
+Application Settings]
+link:#DeployingaCloudHubApplication-WorkerSizing[Worker Sizing]
+link:#DeployingaCloudHubApplication-AdvancedApplicationOptions[Advanced
+Application Options]
+* link:#DeployingaCloudHubApplication-Region[Region]
+* link:#DeployingaCloudHubApplication-SecureDataGatewayEnabled[Secure
+Data Gateway Enabled]
+* link:#DeployingaCloudHubApplication-PersistentQueues[Persistent
+Queues]
+* link:#DeployingaCloudHubApplication-AutomaticRestart[Automatic
+Restart]
+* link:#DeployingaCloudHubApplication-ApplicationProperties[Application
+Properties]
+
+link:#DeployingaCloudHubApplication-CloudHubDeployment[CloudHub
+Deployment]
+link:#DeployingaCloudHubApplication-DeploymentErrors[Deployment Errors]
+link:#DeployingaCloudHubApplication-GoFurther[Go Further]
+ 
+
+[[DeployingaCloudHubApplication-CreatinganApplicationDomain]]
+== Creating an Application Domain
+
+Every application requires a unique application domain name. The
+application domain identifies your application in CloudHub and also
+provides you with a public URL,
+`http://myapplicationdomain.cloudhub.io`, for accessing the application
+if it exposes any inbound endpoints.
+
+To create a new application, click on the **Add application **button on
+the CloudHub console. On the **Add application** dialog, enter a unique
+application domain name. Valid domain names must start with a letter,
+may contain alphanumeric characters and dashes, and contain fewer than
+42 characters. If the name is valid, CloudHub alerts you whether it is
+available or already reserved by another user.
+
+image:/documentation/download/attachments/118981904/image2014-10-25+10%3A29%3A37.png?version=1&modificationDate=1414258178028[image]
+
+[[DeployingaCloudHubApplication-ConfiguringApplicationSettings]]
+== Configuring Application Settings
+
+After your application domain has been created, you need to upload a new
+file for deployment. Click the **Choose file **button, select your
+application file, and then click **Open**. You can also click the **Get
+from sandbox** button to copy over a file from a non-production
+environment into your current environment. (If the Get From Sandbox
+button does not appear, you may first need to create a non-production
+environment in order to have this option.)
+
+Next, you can select the **Mule Version** that you would like to deploy
+to, using the drop-down menu.
+
+image:/documentation/download/attachments/118981904/image2014-10-25+10%3A37%3A41.png?version=1&modificationDate=1414258662141[image]
+
+ 
+
+[[DeployingaCloudHubApplication-WorkerSizing]]
+== Worker Sizing
+
+Allocate one or more *workers* to your application. For each
+application, one or more workers are responsible for executing your
+application logic. 
+
+[cols=",",]
+|=======================================================================
+|image:/documentation/images/icons/emoticons/information.png[image] |All
+applications are limited by default to no more than four workers.
+Accounts that do not have
+link:/documentation/display/current/CloudHub+Fabric[CloudHub Fabric]
+enabled are limited to a single worker per application. If you need more
+workers, please mailto:cloudhub-support@mulesoft.com[contact us]
+directly.
+|=======================================================================
+
+A worker is the unit of compute work on CloudHub. There are 3 different
+worker types: shared, regular, and double. These options allow you to
+scale vertically to increase performance or throughput.
+
+Shared workers offer limited CPU and IO for smaller work loads, with
+burst capacity of up to 1 CPU. Currently, CloudHub does not allow
+specifying which applications share a single worker. If shared workers
+are not enabled on your account and you would like to have this option,
+contact your account representative. 
+
+Worker Type
+Processing Power
+Shared
+1 shared vCPU +
+750 MB memory 
+Regular
+1 vCPU +
+1.5 GB memory 
+Double
+2 vCPU +
+3 GB memory 
+To allocate workers, select options from the drop-down menus to
+configure the computing power that you need:
+
+image:/documentation/download/attachments/118981904/image2014-10-25+10%3A38%3A40.png?version=1&modificationDate=1414258721020[image]
+
+If you have CloudHub Fabric enabled on your account, you can scale your
+application horizontally by deploying up to four workers of any type.
+Otherwise you are limited to 1 worker.
+
+The examples below are based on an account subscription that owns five
+workers. Two of these workers are already being used by other
+applications, leaving three workers (or the equivalent computing power)
+available.
+
+Worker Sizing Selection
+Results
+1 Regular worker
+Deploying to one regular worker is the default selection. Selecting this
+option gives you one vCPU with 1.5 GB of memory for your application.
+2 Regular workers
+Deploying to two regular workers uses two workers, thus two separate
+vCPUs with 1.5 GB of memory each. Selecting this option results in
+automatic load-balancing. See
+link:/documentation/display/current/CloudHub+Fabric#CloudHubFabric-WorkerScaleout[CloudHub
+Fabric] for more information.
+1 Double worker
+Deploying to a double worker uses the same number of workers as
+deploying to two regular workers, as in the line above. However, your
+application is deployed to a single instance with more computing power
+than two individual Mule instances.
+1 Shared worker
+Deploying to a shared worker gives you up to 750 MB of memory for your
+application but uses only 25% of one worker out of those available on
+your subscription.
+2 Double worker
+If you select more workers than are available in your account, CloudHub
+allows you to create the application using the console, but you cannot
+start your application until workers are available.
+When deploying to more than one worker of any type, CloudHub
+automatically load-balances any incoming traffic across your allocated
+workers. For more information,
+see link:/documentation/display/current/CloudHub+Fabric[CloudHub
+Fabric].
+
+All free and professional account holders see the following option only:
+
+Worker Sizing Selection
+Results
+1 Regular worker
+All free and professional accounts are limited to a single worker per
+application.
+ 
+
+[[DeployingaCloudHubApplication-AdvancedApplicationOptions]]
+== Advanced Application Options
+
+Click on **Advanced** to view additional deployment options. 
+
+image:/documentation/download/attachments/118981904/image2014-10-25+10%3A41%3A39.png?version=1&modificationDate=1414258899805[image]
+
+[[DeployingaCloudHubApplication-Region]]
+=== Region
+
+If you have global deployment enabled on your account, you can change
+the *Region* to which your application deploys using the drop-down menu.
+Administrators can
+link:/documentation/display/current/Managing+CloudHub+Specific+Settings[set
+the default region] on the Organization tab in Account Settings, but
+that region can be adjusted here when the application is deployed, if
+necessary.
+
+* Note that applications deployed to Europe automatically have their
+domain updated to `http://myapplicationdomain.eu.cloudhub.io`. 
+* Note that applications deployed to Australia automatically have their
+domain updated to `http://myapplicationdomain.au.cloudhub.io.`
+
+[[DeployingaCloudHubApplication-SecureDataGatewayEnabled]]
+=== Secure Data Gateway Enabled
+
+Check this box if your application has a
+link:/documentation/display/current/Secure+Data+Gateway[secure data
+gateway] attached to it.
+
+[[DeployingaCloudHubApplication-PersistentQueues]]
+=== Persistent Queues
+
+Check this box to enable persistent queues on your application.
+Persistent queues protect against message loss and allow you to
+distribute workloads across a set of workers. Before you can take
+advantage of persistent queueing, your application needs to be set up to
+use queues. See
+link:/documentation/display/current/CloudHub+Fabric[CloudHub Fabric] for
+more information.
+
+[[DeployingaCloudHubApplication-AutomaticRestart]]
+=== Automatic Restart
+
+If you are deploying to a runtime that supports worker monitoring (3.4.0
+runtime or later), you have the option to check **Automatically restart
+application when not responding**. With this box checked, CloudHub
+automatically restarts your application when the monitoring system
+discovers a problem with your application. If this box is not checked,
+CloudHub produces all the log messages, notifications, and any
+configured alerts, but takes no action to restart the application. 
+
+Read more about
+link:/documentation/display/current/Worker+Monitoring[worker
+monitoring].
+
+[[DeployingaCloudHubApplication-ApplicationProperties]]
+=== Application Properties
+
+You can also optionally specify certain properties that may be required
+by your application. This allows you to externalize important pieces of
+configuration which may switch depending on the environment in which
+you're deploying. For example, if you're using a Mule application
+locally, you might configure your database host to be localhost. But if
+you're using CloudHub, you might configure it to be an Amazon RDS
+server.
+
+To create an application property, expand the **Properties** section and
+set the variable by either using a text `key=value` format or by using
+the list format with two text boxes. After you've made the change, click
+the **Apply changes** button. 
+
+image:/documentation/download/attachments/118981904/image2014-10-25+10%3A42%3A42.png?version=1&modificationDate=1414258963142[image]
+
+These application properties can be used inside your Mule configuration.
+For example:
+
+If you also have the same properties set in a mule-app.properties file
+inside your application, the application property settings in CloudHub
+override mule-app.properties when your application is deployed.
+
+Note that you can flag application properties as secure so that their
+values are not visible to users at runtime or passed between the server
+and the console. See
+link:/documentation/display/current/Secure+Application+Properties[Secure
+Application Properties] for more information.
+
+[[DeployingaCloudHubApplication-CloudHubDeployment]]
+== CloudHub Deployment
+
+After you complete the above steps, click **Create** and CloudHub
+uploads your application and automatically begins the deployment
+process. During this process, your view is switched to the
+link:/documentation/display/current/Viewing+Log+Data[log view] allowing
+you to monitor the process of your application deployment. This process
+could take several minutes. During the deployment, the application
+status indicator changes to yellow to indicate deployment in progress.
+
+When deployment is complete, the application status indicator changes to
+green and you are notified in the status area that the application has
+deployed successfully. Here's what is in the logs:
+
+[[DeployingaCloudHubApplication-DeploymentErrors]]
+== Deployment Errors
+
+If an error occurs and the application cannot be deployed, the
+application status indicator changes to red. You are alerted in the
+status area that an error occurred. Please check the
+link:/documentation/display/current/Viewing+Log+Data[log details] for
+any application deployment errors. You need to correct the error, upload
+the application, and deploy again.
+
+[[DeployingaCloudHubApplication-GoFurther]]
+== Go Further
+
+* You can also deploy applications directly from
+link:/documentation/display/current/Hello+World+on+CloudHub[Anypoint
+Studio] or the
+link:/documentation/display/current/Command+Line+Tools[Command Line
+Tools]. A complete set of
+link:/documentation/display/current/CloudHub+API[REST APIs] are also
+available for deployment.
+*
+link:/documentation/display/current/Managing+CloudHub+Applications[Managing
+CloudHub Applications] contains more information on how to manage your
+CloudHub application, make changes, scale workers, and perform other
+application management tasks.
+
