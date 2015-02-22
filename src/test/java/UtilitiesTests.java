@@ -196,6 +196,47 @@ public class UtilitiesTests {
         }
     }
 
+    @Test
+    public void isActiveUrlInSection_WithValidUrl_ReturnsTrue() {
+        TocNode root = TestUtilities.getValidRootNode();
+        boolean result = Utilities.isActiveUrlInSection(root, "cloudhub-at-a-glance.html", false);
+        assertTrue(result);
+    }
+
+    @Test
+    public void isActiveUrlInSection_WithValidRootUrl_ReturnsTrue() {
+        TocNode root = TestUtilities.getValidRootNode();
+        boolean result = Utilities.isActiveUrlInSection(root, "cloudhub.html", false);
+        assertTrue(result);
+    }
+
+    @Test
+    public void isActiveUrlInSection_WithInvalidUrl_ReturnsFalse() {
+        TocNode root = TestUtilities.getValidRootNode();
+        boolean result = Utilities.isActiveUrlInSection(root, "foo.html", false);
+        assertFalse(result);
+    }
+
+    @Test
+    public void validateIfActiveUrlIsInSection_ValidUrl_IsValid() {
+        TocNode root = TestUtilities.getValidRootNode();
+        Utilities.validateIfActiveUrlIsInSection(root, "cloudhub-at-a-glance.html");
+        assertTrue(true);
+    }
+
+    @Test
+    public void validateIfActiveUrlIsInSection_WithValidRootUrl_IsValid() {
+        TocNode root = TestUtilities.getValidRootNode();
+        Utilities.validateIfActiveUrlIsInSection(root, "cloudhub.html");
+        assertTrue(true);
+    }
+
+    @Test(expected = DocBuildException.class)
+    public void validateIfActiveUrlIsInSection_WithInvalidUrl_ThrowsException() {
+        TocNode root = TestUtilities.getValidRootNode();
+        Utilities.validateIfActiveUrlIsInSection(root, "foo.html");
+    }
+
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
 }

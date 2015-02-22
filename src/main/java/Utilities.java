@@ -130,4 +130,35 @@ public class Utilities {
             sb.append( AB.charAt( rnd.nextInt(AB.length()) ) );
         return sb.toString();
     }
+
+    public static boolean isActiveUrlInSection(TocNode parentNode, String activeUrl, boolean isInSection) {
+        if(parentNode.getParent() == null && parentNode.getUrl().contentEquals(activeUrl)) {
+            return true;
+        }
+        if(isInSection) {
+            return true;
+        }
+        if(activeUrl.isEmpty()) {
+            return false;
+        }
+        for(TocNode node : parentNode.getChildren()) {
+            if(node.getUrl().equalsIgnoreCase(activeUrl)) {
+                isInSection = true;
+            }
+            else if(node.getChildren().size() > 0) {
+                isInSection = isActiveUrlInSection(node, activeUrl, isInSection);
+            }
+        }
+        return isInSection;
+    }
+
+    public static void validateIfActiveUrlIsInSection(TocNode root, String activeUrl) {
+        if(root.getUrl().contentEquals(activeUrl)) {
+            return;
+        } else if (!isActiveUrlInSection(root, activeUrl, false)) {
+            String error = "Active URL does not exist in nodes for TOC: \"" + activeUrl + "\".";
+            logger.fatal(error);
+            throw new DocBuildException(error);
+        }
+    }
 }

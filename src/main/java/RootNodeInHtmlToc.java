@@ -8,7 +8,7 @@ import org.jsoup.select.Elements;
  * Created by sean.osterberg on 2/20/15.
  */
 public class RootNodeInHtmlToc {
-    private static Logger logger = Logger.getLogger(AsciiDocPage.class);
+    private static Logger logger = Logger.getLogger(RootNodeInHtmlToc.class);
     private TocNode rootNode;
 
     public RootNodeInHtmlToc(TocNode rootNode) {
@@ -21,6 +21,7 @@ public class RootNodeInHtmlToc {
         String contentHtml = Utilities.getOnlyContentDivFromHtml(asciiDocPage.getHtml());
         Document htmlToc = Jsoup.parse(contentHtml, "UTF-8");
         TocNode rootNode = getRootNodeFromRawTocHtml(htmlToc);
+        logger.info("Created root node for TOC page \"" + asciiDocPage.getFilename() + "\".");
         return new RootNodeInHtmlToc(rootNode);
     }
 
