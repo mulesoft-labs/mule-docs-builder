@@ -1,6 +1,8 @@
 import org.junit.Test;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -17,11 +19,21 @@ public class VersionSelectorTests {
     }
 
     @Test
-    public void htmlForPage_WithValidSection_ReturnsNewInstance() {
+    public void htmlForPage_WithValidSection_ContainsHtml() {
         VersionSelector selector = VersionSelector.fromSection(getValidSection());
         String html = selector.htmlForPage(new Page());
         assertTrue(!Utilities.isStringNullOrEmptyOrWhitespace(html));
     }
+
+    @Test
+    public void compareLatestPagesWithVersions_WithValidSection_IsValid() {
+        Section section = getValidSection();
+        List<PageVersion> versions = new ArrayList<PageVersion>();
+        VersionSelector.compareLatestPagesWithVersions(section, versions);
+        assertTrue(versions.size() == 2);
+    }
+    
+
 
     public Section getValidSection() {
         File file = new File(Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub"}));

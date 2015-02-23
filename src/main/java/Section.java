@@ -1,3 +1,4 @@
+import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 
 import java.io.File;
@@ -12,14 +13,18 @@ public class Section {
     private List<AsciiDocPage> pages;
     private TocNode rootNode;
     private String filepath;
+    private String url;
+    private String prettyName;
     private List<Section> versions;
 
-    public Section(List<AsciiDocPage> pages, TocNode rootNode, List<Section> versions, String filepath) {
+    public Section(List<AsciiDocPage> pages, TocNode rootNode, List<Section> versions, String filepath, String url, String prettyName) {
         validateInputParams(new Object[] {pages, rootNode, versions, filepath});
         this.pages = pages;
         this.rootNode = rootNode;
         this.versions = versions;
         this.filepath = filepath;
+        this.url = url;
+        this.prettyName = prettyName;
         logger.info("Created Section for directory \"" + filepath + "\".");
     }
 
@@ -35,13 +40,21 @@ public class Section {
         return filepath;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public String getPrettyName() {
+        return prettyName;
+    }
+
     public List<Section> getVersions() {
         return versions;
     }
 
     public static Section fromDirectory(File directory) {
         validateDirectory(directory);
-        return getSectionFromDirectory(directory);
+        return getSectionFromDirectory(directory, "");
     }
 
     public static List<Section> fromMasterDirectory(File masterDirectory) {
@@ -57,16 +70,17 @@ public class Section {
         return sections;
     }
 
-    private static Section getSectionFromDirectory(File directory) {
+    private static Section getSectionFromDirectory(File directory, String url) {
         List<File> validFiles = getValidAsciiDocFilesInSection(new ArrayList<File>(Arrays.asList(directory.listFiles())));
         List<AsciiDocPage> pages = AsciiDocPage.fromFiles(validFiles);
         File tocFile = new File(Utilities.getConcatPath(new String[] {directory.getPath(), "toc.ad"}));
         TocNode rootNode = SectionTableOfContents.fromAsciiDocFile(tocFile).getRootTocNode();
         List<Section> versions = new ArrayList<Section>();
+        url = Utilities.getConcatPath(new String[] {url, directory.getPath().substring(directory.getPath().lastIndexOf("/") + 1)});
         if(Utilities.directoryContainsVersions(directory)) {
-            getVersions(directory, versions);
+            getVersions(directory, versions, url);
         }
-        return new Section(pages, rootNode, versions, directory.getPath());
+        return new Section(pages, rootNode, versions, directory.getPath(), url, getPrettyName(directory));
     }
 
     private static List<File> getValidAsciiDocFilesInSection(List<File> files) {
@@ -81,13 +95,22 @@ public class Section {
         return validFiles;
     }
 
-    private static void getVersions(File directory, List<Section> versions) {
+    private static void getVersions(File directory, List<Section> versions, String url) {
         File versionDirectory = new File(Utilities.getConcatPath(new String[] {directory.getPath(), "v"}));
         for(File file : versionDirectory.listFiles()) {
             if(file.isDirectory()) {
-                versions.add(getSectionFromDirectory(file));
+                versions.add(getSectionFromDirectory(file, Utilities.getConcatPath(new String[] {url, "v"})));
             }
         }
+    }
+
+    private static String getPrettyName(File directory) {
+        for(File file : directory.listFiles()) {
+            if(FilenameUtils.getExtension(file.getName()).contentEquals("version")) {
+                return FilenameUtils.getBaseName(file.getName());
+            }
+        }
+        return null;
     }
 
     private static void validateMasterDirectory(File masterDirectory) {
@@ -117,6 +140,7 @@ public class Section {
         Utilities.validateIsDirectory(directory);
         Utilities.validateDirectoryContainsAsciiDocFile(directory);
         Utilities.validateDirectoryContainsTocFile(directory);
+        Utilities.validatePrettyNameExists(directory);
     }
 
     private static void validateInputParams(Object[] params) {

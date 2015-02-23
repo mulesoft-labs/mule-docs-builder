@@ -6,11 +6,11 @@ import java.io.File;
 public class TestUtilities {
 
     public static String getTestResourcesPath() {
-        return System.getProperty("user.dir") + "/src/test/resources/";
+        return Utilities.getConcatPath(new String[] {System.getProperty("user.dir"), "src/test/test-resources" });
     }
 
     public static String getPathToMasterFolder() {
-        return getTestResourcesPath() + "master-folder";
+        return Utilities.getConcatPath(new String[] {getTestResourcesPath(), "master-folder"});
     }
 
     public static TocNode getValidRootNode() {

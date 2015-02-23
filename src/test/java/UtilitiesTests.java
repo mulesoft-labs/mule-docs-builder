@@ -52,19 +52,19 @@ public class UtilitiesTests {
     @Test
     public void getConcatenatedFilepath_WithTwoDirectories_IsValid() {
         String path = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub"});
-        assertTrue(path.contentEquals("/Users/sean.osterberg/mulesoft-docs/dev/src/test/resources/master-folder/cloudhub"));
+        assertTrue(path.contentEquals("/Users/sean.osterberg/mulesoft-docs/dev/src/test/test-resources/master-folder/cloudhub"));
     }
 
     @Test
     public void getConcatenatedFilepath_WithTwoDirectoriesAndFilename_IsValid() {
         String path = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub.ad"});
-        assertTrue(path.contentEquals("/Users/sean.osterberg/mulesoft-docs/dev/src/test/resources/master-folder/cloudhub/cloudhub.ad"));
+        assertTrue(path.contentEquals("/Users/sean.osterberg/mulesoft-docs/dev/src/test/test-resources/master-folder/cloudhub/cloudhub.ad"));
     }
 
     @Test
     public void getConcatenatedFilepath_WithDirectoryAndFilenameAndAnotherDirectory_IsValid() {
         String path = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub.ad", "cloudhub"});
-        assertTrue(path.contentEquals("/Users/sean.osterberg/mulesoft-docs/dev/src/test/resources/master-folder/cloudhub/cloudhub.ad/cloudhub"));
+        assertTrue(path.contentEquals("/Users/sean.osterberg/mulesoft-docs/dev/src/test/test-resources/master-folder/cloudhub/cloudhub.ad/cloudhub"));
     }
 
     @Test
@@ -300,6 +300,20 @@ public class UtilitiesTests {
         boolean result = Utilities.directoryContainsVersions(file);
         assertFalse(result);
     }
+
+    @Test
+    public void validatePrettyNameExists_WithValidDirectory_IsValid() {
+        File file = new File(Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub"}));
+        Utilities.validatePrettyNameExists(file);
+        assertTrue(true);
+    }
+
+    @Test(expected = DocBuildException.class)
+    public void validatePrettyNameExists_WithValidDirectoryButNoFile_ThrowsException() {
+        File file = new File(Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "_templates"}));
+        Utilities.validatePrettyNameExists(file);
+    }
+
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();

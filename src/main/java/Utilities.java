@@ -215,6 +215,20 @@ public class Utilities {
         }
     }
 
+    public static void validatePrettyNameExists(File directory) {
+        boolean exists = false;
+        for(File file : directory.listFiles()) {
+            if(FilenameUtils.getExtension(file.getName()).contentEquals("version")) {
+                exists = true;
+            }
+        }
+        if(!exists) {
+            String error = "Directory does not contain version file: \"" + directory.getPath() + "\".";
+            logger.fatal(error);
+            throw new DocBuildException(error);
+        }
+    }
+
     public static boolean directoryContainsVersions(File directory) {
         File versionDir = new File(Utilities.getConcatPath(new String[] {directory.getPath(), "v"}));
         if(!versionDir.exists()) {
