@@ -7,22 +7,22 @@ import org.jsoup.select.Elements;
 /**
  * Created by sean.osterberg on 2/20/15.
  */
-public class RootNodeInHtmlToc {
-    private static Logger logger = Logger.getLogger(RootNodeInHtmlToc.class);
+public class RootNodeFromHtmlToc {
+    private static Logger logger = Logger.getLogger(RootNodeFromHtmlToc.class);
     private TocNode rootNode;
 
-    public RootNodeInHtmlToc(TocNode rootNode) {
+    public RootNodeFromHtmlToc(TocNode rootNode) {
         validateInputParams(new Object[] {rootNode});
         this.rootNode = rootNode;
     }
 
-    public static RootNodeInHtmlToc fromTocAsciiDocPage(AsciiDocPage asciiDocPage) {
+    public static RootNodeFromHtmlToc fromTocAsciiDocPage(AsciiDocPage asciiDocPage) {
         validateThatAsciiDocPageIsToc(asciiDocPage);
         String contentHtml = Utilities.getOnlyContentDivFromHtml(asciiDocPage.getHtml());
         Document htmlToc = Jsoup.parse(contentHtml, "UTF-8");
         TocNode rootNode = getRootNodeFromRawTocHtml(htmlToc);
         logger.info("Created root node for TOC page \"" + asciiDocPage.getFilename() + "\".");
-        return new RootNodeInHtmlToc(rootNode);
+        return new RootNodeFromHtmlToc(rootNode);
     }
 
     public static TocNode getRootNodeFromRawTocHtml(Document doc) {
@@ -84,7 +84,7 @@ public class RootNodeInHtmlToc {
     }
 
     private void validateInputParams(Object[] params) {
-        Utilities.validateCtorObjectsAreNotNull(params, RootNodeInHtmlToc.class.getSimpleName());
+        Utilities.validateCtorObjectsAreNotNull(params, RootNodeFromHtmlToc.class.getSimpleName());
     }
 
     private static void validateThatAsciiDocPageIsToc(AsciiDocPage page) {

@@ -1,8 +1,6 @@
-import org.asciidoctor.ast.Section;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import sun.jvm.hotspot.debugger.Page;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -235,6 +233,72 @@ public class UtilitiesTests {
     public void validateIfActiveUrlIsInSection_WithInvalidUrl_ThrowsException() {
         TocNode root = TestUtilities.getValidRootNode();
         Utilities.validateIfActiveUrlIsInSection(root, "foo.html");
+    }
+
+    @Test
+    public void fileExists_WithValidFile_IsValid() {
+        File file = new File(Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub.ad"}));
+        Utilities.validateFileExists(file);
+        assertTrue(true);
+    }
+
+    @Test(expected = DocBuildException.class)
+    public void fileExists_WithInvalidFile_ThrowsException() {
+        File file = new File(Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "foo.html"}));
+        Utilities.validateFileExists(file);
+    }
+
+    @Test
+    public void validateIsDirectory_WithValidDirectory_IsValid() {
+        File directory = new File(Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder()}));
+        Utilities.validateIsDirectory(directory);
+        assertTrue(true);
+    }
+
+    @Test(expected = DocBuildException.class)
+    public void validateIsDirectory_WithFileNotDirectory_ThrowsException() {
+        File file = new File(Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub.ad"}));
+        Utilities.validateIsDirectory(file);
+    }
+
+    @Test
+    public void validateDirectoryContainsAsciiDocFile_WithAsciiDocFiles_IsValid() {
+        File file = new File(Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub"}));
+        Utilities.validateDirectoryContainsAsciiDocFile(file);
+        assertTrue(true);
+    }
+
+    @Test(expected = DocBuildException.class)
+    public void validateDirectoryContainsAsciiDocFile_WithNoAsciiDocFiles_ThrowsException() {
+        File file = new File(Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "text-files"}));
+        Utilities.validateDirectoryContainsAsciiDocFile(file);
+    }
+
+    @Test
+    public void validateDirectoryContainsTocFile_WithValidDirectory_IsValid() {
+        File file = new File(Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub"}));
+        Utilities.validateDirectoryContainsTocFile(file);
+        assertTrue(true);
+    }
+
+    @Test(expected = DocBuildException.class)
+    public void validateDirectoryContainsTocFile_WithInvalidDirectory_IsValid() {
+        File file = new File(Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "text-files"}));
+        Utilities.validateDirectoryContainsTocFile(file);
+    }
+
+    @Test
+    public void directoryContainsVersions_WithValidDirectory_IsTrue() {
+        File file = new File(Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub"}));
+        boolean result = Utilities.directoryContainsVersions(file);
+        assertTrue(result);
+    }
+
+    @Test
+    public void directoryContainsVersions_WithInvalidDirectory_IsFalse() {
+        File file = new File(Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "anypoint-platform"}));
+        boolean result = Utilities.directoryContainsVersions(file);
+        assertFalse(result);
     }
 
     @Rule

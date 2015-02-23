@@ -161,4 +161,84 @@ public class Utilities {
             throw new DocBuildException(error);
         }
     }
+
+    public static void validateFileExists(File file) {
+        if(!file.exists()) {
+            String error = "File or directory does not exist: \"" + file.getPath() + "\".";
+            logger.fatal(error);
+            throw new DocBuildException(error);
+        }
+    }
+
+    public static void validateIsDirectory(File directory) {
+        validateFileExists(directory);
+        if(!directory.isDirectory()) {
+            String error = "File is not a directory as expected: \"" + directory.getPath() + "\".";
+            logger.fatal(error);
+            throw new DocBuildException(error);
+        }
+    }
+
+    public static boolean directoryContainsAsciiDocFile(File directory) {
+        boolean isValid = false;
+        for(File file : directory.listFiles()) {
+            if(Utilities.fileEndsWithValidAsciidocExtension(file.getName())) {
+                isValid = true;
+            }
+        }
+        return isValid;
+    }
+
+    public static void validateDirectoryContainsAsciiDocFile(File directory) {
+        if(!directoryContainsAsciiDocFile(directory)) {
+            String error = "Directory does not contain valid AsciiDoc file(s) as expected: \"" + directory.getPath() + "\".";
+            logger.fatal(error);
+            throw new DocBuildException(error);
+        }
+    }
+
+    public static boolean directoryContainsTocFile(File directory) {
+        boolean isValid = false;
+        for(File file : directory.listFiles()) {
+            if(file.getName().contentEquals("toc.ad")) {
+                isValid = true;
+            }
+        }
+        return isValid;
+    }
+
+    public static void validateDirectoryContainsTocFile(File directory) {
+        if(!directoryContainsTocFile(directory)) {
+            String error = "Directory does not contain a TOC file: \"" + directory.getPath() + "\".";
+            logger.fatal(error);
+            throw new DocBuildException(error);
+        }
+    }
+
+    public static boolean directoryContainsVersions(File directory) {
+        File versionDir = new File(Utilities.getConcatPath(new String[] {directory.getPath(), "v"}));
+        if(!versionDir.exists()) {
+            return false;
+        }
+        boolean containsDir = false;
+        List<File> versionDirectories = new ArrayList<File>();
+        for(File file : versionDir.listFiles()) {
+            if(file.isDirectory()) {
+                versionDirectories.add(file);
+                containsDir = true;
+            }
+        }
+        if(containsDir) {
+            for(File file : versionDirectories) {
+                if(!directoryContainsAsciiDocFile(file) || !directoryContainsTocFile(file)) {
+                    return false;
+                }
+            }
+        } else {
+            return false;
+        }
+        return true;
+    }
+
+
 }

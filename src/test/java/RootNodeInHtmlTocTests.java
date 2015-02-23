@@ -12,19 +12,19 @@ public class RootNodeInHtmlTocTests {
 
     @Test
     public void fromAsciiDocTocPage_ReturnsNewObject() {
-        RootNodeInHtmlToc htmlToc = RootNodeInHtmlToc.fromTocAsciiDocPage(getValidPage());
-        assertThat(htmlToc, instanceOf(RootNodeInHtmlToc.class));
+        RootNodeFromHtmlToc htmlToc = RootNodeFromHtmlToc.fromTocAsciiDocPage(getValidPage());
+        assertThat(htmlToc, instanceOf(RootNodeFromHtmlToc.class));
     }
 
     @Test
     public void fromAsciiDocTocPage_RootNodeIsNotNull() {
-        RootNodeInHtmlToc htmlToc = RootNodeInHtmlToc.fromTocAsciiDocPage(getValidPage());
+        RootNodeFromHtmlToc htmlToc = RootNodeFromHtmlToc.fromTocAsciiDocPage(getValidPage());
         assertTrue(htmlToc.getRootNode() != null);
     }
 
     @Test
     public void getRootNodeFromRawTocHtml_FromValidTocDoc_HasProperStructure() {
-        RootNodeInHtmlToc htmlToc = RootNodeInHtmlToc.fromTocAsciiDocPage(getValidPage());
+        RootNodeFromHtmlToc htmlToc = RootNodeFromHtmlToc.fromTocAsciiDocPage(getValidPage());
         TocNode result = htmlToc.getRootNode();
         assertTrue(result.getTitle().contentEquals("CloudHub"));
         assertTrue(result.getChildren().size() == 12);
@@ -32,14 +32,14 @@ public class RootNodeInHtmlTocTests {
 
     @Test(expected = DocBuildException.class)
     public void getRootNodeFromRawTocHtml_FromInvalidTocDoc_ThrowsException() {
-        RootNodeInHtmlToc htmlToc = RootNodeInHtmlToc.fromTocAsciiDocPage(getInvalidPage());
+        RootNodeFromHtmlToc htmlToc = RootNodeFromHtmlToc.fromTocAsciiDocPage(getInvalidPage());
     }
 
     @Test(expected = DocBuildException.class)
     public void getRootNodeFromRawTocHtml_FromTocDocWithMoreThanOneRootNode_ThrowsException() {
         String path = Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "bad-files", "toc.ad"});
         AsciiDocPage page = AsciiDocPage.fromFile(new File(path));
-        RootNodeInHtmlToc htmlToc = RootNodeInHtmlToc.fromTocAsciiDocPage(page);
+        RootNodeFromHtmlToc htmlToc = RootNodeFromHtmlToc.fromTocAsciiDocPage(page);
     }
 
     private AsciiDocPage getValidPage() {

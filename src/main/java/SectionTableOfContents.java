@@ -14,7 +14,7 @@ public class SectionTableOfContents {
     public static SectionTableOfContents fromAsciiDocFile(File asciiDocFile) {
         Utilities.validateAsciiDocFile(asciiDocFile);
         AsciiDocPage asciiDocPage = AsciiDocPage.fromFile(asciiDocFile);
-        RootNodeInHtmlToc rootNode = RootNodeInHtmlToc.fromTocAsciiDocPage(asciiDocPage);
+        RootNodeFromHtmlToc rootNode = RootNodeFromHtmlToc.fromTocAsciiDocPage(asciiDocPage);
         return new SectionTableOfContents(rootNode.getRootNode(), asciiDocPage);
     }
 
