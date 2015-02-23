@@ -1,6 +1,7 @@
 import org.junit.Test;
 
 import java.io.File;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -54,6 +55,19 @@ public class SectionTests {
         File validDirectory = new File(Utilities.getConcatPath(new String[] {TestUtilities.getPathToMasterFolder(), "anypoint-platform"}));
         Section section = Section.fromDirectory(validDirectory);
         assertTrue(section.getVersions().size() == 0);
+    }
+
+    @Test
+    public void fromMasterDirectory_WithValidMasterDirectory_IsValid() {
+        File validDirectory = new File(Utilities.getConcatPath(new String[] {TestUtilities.getPathToMasterFolder()}));
+        List<Section> sections = Section.fromMasterDirectory(validDirectory);
+        assertTrue(sections.size() == 2);
+    }
+
+    @Test(expected = DocBuildException.class)
+    public void fromMasterDirectory_WithInvalidMasterDirectory_ThrowsException() {
+        File invalidDirectory = new File(Utilities.getConcatPath(new String[] {TestUtilities.getTestResourcesPath(), "text-files"}));
+        List<Section> section = Section.fromMasterDirectory(invalidDirectory);
     }
 
     public Section getValidSection() {
