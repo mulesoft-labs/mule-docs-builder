@@ -31,14 +31,14 @@ public class UtilitiesTests {
     @Test(expected = DocBuildException.class)
     public void validateAsciiDocFile_ThrowsExceptionForBadExtension() {
         Utilities.validateAsciiDocFile(new File(Utilities.getConcatPath(
-                new String[]{TestUtilities.getPathToMasterFolder(), "_templates", "default.html"})));
+                new String[]{TestUtilities.getPathToMasterFolder(), "_templates", "default.template"})));
         assertTrue(true);
     }
 
     @Test
     public void fileEndsWithValidAsciidocExtension_ReturnsFalseWithInvalidExtension() {
         boolean result = Utilities.fileEndsWithValidAsciidocExtension(Utilities.getConcatPath(
-                new String[]{TestUtilities.getPathToMasterFolder(), "_templates", "default.html"}));
+                new String[]{TestUtilities.getPathToMasterFolder(), "_templates", "default.template"}));
         assertFalse(result);
     }
 
@@ -111,7 +111,7 @@ public class UtilitiesTests {
 
     @Test
     public void validateCtorObjectsAreNotNull_WithNonNullParams_IsValid() {
-        File file1 = new File(Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub.ad"}));
+        File file1 = new File(Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub-faq.ad"}));
         File file2 = new File(Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub-at-a-glance.ad"}));
         Utilities.validateCtorObjectsAreNotNull(new Object[] { file1, file2 }, "MyClass");
     }
@@ -204,7 +204,7 @@ public class UtilitiesTests {
     @Test
     public void isActiveUrlInSection_WithValidRootUrl_ReturnsTrue() {
         TocNode root = TestUtilities.getValidRootNode();
-        boolean result = Utilities.isActiveUrlInSection(root, "cloudhub.html", false);
+        boolean result = Utilities.isActiveUrlInSection(root, "index.html", false);
         assertTrue(result);
     }
 
@@ -225,7 +225,7 @@ public class UtilitiesTests {
     @Test
     public void validateIfActiveUrlIsInSection_WithValidRootUrl_IsValid() {
         TocNode root = TestUtilities.getValidRootNode();
-        Utilities.validateIfActiveUrlIsInSection(root, "cloudhub.html");
+        Utilities.validateIfActiveUrlIsInSection(root, "cloudhub-faq.html");
         assertTrue(true);
     }
 
@@ -237,7 +237,7 @@ public class UtilitiesTests {
 
     @Test
     public void fileExists_WithValidFile_IsValid() {
-        File file = new File(Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub.ad"}));
+        File file = new File(Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "deploying-a-cloudhub-application.ad"}));
         Utilities.validateFileExists(file);
         assertTrue(true);
     }
@@ -257,7 +257,7 @@ public class UtilitiesTests {
 
     @Test(expected = DocBuildException.class)
     public void validateIsDirectory_WithFileNotDirectory_ThrowsException() {
-        File file = new File(Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub.ad"}));
+        File file = new File(Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub-faq.ad"}));
         Utilities.validateIsDirectory(file);
     }
 
@@ -314,6 +314,32 @@ public class UtilitiesTests {
         Utilities.validatePrettyNameExists(file);
     }
 
+    @Test
+    public void validateMasterDirectory_WithValidMasterDirectory_IsValid() {
+        Utilities.validateMasterDirectory(new File(TestUtilities.getPathToMasterFolder()));
+        assertTrue(true);
+    }
+
+    @Test(expected = DocBuildException.class)
+    public void validateMasterDirectory_WithEmptyMasterDirectory_ThrowsException() {
+        Utilities.validateMasterDirectory(new File(Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "empty"})));
+    }
+
+    @Test(expected = DocBuildException.class)
+    public void validateMasterDirectory_WithOnlyTocInMasterDirectory_ThrowsException() {
+        Utilities.validateMasterDirectory(new File(Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "bad-files"})));
+    }
+
+    @Test
+    public void validateTemplateFile_WithValidFile_IsValid() {
+        Utilities.validateTemplateFile(new File(Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "master-folder", "_templates", "default.template"})));
+        assertTrue(true);
+    }
+
+    @Test(expected = DocBuildException.class)
+    public void validateTemplateFile_WithInvalidFile_ThrowsException() {
+        Utilities.validateTemplateFile(new File(Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "master-folder", "anypoint-platform", "cloudhub.ad"})));
+    }
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();

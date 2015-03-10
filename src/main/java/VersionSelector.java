@@ -19,14 +19,13 @@ public class VersionSelector {
         return new VersionSelector();
     }
 
-    public static String forPage(Page page) {
-        return null;
+    public String htmlForPage(Page page) {
+        return "foo";
     }
 
     public static List<PageVersion> getAllVersionMappingsForSection(Section section) {
         List<PageVersion> pageVersions = new ArrayList<PageVersion>();
         compareLatestPagesWithVersions(section, pageVersions);
-        comparePagesInVersionSections(section, pageVersions);
         return pageVersions;
     }
 
@@ -38,54 +37,29 @@ public class VersionSelector {
         }
     }
 
-    public static void comparePagesInVersionSections(Section section, List<PageVersion> pageVersions) {
-        for(int i = 0; i < section.getVersions().size(); i++) {
-            Section versionSection = section.getVersions().get(i);
-            for(AsciiDocPage page : versionSection.getPages()) {
-                for (int j = 0; j < section.getVersions().size(); j++) {
-                    if (j != i) {
-                        Section toCompare = section.getVersions().get(j);
-                        compareCurrentPageWithPagesInSection(toCompare, page, pageVersions);
-                    }
-                }
-            }
-        }
-    }
-
     private static void compareCurrentPageWithPagesInSection(Section section, AsciiDocPage current, List<PageVersion> pageVersions) {
         List<AsciiDocPage> pages = section.getPages();
         for(AsciiDocPage page : pages) {
             if(current.getBaseName().contentEquals(page.getBaseName())) {
-                // There's an older version of this page -- add to a list for processing
-                PageVersion match = getInstanceOfPageVersionIfMatch(current.getBaseName(), pageVersions);
-                if(match == null) {
-                    PageVersion version = new PageVersion(current.getBaseName());
-                    version.addUrlAndName(section.getUrl(), section.getPrettyName());
-                    pageVersions.add(version);
-                } else {
-                    if(!checkIfUrlAndNameAlreadyContains(match, section.getUrl(), section.getPrettyName())) {
-                        match.addUrlAndName(section.getUrl(), section.getPrettyName());
-                    }
-                }
+                // There's an older version of this page; Add it
+                matchPageAndCreateIfNotExist(current, pageVersions, section);
             }
+            // Also add the other page even if it's not a match
+            matchPageAndCreateIfNotExist(page, pageVersions, section);
         }
     }
 
-    public static List<PageVersion> pageIsInOtherVersions(Section section, List<PageVersion> pageVersions) {
-        for(AsciiDocPage latestPage : section.getPages()) {
-            PageVersion pageVersion = new PageVersion(latestPage.getBaseName());
-            for (Section version : section.getVersions()) {
-                List<AsciiDocPage> pages = version.getPages();
-                for(AsciiDocPage oldPage : pages) {
-                    if(latestPage.getFilename().contentEquals(oldPage.getFilename())) {
-                        // There's an older version of this page -- add to a list for processing
-                        pageVersion.addUrlAndName(version.getUrl(), version.getPrettyName());
-                    }
-                }
+    private static void matchPageAndCreateIfNotExist(AsciiDocPage page, List<PageVersion> pageVersions, Section section) {
+        PageVersion match = getInstanceOfPageVersionIfMatch(page.getBaseName(), pageVersions);
+        if(match == null) {
+            PageVersion version = new PageVersion(page.getBaseName());
+            version.addUrlAndName(section.getUrl(), section.getPrettyName());
+            pageVersions.add(version);
+        } else {
+            if(!checkIfUrlAndNameAlreadyContains(match, section.getUrl(), section.getPrettyName())) {
+                match.addUrlAndName(section.getUrl(), section.getPrettyName());
             }
-            pageVersions.add(pageVersion);
         }
-        return pageVersions;
     }
 
     private static PageVersion getInstanceOfPageVersionIfMatch(String baseName, List<PageVersion> pageVersions) {
@@ -106,7 +80,4 @@ public class VersionSelector {
         return false;
     }
 
-    public String htmlForPage(Page page) {
-        return "foo";
-    }
 }

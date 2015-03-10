@@ -58,7 +58,7 @@ public class Section {
     }
 
     public static List<Section> fromMasterDirectory(File masterDirectory) {
-        validateMasterDirectory(masterDirectory);
+        Utilities.validateMasterDirectory(masterDirectory);
         List<Section> sections = new ArrayList<Section>();
         if(masterDirectory.isDirectory()) {
             for (File directory : masterDirectory.listFiles()) {
@@ -111,29 +111,6 @@ public class Section {
             }
         }
         return null;
-    }
-
-    private static void validateMasterDirectory(File masterDirectory) {
-        Utilities.validateIsDirectory(masterDirectory);
-        if(masterDirectory.isDirectory() && masterDirectory.exists()) {
-            if(masterDirectory.listFiles().length > 0) {
-                boolean containsDirectory = false;
-                for(File file : masterDirectory.listFiles()) {
-                    if(file.isDirectory()) {
-                        containsDirectory = true;
-                    }
-                }
-                if(!containsDirectory) {
-                    String error = "Master directory does not contain valid section directories: \"" + masterDirectory.getPath() + "\".";
-                    logger.fatal(error);
-                    throw new DocBuildException(error);
-                }
-            } else {
-                String error = "Master directory does not contain files or directories: \"" + masterDirectory.getPath() + "\".";
-                logger.fatal(error);
-                throw new DocBuildException(error);
-            }
-        }
     }
 
     private static void validateDirectory(File directory) {

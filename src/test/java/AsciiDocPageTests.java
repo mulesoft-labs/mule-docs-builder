@@ -1,3 +1,6 @@
+import org.asciidoctor.ast.ContentPart;
+import org.asciidoctor.ast.Document;
+import org.asciidoctor.ast.StructuredDocument;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

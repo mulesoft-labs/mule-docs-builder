@@ -33,7 +33,7 @@ public class SectionTocHtmlTests {
 
     @Test
     public void getSelectedTocFromRootNode_WithValidRootNode_ContainsActiveNode() {
-        SectionTocHtml html = SectionTocHtml.getSelectedTocFromRootNode(TestUtilities.getValidRootNode(), "cloudhub.html");
+        SectionTocHtml html = SectionTocHtml.getSelectedTocFromRootNode(TestUtilities.getValidRootNode(), "index.html");
         assertTrue(html.getHtml().contains("<div class=\"toc-section-header active\">"));
         assertFalse(html.getHtml().contains("<li class=\"child active\">"));
     }

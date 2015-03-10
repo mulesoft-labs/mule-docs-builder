@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import static org.asciidoctor.Asciidoctor.Factory.create;
 import org.asciidoctor.Asciidoctor;
 import org.asciidoctor.Options;
+import org.asciidoctor.ast.Document;
 
 import java.io.File;
 import java.util.*;

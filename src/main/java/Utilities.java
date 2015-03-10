@@ -254,5 +254,37 @@ public class Utilities {
         return true;
     }
 
+    public static void validateMasterDirectory(File masterDirectory) {
+        Utilities.validateIsDirectory(masterDirectory);
+        if(masterDirectory.isDirectory() && masterDirectory.exists()) {
+            if(masterDirectory.listFiles().length > 0) {
+                boolean containsDirectory = false;
+                for(File file : masterDirectory.listFiles()) {
+                    if(file.isDirectory()) {
+                        containsDirectory = true;
+                    }
+                }
+                if(!containsDirectory) {
+                    String error = "Master directory does not contain valid section directories: \"" + masterDirectory.getPath() + "\".";
+                    logger.fatal(error);
+                    throw new DocBuildException(error);
+                }
+            } else {
+                String error = "Master directory does not contain files or directories: \"" + masterDirectory.getPath() + "\".";
+                logger.fatal(error);
+                throw new DocBuildException(error);
+            }
+        }
+    }
+
+    public static void validateTemplateFile(File templateFile) {
+        validateFileExists(templateFile);
+        if(!FilenameUtils.getExtension(templateFile.getName()).contentEquals("template")) {
+            String error = "Template file does not have valid '.template' extension: \"" + templateFile.getPath() + "\".";
+            logger.fatal(error);
+            throw new DocBuildException(error);
+        }
+    }
+
 
 }
