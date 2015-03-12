@@ -9,6 +9,8 @@ import org.asciidoctor.ast.Document;
 import java.io.File;
 import java.util.*;
 
+import org.jsoup.Jsoup;
+
 /**
  * Created by sean.osterberg on 2/20/15.
  */
@@ -19,13 +21,16 @@ public class AsciiDocPage {
     private String filepath;
     private String asciiDoc;
     private String html;
+    private String title;
+    // Todo: Get the template type name from the file and add as a property
 
-    public AsciiDocPage(String filename, String baseName, String asciiDoc, String html) {
+    public AsciiDocPage(String filename, String baseName, String asciiDoc, String html, String title) {
         validateInputParams(new String[]{filename, asciiDoc, html});
         this.filepath = filename;
         this.baseName = baseName;
         this.asciiDoc = asciiDoc;
         this.html = html;
+        this.title = title;
     }
 
     public static List<AsciiDocPage> fromFiles(List<File> asciiDocFiles) {
@@ -45,13 +50,19 @@ public class AsciiDocPage {
 
     private static AsciiDocPage getPageFromFile(File asciiDocFile) {
         Utilities.validateAsciiDocFile(asciiDocFile);
+        String html = processor.convertFile(asciiDocFile, getOptionsForConversion());
         AsciiDocPage page = new AsciiDocPage(
                 asciiDocFile.getPath(),
                 FilenameUtils.getBaseName(asciiDocFile.getName()),
                 Utilities.getFileContentsFromFile(asciiDocFile),
-                processor.convertFile(asciiDocFile, getOptionsForConversion())
+                html,
+                getPageTitle(html)
         );
         return page;
+    }
+
+    private static String getPageTitle(String html) {
+        return Jsoup.parse(html, "UTF-8").title();
     }
 
     private static Options getOptionsForConversion() {
@@ -70,16 +81,8 @@ public class AsciiDocPage {
         return filepath;
     }
 
-    public void setFilename(String filename) {
-        this.filepath = filename;
-    }
-
     public String getAsciiDoc() {
         return asciiDoc;
-    }
-
-    public void setAsciiDoc(String asciiDoc) {
-        this.asciiDoc = asciiDoc;
     }
 
     public String getHtml() {
@@ -90,7 +93,7 @@ public class AsciiDocPage {
         return baseName;
     }
 
-    public void setHtml(String html) {
-        this.html = html;
+    public String getTitle() {
+        return title;
     }
 }

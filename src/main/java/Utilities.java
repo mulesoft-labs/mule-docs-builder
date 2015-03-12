@@ -94,6 +94,11 @@ public class Utilities {
         return false;
     }
 
+    public static StringBuilder replaceText(StringBuilder original, String toReplace, String replacement) {
+        String modified = original.toString().replace(toReplace, replacement);
+        return new StringBuilder(modified);
+    }
+
     public static String getOnlyContentDivFromHtml(String html) {
         Document doc = Jsoup.parse(html, "UTF-8");
         return doc.getElementById("content").html();
