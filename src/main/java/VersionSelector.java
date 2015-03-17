@@ -19,7 +19,7 @@ public class VersionSelector {
         return new VersionSelector();
     }
 
-    public String htmlForPage(Page page) {
+    public String htmlForPage(AsciiDocPage page) {
         return "foo";
     }
 

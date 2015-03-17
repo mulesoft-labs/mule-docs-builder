@@ -26,7 +26,7 @@ public class SectionTests {
     @Test
     public void fromDirectory_WithValidSectionDirectory_HasCorrectNumberOfPages() {
         Section section = getValidSection();
-        assertTrue(section.getPages().size() == 2);
+        assertTrue(section.getPages().size() == 3);
     }
 
     @Test
@@ -98,5 +98,6 @@ public class SectionTests {
     public Section getValidSection() {
         File validDirectory = new File(Utilities.getConcatPath(new String[] {TestUtilities.getPathToMasterFolder(), "cloudhub"}));
         return Section.fromDirectory(validDirectory);
+
     }
 }

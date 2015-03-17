@@ -1,3 +1,4 @@
+import com.sun.tools.javac.jvm.ClassFile;
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -11,44 +12,53 @@ import java.util.List;
 public class Page {
     private static Logger logger = Logger.getLogger(Page.class);
     private String content;
-    private Template template;
 
-    public void createPage() {
-        // Need built html page from template
-
+    public Page(String content) {
+        this.content = content;
     }
 
-    public static List<Page> fromSectionAndTemplate(Section section, List<Section> allSections, Template template) {
-
-        return new ArrayList<Page>();
+    public static List<Page> forSection(Section section, List<Section> allSections, Template template, SiteTableOfContents toc) {
+        List<Page> pages = new ArrayList<Page>();
+        for(AsciiDocPage page : section.getPages()) {
+            Page current = new Page(getCompletePageContent(section, allSections, toc, page, template));
+            pages.add(current);
+        }
+        return pages;
     }
 
-    public String getCompletePageContent(Section section, List<Section> sections, AsciiDocPage page) {
-        StringBuilder html = new StringBuilder();
+    public static String getCompletePageContent(Section section, List<Section> sections, SiteTableOfContents toc, AsciiDocPage page, Template template) {
+        StringBuilder html = new StringBuilder(template.getContents());
         html = Utilities.replaceText(html, "{{ page.title }}", getPageTitle(page));
-        html = Utilities.replaceText(html, "{{ page.toc }}", "");
+        html = Utilities.replaceText(html, "{{ page.toc }}", getPageToc(toc, sections, section, page));
         html = Utilities.replaceText(html, "{{ page.breadcrumb }}", getBreadcrumbHtml(section, page));
         html = Utilities.replaceText(html, "{{ page.content }}", getContentHtml(page));
-        this.logger.info("Built page from template for \"" + page.getTitle() + "\".");
+        html = Utilities.replaceText(html, "{{ page.version }}", getVersionHtml(section, page));
+        logger.info("Built page from template for \"" + getPageTitle(page) + "\".");
         return html.toString();
     }
 
-    private String getPageTitle(AsciiDocPage page) {
+    private static String getPageTitle(AsciiDocPage page) {
         return page.getTitle();
     }
 
-    private String getBreadcrumbHtml(Section section, AsciiDocPage page) {
+    private static String getPageToc(SiteTableOfContents toc, List<Section> sections, Section section, AsciiDocPage page) {
+        SiteTocHtml tocHtml = SiteTocHtml.fromSiteTocAndSections(toc, sections);
+        return tocHtml.getTocHtmlForSectionAndPage(section, page);
+    }
+
+    private static String getBreadcrumbHtml(Section section, AsciiDocPage page) {
         String pageUrl = Utilities.getConcatPath(new String[] {section.getUrl(), page.getBaseName()});
         return Breadcrumb.getBreadcrumbHtmlForActiveUrl(section.getRootNode(), pageUrl);
     }
 
-    private String getContentHtml(AsciiDocPage page) {
+    private static String getContentHtml(AsciiDocPage page) {
         Document doc = Jsoup.parse(page.getHtml(), "UTF-8");
         return Utilities.getOnlyContentDivFromHtml(doc.html());
     }
 
-    private void getCompletePageToc() {
-
+    private static String getVersionHtml(Section section, AsciiDocPage page) {
+        VersionSelector version = VersionSelector.fromSection(section);
+        return version.htmlForPage(page);
     }
 
     public String getContent() {

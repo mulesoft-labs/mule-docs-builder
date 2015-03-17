@@ -34,7 +34,7 @@ public class SiteTableOfContents {
         return nodes;
     }
 
-    public static void getNodeFromRawTocHtml(Document doc, List<TocNode> nodes) {
+    private static void getNodeFromRawTocHtml(Document doc, List<TocNode> nodes) {
         Element item = doc.select("li").first();
         String link = item.select("a").first().attr("href");
         String title = item.select("a").first().text();

@@ -13,26 +13,26 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 public class PageTests {
 
     @Test
-    public void fromSectionAndTemplate_WithValidSectionAndTemplate_ReturnsNewInstance() {
-        List<Page> pages = Page.fromSectionAndTemplate(validSection(), validSections(), validTemplate());
+    public void forSection_WithValidSectionAndTemplate_ReturnsNewInstance() {
+        List<Page> pages = Page.forSection(validSection(), validSections(), validTemplate(), getSiteToc());
         assertThat(pages.get(0), instanceOf(Page.class));
     }
 
     @Test(expected = DocBuildException.class)
-    public void fromSectionAndTemplate_WithInvalidSection_ThrowsException() {
+    public void forSection_WithInvalidSection_ThrowsException() {
         Section section = Section.fromDirectory(new File(Utilities.getConcatPath(new String[] {TestUtilities.getTestResourcesPath(), "_templates"})));
-        List<Page> pages = Page.fromSectionAndTemplate(section, validSections(), validTemplate());
+        List<Page> pages = Page.forSection(section, validSections(), validTemplate(), getSiteToc());
     }
 
     @Test(expected = DocBuildException.class)
-    public void fromSectionAndTemplate_WithInvalidTemplate_ThrowsException() {
+    public void forSection_WithInvalidTemplate_ThrowsException() {
         Template template = Template.fromFile(new File(Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "master-folder", "anypoint-platform", "cloudhub.ad"})));
-        List<Page> pages = Page.fromSectionAndTemplate(validSection(), validSections(), template);
+        List<Page> pages = Page.forSection(validSection(), validSections(), template, getSiteToc());
     }
 
     @Test
-    public void fromSectionAndTemplate_WithValidSectionAndTemplate_HasValidContent() {
-        List<Page> pages = Page.fromSectionAndTemplate(validSection(), validSections(), validTemplate());
+    public void forSection_WithValidSectionAndTemplate_HasValidContent() {
+        List<Page> pages = Page.forSection(validSection(), validSections(), validTemplate(), getSiteToc());
         assertTrue(pages.get(0).getContent().contains("CloudHub"));
     }
 
@@ -49,5 +49,9 @@ public class PageTests {
         sections.add(Section.fromDirectory(new File(Utilities.getConcatPath(new String[] {TestUtilities.getTestResourcesPath(), "master-folder", "cloudhub"}))));
         sections.add(Section.fromDirectory(new File(Utilities.getConcatPath(new String[] {TestUtilities.getTestResourcesPath(), "master-folder", "anypoint-platform"}))));
         return sections;
+    }
+
+    private SiteTableOfContents getSiteToc() {
+        return SiteTableOfContents.fromAsciiDocFile(new File(Utilities.getConcatPath(new String[] {TestUtilities.getTestResourcesPath(), "master-folder", "toc.ad"})));
     }
 }

@@ -22,7 +22,7 @@ public class VersionSelectorTests {
     @Test
     public void htmlForPage_WithValidSection_ContainsHtml() {
         VersionSelector selector = VersionSelector.fromSection(getValidSection());
-        String html = selector.htmlForPage(new Page());
+        String html = selector.htmlForPage(AsciiDocPage.fromFile(new File(Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub.ad"}))));
         assertTrue(!Utilities.isStringNullOrEmptyOrWhitespace(html));
     }
 
