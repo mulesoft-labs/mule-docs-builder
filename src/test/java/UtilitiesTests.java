@@ -197,42 +197,42 @@ public class UtilitiesTests {
     @Test
     public void isActiveUrlInSection_WithValidUrl_ReturnsTrue() {
         TocNode root = TestUtilities.getValidRootNode();
-        boolean result = Utilities.isActiveUrlInSection(root, "cloudhub-at-a-glance.html", false);
+        boolean result = Utilities.isActiveUrlInSection(root, "cloudhub-at-a-glance", false);
         assertTrue(result);
     }
 
     @Test
     public void isActiveUrlInSection_WithValidRootUrl_ReturnsTrue() {
         TocNode root = TestUtilities.getValidRootNode();
-        boolean result = Utilities.isActiveUrlInSection(root, "index.html", false);
+        boolean result = Utilities.isActiveUrlInSection(root, "index", false);
         assertTrue(result);
     }
 
     @Test
     public void isActiveUrlInSection_WithInvalidUrl_ReturnsFalse() {
         TocNode root = TestUtilities.getValidRootNode();
-        boolean result = Utilities.isActiveUrlInSection(root, "foo.html", false);
+        boolean result = Utilities.isActiveUrlInSection(root, "foo", false);
         assertFalse(result);
     }
 
     @Test
     public void validateIfActiveUrlIsInSection_ValidUrl_IsValid() {
         TocNode root = TestUtilities.getValidRootNode();
-        Utilities.validateIfActiveUrlIsInSection(root, "cloudhub-at-a-glance.html");
+        Utilities.validateIfActiveUrlIsInSection(root, "cloudhub-at-a-glance");
         assertTrue(true);
     }
 
     @Test
     public void validateIfActiveUrlIsInSection_WithValidRootUrl_IsValid() {
         TocNode root = TestUtilities.getValidRootNode();
-        Utilities.validateIfActiveUrlIsInSection(root, "cloudhub-faq.html");
+        Utilities.validateIfActiveUrlIsInSection(root, "cloudhub-faq");
         assertTrue(true);
     }
 
     @Test(expected = DocBuildException.class)
     public void validateIfActiveUrlIsInSection_WithInvalidUrl_ThrowsException() {
         TocNode root = TestUtilities.getValidRootNode();
-        Utilities.validateIfActiveUrlIsInSection(root, "foo.html");
+        Utilities.validateIfActiveUrlIsInSection(root, "foo");
     }
 
     @Test
@@ -244,7 +244,7 @@ public class UtilitiesTests {
 
     @Test(expected = DocBuildException.class)
     public void fileExists_WithInvalidFile_ThrowsException() {
-        File file = new File(Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "foo.html"}));
+        File file = new File(Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "foo"}));
         Utilities.validateFileExists(file);
     }
 
@@ -339,6 +339,51 @@ public class UtilitiesTests {
     @Test(expected = DocBuildException.class)
     public void validateTemplateFile_WithInvalidFile_ThrowsException() {
         Utilities.validateTemplateFile(new File(Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "master-folder", "anypoint-platform", "cloudhub.ad"})));
+    }
+
+
+    @Test
+    public void makeTargetDirectory_SpecifiedNonExistentDirectoryPath_IsCreated() {
+        String newFolderPath = Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "output", "test"});
+        boolean result = Utilities.makeTargetDirectory(newFolderPath);
+        File file = new File(newFolderPath);
+        assertTrue(file.exists());
+        assertTrue(result);
+        Utilities.deleteTargetDirectory(newFolderPath);
+    }
+
+    @Test
+    public void makeTargetDirectory_SpecifiedExistingDirectoryPath_IsNotCreated() {
+        String newFolderPath = Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "output", "test"});
+        boolean result = Utilities.makeTargetDirectory(newFolderPath);
+        if(result) {
+            result = Utilities.makeTargetDirectory(newFolderPath);
+        }
+        File file = new File(newFolderPath);
+        assertTrue(file.exists());
+        assertFalse(result);
+        Utilities.deleteTargetDirectory(newFolderPath);
+    }
+
+    @Test
+    public void deleteTargetDirectory_SpecifiedExistingDirectoryPath_IsDeleted() {
+        String newFolderPath = Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "output", "test"});
+        Utilities.makeTargetDirectory(newFolderPath);
+        File file = new File(newFolderPath);
+        assertTrue(file.exists());
+        boolean result = Utilities.deleteTargetDirectory(newFolderPath);
+        assertFalse(file.exists());
+        assertTrue(result);
+    }
+
+    @Test
+    public void deleteTargetDirectory_SpecifiedNonExistentDirectoryPath_IsDeleted() {
+        String newFolderPath = Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "output", "test"});
+        File file = new File(newFolderPath);
+        assertTrue(!file.exists());
+        boolean result = Utilities.deleteTargetDirectory(newFolderPath);
+        assertFalse(file.exists());
+        assertFalse(result);
     }
 
     @Rule

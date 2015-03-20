@@ -33,7 +33,7 @@ public class PageTests {
     @Test
     public void forSection_WithValidSectionAndTemplate_HasValidContent() {
         List<Page> pages = Page.forSection(validSection(), validSections(), validTemplate(), getSiteToc());
-        assertTrue(pages.get(0).getContent().contains("CloudHub"));
+        assertTrue(pages.get(0).getContent().contains("<h1>CloudHub</h1>"));
     }
 
     private Section validSection() {

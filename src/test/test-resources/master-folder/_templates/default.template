@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="/css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-    <link href="/css/mule-docs.css" rel="stylesheet">
-    <script src="/js/jquery-1.11.2.min.js"></script>
-    <script src="/js/bootstrap.js"></script>
+    <link href="/docs/css/mule-docs.css" rel="stylesheet">
+    <script src="/docs/js/jquery-1.11.2.min.js"></script>
+    <script src="/docs/js/bootstrap.js"></script>
     <title>MuleSoft Documentation - {{ page.title }}</title>
 </head>
 <body>

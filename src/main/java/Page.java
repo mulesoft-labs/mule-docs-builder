@@ -1,4 +1,3 @@
-import com.sun.tools.javac.jvm.ClassFile;
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -12,15 +11,17 @@ import java.util.List;
 public class Page {
     private static Logger logger = Logger.getLogger(Page.class);
     private String content;
+    private String baseName;
 
-    public Page(String content) {
+    public Page(String content, String baseName) {
         this.content = content;
+        this.baseName = baseName;
     }
 
     public static List<Page> forSection(Section section, List<Section> allSections, Template template, SiteTableOfContents toc) {
         List<Page> pages = new ArrayList<Page>();
         for(AsciiDocPage page : section.getPages()) {
-            Page current = new Page(getCompletePageContent(section, allSections, toc, page, template));
+            Page current = new Page(getCompletePageContent(section, allSections, toc, page, template), page.getBaseName());
             pages.add(current);
         }
         return pages;
@@ -47,8 +48,7 @@ public class Page {
     }
 
     private static String getBreadcrumbHtml(Section section, AsciiDocPage page) {
-        String pageUrl = Utilities.getConcatPath(new String[] {section.getUrl(), page.getBaseName()});
-        return Breadcrumb.getBreadcrumbHtmlForActiveUrl(section.getRootNode(), pageUrl);
+        return Breadcrumb.getBreadcrumbHtmlForActiveUrl(section.getRootNode(), page.getBaseName());
     }
 
     private static String getContentHtml(AsciiDocPage page) {
@@ -63,5 +63,9 @@ public class Page {
 
     public String getContent() {
         return content;
+    }
+
+    public String getBaseName() {
+        return baseName;
     }
 }

@@ -27,7 +27,7 @@ public class Breadcrumb {
 
     private static void generateBreadcrumbsForActiveUrl(TocNode parentNode, String activeUrl, StringBuilder html) {
         if(parentNode.getUrl().equalsIgnoreCase(activeUrl)) {
-            html.append("<ol class=\"breadcrumb\"><li><a href=\"\">MuleSoft Docs</a></li>");
+            html.append("<ol class=\"breadcrumb\"><li><a href=\"developers.mulesoft.com/docs/\">MuleSoft Docs</a></li>");
             generateParentBreadcrumbsForActiveUrl(parentNode, html);
             html.append("<li class=\"active\">" + parentNode.getTitle() + "</li>");
             html.append("</ol>");

@@ -28,7 +28,7 @@ public class RootNodeFromHtmlToc {
     public static TocNode getRootNodeFromRawTocHtml(Document doc) {
         Element firstElement = doc.select("ul").first();
         Element firstItem = firstElement.select("li").first();
-        String parentLink = firstItem.select("a").first().attr("href");
+        String parentLink = cleanupLink(firstItem.select("a").first().attr("href"));
         String parentTitle = firstItem.select("a").first().text();
         TocNode firstNode = new TocNode(parentLink, parentTitle, null);
         Elements firstChildren = firstItem.children().select("ul");
@@ -45,7 +45,7 @@ public class RootNodeFromHtmlToc {
         if(firstItem == null) {
             return;
         }
-        String parentLink = firstItem.select("a").first().attr("href");
+        String parentLink = cleanupLink(firstItem.select("a").first().attr("href"));
         String parentTitle = firstItem.select("a").first().text();
         TocNode node = new TocNode(parentLink, parentTitle, parentNode);
         parentNode.addChild(node);
@@ -68,7 +68,7 @@ public class RootNodeFromHtmlToc {
 
     private static void processSection(Elements siblings, TocNode parentNode) {
         for (Element sibling : siblings) {
-            String siblingLink = sibling.select("a").first().attr("href");
+            String siblingLink = cleanupLink(sibling.select("a").first().attr("href"));
             String siblingTitle = sibling.select("a").first().text();
             TocNode siblingNode = new TocNode(siblingLink, siblingTitle, parentNode);
             parentNode.addChild(siblingNode);
@@ -81,6 +81,23 @@ public class RootNodeFromHtmlToc {
             logger.fatal(error);
             throw new DocBuildException(error);
         }
+    }
+
+    public static String cleanupLink(String link) {
+        link = removeHtmlExtension(link);
+        link = removeIndexFromLink(link);
+        return link;
+    }
+
+    private static String removeHtmlExtension(String link) {
+        return link.replace(".html", "");
+    }
+
+    private static String removeIndexFromLink(String link) {
+        if(link.contentEquals("index")) {
+            link = "";
+        }
+        return link;
     }
 
     private void validateInputParams(Object[] params) {

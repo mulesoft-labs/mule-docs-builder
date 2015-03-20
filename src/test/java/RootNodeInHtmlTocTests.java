@@ -42,6 +42,18 @@ public class RootNodeInHtmlTocTests {
         RootNodeFromHtmlToc htmlToc = RootNodeFromHtmlToc.fromTocAsciiDocPage(page);
     }
 
+    @Test
+    public void cleanupLink_WithHtmlInLink_RemovesHtmlExtension() {
+        String link = RootNodeFromHtmlToc.cleanupLink("cloudhub.html");
+        assertTrue(link.contentEquals("cloudhub"));
+    }
+
+    @Test
+    public void cleanupLink_WithIndexInLink_RemovesIndex() {
+        String link = RootNodeFromHtmlToc.cleanupLink("index.html");
+        assertTrue(link.contentEquals(""));
+    }
+
     private AsciiDocPage getValidPage() {
         String path = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "toc.ad"});
         AsciiDocPage page = AsciiDocPage.fromFile(new File(path));

@@ -5,10 +5,7 @@ import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -85,6 +82,13 @@ public class Utilities {
             }
         }
         return temp;
+    }
+
+    public static String removeLeadingSlashes(String s) {
+        if(s.startsWith("/") && s.length() > 1) {
+            s = s.substring(1);
+        }
+        return s;
     }
 
     public static boolean isStringNullOrEmptyOrWhitespace(String string) {
@@ -292,4 +296,42 @@ public class Utilities {
     }
 
 
+    public static boolean makeTargetDirectory(String directoryPath) {
+        boolean result = false;
+        try {
+            File output = new File(directoryPath);
+            result = output.mkdirs();
+        } catch (SecurityException se) {
+            String error = "Do not have permission to create directory \"" + directoryPath + "\"";
+            logger.fatal(error, se);
+            throw new DocBuildException(error);
+        }
+        return result;
+    }
+
+    public static boolean deleteTargetDirectory(String directoryName) {
+        boolean result = false;
+        try {
+            File output = new File(directoryName);
+            result = output.delete();
+        } catch (SecurityException se) {
+            String error = "Do not have permission to delete directory \"" + directoryName + "\"";
+            logger.fatal(error, se);
+            throw new DocBuildException(error);
+        }
+        return result;
+    }
+
+    public static void writeFileToDirectory(String filePath, String fileContents) {
+        try {
+            BufferedWriter writer = null;
+            writer = new BufferedWriter(new FileWriter(filePath));
+            writer.write(fileContents);
+            writer.close();
+        } catch (IOException ioe) {
+            String error = "Could not create file in directory: \"" + filePath + "\".";
+            logger.fatal(error);
+            throw new DocBuildException(error);
+        }
+    }
 }
