@@ -18,17 +18,17 @@ public class Page {
         this.baseName = baseName;
     }
 
-    public static List<Page> forSection(Section section, List<Section> allSections, Template template, SiteTableOfContents toc) {
+    public static List<Page> forSection(Section section, List<Section> allSections, List<Template> templates, SiteTableOfContents toc) {
         List<Page> pages = new ArrayList<Page>();
         for(AsciiDocPage page : section.getPages()) {
-            Page current = new Page(getCompletePageContent(section, allSections, toc, page, template), page.getBaseName());
+            Page current = new Page(getCompletePageContent(section, allSections, toc, page, templates), page.getBaseName());
             pages.add(current);
         }
         return pages;
     }
 
-    public static String getCompletePageContent(Section section, List<Section> sections, SiteTableOfContents toc, AsciiDocPage page, Template template) {
-        StringBuilder html = new StringBuilder(template.getContents());
+    public static String getCompletePageContent(Section section, List<Section> sections, SiteTableOfContents toc, AsciiDocPage page, List<Template> templates) {
+        StringBuilder html = new StringBuilder(getTemplateContents(page, templates));
         html = Utilities.replaceText(html, "{{ page.title }}", getPageTitle(page));
         html = Utilities.replaceText(html, "{{ page.toc }}", getPageToc(toc, sections, section, page));
         html = Utilities.replaceText(html, "{{ page.breadcrumb }}", getBreadcrumbHtml(section, page));
@@ -36,6 +36,18 @@ public class Page {
         html = Utilities.replaceText(html, "{{ page.version }}", getVersionHtml(section, page));
         logger.info("Built page from template for \"" + getPageTitle(page) + "\".");
         return html.toString();
+    }
+
+    private static String getTemplateContents(AsciiDocPage page, List<Template> templates) {
+        if(!page.containsAttribute("mule-template")) {
+            for(Template template : templates) {
+                if(template.getType().equals(TemplateType.DEFAULT)) {
+                    return template.getContents();
+                }
+            }
+        }
+        // Todo: implement with logic for other templates and probably move to the Template class instead.
+        return null;
     }
 
     private static String getPageTitle(AsciiDocPage page) {

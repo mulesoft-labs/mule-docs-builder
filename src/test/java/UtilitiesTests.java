@@ -204,7 +204,7 @@ public class UtilitiesTests {
     @Test
     public void isActiveUrlInSection_WithValidRootUrl_ReturnsTrue() {
         TocNode root = TestUtilities.getValidRootNode();
-        boolean result = Utilities.isActiveUrlInSection(root, "index", false);
+        boolean result = Utilities.isActiveUrlInSection(root, "", false);
         assertTrue(result);
     }
 

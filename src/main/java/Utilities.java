@@ -75,7 +75,7 @@ public class Utilities {
     public static String getConcatPath(String[] filesOrDirectoriesToAppend) {
         String temp = filesOrDirectoriesToAppend[0];
         for(int i = 1; i < filesOrDirectoriesToAppend.length; i++) {
-            if(!temp.endsWith("/")) {
+            if(!temp.isEmpty() && !temp.endsWith("/")) {
                 temp = temp.concat("/").concat(filesOrDirectoriesToAppend[i]);
             } else {
                 temp = temp.concat(filesOrDirectoriesToAppend[i]);

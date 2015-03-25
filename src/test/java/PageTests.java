@@ -14,26 +14,25 @@ public class PageTests {
 
     @Test
     public void forSection_WithValidSectionAndTemplate_ReturnsNewInstance() {
-        List<Page> pages = Page.forSection(validSection(), validSections(), validTemplate(), getSiteToc());
+        List<Page> pages = Page.forSection(validSection(), validSections(), validTemplates(), getSiteToc());
         assertThat(pages.get(0), instanceOf(Page.class));
     }
 
     @Test(expected = DocBuildException.class)
     public void forSection_WithInvalidSection_ThrowsException() {
         Section section = Section.fromDirectory(new File(Utilities.getConcatPath(new String[] {TestUtilities.getTestResourcesPath(), "_templates"})));
-        List<Page> pages = Page.forSection(section, validSections(), validTemplate(), getSiteToc());
-    }
-
-    @Test(expected = DocBuildException.class)
-    public void forSection_WithInvalidTemplate_ThrowsException() {
-        Template template = Template.fromFile(new File(Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "master-folder", "anypoint-platform", "cloudhub.ad"})));
-        List<Page> pages = Page.forSection(validSection(), validSections(), template, getSiteToc());
+        List<Page> pages = Page.forSection(section, validSections(), validTemplates(), getSiteToc());
     }
 
     @Test
     public void forSection_WithValidSectionAndTemplate_HasValidContent() {
-        List<Page> pages = Page.forSection(validSection(), validSections(), validTemplate(), getSiteToc());
+        List<Page> pages = Page.forSection(validSection(), validSections(), validTemplates(), getSiteToc());
         assertTrue(pages.get(0).getContent().contains("<h1>CloudHub</h1>"));
+    }
+
+    @Test
+    public void forSection_WithValidVersion_LinksToDesiredVersionOfPageInToc() {
+
     }
 
     private Section validSection() {
@@ -42,6 +41,11 @@ public class PageTests {
 
     private Template validTemplate() {
         return Template.fromFile(new File(Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "master-folder", "_templates", "default.template"})));
+    }
+
+    private List<Template> validTemplates() {
+        List<Template> templates = Template.fromDirectory(new File(Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "master-folder", "_templates"})));
+        return templates;
     }
 
     private List<Section> validSections() {

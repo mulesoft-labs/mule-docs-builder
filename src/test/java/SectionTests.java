@@ -32,7 +32,7 @@ public class SectionTests {
     @Test
     public void fromDirectory_WithValidSectionDirectory_HasCorrectUrl() {
         Section section = getValidSection();
-        assertTrue(section.getUrl().contentEquals("/cloudhub"));
+        assertTrue(section.getUrl().contentEquals("cloudhub"));
     }
 
     @Test
@@ -60,7 +60,7 @@ public class SectionTests {
     public void fromDirectory_WithValidSectionDirectory_VersionHasProperUrl() {
         Section section = getValidSection();
         assertTrue(section.getVersions().size() == 2);
-        assertTrue(section.getVersions().get(0).getUrl().contentEquals("/cloudhub/v/4.0"));
+        assertTrue(section.getVersions().get(0).getUrl().contentEquals("cloudhub/v/4.0"));
     }
 
     @Test
@@ -93,6 +93,14 @@ public class SectionTests {
     public void fromMasterDirectory_WithInvalidMasterDirectory_ThrowsException() {
         File invalidDirectory = new File(Utilities.getConcatPath(new String[] {TestUtilities.getTestResourcesPath(), "text-files"}));
         List<Section> section = Section.fromMasterDirectory(invalidDirectory);
+    }
+
+    @Test
+    public void getVersionUrl_WithValidParams_ReturnsValidVersionUrl() {
+        String versionPath = "/Users/sean.osterberg/mulesoft-docs/dev/src/test/test-resources/master-folder/cloudhub/v/4.0";
+        String sectionName = "cloudhub";
+        String result = Section.getVersionUrl(versionPath, sectionName);
+        assertTrue(result.contentEquals("cloudhub/v/4.0"));
     }
 
     public Section getValidSection() {

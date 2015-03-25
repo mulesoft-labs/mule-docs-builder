@@ -51,6 +51,38 @@ public class AsciiDocPageTests {
         assertTrue(!Utilities.isStringNullOrEmptyOrWhitespace(page.getAsciiDoc()));
     }
 
+    @Test
+    public void getAttributes_ReturnsExpectedAttributes() {
+        AsciiDocPage page = AsciiDocPage.fromFile(getValidFile());
+        Map<String, Object> attributes = page.getAttributes();
+        assertTrue(attributes.containsKey("test-attribute"));
+        assertTrue(attributes.containsValue("foo"));
+    }
+
+    @Test
+    public void containsAttribute_ForExistingAttribute_ReturnsTrue() {
+        AsciiDocPage page = AsciiDocPage.fromFile(getValidFile());
+        assertTrue(page.containsAttribute("test-attribute"));
+    }
+
+    @Test
+    public void containsAttribute_ForInvalidAttribute_ReturnsFalse() {
+        AsciiDocPage page = AsciiDocPage.fromFile(getValidFile());
+        assertFalse(page.containsAttribute("foo-attribute"));
+    }
+
+    @Test
+    public void getAttributeValue_ForValidAttribute_ReturnsValue() {
+        AsciiDocPage page = AsciiDocPage.fromFile(getValidFile());
+        assertTrue(page.getAttributeValue("test-attribute").contentEquals("foo"));
+    }
+
+    @Test
+    public void getAttributeValue_ForInvalidAttribute_ReturnsNull() {
+        AsciiDocPage page = AsciiDocPage.fromFile(getValidFile());
+        assertNull(page.getAttributeValue("foo-attribute"));
+    }
+
     private File getValidFile() {
         String path = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub.ad"});
         return new File(path);

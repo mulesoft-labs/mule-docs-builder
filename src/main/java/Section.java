@@ -15,6 +15,7 @@ public class Section {
     private String filepath;
     private String url;
     private String prettyName;
+    private String baseName;
     private List<Section> versions;
 
     public Section(List<AsciiDocPage> pages, TocNode rootNode, List<Section> versions, String filepath, String url, String prettyName) {
@@ -25,6 +26,7 @@ public class Section {
         this.filepath = filepath;
         this.url = url;
         this.prettyName = prettyName;
+        this.baseName = getBaseName(filepath);
         logger.info("Created Section for directory \"" + filepath + "\".");
     }
 
@@ -46,6 +48,10 @@ public class Section {
 
     public String getPrettyName() {
         return prettyName;
+    }
+
+    public String getBaseName() {
+        return baseName;
     }
 
     public List<Section> getVersions() {
@@ -73,10 +79,16 @@ public class Section {
     private static Section getSectionFromDirectory(File directory, String url) {
         List<File> validFiles = getValidAsciiDocFilesInSection(new ArrayList<File>(Arrays.asList(directory.listFiles())));
         List<AsciiDocPage> pages = AsciiDocPage.fromFiles(validFiles);
-        File tocFile = new File(Utilities.getConcatPath(new String[] {directory.getPath(), "toc.ad"}));
+        File tocFile = new File(Utilities.getConcatPath(new String[]{directory.getPath(), "toc.ad"}));
         TocNode rootNode = SectionTableOfContents.fromAsciiDocFile(tocFile).getRootTocNode();
         List<Section> versions = new ArrayList<Section>();
-        url = Utilities.getConcatPath(new String[] {url, directory.getPath().substring(directory.getPath().lastIndexOf("/") + 1)});
+        if (!url.contains(File.separator + "v" + File.separator)) {
+            if(url.isEmpty() && directory.getPath().contains(File.separator + "v" + File.separator)) {
+                url = getVersionUrl(directory.getPath(), getBaseName(directory.getPath()));
+            } else {
+                url = Utilities.getConcatPath(new String[]{url, directory.getPath().substring(directory.getPath().lastIndexOf(File.separator) + 1)});
+            }
+        }
         if(Utilities.directoryContainsVersions(directory)) {
             getVersions(directory, versions, url);
         }
@@ -99,9 +111,41 @@ public class Section {
         File versionDirectory = new File(Utilities.getConcatPath(new String[] {directory.getPath(), "v"}));
         for(File file : versionDirectory.listFiles()) {
             if(file.isDirectory()) {
-                versions.add(getSectionFromDirectory(file, Utilities.getConcatPath(new String[] {url, "v"})));
+                versions.add(getSectionFromDirectory(file, getVersionUrl(file.getPath(), url)));
             }
         }
+    }
+
+    public static String getVersionUrl(String directoryPath, String sectionName) {
+        List<String> pathEntries = getDirectoriesOrFilesBetweenSeparators(directoryPath);
+        String buffer = "";
+        for(String entry : pathEntries) {
+            String temp = new StringBuilder(entry).reverse().toString();
+            if(!temp.contentEquals(sectionName)) {
+                buffer += entry + File.separator;
+            } else {
+                return new StringBuilder(buffer + entry).reverse().toString();
+            }
+        }
+        return sectionName;
+    }
+
+    // Results are reversed so that you can easily reverse the entire generated path later
+    private static List<String> getDirectoriesOrFilesBetweenSeparators(String directoryPath) {
+        List<String> fileOrDirectories = new ArrayList<String>();
+        String buffer = "";
+        for(int i = directoryPath.length() - 1; i > 0; i--) {
+            char current = directoryPath.charAt(i);
+            if(current != File.separatorChar) {
+                buffer += current;
+            } else {
+                if(!buffer.isEmpty()) {
+                    fileOrDirectories.add(buffer);
+                    buffer = "";
+                }
+            }
+        }
+        return fileOrDirectories;
     }
 
     private static String getPrettyName(File directory) {
@@ -111,6 +155,22 @@ public class Section {
             }
         }
         return null;
+    }
+
+    private static String getBaseName(String directoryPath) {
+        if (!directoryPath.contains(File.separator + "v" + File.separator)) {
+             return directoryPath.substring(directoryPath.lastIndexOf(File.separator) + 1);
+        } else {
+            List<String> paths = getDirectoriesOrFilesBetweenSeparators(directoryPath);
+            String[] result = paths.toArray(new String[paths.size()]);
+            String baseName = "";
+            for(int i = 0; i < result.length; i++) {
+                if(result[i].contentEquals("v")) {
+                    baseName = new StringBuilder(result[i + 1]).reverse().toString();
+                }
+            }
+            return baseName;
+        }
     }
 
     private static void validateDirectory(File directory) {

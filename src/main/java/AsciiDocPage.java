@@ -4,11 +4,13 @@ import org.apache.log4j.Logger;
 import static org.asciidoctor.Asciidoctor.Factory.create;
 import org.asciidoctor.Asciidoctor;
 import org.asciidoctor.Options;
+import org.asciidoctor.SafeMode;
 import org.asciidoctor.ast.Document;
 
 import java.io.File;
 import java.util.*;
 
+import org.asciidoctor.ast.DocumentHeader;
 import org.jsoup.Jsoup;
 
 /**
@@ -61,6 +63,26 @@ public class AsciiDocPage {
         return page;
     }
 
+    public Map<String, Object> getAttributes() {
+        Asciidoctor processor = this.getProcessor();
+        DocumentHeader header = processor.readDocumentHeader(this.getAsciiDoc());
+        return header.getAttributes();
+    }
+
+    public boolean containsAttribute(String attributeName) {
+        Map<String, Object> attributes = getAttributes();
+        return attributes.containsKey(attributeName);
+    }
+
+    public String getAttributeValue(String attributeName) {
+        if(!containsAttribute(attributeName)) {
+            return null;
+        } else {
+            Map<String, Object> attributes = getAttributes();
+            return attributes.get(attributeName).toString();
+        }
+    }
+
     private static String getPageTitle(String html) {
         return Jsoup.parse(html, "UTF-8").title();
     }
@@ -70,7 +92,18 @@ public class AsciiDocPage {
         options.setBackend("html");
         options.setToFile(false);
         options.setHeaderFooter(true);
+        options.setSafe(SafeMode.SAFE);
+        options.setAttributes(getAttributesForConversion());
         return options;
+    }
+
+    private static Map<String, Object> getAttributesForConversion() {
+        Map<String, Object> attributes = new HashMap<String, Object>();
+        attributes.put("sectanchors", "true");
+        attributes.put("idprefix", "");
+        attributes.put("idseparator", "-");
+        attributes.put("icons", "font");
+        return attributes;
     }
 
     private void validateInputParams(String[] params) {
@@ -92,6 +125,8 @@ public class AsciiDocPage {
     public String getBaseName() {
         return baseName;
     }
+
+    public Asciidoctor getProcessor() { return processor; }
 
     public String getTitle() {
         return title;

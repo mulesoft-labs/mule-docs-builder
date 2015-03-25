@@ -1,6 +1,8 @@
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by sean.osterberg on 3/9/15.
@@ -12,6 +14,17 @@ public class Template {
     public Template(String contents, TemplateType type) {
         this.contents = contents;
         this.type = type;
+    }
+
+    public static List<Template> fromDirectory(File directory) {
+        List<Template> templates = new ArrayList<Template>();
+        Utilities.validateIsDirectory(directory);
+        for(File templateFile : directory.listFiles()) {
+            if(FilenameUtils.getExtension(templateFile.getName()).contentEquals("template")) {
+                templates.add(fromFile(templateFile));
+            }
+        }
+        return templates;
     }
 
     public static Template fromFile(File file) {

@@ -21,10 +21,6 @@ public class PageVersion {
         return baseName;
     }
 
-    public void setBaseName(String baseName) {
-        this.baseName = baseName;
-    }
-
     public Map<String, String> getVersionUrlAndPrettyName() {
         return versionUrlAndPrettyName;
     }

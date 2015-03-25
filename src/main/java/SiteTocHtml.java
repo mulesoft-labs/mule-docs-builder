@@ -21,8 +21,8 @@ public class SiteTocHtml {
         StringBuilder builder = new StringBuilder();
         for(TocNode node : toc.getNodes()) {
             for(Section currentSection : this.sections) {
-                if(currentSection.getUrl().contentEquals(section.getUrl())) {
-                    if(node.getUrl().contentEquals(section.getUrl())) { //
+                if(currentSection.getBaseName().contentEquals(section.getBaseName())) {
+                    if(node.getUrl().contentEquals(section.getBaseName())) { //
                         if(Utilities.isActiveUrlInSection(section.getRootNode(), page.getBaseName(), false)) {
                             builder.append(getSelectedSectionHtml(section, page));
                         } else {
@@ -41,10 +41,10 @@ public class SiteTocHtml {
 
     private String getSelectedSectionHtml(Section section, AsciiDocPage page) {
         String pageUrl = page.getBaseName();
-        return SectionTocHtml.getSelectedTocFromRootNode(section.getRootNode(), pageUrl, "/docs" + section.getUrl()).getHtml(); // Todo: add global baseUrl
+        return SectionTocHtml.getSelectedTocFromRootNode(section.getRootNode(), pageUrl, "/docs/" + section.getUrl()).getHtml(); // Todo: add global baseUrl
     }
 
     private String getUnselectedSectionHtml(Section section) {
-        return SectionTocHtml.getUnselectedTocFromRootNode(section.getRootNode(), "/docs" + section.getUrl()).getHtml();
+        return SectionTocHtml.getUnselectedTocFromRootNode(section.getRootNode(), "/docs/" + section.getUrl()).getHtml();
     }
 }

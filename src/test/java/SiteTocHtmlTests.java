@@ -37,6 +37,16 @@ public class SiteTocHtmlTests {
         assertFalse(html.contains("Testing123"));
     }
 
+    @Test
+    public void getTocHtmlForSectionAndPage_ForOldVersion_ReturnsValidHtml() {
+        SiteTocHtml siteToc = SiteTocHtml.fromSiteTocAndSections(getValidTocFile(), getValidSections());
+        String html = siteToc.getTocHtmlForSectionAndPage(getOldVersionSection(), getValidOldAsciiDocPage());
+        assertFalse(Utilities.isStringNullOrEmptyOrWhitespace(html));
+        assertTrue(html.length() > 500);
+        assertTrue(html.contains("<a href=\"/docs/cloudhub/v/4.0/cloudhub\">CloudHub</a>"));
+        assertTrue(html.contains("<li class=\"child active\">Deploying a CloudHub Application</li>"));
+    }
+
     public SiteTableOfContents getValidTocFile() {
         String tocPath = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "toc.ad"});
         return SiteTableOfContents.fromAsciiDocFile(new File(tocPath));
@@ -55,8 +65,16 @@ public class SiteTocHtmlTests {
         return Section.fromDirectory(new File(Utilities.getConcatPath(new String[] {TestUtilities.getPathToMasterFolder(), "cloudhub"})));
     }
 
+    private Section getOldVersionSection() {
+        return Section.fromDirectory(new File(Utilities.getConcatPath(new String[] {TestUtilities.getPathToMasterFolder(), "cloudhub", "v", "4.0"})));
+    }
+
     private AsciiDocPage getValidAsciiDocPage() {
         return AsciiDocPage.fromFile(new File(Utilities.getConcatPath(new String[] {TestUtilities.getPathToMasterFolder(), "cloudhub", "deploying-a-cloudhub-application.ad"})));
+    }
+
+    private AsciiDocPage getValidOldAsciiDocPage() {
+        return AsciiDocPage.fromFile(new File(Utilities.getConcatPath(new String[] {TestUtilities.getPathToMasterFolder(), "cloudhub", "v", "4.0", "deploying-a-cloudhub-application.ad"})));
     }
 
     private AsciiDocPage getOrphanedAsciiDocPage() {

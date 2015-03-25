@@ -1,6 +1,6 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
-
+import java.util.*;
 import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
@@ -27,13 +27,13 @@ public class SectionTocHtmlTests {
 
     @Test
     public void getUnselectedTocFromRootNode_WithValidRootNode_DoesNotContainActiveNode() {
-        SectionTocHtml html = SectionTocHtml.getUnselectedTocFromRootNode(TestUtilities.getValidRootNode(), "");
+        SectionTocHtml html = SectionTocHtml.getUnselectedTocFromRootNode(TestUtilities.getValidRootNode(), "test");
         assertFalse(html.getHtml().contains("active"));
     }
 
     @Test
     public void getSelectedTocFromRootNode_WithValidRootNode_ContainsActiveNode() {
-        SectionTocHtml html = SectionTocHtml.getSelectedTocFromRootNode(TestUtilities.getValidRootNode(), "index", "");
+        SectionTocHtml html = SectionTocHtml.getSelectedTocFromRootNode(TestUtilities.getValidRootNode(), "", "");
         assertTrue(html.getHtml().contains("<div class=\"toc-section-header active\">"));
         assertFalse(html.getHtml().contains("<li class=\"child active\">"));
     }
@@ -47,6 +47,13 @@ public class SectionTocHtmlTests {
     public void getSelectedTocFromRootNode_WithValidRootNode_ContainsActiveSectionNode() {
         SectionTocHtml html = SectionTocHtml.getSelectedTocFromRootNode(TestUtilities.getValidRootNode(), "cloudhub-at-a-glance", "");
         assertFalse(html.getHtml().contains("<div class=\"toc-section-header active\">"));
-        assertTrue(html.getHtml().contains("<a href=\"/cloudhub-at-a-glance\"><li class=\"child active\">CloudHub at a Glance</li></a>"));
+        assertTrue(html.getHtml().contains("<a href=\"cloudhub-at-a-glance\"><li class=\"child active\">CloudHub at a Glance</li></a>"));
     }
+
+    @Test
+    public void getSelectedTocFromRootNode_ForSectionVersion_ReturnsDesiredVersionInLinkUrl() {
+        SectionTocHtml html = SectionTocHtml.getSelectedTocFromRootNode(TestUtilities.getValidRootNode(), "cloudhub-at-a-glance", "/docs/cloudhub/v/4.0");
+        assertTrue(html.getHtml().contains("<a href=\"/docs/cloudhub/v/4.0/\">CloudHub</a>"));
+    }
+
 }

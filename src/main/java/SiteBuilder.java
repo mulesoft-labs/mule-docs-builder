@@ -66,10 +66,9 @@ public class SiteBuilder {
         }
         return templates;
     }
-
-    // Todo: make sure you're checking for the default template, not using an index
+    
     private void writePagesForSection(Section section) {
-        List<Page> pages = Page.forSection(section, this.sections, this.templates.get(0), this.toc);
+        List<Page> pages = Page.forSection(section, this.sections, this.templates, this.toc);
         for(Page page : pages) {
             String pagePath = Utilities.getConcatPath(new String[] {this.outputDirectory.getPath(), Utilities.removeLeadingSlashes(section.getUrl()), page.getBaseName()}) + ".html";
             Utilities.writeFileToDirectory(pagePath, page.getContent());
