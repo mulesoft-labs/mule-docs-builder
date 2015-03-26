@@ -66,7 +66,8 @@ public class Page implements IPageElement{
     }
 
     private static String getBreadcrumbHtml(Section section, AsciiDocPage page) {
-        return Breadcrumb.getBreadcrumbHtmlForActiveUrl(section.getRootNode(), page.getBaseName());
+        Breadcrumb breadcrumb = Breadcrumb.fromRootNode(section.getRootNode());
+        return breadcrumb.getHtmlForActiveUrl(page.getBaseName(), "/docs/" + section.getUrl());
     }
 
     private static String getContentHtml(AsciiDocPage page) {
