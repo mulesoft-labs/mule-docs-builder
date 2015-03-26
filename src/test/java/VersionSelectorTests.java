@@ -31,7 +31,7 @@ public class VersionSelectorTests {
         Section section = getValidSection();
         List<PageVersion> versions = new ArrayList<PageVersion>();
         VersionSelector.compareLatestPagesWithVersions(section, versions);
-        assertTrue(versions.size() == 3);
+        assertTrue(versions.size() == 4);
     }
 
     @Test
@@ -59,7 +59,7 @@ public class VersionSelectorTests {
     public void getAllVersionMappingsForSection_WithValidSection_IsValid() {
         Section section = getValidSection();
         List<PageVersion> versions = VersionSelector.getAllVersionMappingsForSection(section);
-        assertTrue(versions.size() == 3);
+        assertTrue(versions.size() == 4);
         boolean result = false;
         for(PageVersion version : versions) {
             if(version.getBaseName().contentEquals("mule-studio")) {

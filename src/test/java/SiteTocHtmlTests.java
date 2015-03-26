@@ -43,7 +43,7 @@ public class SiteTocHtmlTests {
         String html = siteToc.getTocHtmlForSectionAndPage(getOldVersionSection(), getValidOldAsciiDocPage());
         assertFalse(Utilities.isStringNullOrEmptyOrWhitespace(html));
         assertTrue(html.length() > 500);
-        assertTrue(html.contains("<a href=\"/docs/cloudhub/v/4.0/cloudhub\">CloudHub</a>"));
+        assertTrue(html.contains("<a href=\"/docs/cloudhub/v/4.0/\">CloudHub</a>"));
         assertTrue(html.contains("<li class=\"child active\">Deploying a CloudHub Application</li>"));
     }
 

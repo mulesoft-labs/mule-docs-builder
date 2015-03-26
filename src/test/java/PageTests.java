@@ -20,7 +20,7 @@ public class PageTests {
 
     @Test(expected = DocBuildException.class)
     public void forSection_WithInvalidSection_ThrowsException() {
-        Section section = Section.fromDirectory(new File(Utilities.getConcatPath(new String[] {TestUtilities.getTestResourcesPath(), "_templates"})));
+        Section section = Section.fromDirectory(new File(Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "_templates"})));
         List<Page> pages = Page.forSection(section, validSections(), validTemplates(), getSiteToc());
     }
 
@@ -35,12 +35,19 @@ public class PageTests {
 
     }
 
-    private Section validSection() {
-        return Section.fromDirectory(new File(Utilities.getConcatPath(new String[] {TestUtilities.getTestResourcesPath(), "master-folder", "cloudhub"})));
+    @Test
+    public void forSection_WithOldVersion_HasCorrectBreadcrumbLinks() {
+        List<Page> pages = Page.forSection(validOldVersionSection(), validSections(), validTemplates(), getSiteToc());
+        assertTrue(pages.get(1).getContent().contains("<ol class=\"breadcrumb\"><li><a href=\"/docs/cloudhub/v/4.0/\">CloudHub</a></li>"));
     }
 
-    private Template validTemplate() {
-        return Template.fromFile(new File(Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "master-folder", "_templates", "default.template"})));
+
+    private Section validSection() {
+        return Section.fromDirectory(new File(Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "master-folder", "cloudhub"})));
+    }
+
+    private Section validOldVersionSection() {
+        return Section.fromDirectory(new File(Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "master-folder", "cloudhub", "v", "4.0"})));
     }
 
     private List<Template> validTemplates() {

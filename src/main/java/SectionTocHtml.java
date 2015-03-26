@@ -70,7 +70,7 @@ public class SectionTocHtml {
         } else {
             getHtmlForChildren(parent, html, activeUrl, baseUrl);
         }
-        html.append("</ul></li>");
+        html.append("</ul></li>\n");
     }
 
     private static void getHtmlForChildren(TocNode parent, StringBuilder html, String activeUrl, String baseUrl) {
