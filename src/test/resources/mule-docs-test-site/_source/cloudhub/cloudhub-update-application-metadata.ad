@@ -1,0 +1,18 @@
+[[UpdateApplicationMetadata-UpdateApplicationMetadata]]
+= Update Application Metadata
+
+The PUT method, specified with the /api/applications/\{domain} resource
+(where \{domain} is the application domain), updates your application
+metadata, including the number of workers and system properties. You can
+also use it to update an existing application. For information on how to
+update you application, see
+link:/documentation/display/current/Managing+CloudHub+Applications#ManagingCloudHubApplications-UpdatingYourApplication[Updating
+Your Application].
+
+The update operation can update the workers, properties, muleVersion and
+filename properties. Properties which are not specified will not be
+updated.
+
+Example Request:
+
+Example Response:

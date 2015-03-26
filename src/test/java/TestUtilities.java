@@ -1,3 +1,7 @@
+import org.mule.docs.model.SectionTableOfContents;
+import org.mule.docs.model.TocNode;
+import org.mule.docs.utils.Utilities;
+
 import java.io.File;
 
 /**
@@ -6,7 +10,9 @@ import java.io.File;
 public class TestUtilities {
 
     public static String getTestResourcesPath() {
-        return Utilities.getConcatPath(new String[] {System.getProperty("user.dir"), "src/test/test-resources" });
+        return Utilities.getConcatPath(new String[] {
+                TestUtilities.class.getClassLoader().getResource("").getFile()
+        });
     }
 
     public static String getPathToMasterFolder() {

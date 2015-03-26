@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="/docs/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link href="/docs/css/asciidoctor.css" rel="stylesheet">
+    <link href="/docs/css/mule-docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+    <script src="/docs/js/jquery-1.11.2.min.js"></script>
+    <script src="/docs/js/bootstrap.js"></script>
+    <title>MuleSoft Documentation - Managing Application Data Storage with Object Stores</title>
+</head>
+<body>
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<div class="navbar navbar-inverse navbar-static-top">
+    <div class="navbar-inner">
+        <div class="container-fluid" id="top">
+            <img src="/docs/img/mule-docs-logo.png">
+        </div>
+    </div>
+</div>
+<div class="container" id="main">
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="toc">
+
+                <li class="toc-section"><div class="toc-section-header child"><a href="/docs/30-mins-with-mule/">First 30 Minutes with Mule</a><a href="#G70K54Z65Y" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="G70K54Z65Y"><a href="/docs/30-mins-with-mule/anypoint-platform-primer"><li class="child">Anypoint Platform Primer</li></a><a href="/docs/30-mins-with-mule/anypoint-studio-essentials"><li class="child">Anypoint Studio Essentials</li></a><a href="/docs/30-mins-with-mule/begin-with-the-basics"><li class="child">Begin with the Basics</li></a><a href="/docs/30-mins-with-mule/build+a+hello+world+application"><li class="child">Build a Hello World Application</li></a><a href="/docs/30-mins-with-mule/download-and-launch-anypoint-studio"><li class="child">Download and Launch Anypoint Studio</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/">CloudHub</a><a href="#5QV34KG3ZM" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="5QV34KG3ZM" style="height: 0px;"><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/getting-started-with-cloudhub">Getting Started with CloudHub</a><a href="#19PSQ8LLZ0" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="19PSQ8LLZ0" style="height: 0px;"><a href="/docs/cloudhub/cloudhub-at-a-glance"><li class="child">CloudHub at a Glance</li></a><a href="/docs/cloudhub/hello-world-on-cloudhub"><li class="child">Hello World on CloudHub</li></a><a href="/docs/cloudhub/cloudhub-getting-started-with-connectors"><li class="child">Getting Started with Connectors</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-tutorials">CloudHub Tutorials</a><a href="#T84NVHCSGT" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="T84NVHCSGT" style="height: 0px;"><a href="/docs/cloudhub/cloudhub-building-an-https-service"><li class="child">Building an HTTPS Service</li></a><a href="/docs/cloudhub/cloudhub-custom-application-alerts"><li class="child">Custom Application Alerts</li></a></ul></li><a href="/docs/cloudhub/developing-a-cloudhub-application"><li class="child">Developing a CloudHub Application</li></a><a href="/docs/cloudhub/deploying-a-cloudhub-application"><li class="child">Deploying a CloudHub Application</li></a><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/managing-cloudhub-applications">Managing CloudHub Applications</a><a href="#XXQZM3MRLX" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="XXQZM3MRLX"><a href="/docs/cloudhub/cloudhub-console-overview"><li class="child">CloudHub Console Overview</li></a><a href="/docs/cloudhub/cloudhub-administration"><li class="child">CloudHub Administration</li></a><a href="/docs/cloudhub/cloudhub-alerts-and-notifications"><li class="child">CloudHub Alerts and Notifications</li></a><a href="/docs/cloudhub/cloudhub-fabric"><li class="child">CloudHub Fabric</li></a><a href="/docs/cloudhub/cloudhub-insight"><li class="child">CloudHub Insight</li></a><a href="/docs/cloudhub/cloudhub-command-line-tools"><li class="child">Command Line Tools</li></a><a href="/docs/cloudhub/cloudhub-managing-application-data-with-object-stores"><li class="child active">Managing Application Data with Object Stores</li></a><a href="/docs/cloudhub/cloudhub-managing-queues"><li class="child">Managing Queues</li></a><a href="/docs/cloudhub/cloudhub-managing-schedules"><li class="child">Managing Schedules</li></a><a href="/docs/cloudhub/cloudhub-secure-application-properties"><li class="child">Secure Application Properties</li></a><a href="/docs/cloudhub/cloudhub-viewing-log-data"><li class="child">Viewing Log Data</li></a><a href="/docs/cloudhub/cloudhub-virtual-private-cloud"><li class="child">Virtual Private Cloud</li></a><a href="/docs/cloudhub/cloudhub-worker-monitoring"><li class="child">CloudHub Worker Monitoring</li></a><a href="/docs/cloudhub/cloudhub-penetration-testing-policies"><li class="child">Penetration Testing Policies</li></a><a href="/docs/cloudhub/secure-data-gateway"><li class="child">Secure Data Gateway</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-api">CloudHub API</a><a href="#MXPBVGG587" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="MXPBVGG587" style="height: 0px;"><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-applications">Applications</a><a href="#19AZ6BR3JX" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="19AZ6BR3JX" style="height: 0px;"><a href="/docs/cloudhub/cloudhub-create-application"><li class="child">Create Application</li></a><a href="/docs/cloudhub/cloudhub-delete-application"><li class="child">Delete Application</li></a><a href="/docs/cloudhub/cloudhub-deploy-application"><li class="child">Deploy Application</li></a><a href="/docs/cloudhub/cloudhub-get-application"><li class="child">Get Application</li></a><a href="/docs/cloudhub/cloudhub-list-all-applications"><li class="child">List All Applications</li></a><a href="/docs/cloudhub/cloudhub-update-application-metadata"><li class="child">Update Application Metadata</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-logs">Logs</a><a href="#KVWH2KDIR5" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="KVWH2KDIR5" style="height: 0px;"><a href="/docs/cloudhub/cloudhub-list-all-logs"><li class="child">List All Logs</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-notifications">Notifications</a><a href="#TEMT3FZSA3" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="TEMT3FZSA3" style="height: 0px;"><a href="/docs/cloudhub/cloudhub-create-notification"><li class="child">Create Notification</li></a><a href="/docs/cloudhub/cloudhub-list-notifications"><li class="child">List Notifications</li></a><a href="/docs/cloudhub/cloudhub-update-all-notifications"><li class="child">Update All Notifications</li></a><a href="/docs/cloudhub/cloudhub-update-notification"><li class="child">Update Notification</li></a></ul></li></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-architecture">CloudHub Architecture</a><a href="#XJT2UCD7IK" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="XJT2UCD7IK" style="height: 0px;"><a href="/docs/cloudhub/cloudhub-networking-guide"><li class="child">CloudHub Networking Guide</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-reference-materials">CloudHub Reference Materials</a><a href="#F6CIJ722YJ" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="F6CIJ722YJ" style="height: 0px;"><a href="/docs/cloudhub/cloudhub-amazon-rds-support"><li class="child">CloudHub Amazon RDS Support</li></a><a href="/docs/cloudhub/cloudhub-configure-twitter-for-api-access"><li class="child">Configure Twitter for API Access</li></a><a href="/docs/cloudhub/cloudhub-configure-twilio-for-api-access"><li class="child">Configure Twilio for API Access</li></a><a href="/docs/cloudhub/cloudhub-salesforce-developer-account-setup"><li class="child">Salesforce Developer Account Setup</li></a></ul></li><a href="/docs/cloudhub/cloudhub-maintenance-and-upgrade-policy"><li class="child">Maintenance and Upgrade Policy</li></a><a href="/docs/cloudhub/cloudhub-community-and-support"><li class="child">Community and Support</li></a><a href="/docs/cloudhub/cloudhub-mule-esb-and-cloudhub"><li class="child">Mule ESB and CloudHub</li></a><a href="/docs/cloudhub/cloudhub-faq"><li class="child">FAQ</li></a></ul></li>
+
+            </ul>
+
+        </div>
+        <!--/span-->
+        <div class="col-md-9">
+            <div id="content">
+
+                <ol class="breadcrumb"><li><a href="developers.mulesoft.com/docs/">MuleSoft Docs</a></li><li><a href="">CloudHub</a></li><li><a href="managing-cloudhub-applications">Managing CloudHub Applications</a></li><li class="active">Managing Application Data with Object Stores</li></ol>
+
+                <div id="header">
+                    <h1>Managing Application Data Storage with Object Stores</h1>
+                </div>
+                <div id="doc-metadata">
+                    <!--<span class="updated-date" style="color:#B1B1B1;">Updated: January 15, 2015</span>
+                   <span class="updated-date" style="color:#DDD; padding: 0 0 0 7px;">/</span>-->
+                    <span class="updated-date" style="color:#B1B1B1; padding: 0 0 0 0px;">Version: </span>
+       <span class="dropdown" style="padding: 0 7px 0 0px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Current <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#">January 2015</a></li>
+            <li><a href="#">October 2014</a></li>
+            <li><a href="#">July 2014</a></li>
+        </ul> </span>
+                    <span class="updated-date" style="color:#DDD; padding: 0 0 0 0px;">/</span>
+       <span class="dropdown" style="padding: 0 7px 0 7px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Export <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#">PDF - Only this page</a></li>
+            <li><a href="#">PDF - CloudHub section</a></li>
+            <li><a href="#">EPub - MuleSoft Docs</a></li>
+        </ul> </span>
+                    <span class="updated-date" style="color:#DDD; padding: 0 0 0 0px;">/</span>
+       <span class="dropdown" style="padding: 0 7px 0 7px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Feedback <span class="caret"></span></a>
+       <ul class="dropdown-menu" role="menu">
+           <li><a href="#">Rate this Topic</a></li>
+           <li><a href="#">Edit on GitHub</a></li>
+       </ul> </span>
+                </div>
+
+                <div id="preamble"> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>CloudHub includes application data storage for each CloudHub application which are accessible through Mule’s <a href="/documentation/display/current/Mule+Object+Stores">ObjectStore</a> functionality. This storage can be used to store anything, but two of its main uses are:</p> 
+  </div> 
+  <div class="ulist"> 
+   <ul> 
+    <li> <p>Storing synchronization state:&nbsp; Your application may need to keep track of the last record synchronized, so the next time it synchronizes it can resume where it left off.</p> </li> 
+    <li> <p>OAuth tokens:&nbsp; All our OAuth enabled connectors can store tokens inside our ObjectStore with a few lines of configuration.</p> </li> 
+   </ul> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Your application can also store any other custom integration data as well, within the limits outlined below.</p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="ManagingApplicationDatawithObjectStores-StoringandRetrievingData"><a class="anchor" href="#ManagingApplicationDatawithObjectStores-StoringandRetrievingData"></a>Storing and Retrieving Data</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>The easiest way to work with application data inside from your Mule flows is by using the <a href="http://mulesoft.github.com/mule-module-objectstore/mule/modules.html">Object Store module</a>. It provides functions to store, retrieve, list, and remove data from the CloudHub ObjectStore.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>To install this Module into Mule Studio,&nbsp;<a href="/documentation/display/current/Installing+Extensions">follow these instructions</a> and select the Object Store module for installation.</p> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="ManagingApplicationDatawithObjectStores-StoringOAuthdata"><a class="anchor" href="#ManagingApplicationDatawithObjectStores-StoringOAuthdata"></a>Storing OAuth data</h3> 
+   <div class="paragraph"> 
+    <p>Each connector contains instructions on how to use the ObjectStore module to store and retrieve OAuth tokens. See the "Saving and Restoring State" section in the&nbsp;http://mulesoft.github.com/linkedin-connector/mule/linkedin-config.html#config[LinkedIn connector configuration] documentation for an example.</p> 
+   </div> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="ManagingApplicationDatawithObjectStores-ViewingApplicationData"><a class="anchor" href="#ManagingApplicationDatawithObjectStores-ViewingApplicationData"></a>Viewing Application Data</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>To view application data, click on the Application Data tab when viewing your application. You’ll see a list of your keys and values listed. To search your keys, simply type the key name in the search bar.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p><span class="image"><img src="/documentation/download/attachments/118981854/image2014-10-25+0%3A14%3A12.png?version=1&amp;modificationDate=1414221545884" alt="image"></span></p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="ManagingApplicationDatawithObjectStores-SemanticsandStorageLimits"><a class="anchor" href="#ManagingApplicationDatawithObjectStores-SemanticsandStorageLimits"></a>Semantics and Storage Limits</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>The CloudHub object store provides read-after-write consistency and the last write will win in terms of updates.&nbsp;</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Additionally, it places these limits on your data:</p> 
+  </div> 
+  <div class="olist arabic"> 
+   <ol class="arabic"> 
+    <li> <p>A maximum of 100,000 keys per application</p> </li> 
+    <li> <p>A 768 byte key size</p> </li> 
+    <li> <p>A 1 MB value size</p> </li> 
+    <li> <p>1 GB of data per application</p> </li> 
+   </ol> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="ManagingApplicationDatawithObjectStores-AdvancedInformation"><a class="anchor" href="#ManagingApplicationDatawithObjectStores-AdvancedInformation"></a>Advanced Information</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>Internally, Mule has several different types of object stores. CloudHub provides an implementation of the "user defined object store." This is for runtime information about your application, such as those use cases mentioned above. If you wish to access this object store directly, it can be found internally in the Mule Registry under the "_defaultUserObjectStore." The Object Store module and connectors will use this store to store all their data by default.</p> 
+  </div> 
+ </div> 
+</div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

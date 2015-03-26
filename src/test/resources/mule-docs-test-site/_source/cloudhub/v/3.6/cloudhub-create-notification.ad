@@ -1,0 +1,9 @@
+[[CreateNotification-CreateNotification]]
+= Create Notification
+
+The POST operation specified with the /api/notifications resource
+creates a new CloudHub notification.
+
+Example Request:
+
+Example Response:

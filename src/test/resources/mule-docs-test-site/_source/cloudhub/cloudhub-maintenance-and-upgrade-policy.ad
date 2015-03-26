@@ -1,0 +1,52 @@
+[[MaintenanceandUpgradePolicy-MaintenanceandUpgradePolicy]]
+= Maintenance and Upgrade Policy
+
+All maintenance to the CloudHub console, platform services, and worker
+cloud (see
+link:/documentation/display/current/CloudHub+Architecture[CloudHub
+Architecture]) is performed during the maintenance windows specified in
+the http://www.mulesoft.com/terms/msa/current[subscription agreement],
+except for critical security issues which are fixed immediately.
+
+It is our policy to perform all maintenance transparently and without
+any downtime to your integration(s) running in the worker cloud wherever
+possible. In cases where downtime for the console, platform services, or
+workers is unavoidable, these maintenance windows will be communicated
+at least 8 hours in advance and typically 7 days in advance, with the
+exception of critical security patches which may be fixed immediately.
+
+View the live status and detailed service history for the CloudHub
+console, CloudHub platform services, and the CloudHub worker cloud on
+http://trust.mulesoft.com/[trust.mulesoft.com].
+
+ 
+
+[[MaintenanceandUpgradePolicy-MuleVersionUpgrades]]
+== Mule Version Upgrades
+
+For the worker cloud, there are additional policies which apply to Mule
+version upgrades.  For each release type, there is a minimum deprecation
+period which starts after a new version is released. This is how long
+the previous version will be supported. For example, if a new minor
+version 3.6 is released, the previous minor version, 3.5, will be
+supported for at least 12 months after the release of 3.6.
+
+ Customers will receive notices prompting them to upgrade their
+applications during this deprecation period. If after the specified time
+an application is not upgraded, the application will be restarted using
+CloudHub Zero Downtime on the new Mule version.
+
+ 
+
+Release Type
+Minimum Deprecation Period
+*Mule bug fix release (e.g. 3.4.1)*
+90 days
+*Mule minor version (e.g. 3.5.x)*
+12 months
+*Mule major version (e.g. Mule 3.x.y)*
+18 months
+*CloudHub Runtime Release (e.g. Dec 2013)*
+4 months
+*   +
+*

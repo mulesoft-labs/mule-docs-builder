@@ -1,0 +1,157 @@
+[[CustomApplicationAlerts-CustomApplicationAlerts]]
+= Custom Application Alerts
+
+ Contents
+* link:#CustomApplicationAlerts-Prerequisites[Prerequisites]
+* link:#CustomApplicationAlerts-CloudHubConnector[CloudHub Connector]
+* link:#CustomApplicationAlerts-DeployingYourApplication[Deploying Your
+Application]
+* link:#CustomApplicationAlerts-TriggeringYourNotification[Triggering
+Your Notification]
+* link:#CustomApplicationAlerts-CreatingaCustomAlert[Creating a Custom
+Alert]
+* link:#CustomApplicationAlerts-CreatingaNotificationError[Creating a
+Notification Error]
+
+Notifications give you the ability to give visibility into business
+related events inside your application. For example, you can raise
+notifications when:
+
+* Your application is unable to connect to a remote service
+* An error occurs which requires human intervention, such as a problem
+with data mapping
+* You want to create a summary of what occurred
+
+In combination with
+link:/documentation/display/current/Alerts+and+Notifications[alerts],
+you can direct these notifications to different people to act on the
+alerts and fix the underlying problems.
+
+This example will illustrate:
+
+* How to send business related events as notifications
+* How to send errors as notifications
+* How to send email alerts when notifications arrive
+
+To create notifications from your application, you'll use the
+http://www.mulesoft.org/connectors/cloudhub-connector[CloudHub
+connector]. This connector allows you to create custom notifications
+inside your flows and inside your exception strategies.
+
+[[CustomApplicationAlerts-Prerequisites]]
+== Prerequisites
+
+Before going further, you'll need to complete the
+link:/documentation/display/current/Hello+World+on+CloudHub[Hello World]
+example as this example will build on top of it. In addition, you will
+need to have "Mavenized" your project within Studio. For more
+information about how to do this, see
+the link:/documentation/display/current/Using+Maven+with+Mule[Using
+Maven with Mule] section.
+
+[[CustomApplicationAlerts-CloudHubConnector]]
+== CloudHub Connector
+
+First we need to add and configure the CloudHub connector to our
+previous flow for "Hello World." In Studio, find the *Cloudhub*
+connector on the right menu and then drag and release it next to the
+*Set Payload* transformer. It should look something like this: 
+
+image:/documentation/download/attachments/118981811/image2014-10-24+18%3A59%3A24.png?version=1&modificationDate=1414202364355[image]
+
+Open the configuration for the Cloudhub connector. You will need to
+create a new *Config Reference* for the connector by clicking the plus
+sign "+" and entering your credentials into the configuration. Then, set
+the properties like shown in the image below, making sure that you
+select the *Create notification* operation:
+
+image:/documentation/download/attachments/118981811/image2014-10-24+19%3A2%3A52.png?version=1&modificationDate=1414202572671[image]
+
+When your domain root is visited, the
+http://mulesoft.github.com/cloudhub-connector/mule/cloudhub.html#create-notification-from-flow[create-notification] operation
+on the CloudHub connector will create a "Hello World!" notification
+message for the domain that the application is currently running on.
+When running on CloudHub, this connector will authenticate automatically
+using a token from the environment so that it can be authenticated to
+post notifications to CloudHub. When running locally, this operation
+will send the message to the INFO log level.
+
+[cols=",",]
+|=======================================================================
+|image:/documentation/images/icons/emoticons/warning.png[image] |If you
+always want to create notifications on CloudHub, even when running
+locally, you can use the <create-notification/>. This will require you
+to configure the connector with your username and password when running
+locally.
+|=======================================================================
+
+[[CustomApplicationAlerts-DeployingYourApplication]]
+== Deploying Your Application
+
+To deploy your application, right-click the *hello_world* project, click
+**CloudHub**, and then click **Deploy to CloudHub**. Maven will
+automatically handle the CloudHub dependencies for you.
+
+[[CustomApplicationAlerts-TriggeringYourNotification]]
+== Triggering Your Notification
+
+Once your application is running, you can trigger the notification by
+simply going to your application's URL, for
+example: http://YOURAPP.cloudhub.io/hello-notification[http://YOURAPP.cloudhub.io/].
+The page should display a `Hello World `message, and automatically
+create a new notification in your CloudHub console. Next, return to the
+CloudHub console and you will see a new notification indicator in the
+top-right.
+
+image:/documentation/download/attachments/118981811/image2014-10-24+19%3A10%3A53.png?version=1&modificationDate=1414203053709[image]
+
+[[CustomApplicationAlerts-CreatingaCustomAlert]]
+== Creating a Custom Alert
+
+Alerts allow you to send emails based on your application notifications.
+To create a custom alert for your application notification, click on
+your hello world application, and then click **Alerts **from the left
+menu. On the **New Alert** dialog, 
+
+* Click *New alert*
+* Enter an alert name, "Hello World"
+* Optionally select your application name or leave the selection as
+"any"
+* Select "custom application notification" as the event type
+* Enter "Hello" as the text you want the notification to match
+* Enter email addresses that you wish to email to
+* Click *Create*
+
+image:/documentation/download/attachments/118981811/image2014-10-24+19%3A14%3A23.png?version=1&modificationDate=1414203264307[image]
+
+This will create your alert. Now, trigger your notification again by
+going to your application's URL, for
+example: http://YOURAPP.cloudhub.io/hello-notification[http://YOURAPP.cloudhub.io/].
+You will shortly receive an email with your notification in it!
+
+[[CustomApplicationAlerts-CreatingaNotificationError]]
+== Creating a Notification Error
+
+In addition to sending notifications from business events, you may want
+to send notifications when errors happen so they can be acted upon. To
+do this, you can use the CloudHub connector inside an catch exception
+strategy. To do this, add the following XML to your mule-config.xml:
+
+This flow will throw an exception and create a notification from that
+exception with the message "Error processing transaction." The exception
+stack trace for the flow will be attached to the message. This can
+optionally be turned off using the attachStacktrace attribute.
+
+As before, link:#CustomApplicationAlerts-buildanddeploy[build and deploy
+your application], and then go to the URL:
+http://YOURAPP.cloudhub.io/create-notification-from-exception. Then
+return to the CloudHub console, and you will see a notification pop-up
+in the top-right. Click on the notifications link and you will see the
+notification with the stack trace in the notifications list.
+
+image:/documentation/download/attachments/118981811/notifications+-+exception.png?version=1&modificationDate=1414198435994[image]
+
+To view the whole stack trace and details, click "More..." and you will
+see the whole message in a pop-up window like the one below.
+
+image:/documentation/download/attachments/118981811/notifications+-+stack+trace.png?version=1&modificationDate=1414198436006[image]

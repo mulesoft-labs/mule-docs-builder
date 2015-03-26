@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="/docs/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link href="/docs/css/asciidoctor.css" rel="stylesheet">
+    <link href="/docs/css/mule-docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+    <script src="/docs/js/jquery-1.11.2.min.js"></script>
+    <script src="/docs/js/bootstrap.js"></script>
+    <title>MuleSoft Documentation - Build a Hello World Application</title>
+</head>
+<body>
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<div class="navbar navbar-inverse navbar-static-top">
+    <div class="navbar-inner">
+        <div class="container-fluid" id="top">
+            <img src="/docs/img/mule-docs-logo.png">
+        </div>
+    </div>
+</div>
+<div class="container" id="main">
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="toc">
+
+                <li class="toc-section"><div class="toc-section-header child"><a href="/docs/30-mins-with-mule/">First 30 Minutes with Mule</a><a href="#C0T4TDJTO2" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="C0T4TDJTO2" style="height: 0px;"><a href="/docs/30-mins-with-mule/anypoint-platform-primer"><li class="child">Anypoint Platform Primer</li></a><a href="/docs/30-mins-with-mule/anypoint-studio-essentials"><li class="child">Anypoint Studio Essentials</li></a><a href="/docs/30-mins-with-mule/begin-with-the-basics"><li class="child">Begin with the Basics</li></a><a href="/docs/30-mins-with-mule/build+a+hello+world+application"><li class="child active">Build a Hello World Application</li></a><a href="/docs/30-mins-with-mule/download-and-launch-anypoint-studio"><li class="child">Download and Launch Anypoint Studio</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/">CloudHub</a><a href="#PH208CCCWL" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="PH208CCCWL"><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/getting-started-with-cloudhub">Getting Started with CloudHub</a><a href="#DRXIYE8CIU" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="DRXIYE8CIU"><a href="/docs/cloudhub/cloudhub-at-a-glance"><li class="child">CloudHub at a Glance</li></a><a href="/docs/cloudhub/hello-world-on-cloudhub"><li class="child">Hello World on CloudHub</li></a><a href="/docs/cloudhub/cloudhub-getting-started-with-connectors"><li class="child">Getting Started with Connectors</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-tutorials">CloudHub Tutorials</a><a href="#YQOA5UOU2K" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="YQOA5UOU2K"><a href="/docs/cloudhub/cloudhub-building-an-https-service"><li class="child">Building an HTTPS Service</li></a><a href="/docs/cloudhub/cloudhub-custom-application-alerts"><li class="child">Custom Application Alerts</li></a></ul></li><a href="/docs/cloudhub/developing-a-cloudhub-application"><li class="child">Developing a CloudHub Application</li></a><a href="/docs/cloudhub/deploying-a-cloudhub-application"><li class="child">Deploying a CloudHub Application</li></a><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/managing-cloudhub-applications">Managing CloudHub Applications</a><a href="#B7JQ1NIJR8" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="B7JQ1NIJR8"><a href="/docs/cloudhub/cloudhub-console-overview"><li class="child">CloudHub Console Overview</li></a><a href="/docs/cloudhub/cloudhub-administration"><li class="child">CloudHub Administration</li></a><a href="/docs/cloudhub/cloudhub-alerts-and-notifications"><li class="child">CloudHub Alerts and Notifications</li></a><a href="/docs/cloudhub/cloudhub-fabric"><li class="child">CloudHub Fabric</li></a><a href="/docs/cloudhub/cloudhub-insight"><li class="child">CloudHub Insight</li></a><a href="/docs/cloudhub/cloudhub-command-line-tools"><li class="child">Command Line Tools</li></a><a href="/docs/cloudhub/cloudhub-managing-application-data-with-object-stores"><li class="child">Managing Application Data with Object Stores</li></a><a href="/docs/cloudhub/cloudhub-managing-queues"><li class="child">Managing Queues</li></a><a href="/docs/cloudhub/cloudhub-managing-schedules"><li class="child">Managing Schedules</li></a><a href="/docs/cloudhub/cloudhub-secure-application-properties"><li class="child">Secure Application Properties</li></a><a href="/docs/cloudhub/cloudhub-viewing-log-data"><li class="child">Viewing Log Data</li></a><a href="/docs/cloudhub/cloudhub-virtual-private-cloud"><li class="child">Virtual Private Cloud</li></a><a href="/docs/cloudhub/cloudhub-worker-monitoring"><li class="child">CloudHub Worker Monitoring</li></a><a href="/docs/cloudhub/cloudhub-penetration-testing-policies"><li class="child">Penetration Testing Policies</li></a><a href="/docs/cloudhub/secure-data-gateway"><li class="child">Secure Data Gateway</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-api">CloudHub API</a><a href="#MRQ9OBG01Y" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="MRQ9OBG01Y"><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-applications">Applications</a><a href="#T6BUL66CMK" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="T6BUL66CMK"><a href="/docs/cloudhub/cloudhub-create-application"><li class="child">Create Application</li></a><a href="/docs/cloudhub/cloudhub-delete-application"><li class="child">Delete Application</li></a><a href="/docs/cloudhub/cloudhub-deploy-application"><li class="child">Deploy Application</li></a><a href="/docs/cloudhub/cloudhub-get-application"><li class="child">Get Application</li></a><a href="/docs/cloudhub/cloudhub-list-all-applications"><li class="child">List All Applications</li></a><a href="/docs/cloudhub/cloudhub-update-application-metadata"><li class="child">Update Application Metadata</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-logs">Logs</a><a href="#RZX1B88WHQ" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="RZX1B88WHQ"><a href="/docs/cloudhub/cloudhub-list-all-logs"><li class="child">List All Logs</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-notifications">Notifications</a><a href="#PJOBJ0U9OX" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="PJOBJ0U9OX"><a href="/docs/cloudhub/cloudhub-create-notification"><li class="child">Create Notification</li></a><a href="/docs/cloudhub/cloudhub-list-notifications"><li class="child">List Notifications</li></a><a href="/docs/cloudhub/cloudhub-update-all-notifications"><li class="child">Update All Notifications</li></a><a href="/docs/cloudhub/cloudhub-update-notification"><li class="child">Update Notification</li></a></ul></li></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-architecture">CloudHub Architecture</a><a href="#CE77KRATJE" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="CE77KRATJE"><a href="/docs/cloudhub/cloudhub-networking-guide"><li class="child">CloudHub Networking Guide</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-reference-materials">CloudHub Reference Materials</a><a href="#0XM3SHYRRM" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="0XM3SHYRRM"><a href="/docs/cloudhub/cloudhub-amazon-rds-support"><li class="child">CloudHub Amazon RDS Support</li></a><a href="/docs/cloudhub/cloudhub-configure-twitter-for-api-access"><li class="child">Configure Twitter for API Access</li></a><a href="/docs/cloudhub/cloudhub-configure-twilio-for-api-access"><li class="child">Configure Twilio for API Access</li></a><a href="/docs/cloudhub/cloudhub-salesforce-developer-account-setup"><li class="child">Salesforce Developer Account Setup</li></a></ul></li><a href="/docs/cloudhub/cloudhub-maintenance-and-upgrade-policy"><li class="child">Maintenance and Upgrade Policy</li></a><a href="/docs/cloudhub/cloudhub-community-and-support"><li class="child">Community and Support</li></a><a href="/docs/cloudhub/cloudhub-mule-esb-and-cloudhub"><li class="child">Mule ESB and CloudHub</li></a><a href="/docs/cloudhub/cloudhub-faq"><li class="child">FAQ</li></a></ul></li>
+
+            </ul>
+
+        </div>
+        <!--/span-->
+        <div class="col-md-9">
+            <div id="content">
+
+                <ol class="breadcrumb"><li><a href="developers.mulesoft.com/docs/">MuleSoft Docs</a></li><li><a href="">First 30 Minutes with Mule</a></li><li class="active">Build a Hello World Application</li></ol>
+
+                <div id="header">
+                    <h1>Build a Hello World Application</h1>
+                </div>
+                <div id="doc-metadata">
+                    <!--<span class="updated-date" style="color:#B1B1B1;">Updated: January 15, 2015</span>
+                   <span class="updated-date" style="color:#DDD; padding: 0 0 0 7px;">/</span>-->
+                    <span class="updated-date" style="color:#B1B1B1; padding: 0 0 0 0px;">Version: </span>
+       <span class="dropdown" style="padding: 0 7px 0 0px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Current <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#">January 2015</a></li>
+            <li><a href="#">October 2014</a></li>
+            <li><a href="#">July 2014</a></li>
+        </ul> </span>
+                    <span class="updated-date" style="color:#DDD; padding: 0 0 0 0px;">/</span>
+       <span class="dropdown" style="padding: 0 7px 0 7px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Export <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#">PDF - Only this page</a></li>
+            <li><a href="#">PDF - CloudHub section</a></li>
+            <li><a href="#">EPub - MuleSoft Docs</a></li>
+        </ul> </span>
+                    <span class="updated-date" style="color:#DDD; padding: 0 0 0 0px;">/</span>
+       <span class="dropdown" style="padding: 0 7px 0 7px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Feedback <span class="caret"></span></a>
+       <ul class="dropdown-menu" role="menu">
+           <li><a href="#">Rate this Topic</a></li>
+           <li><a href="#">Edit on GitHub</a></li>
+       </ul> </span>
+                </div>
+
+                <div id="preamble"> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>It’s time to roll up your sleeves and build your first Anypoint™ Studio application!</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>As the objective of this quick tutorial is get something built and running fast, this document doesn’t spend much time explaining components. More detailed explanations and concepts exist in the <a href="Build+a+Hello+World+Application/First+Day+with+Mule.asciidoc">First Day with Mule</a> and <a href="Build+a+Hello+World+Application/First+Week+with+Mule.asciidoc">First Week with Mule</a> sections of the <a href="Build+a+Hello+World+Application/Mule+Fundamentals.asciidoc">Mule Fundamentals</a>, but for now, let’s just see Mule work: you’re about to build a very simple application in Studio, deploy it to Studio’s embedded server, then interact with the application through a Web browser.</p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="assumptions"><a class="anchor" href="#assumptions"></a>Assumptions</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>This tutorial assumes that you have&nbsp;<a href="Build+a+Hello+World+Application/Download+and+Launch+Anypoint+Studio.asciidoc">downloaded, installed, and launched Anypoint Studio</a>,&nbsp; and that you’ve read through the <a href="Build+a+Hello+World+Application/Anypoint+Studio+Essentials.asciidoc">Anypoint Studio Essentials</a>.</p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="creating-a-new-project"><a class="anchor" href="#creating-a-new-project"></a>Creating a New Project</h2> 
+ <div class="sectionbody"> 
+  <div class="olist arabic"> 
+   <ol class="arabic"> 
+    <li> <p>In Anypoint Studio, click&nbsp;<strong>File</strong>&nbsp;then select&nbsp;<strong>New</strong>&nbsp;&gt;&nbsp;<strong>Mule Project</strong>.</p> </li> 
+    <li> <p>Studio opens the&nbsp;<strong>New Mule Project</strong>&nbsp;wizard. In the&nbsp;<strong>Name</strong>&nbsp;field, enter the value <code>My First Project</code>, then click <strong>Finish</strong>.<br> <br> image::myfirstproject.png[image]<br> <br></p> </li> 
+    <li> <p>Studio opens a blank canvas. Begin designing your project by dragging and dropping an <strong>HTTP Connector</strong> from the <strong>palette</strong> onto the <strong>canvas</strong>. Notice that Studio automatically wraps the connector with a <strong>flow</strong>,&nbsp;thus saving you the step of manually creating one.&nbsp;<br> <br> image::helloworld1.png[image]<br> <br></p> </li> 
+    <li> <p>Add to your flow with an <strong>Echo Component</strong>, dragging it next to the HTTP connector on the canvas.&nbsp;</p> </li> 
+    <li> <p>Click the <strong>Configuration XML</strong> tab (at the base of the canvas) to see your application represented in XML. Studio’s two-way editing functionality ensures that anything you add or change in the graphical interface is reflected in the XML config. (Use the tabs below to see both the graphical and XML representations of the application.)</p> 
+     <div class="imageblock"> 
+      <div class="content"> 
+       <img src="images/messageflow.png" alt="image"> 
+      </div> 
+     </div> 
+     <div class="paragraph"> 
+      <p><span class="image"><img src="images/xmlview.png" alt="image"></span></p> 
+     </div> </li> 
+    <li> <p>Click the <strong>Message Flow</strong> tab to return to the graphical editor, then click&nbsp;the <strong>save</strong> icon to save your project.&nbsp;</p> </li> 
+   </ol> 
+  </div> 
+ </div> 
+</div> 
+<h1 id="configuring-the-project" class="sect0"><a class="anchor" href="#configuring-the-project"></a>Configuring the Project</h1> 
+<div class="paragraph"> 
+ <p>Now that you’ve modeled a basic application in Studio, you can take the steps to configure each individual element.&nbsp;</p> 
+</div> 
+<div class="olist arabic"> 
+ <ol class="arabic"> 
+  <li> <p>Click the HTTP Connector on the canvas to open its&nbsp;<strong>Properties Editor</strong> in the console (see image below).</p> </li> 
+  <li> <p>The HTTP Connector&nbsp;allows your Mule application to connect to Web resources through the HTTP or HTTPS protocol. In a more complex application, you would use this editor to configure values for the attributes so as to define the connection details for your application. For this project, keep the default values for all fields.<br> <br> image::HTTP-unconfig.png[image]<br> <br></p> </li> 
+  <li> <p>Click&nbsp;the <strong>Echo Component</strong> on the canvas to open its&nbsp;<strong>Properties Editor</strong>&nbsp;in the console (see image below).</p> </li> 
+  <li> <p>The Echo Component simply returns the message payload in response to the HTTP request.&nbsp;For this project, keep the default values for all fields.<br> <br> image::echo-unconfig.png[image]<br> <br></p> </li> 
+  <li> <p>Once again, you can click the <strong>Configuration XML</strong> to view your changes in the XML config (see code below). Click the <strong>save</strong> icon to save your changes.</p> 
+   <div class="listingblock"> 
+    <div class="content"> 
+     <pre class="highlight"><code class="language-xml" data-lang="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+&lt;mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+    xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.5.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd"&gt;
+
+    &lt;flow name="my_first_projectFlow1" doc:name="my_first_projectFlow1"&gt;
+        &lt;http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" doc:name="HTTP"/&gt;
+        &lt;echo-component doc:name="Echo"/&gt;
+    &lt;/flow&gt;
+
+&lt;/mule&gt;</code></pre> 
+    </div> 
+   </div> </li> 
+ </ol> 
+</div> 
+<div class="sect1"> 
+ <h2 id="deploying-the-project"><a class="anchor" href="#deploying-the-project"></a>Deploying the Project</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>Anypoint Studio comes bundled with its own embedded server, ideal for testing deployments as you code. You can deploy your application on the embedded server to see it working and perform any debugging activities before deploying to a production environment, such as an on-premises server or <a href="Build+a+Hello+World+Application/CloudHub.asciidoc">CloudHub</a>.</p> 
+  </div> 
+  <div class="olist arabic"> 
+   <ol class="arabic"> 
+    <li> <p>In the <strong>Package Explorer</strong>, right click the project name, then select <strong>Run As</strong> &gt; <strong>Mule Application</strong>.<br> <br> image::runasmuleapp.png[image]</p> </li> 
+    <li> <p>Studio launches the application on the embedded server, displaying its actions in the console. When complete, the console message reads <code>Started app 'my_first_project'&nbsp;</code><br> <br> image::firstconsole.png[image]</p> </li> 
+   </ol> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="interacting-with-the-project"><a class="anchor" href="#interacting-with-the-project"></a>Interacting with the Project</h2> 
+ <div class="sectionbody"> 
+  <div class="olist arabic"> 
+   <ol class="arabic"> 
+    <li> <p>Open a Web browser.&nbsp;</p> </li> 
+    <li> <p>Navigate to your application’s URL, appending it with a string that becomes the message payload. For example:<br> <br> <code><a href="http://localhost:8081/Hello_world" class="bare">http://localhost:8081/Hello_world</a></code><br> <br></p> </li> 
+    <li> <p>The application accepts the request via its HTTP endpoint, then "echoes" the same payload as the response in your browser.<br> <br> <span class="image"><img src="images/hello_world.png" alt="image"></span><br> <br></p> </li> 
+    <li> <p>In Studio, stop the application from running using the <strong>terminate</strong> icon in the console (see below).<br> <br> image::stopapp.png[image]</p> 
+     <div class="literalblock"> 
+      <div class="content"> 
+       <pre>&nbsp;</pre> 
+      </div> 
+     </div> </li> 
+   </ol> 
+  </div> 
+ </div> 
+</div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+= Introduction
+:imagesdir: images
+
+The first section of a three-part syllabus for learning
+link:images/First+30+Minutes+with+Mule/Mule+Fundamentals.asciidoc[Mule Fundamentals],
+the *First 30 Minutes with Mule* is designed to introduce
+you to Mule and walk you through the steps to build and run your first
+Mule application. 
+
+Read the following sections to build your knowledge of, and
+familiarity with Mule. When you've read the basics, continue your
+learning with the
+link:http://www.mulesoft.org/documentation/display/current/First+Day+with+Mule[*First Day with Mule*] and
+link:http://www.mulesoft.org/documentation/display/current/First+Week+with+Mule[*First Week with Mule*] sections.

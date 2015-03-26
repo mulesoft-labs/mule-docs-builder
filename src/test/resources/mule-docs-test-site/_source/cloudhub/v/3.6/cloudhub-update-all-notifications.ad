@@ -1,0 +1,10 @@
+[[UpdateAllNotifications-UpdateAllNotifications]]
+= Update All Notifications
+
+The PUT operation specified with the /api/notifications resource updates
+all notifications. Currently, the only update that can be applied is
+marking all notifications as read.
+
+Example Request:
+
+Example Response:
