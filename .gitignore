@@ -1,0 +1,13 @@
+.classpath
+.settings
+.project
+.jruby
+*.iml
+*.ipr
+*.iws
+target
+.idea
+.DS_Store
+credentials.properties
+/bin
+/target
