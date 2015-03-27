@@ -7,7 +7,7 @@
 *.iws
 target
 .idea
-.DS_Store
+*.DS_Store
 credentials.properties
 /bin
 /target
