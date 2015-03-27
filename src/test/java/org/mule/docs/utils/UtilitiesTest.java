@@ -1,14 +1,11 @@
 package org.mule.docs.utils;
 
-import org.apache.commons.lang3.StringUtils;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import org.mule.docs.loader.DocBuildException;
+import org.mule.docs.processor.DocBuildException;
 import org.mule.docs.model.AsciiDocPage;
 import org.mule.docs.model.TocNode;
-import org.mule.docs.utils.TestUtilities;
-import org.mule.docs.utils.Utilities;
 
 import java.io.File;
 import java.util.ArrayList;

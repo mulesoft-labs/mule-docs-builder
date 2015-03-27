@@ -42,7 +42,7 @@ public class SiteTableOfContents {
         Element item = doc.select("li").first();
         String link = item.select("a").first().attr("href");
         String title = item.select("a").first().text();
-        TocNode firstNode = new TocNode(link, title, null);
+        TocNode firstNode = new TocNode(link, title);
         item.remove();
         nodes.add(firstNode);
     }

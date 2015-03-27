@@ -1,4 +1,4 @@
-package org.mule.docs.loader;
+package org.mule.docs.processor;
 
 /**
  * Created by sean.osterberg on 2/20/15.

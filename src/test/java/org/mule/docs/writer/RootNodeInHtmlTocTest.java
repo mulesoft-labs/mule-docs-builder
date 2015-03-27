@@ -1,7 +1,7 @@
 package org.mule.docs.writer;
 
 import org.junit.Test;
-import org.mule.docs.loader.DocBuildException;
+import org.mule.docs.processor.DocBuildException;
 import org.mule.docs.model.AsciiDocPage;
 import org.mule.docs.model.RootNodeFromHtmlToc;
 import org.mule.docs.model.TocNode;

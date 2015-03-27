@@ -2,13 +2,12 @@ package org.mule.docs.writer;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
-import org.mule.docs.loader.DocBuildException;
+import org.mule.docs.processor.DocBuildException;
 import org.mule.docs.model.AsciiDocPage;
 import org.mule.docs.model.PageVersion;
 import org.mule.docs.model.Section;
 import org.mule.docs.utils.TestUtilities;
 import org.mule.docs.utils.Utilities;
-import org.mule.docs.writer.VersionSelector;
 
 import java.io.File;
 import java.util.ArrayList;

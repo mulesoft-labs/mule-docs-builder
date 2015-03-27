@@ -1,5 +1,6 @@
 package org.mule.docs.model;
 
+
 /**
  * Created by Mulesoft.
  */
@@ -12,14 +13,6 @@ public interface IPageElementVisitor {
      * @return true if the child's need to be visited
      */
     boolean visit(IPageElement pageElement);
-
-    /**
-     * Visit site
-     *
-     * @param site site
-     * @return true if the child's need to be visited
-     */
-    boolean visit(Site site);
 
     /**
      * Visit asciiDocPage

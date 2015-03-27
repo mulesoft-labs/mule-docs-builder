@@ -19,6 +19,10 @@ public class TocNode implements IPageElement {
         children = new ArrayList<TocNode>();
     }
 
+    public TocNode(String url, String title) {
+        this(url,title,null);
+    }
+
     public String getUrl() {
         return url;
     }

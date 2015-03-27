@@ -16,12 +16,6 @@ public class DefaultPageElementVisitor implements IPageElementVisitor {
     }
 
     @Override
-    public boolean visit(Site site) {
-        logger.debug("Visiting site:" + site);
-        return true;
-    }
-
-    @Override
     public boolean visit(AsciiDocPage asciiDocPage) {
         logger.debug("Visiting asciiDocPage:" + asciiDocPage);
         return true;

@@ -1,11 +1,9 @@
 package org.mule.docs.writer;
 
 import org.junit.Test;
-import org.mule.docs.loader.DocBuildException;
+import org.mule.docs.processor.DocBuildException;
 import org.mule.docs.utils.TestUtilities;
 import org.mule.docs.utils.Utilities;
-import org.mule.docs.writer.Template;
-import org.mule.docs.writer.TemplateType;
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertThat;

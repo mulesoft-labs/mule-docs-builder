@@ -6,13 +6,12 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.mule.docs.loader.DocBuildException;
+import org.mule.docs.processor.DocBuildException;
 import org.mule.docs.model.TocNode;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.UUID;
 
 /**

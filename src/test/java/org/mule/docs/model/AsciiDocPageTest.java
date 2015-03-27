@@ -2,8 +2,7 @@ package org.mule.docs.model;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
-import org.mule.docs.loader.DocBuildException;
-import org.mule.docs.model.AsciiDocPage;
+import org.mule.docs.processor.DocBuildException;
 import org.mule.docs.utils.TestUtilities;
 import org.mule.docs.utils.Utilities;
 
@@ -33,7 +32,7 @@ public class AsciiDocPageTest {
     public void getPagesFromFiles_ReturnsNonEmptyPages() {
         List<AsciiDocPage> pages = AsciiDocPage.fromFiles(getValidFiles());
         for (AsciiDocPage page : pages) {
-            assertFalse(StringUtils.isBlank(page.getFilename()));
+            assertFalse(StringUtils.isBlank(page.getFilePath()));
             assertFalse(StringUtils.isBlank(page.getAsciiDoc()));
         }
     }
@@ -52,7 +51,7 @@ public class AsciiDocPageTest {
     @Test
     public void getPageFromFile_ReturnsNonEmptyPage() {
         AsciiDocPage page = AsciiDocPage.fromFile(getValidFile());
-        assertFalse(StringUtils.isBlank(page.getFilename()));
+        assertFalse(StringUtils.isBlank(page.getFilePath()));
         assertFalse(StringUtils.isBlank(page.getAsciiDoc()));
     }
 

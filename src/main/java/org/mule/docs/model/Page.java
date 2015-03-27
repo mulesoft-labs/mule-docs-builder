@@ -1,16 +1,9 @@
 package org.mule.docs.model;
 
 import org.apache.log4j.Logger;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.mule.docs.loader.DocBuildException;
-import org.mule.docs.utils.Utilities;
 import org.mule.docs.writer.HtmlWriter;
 import org.mule.docs.writer.Template;
-import org.mule.docs.writer.TemplateType;
-import org.mule.docs.writer.VersionSelector;
 
-import javax.swing.text.html.HTML;
 import java.util.ArrayList;
 import java.util.List;
 

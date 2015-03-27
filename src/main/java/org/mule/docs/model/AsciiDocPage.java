@@ -6,14 +6,13 @@ import org.apache.log4j.Logger;
 import static org.asciidoctor.Asciidoctor.Factory.create;
 
 import org.asciidoctor.Asciidoctor;
-import org.asciidoctor.Options;
-import org.asciidoctor.SafeMode;
 
 import java.io.File;
 import java.util.*;
 
 import org.asciidoctor.ast.DocumentHeader;
 import org.jsoup.Jsoup;
+import org.mule.docs.processor.AsciiDocProcessor;
 import org.mule.docs.utils.Utilities;
 
 /**
@@ -24,7 +23,7 @@ public class AsciiDocPage implements IPageElement {
     private static Logger logger = Logger.getLogger(AsciiDocPage.class);
     private static Asciidoctor processor;
     private String baseName;
-    private String filepath;
+    private String filePath;
     private String asciiDoc;
     private String html;
     private String title;
@@ -32,7 +31,7 @@ public class AsciiDocPage implements IPageElement {
 
     public AsciiDocPage(String filename, String baseName, String asciiDoc, String html, String title) {
         validateInputParams(new String[] { filename, asciiDoc, html });
-        this.filepath = filename;
+        this.filePath = filename;
         this.baseName = baseName;
         this.asciiDoc = asciiDoc;
         this.html = html;
@@ -40,7 +39,6 @@ public class AsciiDocPage implements IPageElement {
     }
 
     public static List<AsciiDocPage> fromFiles(List<File> asciiDocFiles) {
-        processor = create();
         List<AsciiDocPage> docPages = new ArrayList<AsciiDocPage>();
         for (File file : asciiDocFiles) {
             docPages.add(getPageFromFile(file));
@@ -56,7 +54,7 @@ public class AsciiDocPage implements IPageElement {
 
     private static AsciiDocPage getPageFromFile(File asciiDocFile) {
         Utilities.validateAsciiDocFile(asciiDocFile);
-        String html = processor.convertFile(asciiDocFile, getOptionsForConversion());
+        String html = AsciiDocProcessor.getProcessorInstance().convertFile(asciiDocFile);
         AsciiDocPage page = new AsciiDocPage(
                 asciiDocFile.getPath(),
                 FilenameUtils.getBaseName(asciiDocFile.getName()),
@@ -91,31 +89,12 @@ public class AsciiDocPage implements IPageElement {
         return Jsoup.parse(html, "UTF-8").title();
     }
 
-    private static Options getOptionsForConversion() {
-        Options options = new Options();
-        options.setBackend("html");
-        options.setToFile(false);
-        options.setHeaderFooter(true);
-        options.setSafe(SafeMode.SAFE);
-        options.setAttributes(getAttributesForConversion());
-        return options;
-    }
-
-    private static Map<String, Object> getAttributesForConversion() {
-        Map<String, Object> attributes = new HashMap<String, Object>();
-        attributes.put("sectanchors", "true");
-        attributes.put("idprefix", "");
-        attributes.put("idseparator", "-");
-        attributes.put("icons", "font");
-        return attributes;
-    }
-
     private void validateInputParams(String[] params) {
         Utilities.validateCtorStringInputParam(params, AsciiDocPage.class.getSimpleName());
     }
 
-    public String getFilename() {
-        return filepath;
+    public String getFilePath() {
+        return filePath;
     }
 
     public String getAsciiDoc() {

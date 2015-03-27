@@ -1,7 +1,7 @@
 package org.mule.docs.writer;
 
 import org.apache.commons.io.FilenameUtils;
-import org.mule.docs.loader.DocBuildException;
+import org.mule.docs.processor.DocBuildException;
 import org.mule.docs.utils.Utilities;
 
 import java.io.File;

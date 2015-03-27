@@ -5,7 +5,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.mule.docs.loader.DocBuildException;
+import org.mule.docs.processor.DocBuildException;
 import org.mule.docs.utils.Utilities;
 
 /**
@@ -26,7 +26,7 @@ public class RootNodeFromHtmlToc {
         String contentHtml = Utilities.getOnlyContentDivFromHtml(asciiDocPage.getHtml());
         Document htmlToc = Jsoup.parse(contentHtml, "UTF-8");
         TocNode rootNode = getRootNodeFromRawTocHtml(htmlToc);
-        logger.debug("Created root node for TOC page \"" + asciiDocPage.getFilename() + "\".");
+        logger.debug("Created root node for TOC page \"" + asciiDocPage.getFilePath() + "\".");
         return new RootNodeFromHtmlToc(rootNode);
     }
 
@@ -110,8 +110,8 @@ public class RootNodeFromHtmlToc {
     }
 
     private static void validateThatAsciiDocPageIsToc(AsciiDocPage page) {
-        if (!page.getFilename().endsWith("toc.ad")) {
-            String error = "AsciiDoc page appears to be invalid for processing table of contents: \"" + page.getFilename() + "\".";
+        if (!page.getFilePath().endsWith("toc.ad")) {
+            String error = "AsciiDoc page appears to be invalid for processing table of contents: \"" + page.getFilePath() + "\".";
             logger.fatal(error);
             throw new DocBuildException(error);
         }

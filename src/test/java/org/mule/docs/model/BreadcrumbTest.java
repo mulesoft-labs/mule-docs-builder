@@ -1,9 +1,7 @@
 package org.mule.docs.model;
 
 import org.junit.Test;
-import org.mule.docs.loader.DocBuildException;
-import org.mule.docs.model.Breadcrumb;
-import org.mule.docs.model.TocNode;
+import org.mule.docs.processor.DocBuildException;
 import org.mule.docs.utils.TestUtilities;
 import org.mule.docs.utils.Utilities;
 
