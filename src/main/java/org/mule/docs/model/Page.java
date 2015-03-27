@@ -3,6 +3,7 @@ package org.mule.docs.model;
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.mule.docs.loader.DocBuildException;
 import org.mule.docs.utils.Utilities;
 import org.mule.docs.writer.Template;
 import org.mule.docs.writer.TemplateType;
@@ -53,7 +54,7 @@ public class Page implements IPageElement{
             }
         }
         // Todo: implement with logic for other templates and probably move to the org.mule.docs.writer.Template class instead.
-        return null;
+        throw new DocBuildException("Unsupported Template");
     }
 
     private static String getPageTitle(AsciiDocPage page) {
