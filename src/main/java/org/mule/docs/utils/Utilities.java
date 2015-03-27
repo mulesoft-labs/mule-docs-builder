@@ -95,13 +95,6 @@ public class Utilities {
         return s;
     }
 
-    public static boolean isStringNullOrEmptyOrWhitespace(String string) {
-        if((string == null) || (string.isEmpty() || (StringUtils.isWhitespace(string)))) {
-            return true;
-        }
-        return false;
-    }
-
     public static StringBuilder replaceText(StringBuilder original, String toReplace, String replacement) {
         String modified = original.toString().replace(toReplace, replacement);
         return new StringBuilder(modified);
@@ -114,7 +107,7 @@ public class Utilities {
 
     public static void validateCtorStringInputParam(String[] params, String className) {
         for(String param : params) {
-            if (Utilities.isStringNullOrEmptyOrWhitespace(param)) {
+            if (StringUtils.isBlank(param)) {
                 String error = "Constructor input parameter for " + className + " cannot be null, empty, or whitespace.";
                 logger.fatal(error);
                 throw new DocBuildException(error);

@@ -33,7 +33,7 @@ public class VersionSelectorTest {
         VersionSelector selector = VersionSelector.fromSection(getValidSection());
         String html = selector.htmlForPage(
                 AsciiDocPage.fromFile(new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub.ad" }))));
-        assertTrue(!Utilities.isStringNullOrEmptyOrWhitespace(html));
+        assertTrue(!StringUtils.isBlank(html));
     }
 
     @Test

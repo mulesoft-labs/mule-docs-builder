@@ -31,7 +31,7 @@ public class SiteTocHtmlTest {
     public void getTocHtmlForSectionAndPage_WithValidSectionAndPage_ReturnsValidHtml() {
         SiteTocHtml siteToc = SiteTocHtml.fromSiteTocAndSections(getValidTocFile(), getValidSections());
         String html = siteToc.getTocHtmlForSectionAndPage(getValidSection(), getValidAsciiDocPage());
-        assertFalse(Utilities.isStringNullOrEmptyOrWhitespace(html));
+        assertFalse(StringUtils.isBlank(html));
         assertTrue(html.length() > 500);
         assertTrue(html.contains("<li class=\"child active\">Deploying a CloudHub Application</li>"));
     }
@@ -40,7 +40,7 @@ public class SiteTocHtmlTest {
     public void getTocHtmlForSectionAndPage_WithOrphanedPage_ReturnsUnselectedHtml() {
         SiteTocHtml siteToc = SiteTocHtml.fromSiteTocAndSections(getValidTocFile(), getValidSections());
         String html = siteToc.getTocHtmlForSectionAndPage(getValidSection(), getOrphanedAsciiDocPage());
-        assertFalse(Utilities.isStringNullOrEmptyOrWhitespace(html));
+        assertFalse(StringUtils.isBlank(html));
         assertTrue(html.length() > 500);
         assertFalse(html.contains("Testing123"));
     }
@@ -49,7 +49,7 @@ public class SiteTocHtmlTest {
     public void getTocHtmlForSectionAndPage_ForOldVersion_ReturnsValidHtml() {
         SiteTocHtml siteToc = SiteTocHtml.fromSiteTocAndSections(getValidTocFile(), getValidSections());
         String html = siteToc.getTocHtmlForSectionAndPage(getOldVersionSection(), getValidOldAsciiDocPage());
-        assertFalse(Utilities.isStringNullOrEmptyOrWhitespace(html));
+        assertFalse(StringUtils.isBlank(html));
         assertTrue(html.length() > 500);
         assertTrue(html.contains("<a href=\"/docs/cloudhub/v/4.0/\">CloudHub</a>"));
         assertTrue(html.contains("<li class=\"child active\">Deploying a CloudHub Application</li>"));

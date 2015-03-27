@@ -77,21 +77,21 @@ public class UtilitiesTest {
     @Test
     public void isStringNullOrEmptyOrWhitespace_WithNullString_ReturnsTrue() {
         String foo = null;
-        boolean result = Utilities.isStringNullOrEmptyOrWhitespace(foo);
+        boolean result = StringUtils.isBlank(foo);
         assertTrue(result);
     }
 
     @Test
     public void isStringNullOrEmptyOrWhitespace_WithEmptyString_ReturnsTrue() {
         String foo = "";
-        boolean result = Utilities.isStringNullOrEmptyOrWhitespace(foo);
+        boolean result = StringUtils.isBlank(foo);
         assertTrue(result);
     }
 
     @Test
     public void isStringNullOrEmptyOrWhitespace_WithWhitespaceString_ReturnsTrue() {
         String foo = "        ";
-        boolean result = Utilities.isStringNullOrEmptyOrWhitespace(foo);
+        boolean result = StringUtils.isBlank(foo);
         assertTrue(result);
     }
 
