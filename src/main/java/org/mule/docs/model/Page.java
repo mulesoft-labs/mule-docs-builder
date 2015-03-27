@@ -5,10 +5,12 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.mule.docs.loader.DocBuildException;
 import org.mule.docs.utils.Utilities;
+import org.mule.docs.writer.HtmlWriter;
 import org.mule.docs.writer.Template;
 import org.mule.docs.writer.TemplateType;
 import org.mule.docs.writer.VersionSelector;
 
+import javax.swing.text.html.HTML;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,50 +37,9 @@ public class Page implements IPageElement{
     }
 
     public static String getCompletePageContent(Section section, List<Section> sections, SiteTableOfContents toc, AsciiDocPage page, List<Template> templates) {
-        StringBuilder html = new StringBuilder(getTemplateContents(page, templates));
-        html = Utilities.replaceText(html, "{{ page.title }}", getPageTitle(page));
-        html = Utilities.replaceText(html, "{{ page.toc }}", getPageToc(toc, sections, section, page));
-        html = Utilities.replaceText(html, "{{ page.breadcrumb }}", getBreadcrumbHtml(section, page));
-        html = Utilities.replaceText(html, "{{ page.content }}", getContentHtml(page));
-        html = Utilities.replaceText(html, "{{ page.version }}", getVersionHtml(section, page));
-        logger.debug("Built page from template for \"" + getPageTitle(page) + "\".");
-        return html.toString();
-    }
 
-    private static String getTemplateContents(AsciiDocPage page, List<Template> templates) {
-        if(!page.containsAttribute("mule-template")) {
-            for(Template template : templates) {
-                if(template.getType().equals(TemplateType.DEFAULT)) {
-                    return template.getContents();
-                }
-            }
-        }
-        // Todo: implement with logic for other templates and probably move to the org.mule.docs.writer.Template class instead.
-        throw new DocBuildException("Unsupported Template");
-    }
-
-    private static String getPageTitle(AsciiDocPage page) {
-        return page.getTitle();
-    }
-
-    private static String getPageToc(SiteTableOfContents toc, List<Section> sections, Section section, AsciiDocPage page) {
-        SiteTocHtml tocHtml = SiteTocHtml.fromSiteTocAndSections(toc, sections);
-        return tocHtml.getTocHtmlForSectionAndPage(section, page);
-    }
-
-    private static String getBreadcrumbHtml(Section section, AsciiDocPage page) {
-        Breadcrumb breadcrumb = Breadcrumb.fromRootNode(section.getRootNode());
-        return breadcrumb.getHtmlForActiveUrl(page.getBaseName(), "/docs/" + section.getUrl());
-    }
-
-    private static String getContentHtml(AsciiDocPage page) {
-        Document doc = Jsoup.parse(page.getHtml(), "UTF-8");
-        return Utilities.getOnlyContentDivFromHtml(doc.html());
-    }
-
-    private static String getVersionHtml(Section section, AsciiDocPage page) {
-        VersionSelector version = VersionSelector.fromSection(section);
-        return version.htmlForPage(page);
+        logger.debug("Built page from template for \"" + page.getTitle() + "\".");
+        return HtmlWriter.getIntance().getPageContent(section,sections,toc,page);
     }
 
     public String getContent() {

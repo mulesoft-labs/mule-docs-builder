@@ -1,5 +1,6 @@
 package org.mule.docs.utils;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -72,27 +73,6 @@ public class UtilitiesTest {
     public void getConcatenatedFilepath_WithDirectoryAndFilenameAndAnotherDirectory_IsValid() {
         String path = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub.ad", "cloudhub"});
         assertTrue(path.contentEquals(TestUtilities.getPathToMasterFolder()+"/cloudhub/cloudhub.ad/cloudhub"));
-    }
-
-    @Test
-    public void isStringNullOrEmptyOrWhitespace_WithNullString_ReturnsTrue() {
-        String foo = null;
-        boolean result = StringUtils.isBlank(foo);
-        assertTrue(result);
-    }
-
-    @Test
-    public void isStringNullOrEmptyOrWhitespace_WithEmptyString_ReturnsTrue() {
-        String foo = "";
-        boolean result = StringUtils.isBlank(foo);
-        assertTrue(result);
-    }
-
-    @Test
-    public void isStringNullOrEmptyOrWhitespace_WithWhitespaceString_ReturnsTrue() {
-        String foo = "        ";
-        boolean result = StringUtils.isBlank(foo);
-        assertTrue(result);
     }
 
     @Test

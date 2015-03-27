@@ -68,9 +68,9 @@ public class BreadcrumbTest {
     public void getBreadcrumbs_WithBaseUrl_ReturnsCorrectHtml() {
         Breadcrumb breadcrumb = Breadcrumb.fromRootNode(TestUtilities.getValidRootNode());
         String html = breadcrumb.getHtmlForActiveUrl("cloudhub-managing-queues", "/docs/cloudhub/");
-        assertTrue(html.contentEquals("<ol class=\"breadcrumb\"><li><a href=\"/docs/cloudhub/\">CloudHub</a></li><li>"
+        assertEquals("<ol class=\"breadcrumb\"><li><a href=\"/docs/cloudhub/\">CloudHub</a></li><li>"
                 + "<a href=\"/docs/cloudhub/managing-cloudhub-applications\">Managing CloudHub Applications</a></li>"
-                + "<li class=\"active\">Managing Queues</li></ol>"));
+                + "<li class=\"active\">Managing Queues</li></ol>", html);
     }
 
     @Test

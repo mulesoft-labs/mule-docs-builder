@@ -2,6 +2,10 @@ package org.mule.docs.model;
 
 import org.apache.log4j.Logger;
 import org.mule.docs.utils.Utilities;
+import org.mule.docs.writer.HtmlWriter;
+
+import javax.swing.text.html.HTMLWriter;
+import java.util.HashMap;
 
 /**
  * Created by sean.osterberg on 2/21/15.
@@ -38,35 +42,8 @@ public class SectionTocHtml {
     }
 
     private static void generateTocHtml(TocNode parent, StringBuilder html, boolean isFirstItem, String activeUrl, String baseUrl) {
-        String sectionId = Utilities.getRandomAlphaNumericString(10);
 
-        if(activeUrl == null) {
-            html.append("<li class=\"toc-section\"><div class=\"toc-section-header child\"><a href=\"");
-            html.append(getCompleteUrl(baseUrl, parent.getUrl()) + "\">" + parent.getTitle() + "</a>");
-            html.append("<a href=\"#" + sectionId +  "\" data-toggle=\"collapse\" class=\"collapsed\"><div class=\"toc-section-header-arrow\"></div></a></div>");
-            html.append("<ul class=\"collapsed child-section collapse in\" id=\"" + sectionId + "\">");
-
-        } else if(parent.getUrl().equalsIgnoreCase(activeUrl)) {
-            html.append("<li class=\"toc-section\"><div class=\"toc-section-header active\"><a href=\"");
-            html.append(getCompleteUrl(baseUrl, parent.getUrl()) + "\" style=\"color: white\">" + parent.getTitle() + "</a>");
-            html.append("<a href=\"#" + sectionId +  "\" data-toggle=\"collapse\" class=\"collapsed\"><div class=\"toc-section-header-arrow\"></div></a></div>");
-            html.append("<ul class=\"collapsed child-section collapse in\" id=\"" + sectionId + "\">");
-        } else if(isFirstItem && !activeUrl.isEmpty()) {
-            html.append("<li class=\"toc-section\"><div class=\"toc-section-header child\"><a href=\"");
-            html.append(getCompleteUrl(baseUrl, parent.getUrl()) + "\">" + parent.getTitle() + "</a>");
-            html.append("<a href=\"#" + sectionId +  "\" data-toggle=\"collapse\" class=\"collapsed\"><div class=\"toc-section-header-arrow\"></div></a></div>");
-            html.append("<ul class=\"collapsed child-section collapse in\" id=\"" + sectionId + "\" style=\"height: 0px;\">");
-        } else if (Utilities.isActiveUrlInSection(parent, activeUrl, false)) {
-            html.append("<li class=\"toc-section\"><div class=\"toc-section-header child\"><a href=\"");
-            html.append(getCompleteUrl(baseUrl, parent.getUrl()) + "\">" + parent.getTitle() + "</a>");
-            html.append("<a href=\"#" + sectionId +  "\" data-toggle=\"collapse\" class=\"collapsed\"><div class=\"toc-section-header-arrow\"></div></a></div>");
-            html.append("<ul class=\"collapsed child-section collapse in\" id=\"" + sectionId + "\">");
-        } else {
-            html.append("<li class=\"toc-section\"><div class=\"toc-section-header child\"><a href=\"");
-            html.append(getCompleteUrl(baseUrl, parent.getUrl()) + "\">" + parent.getTitle() + "</a>");
-            html.append("<a href=\"#" + sectionId +  "\" data-toggle=\"collapse\" class=\"collapsed\"><div class=\"toc-section-header-arrow\"></div></a></div>");
-            html.append("<ul class=\"collapsed child-section collapse\" id=\"" + sectionId + "\" style=\"height: 0px;\">");
-        }
+        html.append(HtmlWriter.getIntance().getParentTocLink(activeUrl,baseUrl,parent,isFirstItem));
 
         if(parent.getChildren().size() == 0) {
             return;
@@ -81,18 +58,13 @@ public class SectionTocHtml {
             if(child.getChildren().size() > 0) {
                 generateTocHtml(child, html, false, activeUrl, baseUrl);
             } else {
-                html.append("<a href=\"" + getCompleteUrl(baseUrl, child.getUrl()) + "\"><li class=\"child");
-                if(activeUrl != null && activeUrl.equalsIgnoreCase(child.getUrl())) {
-                    html.append(" active");
-                }
-                html.append("\">" + child.getTitle() + "</li></a>");
+                html.append(HtmlWriter.getIntance().getChildTocLink(activeUrl, baseUrl, child));
+
             }
         }
     }
 
-    private static String getCompleteUrl(String baseUrl, String url) {
-        return Utilities.getConcatPath(new String[] {baseUrl, url});
-    }
+
 
     private static void validateInputParams(Object[] params) {
         Utilities.validateCtorObjectsAreNotNull(params, SectionTocHtml.class.getSimpleName());

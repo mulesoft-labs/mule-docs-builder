@@ -3,6 +3,7 @@ package org.mule.docs.model;
 import org.apache.log4j.Logger;
 import org.mule.docs.model.TocNode;
 import org.mule.docs.utils.Utilities;
+import org.mule.docs.writer.HtmlWriter;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,18 +34,13 @@ public class Breadcrumb {
 
     private String generateBreadcrumbsForActiveUrl(String activeUrl, String baseUrl) {
         List<TocNode> nodes = getBreadcrumbs(activeUrl);
-        StringBuilder html = new StringBuilder("<ol class=\"breadcrumb\">");
+        List<String> links = new ArrayList<String>();
         for(TocNode node : nodes) {
-            if(!node.getUrl().contentEquals(activeUrl)) {
-                String url = Utilities.getConcatPath(new String[]{baseUrl, node.getUrl()});
-                html.append("<li><a href=\"" + url + "\">" + node.getTitle() + "</a></li>");
-            } else {
-                html.append("<li class=\"active\">" + node.getTitle() + "</li>");
-            }
+            links.add(HtmlWriter.getIntance().getBreadCrumbLink(node,activeUrl,baseUrl));
         }
-        html.append("</ol>");
         logger.info("Created breadcrumb for \"" + baseUrl + activeUrl + "\".");
-        return html.toString();
+
+        return HtmlWriter.getIntance().getBreadCrumb(links);
     }
 
     public List<TocNode> getBreadcrumbs(String activeUrl) {

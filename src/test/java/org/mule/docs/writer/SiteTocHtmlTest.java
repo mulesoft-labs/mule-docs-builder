@@ -1,5 +1,6 @@
 package org.mule.docs.writer;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 import org.mule.docs.model.AsciiDocPage;
 import org.mule.docs.model.Section;

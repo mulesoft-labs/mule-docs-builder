@@ -13,6 +13,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 
 /**
  * Created by sean.osterberg on 2/20/15.
@@ -129,12 +130,16 @@ public class Utilities {
     }
 
     public static String getRandomAlphaNumericString(int length) {
-        String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        Random rnd = new Random();
-        StringBuilder sb = new StringBuilder(length);
-        for( int i = 0; i < length; i++ )
-            sb.append( AB.charAt( rnd.nextInt(AB.length()) ) );
-        return sb.toString();
+        StringBuffer buffer = new StringBuffer();
+        while (buffer.length() < length) {
+            buffer.append(uuidString());
+        }
+        //this part controls the length of the returned string
+        return buffer.substring(0, length);
+    }
+
+    private static String uuidString() {
+        return UUID.randomUUID().toString().replaceAll("-", "");
     }
 
     public static boolean isActiveUrlInSection(TocNode parentNode, String activeUrl, boolean isInSection) {
