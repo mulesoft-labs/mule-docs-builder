@@ -4,6 +4,7 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 
 import static org.asciidoctor.Asciidoctor.Factory.create;
+
 import org.asciidoctor.Asciidoctor;
 import org.asciidoctor.Options;
 import org.asciidoctor.SafeMode;
@@ -18,7 +19,8 @@ import org.mule.docs.utils.Utilities;
 /**
  * Created by sean.osterberg on 2/20/15.
  */
-public class AsciiDocPage implements IPageElement{
+public class AsciiDocPage implements IPageElement {
+
     private static Logger logger = Logger.getLogger(AsciiDocPage.class);
     private static Asciidoctor processor;
     private String baseName;
@@ -29,7 +31,7 @@ public class AsciiDocPage implements IPageElement{
     // Todo: Get the template type name from the file and add as a property
 
     public AsciiDocPage(String filename, String baseName, String asciiDoc, String html, String title) {
-        validateInputParams(new String[]{filename, asciiDoc, html});
+        validateInputParams(new String[] { filename, asciiDoc, html });
         this.filepath = filename;
         this.baseName = baseName;
         this.asciiDoc = asciiDoc;
@@ -40,7 +42,7 @@ public class AsciiDocPage implements IPageElement{
     public static List<AsciiDocPage> fromFiles(List<File> asciiDocFiles) {
         processor = create();
         List<AsciiDocPage> docPages = new ArrayList<AsciiDocPage>();
-        for(File file : asciiDocFiles) {
+        for (File file : asciiDocFiles) {
             docPages.add(getPageFromFile(file));
             logger.debug("Created AsciiDocPage from file: \"" + file.getPath() + "\".");
         }
@@ -77,7 +79,7 @@ public class AsciiDocPage implements IPageElement{
     }
 
     public String getAttributeValue(String attributeName) {
-        if(!containsAttribute(attributeName)) {
+        if (!containsAttribute(attributeName)) {
             return null;
         } else {
             Map<String, Object> attributes = getAttributes();
@@ -128,7 +130,9 @@ public class AsciiDocPage implements IPageElement{
         return baseName;
     }
 
-    public Asciidoctor getProcessor() { return processor; }
+    public Asciidoctor getProcessor() {
+        return processor;
+    }
 
     public String getTitle() {
         return title;

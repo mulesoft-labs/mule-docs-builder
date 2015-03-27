@@ -19,6 +19,7 @@ import java.util.UUID;
  * Created by sean.osterberg on 2/20/15.
  */
 public class Utilities {
+
     static Logger logger = Logger.getLogger(Utilities.class);
 
     public static String getFileContentsFromFile(File file) {
@@ -59,18 +60,18 @@ public class Utilities {
 
     public static boolean fileEndsWithValidAsciidocExtension(String fileName) {
         String extension = FilenameUtils.getExtension(fileName);
-        if(extension.equalsIgnoreCase("ad") || extension.equalsIgnoreCase("asciidoc") || extension.equalsIgnoreCase("adoc"))
+        if (extension.equalsIgnoreCase("ad") || extension.equalsIgnoreCase("asciidoc") || extension.equalsIgnoreCase("adoc"))
             return true;
         return false;
     }
 
     public static void validateAsciiDocFile(File asciiDocFile) {
-        if(!asciiDocFile.exists()) {
+        if (!asciiDocFile.exists()) {
             String error = "AsciiDoc file does not exist: \"" + asciiDocFile.getPath() + "\".";
             logger.fatal(error);
             throw new DocBuildException(error);
         }
-        if(!fileEndsWithValidAsciidocExtension(asciiDocFile.getName())) {
+        if (!fileEndsWithValidAsciidocExtension(asciiDocFile.getName())) {
             String error = "Presumed AsciiDoc file does not have valid extension: \"" + asciiDocFile.getName() + "\".";
             logger.fatal(error);
             throw new DocBuildException(error);
@@ -79,8 +80,8 @@ public class Utilities {
 
     public static String getConcatPath(String[] filesOrDirectoriesToAppend) {
         String temp = filesOrDirectoriesToAppend[0];
-        for(int i = 1; i < filesOrDirectoriesToAppend.length; i++) {
-            if(!temp.isEmpty() && !temp.endsWith("/")) {
+        for (int i = 1; i < filesOrDirectoriesToAppend.length; i++) {
+            if (!temp.isEmpty() && !temp.endsWith("/")) {
                 temp = temp.concat("/").concat(filesOrDirectoriesToAppend[i]);
             } else {
                 temp = temp.concat(filesOrDirectoriesToAppend[i]);
@@ -90,7 +91,7 @@ public class Utilities {
     }
 
     public static String removeLeadingSlashes(String s) {
-        if(s.startsWith("/") && s.length() > 1) {
+        if (s.startsWith("/") && s.length() > 1) {
             s = s.substring(1);
         }
         return s;
@@ -107,7 +108,7 @@ public class Utilities {
     }
 
     public static void validateCtorStringInputParam(String[] params, String className) {
-        for(String param : params) {
+        for (String param : params) {
             if (StringUtils.isBlank(param)) {
                 String error = "Constructor input parameter for " + className + " cannot be null, empty, or whitespace.";
                 logger.fatal(error);
@@ -117,14 +118,14 @@ public class Utilities {
     }
 
     public static void validateCtorObjectsAreNotNull(Object[] params, String className) {
-        for(Object obj : params) {
+        for (Object obj : params) {
             if (obj == null) {
                 String error = "Constructor input parameter for " + className + " cannot be null.";
                 logger.fatal(error);
                 throw new DocBuildException(error);
             }
-            if(obj.getClass().getSimpleName().contentEquals("String")) {
-                validateCtorStringInputParam(new String[] {(String)obj}, className);
+            if (obj.getClass().getSimpleName().contentEquals("String")) {
+                validateCtorStringInputParam(new String[] { (String) obj }, className);
             }
         }
     }
@@ -143,20 +144,19 @@ public class Utilities {
     }
 
     public static boolean isActiveUrlInSection(TocNode parentNode, String activeUrl, boolean isInSection) {
-        if(parentNode.getParent() == null && parentNode.getUrl().contentEquals(activeUrl)) {
+        if (parentNode.getParent() == null && parentNode.getUrl().contentEquals(activeUrl)) {
             return true;
         }
-        if(isInSection) {
+        if (isInSection) {
             return true;
         }
-        if(activeUrl.isEmpty()) {
+        if (activeUrl.isEmpty()) {
             return false;
         }
-        for(TocNode node : parentNode.getChildren()) {
-            if(node.getUrl().equalsIgnoreCase(activeUrl)) {
+        for (TocNode node : parentNode.getChildren()) {
+            if (node.getUrl().equalsIgnoreCase(activeUrl)) {
                 isInSection = true;
-            }
-            else if(node.getChildren().size() > 0) {
+            } else if (node.getChildren().size() > 0) {
                 isInSection = isActiveUrlInSection(node, activeUrl, isInSection);
             }
         }
@@ -164,7 +164,7 @@ public class Utilities {
     }
 
     public static void validateIfActiveUrlIsInSection(TocNode root, String activeUrl) {
-        if(root.getUrl().contentEquals(activeUrl)) {
+        if (root.getUrl().contentEquals(activeUrl)) {
             return;
         } else if (!isActiveUrlInSection(root, activeUrl, false)) {
             String error = "Active URL does not exist in nodes for TOC: \"" + activeUrl + "\".";
@@ -174,7 +174,7 @@ public class Utilities {
     }
 
     public static void validateFileExists(File file) {
-        if(!file.exists()) {
+        if (!file.exists()) {
             String error = "File or directory does not exist: \"" + file.getPath() + "\".";
             logger.fatal(error);
             throw new DocBuildException(error);
@@ -183,7 +183,7 @@ public class Utilities {
 
     public static void validateIsDirectory(File directory) {
         validateFileExists(directory);
-        if(!directory.isDirectory()) {
+        if (!directory.isDirectory()) {
             String error = "File is not a directory as expected: \"" + directory.getPath() + "\".";
             logger.fatal(error);
             throw new DocBuildException(error);
@@ -192,8 +192,8 @@ public class Utilities {
 
     public static boolean directoryContainsAsciiDocFile(File directory) {
         boolean isValid = false;
-        for(File file : directory.listFiles()) {
-            if(Utilities.fileEndsWithValidAsciidocExtension(file.getName())) {
+        for (File file : directory.listFiles()) {
+            if (Utilities.fileEndsWithValidAsciidocExtension(file.getName())) {
                 isValid = true;
             }
         }
@@ -201,7 +201,7 @@ public class Utilities {
     }
 
     public static void validateDirectoryContainsAsciiDocFile(File directory) {
-        if(!directoryContainsAsciiDocFile(directory)) {
+        if (!directoryContainsAsciiDocFile(directory)) {
             String error = "Directory does not contain valid AsciiDoc file(s) as expected: \"" + directory.getPath() + "\".";
             logger.fatal(error);
             throw new DocBuildException(error);
@@ -210,8 +210,8 @@ public class Utilities {
 
     public static boolean directoryContainsTocFile(File directory) {
         boolean isValid = false;
-        for(File file : directory.listFiles()) {
-            if(file.getName().contentEquals("toc.ad")) {
+        for (File file : directory.listFiles()) {
+            if (file.getName().contentEquals("toc.ad")) {
                 isValid = true;
             }
         }
@@ -219,7 +219,7 @@ public class Utilities {
     }
 
     public static void validateDirectoryContainsTocFile(File directory) {
-        if(!directoryContainsTocFile(directory)) {
+        if (!directoryContainsTocFile(directory)) {
             String error = "Directory does not contain a TOC file: \"" + directory.getPath() + "\".";
             logger.fatal(error);
             throw new DocBuildException(error);
@@ -228,12 +228,12 @@ public class Utilities {
 
     public static void validatePrettyNameExists(File directory) {
         boolean exists = false;
-        for(File file : directory.listFiles()) {
-            if(FilenameUtils.getExtension(file.getName()).contentEquals("version")) {
+        for (File file : directory.listFiles()) {
+            if (FilenameUtils.getExtension(file.getName()).contentEquals("version")) {
                 exists = true;
             }
         }
-        if(!exists) {
+        if (!exists) {
             String error = "Directory does not contain version file: \"" + directory.getPath() + "\".";
             logger.fatal(error);
             throw new DocBuildException(error);
@@ -241,21 +241,21 @@ public class Utilities {
     }
 
     public static boolean directoryContainsVersions(File directory) {
-        File versionDir = new File(Utilities.getConcatPath(new String[] {directory.getPath(), "v"}));
-        if(!versionDir.exists()) {
+        File versionDir = new File(Utilities.getConcatPath(new String[] { directory.getPath(), "v" }));
+        if (!versionDir.exists()) {
             return false;
         }
         boolean containsDir = false;
         List<File> versionDirectories = new ArrayList<File>();
-        for(File file : versionDir.listFiles()) {
-            if(file.isDirectory()) {
+        for (File file : versionDir.listFiles()) {
+            if (file.isDirectory()) {
                 versionDirectories.add(file);
                 containsDir = true;
             }
         }
-        if(containsDir) {
-            for(File file : versionDirectories) {
-                if(!directoryContainsAsciiDocFile(file) || !directoryContainsTocFile(file)) {
+        if (containsDir) {
+            for (File file : versionDirectories) {
+                if (!directoryContainsAsciiDocFile(file) || !directoryContainsTocFile(file)) {
                     return false;
                 }
             }
@@ -267,15 +267,15 @@ public class Utilities {
 
     public static void validateMasterDirectory(File masterDirectory) {
         Utilities.validateIsDirectory(masterDirectory);
-        if(masterDirectory.isDirectory() && masterDirectory.exists()) {
-            if(masterDirectory.listFiles().length > 0) {
+        if (masterDirectory.isDirectory() && masterDirectory.exists()) {
+            if (masterDirectory.listFiles().length > 0) {
                 boolean containsDirectory = false;
-                for(File file : masterDirectory.listFiles()) {
-                    if(file.isDirectory()) {
+                for (File file : masterDirectory.listFiles()) {
+                    if (file.isDirectory()) {
                         containsDirectory = true;
                     }
                 }
-                if(!containsDirectory) {
+                if (!containsDirectory) {
                     String error = "Master directory does not contain valid section directories: \"" + masterDirectory.getPath() + "\".";
                     logger.fatal(error);
                     throw new DocBuildException(error);
@@ -290,13 +290,12 @@ public class Utilities {
 
     public static void validateTemplateFile(File templateFile) {
         validateFileExists(templateFile);
-        if(!FilenameUtils.getExtension(templateFile.getName()).contentEquals("template")) {
+        if (!FilenameUtils.getExtension(templateFile.getName()).contentEquals("template")) {
             String error = "org.mule.docs.writer.Template file does not have valid '.template' extension: \"" + templateFile.getPath() + "\".";
             logger.fatal(error);
             throw new DocBuildException(error);
         }
     }
-
 
     public static boolean makeTargetDirectory(String directoryPath) {
         boolean result = false;

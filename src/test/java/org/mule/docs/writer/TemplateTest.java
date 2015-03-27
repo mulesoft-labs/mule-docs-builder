@@ -28,7 +28,7 @@ public class TemplateTest {
 
     @Test(expected = DocBuildException.class)
     public void fromFile_WithInvalidFileExtension_ThrowsException() {
-        Template template = Template.fromFile(new File(Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "master-folder", "anypoint-platform", "cloudhub.ad"})));
+        Template.fromFile(new File(Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "master-folder", "anypoint-platform", "cloudhub.ad" })));
     }
 
     @Test
@@ -45,6 +45,6 @@ public class TemplateTest {
     }
 
     private Template getValidTemplate() {
-        return Template.fromFile(new File(Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "master-folder", "_templates", "default.template"})));
+        return Template.fromFile(new File(Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "master-folder", "_templates", "default.template" })));
     }
 }

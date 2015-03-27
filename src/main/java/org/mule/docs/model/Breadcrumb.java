@@ -13,6 +13,7 @@ import java.util.List;
  * Created by sean.osterberg on 2/22/15.
  */
 public class Breadcrumb {
+
     private static Logger logger = Logger.getLogger(Breadcrumb.class);
     private TocNode root;
 
@@ -21,12 +22,12 @@ public class Breadcrumb {
     }
 
     public static Breadcrumb fromRootNode(TocNode rootNode) {
-        validateInputParams(new Object[] {rootNode});
+        validateInputParams(new Object[] { rootNode });
         return new Breadcrumb(rootNode);
     }
 
     public String getHtmlForActiveUrl(String activeUrl, String baseUrl) {
-        if(!Utilities.isActiveUrlInSection(this.root, activeUrl, false)) {
+        if (!Utilities.isActiveUrlInSection(this.root, activeUrl, false)) {
             return "";
         }
         return generateBreadcrumbsForActiveUrl(activeUrl, baseUrl);
@@ -35,8 +36,8 @@ public class Breadcrumb {
     private String generateBreadcrumbsForActiveUrl(String activeUrl, String baseUrl) {
         List<TocNode> nodes = getBreadcrumbs(activeUrl);
         List<String> links = new ArrayList<String>();
-        for(TocNode node : nodes) {
-            links.add(HtmlWriter.getIntance().getBreadCrumbLink(node,activeUrl,baseUrl));
+        for (TocNode node : nodes) {
+            links.add(HtmlWriter.getIntance().getBreadCrumbLink(node, activeUrl, baseUrl));
         }
         logger.info("Created breadcrumb for \"" + baseUrl + activeUrl + "\".");
 
@@ -50,7 +51,7 @@ public class Breadcrumb {
         getActiveNode(this.root, activeUrl, activeNode);
         TocNode current = activeNode.get(0);
         nodes.add(current);
-        while(current.getParent() != null) {
+        while (current.getParent() != null) {
             nodes.add(current.getParent());
             current = current.getParent();
         }
@@ -59,12 +60,12 @@ public class Breadcrumb {
     }
 
     public static void getActiveNode(TocNode parentNode, String activeUrl, List<TocNode> activeNode) {
-        if(parentNode.getUrl().contentEquals(activeUrl)) {
+        if (parentNode.getUrl().contentEquals(activeUrl)) {
             activeNode.add(parentNode);
             return;
         }
-        if(parentNode.getChildren().size() > 0) {
-            for(TocNode node : parentNode.getChildren()) {
+        if (parentNode.getChildren().size() > 0) {
+            for (TocNode node : parentNode.getChildren()) {
                 getActiveNode(node, activeUrl, activeNode);
             }
         }

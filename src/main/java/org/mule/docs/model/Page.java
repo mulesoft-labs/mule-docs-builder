@@ -17,7 +17,8 @@ import java.util.List;
 /**
  * Created by sean.osterberg on 2/22/15.
  */
-public class Page implements IPageElement{
+public class Page implements IPageElement {
+
     private static Logger logger = Logger.getLogger(Page.class);
     private String content;
     private String baseName;
@@ -29,7 +30,7 @@ public class Page implements IPageElement{
 
     public static List<Page> forSection(Section section, List<Section> allSections, List<Template> templates, SiteTableOfContents toc) {
         List<Page> pages = new ArrayList<Page>();
-        for(AsciiDocPage page : section.getPages()) {
+        for (AsciiDocPage page : section.getPages()) {
             Page current = new Page(getCompletePageContent(section, allSections, toc, page, templates), page.getBaseName());
             pages.add(current);
         }
@@ -39,7 +40,7 @@ public class Page implements IPageElement{
     public static String getCompletePageContent(Section section, List<Section> sections, SiteTableOfContents toc, AsciiDocPage page, List<Template> templates) {
 
         logger.debug("Built page from template for \"" + page.getTitle() + "\".");
-        return HtmlWriter.getIntance().getPageContent(section,sections,toc,page);
+        return HtmlWriter.getIntance().getPageContent(section, sections, toc, page);
     }
 
     public String getContent() {

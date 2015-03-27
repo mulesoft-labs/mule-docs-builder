@@ -42,7 +42,7 @@ public class BreadcrumbTest {
         Utilities.validateIfActiveUrlIsInSection(TestUtilities.getValidRootNode(), "cloudhub-at-a-glance");
         ArrayList<TocNode> activeNode = new ArrayList<TocNode>();
         Breadcrumb.getActiveNode(TestUtilities.getValidRootNode(), "cloudhub-at-a-glance", activeNode);
-        assertTrue(activeNode.size() == 1);
+        assertEquals(1, activeNode.size());
         assertTrue(activeNode.get(0).getUrl().contentEquals("cloudhub-at-a-glance"));
     }
 
@@ -59,9 +59,9 @@ public class BreadcrumbTest {
     public void getBreadcrumbs_WithValidRootNodeAndUrl_ReturnsCorrectHtml() {
         Breadcrumb breadcrumb = Breadcrumb.fromRootNode(TestUtilities.getValidRootNode());
         String html = breadcrumb.getHtmlForActiveUrl("cloudhub-managing-queues", "");
-        assertTrue(html.contentEquals("<ol class=\"breadcrumb\"><li><a href=\"\">CloudHub</a></li><li>"
+        assertEquals("<ol class=\"breadcrumb\"><li><a href=\"\">CloudHub</a></li><li>"
                 + "<a href=\"managing-cloudhub-applications\">Managing CloudHub Applications</a></li>"
-                + "<li class=\"active\">Managing Queues</li></ol>"));
+                + "<li class=\"active\">Managing Queues</li></ol>", html);
     }
 
     @Test
@@ -77,15 +77,14 @@ public class BreadcrumbTest {
     public void getBreadcrumbs_WithVersionSection_ReturnsCorrectHtml() {
         Breadcrumb breadcrumb = Breadcrumb.fromRootNode(TestUtilities.getValidRootNode());
         String html = breadcrumb.getHtmlForActiveUrl("cloudhub-managing-queues", "/docs/cloudhub/v/3.6");
-        assertTrue(html.contentEquals("<ol class=\"breadcrumb\"><li><a href=\"/docs/cloudhub/v/3.6/\">CloudHub</a></li><li>"
+        assertEquals("<ol class=\"breadcrumb\"><li><a href=\"/docs/cloudhub/v/3.6/\">CloudHub</a></li><li>"
                 + "<a href=\"/docs/cloudhub/v/3.6/managing-cloudhub-applications\">Managing CloudHub Applications</a></li>"
-                + "<li class=\"active\">Managing Queues</li></ol>"));
+                + "<li class=\"active\">Managing Queues</li></ol>",html);
     }
-
 
     @Test(expected = DocBuildException.class)
     public void getBreadcrumbs_WithValidRootNodeAndInvalidUrl_ThrowsException() {
         Breadcrumb breadcrumb = Breadcrumb.fromRootNode(TestUtilities.getValidRootNode());
-        List<TocNode> nodes = breadcrumb.getBreadcrumbs("foobar");
+        breadcrumb.getBreadcrumbs("foobar");
     }
 }

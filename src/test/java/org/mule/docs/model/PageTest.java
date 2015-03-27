@@ -32,7 +32,7 @@ public class PageTest {
     @Test(expected = DocBuildException.class)
     public void forSection_WithInvalidSection_ThrowsException() {
         Section section = Section.fromDirectory(new File(Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "_templates" })));
-        List<Page> pages = Page.forSection(section, validSections(), validTemplates(), getSiteToc());
+        Page.forSection(section, validSections(), validTemplates(), getSiteToc());
     }
 
     @Test
@@ -54,28 +54,27 @@ public class PageTest {
         assertTrue(content.contains("<ol class=\"breadcrumb\"><li><a href=\"/docs/cloudhub/v/4.0/\">CloudHub</a></li>"));
     }
 
-
     private Section validSection() {
-        return Section.fromDirectory(new File(Utilities.getConcatPath(new String[]{ TestUtilities.getTestResourcesPath(), "master-folder", "cloudhub"})));
+        return Section.fromDirectory(new File(Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "master-folder", "cloudhub" })));
     }
 
     private Section validOldVersionSection() {
-        return Section.fromDirectory(new File(Utilities.getConcatPath(new String[]{ TestUtilities.getTestResourcesPath(), "master-folder", "cloudhub", "v", "4.0"})));
+        return Section.fromDirectory(new File(Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "master-folder", "cloudhub", "v", "4.0" })));
     }
 
     private List<Template> validTemplates() {
-        List<Template> templates = Template.fromDirectory(new File(Utilities.getConcatPath(new String[]{ TestUtilities.getTestResourcesPath(), "master-folder", "_templates"})));
+        List<Template> templates = Template.fromDirectory(new File(Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "master-folder", "_templates" })));
         return templates;
     }
 
     private List<Section> validSections() {
         List<Section> sections = new ArrayList<Section>();
-        sections.add(Section.fromDirectory(new File(Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "master-folder", "cloudhub"}))));
-        sections.add(Section.fromDirectory(new File(Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "master-folder", "anypoint-platform"}))));
+        sections.add(Section.fromDirectory(new File(Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "master-folder", "cloudhub" }))));
+        sections.add(Section.fromDirectory(new File(Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "master-folder", "anypoint-platform" }))));
         return sections;
     }
 
     private SiteTableOfContents getSiteToc() {
-        return SiteTableOfContents.fromAsciiDocFile(new File(Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "master-folder", "toc.ad"})));
+        return SiteTableOfContents.fromAsciiDocFile(new File(Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "master-folder", "toc.ad" })));
     }
 }

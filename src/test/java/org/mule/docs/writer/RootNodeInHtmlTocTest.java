@@ -28,7 +28,7 @@ public class RootNodeInHtmlTocTest {
     @Test
     public void fromAsciiDocTocPage_RootNodeIsNotNull() {
         RootNodeFromHtmlToc htmlToc = RootNodeFromHtmlToc.fromTocAsciiDocPage(getValidPage());
-        assertTrue(htmlToc.getRootNode() != null);
+        assertNotNull(htmlToc.getRootNode());
     }
 
     @Test
@@ -36,7 +36,7 @@ public class RootNodeInHtmlTocTest {
         RootNodeFromHtmlToc htmlToc = RootNodeFromHtmlToc.fromTocAsciiDocPage(getValidPage());
         TocNode result = htmlToc.getRootNode();
         assertTrue(result.getTitle().contentEquals("CloudHub"));
-        assertTrue(result.getChildren().size() == 12);
+        assertEquals(12,result.getChildren().size());
     }
 
     @Test(expected = DocBuildException.class)
@@ -64,13 +64,13 @@ public class RootNodeInHtmlTocTest {
     }
 
     private AsciiDocPage getValidPage() {
-        String path = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "toc.ad"});
+        String path = Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "toc.ad" });
         AsciiDocPage page = AsciiDocPage.fromFile(new File(path));
         return page;
     }
 
     private AsciiDocPage getInvalidPage() {
-        String path = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub.ad"});
+        String path = Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub.ad" });
         AsciiDocPage page = AsciiDocPage.fromFile(new File(path));
         return page;
     }

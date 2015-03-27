@@ -11,6 +11,7 @@ import java.util.HashMap;
  * Created by sean.osterberg on 2/21/15.
  */
 public class SectionTocHtml {
+
     private static Logger logger = Logger.getLogger(SectionTocHtml.class);
     private String html;
 
@@ -27,9 +28,9 @@ public class SectionTocHtml {
     }
 
     private static SectionTocHtml getTocFromRootNode(TocNode rootNode, String url, String baseUrl) {
-        validateInputParams(new Object[] {rootNode});
+        validateInputParams(new Object[] { rootNode });
         StringBuilder builder = new StringBuilder();
-        if(url != null) {
+        if (url != null) {
             Utilities.validateIfActiveUrlIsInSection(rootNode, url);
         }
         generateTocHtml(rootNode, builder, true, url, baseUrl);
@@ -43,9 +44,9 @@ public class SectionTocHtml {
 
     private static void generateTocHtml(TocNode parent, StringBuilder html, boolean isFirstItem, String activeUrl, String baseUrl) {
 
-        html.append(HtmlWriter.getIntance().getParentTocLink(activeUrl,baseUrl,parent,isFirstItem));
+        html.append(HtmlWriter.getIntance().getParentTocLink(activeUrl, baseUrl, parent, isFirstItem));
 
-        if(parent.getChildren().size() == 0) {
+        if (parent.getChildren().size() == 0) {
             return;
         } else {
             getHtmlForChildren(parent, html, activeUrl, baseUrl);
@@ -54,8 +55,8 @@ public class SectionTocHtml {
     }
 
     private static void getHtmlForChildren(TocNode parent, StringBuilder html, String activeUrl, String baseUrl) {
-        for(TocNode child : parent.getChildren()) {
-            if(child.getChildren().size() > 0) {
+        for (TocNode child : parent.getChildren()) {
+            if (child.getChildren().size() > 0) {
                 generateTocHtml(child, html, false, activeUrl, baseUrl);
             } else {
                 html.append(HtmlWriter.getIntance().getChildTocLink(activeUrl, baseUrl, child));
@@ -63,8 +64,6 @@ public class SectionTocHtml {
             }
         }
     }
-
-
 
     private static void validateInputParams(Object[] params) {
         Utilities.validateCtorObjectsAreNotNull(params, SectionTocHtml.class.getSimpleName());

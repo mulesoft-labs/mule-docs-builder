@@ -5,7 +5,8 @@ import java.util.*;
 /**
  * Created by sean.osterberg on 2/20/15.
  */
-public class TocNode implements IPageElement{
+public class TocNode implements IPageElement {
+
     private String url;
     private String title;
     private TocNode parent;
@@ -52,8 +53,8 @@ public class TocNode implements IPageElement{
 
     @Override
     public void accept(IPageElementVisitor visitor) {
-        if(visitor.visit(this)){
-            for(TocNode tocNode:children) {
+        if (visitor.visit(this)) {
+            for (TocNode tocNode : children) {
                 visitor.visit(tocNode);
             }
         }

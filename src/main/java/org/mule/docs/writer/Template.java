@@ -12,6 +12,7 @@ import java.util.List;
  * Created by sean.osterberg on 3/9/15.
  */
 public class Template {
+
     private String contents;
     private TemplateType type;
 
@@ -23,8 +24,8 @@ public class Template {
     public static List<Template> fromDirectory(File directory) {
         List<Template> templates = new ArrayList<Template>();
         Utilities.validateIsDirectory(directory);
-        for(File templateFile : directory.listFiles()) {
-            if(FilenameUtils.getExtension(templateFile.getName()).contentEquals("template")) {
+        for (File templateFile : directory.listFiles()) {
+            if (FilenameUtils.getExtension(templateFile.getName()).contentEquals("template")) {
                 templates.add(fromFile(templateFile));
             }
         }
@@ -38,15 +39,15 @@ public class Template {
         return new Template(contents, type);
     }
 
-    private static String getTemplateContents(File file){
+    private static String getTemplateContents(File file) {
         return Utilities.getFileContentsFromFile(file);
     }
 
     private static TemplateType getTemplateType(File file) {
         String baseName = FilenameUtils.getBaseName(file.getName());
-        if(baseName.equalsIgnoreCase("default")) {
+        if (baseName.equalsIgnoreCase("default")) {
             return TemplateType.DEFAULT;
-        } else if(baseName.contentEquals("landing_page")) {
+        } else if (baseName.contentEquals("landing_page")) {
             return TemplateType.LANDING_PAGE;
         }
         String error = "org.mule.docs.writer.Template file's type is not valid: \"" + file.getName() + "\".";

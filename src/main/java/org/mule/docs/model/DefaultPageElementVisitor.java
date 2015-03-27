@@ -6,7 +6,9 @@ import org.apache.log4j.Logger;
  * Created by Mulesoft.
  */
 public class DefaultPageElementVisitor implements IPageElementVisitor {
+
     private static Logger logger = Logger.getLogger(DefaultPageElementVisitor.class);
+
     @Override
     public boolean visit(IPageElement pageElement) {
         logger.debug("Visiting pageElement:" + pageElement);

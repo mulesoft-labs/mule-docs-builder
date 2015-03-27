@@ -7,11 +7,12 @@ import java.io.File;
 /**
  * Created by sean.osterberg on 2/20/15.
  */
-public class SectionTableOfContents implements IPageElement{
+public class SectionTableOfContents implements IPageElement {
+
     private TocNode rootTocNode;
 
     public SectionTableOfContents(TocNode rootNode, AsciiDocPage tocSourcePage) {
-        validateInputParams(new Object[] {rootNode});
+        validateInputParams(new Object[] { rootNode });
         this.rootTocNode = rootNode;
     }
 
@@ -36,7 +37,7 @@ public class SectionTableOfContents implements IPageElement{
 
     @Override
     public void accept(IPageElementVisitor visitor) {
-        if(visitor.visit(this)){
+        if (visitor.visit(this)) {
             rootTocNode.accept(visitor);
         }
     }

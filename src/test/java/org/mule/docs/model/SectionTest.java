@@ -12,6 +12,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
+
 /**
  * Created by sean.osterberg on 2/22/15.
  */
@@ -26,13 +27,13 @@ public class SectionTest {
     @Test(expected = DocBuildException.class)
     public void fromDirectory_WithInvalidSectionDirectory_ThrowsException() {
         File invalidDirectory = new File(Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "empty" }));
-        Section section = Section.fromDirectory(invalidDirectory);
+        Section.fromDirectory(invalidDirectory);
     }
 
     @Test
     public void fromDirectory_WithValidSectionDirectory_HasCorrectNumberOfPages() {
         Section section = getValidSection();
-        assertTrue(section.getPages().size() == 3);
+        assertEquals(3, section.getPages().size());
     }
 
     @Test
@@ -45,13 +46,13 @@ public class SectionTest {
     public void fromDirectory_WithValidSectionDirectory_HasCorrectRootNode() {
         Section section = getValidSection();
         assertTrue(section.getRootNode().getTitle().contentEquals("CloudHub"));
-        assertTrue(section.getRootNode().getChildren().size() == 12);
+        assertEquals(12, section.getRootNode().getChildren().size());
     }
 
     @Test
     public void fromDirectory_WithValidSectionDirectory_HasCorrectFilepath() {
         Section section = getValidSection();
-        assertEquals(TestUtilities.getPathToMasterFolder()+"/cloudhub",section.getFilepath());
+        assertEquals(TestUtilities.getPathToMasterFolder() + "/cloudhub", section.getFilepath());
     }
 
     @Test
@@ -59,9 +60,9 @@ public class SectionTest {
         Section section = getValidSection();
         assertTrue(section.getVersions().size() == 2);
         assertTrue(section.getVersions().get(0).getVersions().isEmpty());
-        String expected= TestUtilities.getPathToMasterFolder()+"/cloudhub/v/4.0";
-        String actual=section.getVersions().get(0).getFilepath();
-        assertEquals(expected,actual);
+        String expected = TestUtilities.getPathToMasterFolder() + "/cloudhub/v/4.0";
+        String actual = section.getVersions().get(0).getFilepath();
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -79,40 +80,40 @@ public class SectionTest {
 
     @Test(expected = DocBuildException.class)
     public void fromDirectory_WithValidSectionDirectoryWithoutVersionFile_ThrowsException() {
-        File invalidDirectory = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "_templates"}));
-        Section section = Section.fromDirectory(invalidDirectory);
+        File invalidDirectory = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "_templates" }));
+        Section.fromDirectory(invalidDirectory);
     }
 
     @Test
     public void fromDirectory_WithValidSectionButInvalidVersion_DoesNotHaveVersion() {
-        File validDirectory = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "anypoint-platform"}));
+        File validDirectory = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "anypoint-platform" }));
         Section section = Section.fromDirectory(validDirectory);
         assertTrue(section.getVersions().isEmpty());
     }
 
     @Test
     public void fromMasterDirectory_WithValidMasterDirectory_IsValid() {
-        File validDirectory = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder()}));
+        File validDirectory = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder() }));
         List<Section> sections = Section.fromMasterDirectory(validDirectory);
-        assertTrue(sections.size() == 2);
+        assertEquals(2, sections.size());
     }
 
     @Test(expected = DocBuildException.class)
     public void fromMasterDirectory_WithInvalidMasterDirectory_ThrowsException() {
-        File invalidDirectory = new File(Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "text-files"}));
-        List<Section> section = Section.fromMasterDirectory(invalidDirectory);
+        File invalidDirectory = new File(Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "text-files" }));
+        Section.fromMasterDirectory(invalidDirectory);
     }
 
     @Test
     public void getVersionUrl_WithValidParams_ReturnsValidVersionUrl() {
-        String versionPath = TestUtilities.getPathToMasterFolder()+"/cloudhub/v/4.0";
+        String versionPath = TestUtilities.getPathToMasterFolder() + "/cloudhub/v/4.0";
         String sectionName = "cloudhub";
         String result = Section.getVersionUrl(versionPath, sectionName);
         assertTrue(result.contentEquals("cloudhub/v/4.0"));
     }
 
     public Section getValidSection() {
-        File validDirectory = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub"}));
+        File validDirectory = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub" }));
         return Section.fromDirectory(validDirectory);
 
     }

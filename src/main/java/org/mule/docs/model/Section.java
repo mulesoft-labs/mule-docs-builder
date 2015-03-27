@@ -11,7 +11,8 @@ import java.util.*;
  * Created by sean.osterberg on 2/22/15.
  */
 
-public class Section implements IPageElement{
+public class Section implements IPageElement {
+
     private static Logger logger = Logger.getLogger(Section.class);
     private List<AsciiDocPage> pages;
     private TocNode rootNode;
@@ -22,7 +23,7 @@ public class Section implements IPageElement{
     private List<Section> versions;
 
     public Section(List<AsciiDocPage> pages, TocNode rootNode, List<Section> versions, String filepath, String url, String prettyName) {
-        validateInputParams(new Object[] {pages, rootNode, versions, filepath});
+        validateInputParams(new Object[] { pages, rootNode, versions, filepath });
         this.pages = pages;
         this.rootNode = rootNode;
         this.versions = versions;
@@ -69,9 +70,9 @@ public class Section implements IPageElement{
     public static List<Section> fromMasterDirectory(File masterDirectory) {
         Utilities.validateMasterDirectory(masterDirectory);
         List<Section> sections = new ArrayList<Section>();
-        if(masterDirectory.isDirectory()) {
+        if (masterDirectory.isDirectory()) {
             for (File directory : masterDirectory.listFiles()) {
-                if(directory.isDirectory() && !directory.getName().startsWith("_")) {
+                if (directory.isDirectory() && !directory.getName().startsWith("_")) {
                     sections.add(fromDirectory(directory));
                 }
             }
@@ -86,13 +87,13 @@ public class Section implements IPageElement{
         TocNode rootNode = SectionTableOfContents.fromAsciiDocFile(tocFile).getRootTocNode();
         List<Section> versions = new ArrayList<Section>();
         if (!url.contains(File.separator + "v" + File.separator)) {
-            if(url.isEmpty() && directory.getPath().contains(File.separator + "v" + File.separator)) {
+            if (url.isEmpty() && directory.getPath().contains(File.separator + "v" + File.separator)) {
                 url = getVersionUrl(directory.getPath(), getBaseName(directory.getPath()));
             } else {
                 url = Utilities.getConcatPath(new String[] { url, directory.getPath().substring(directory.getPath().lastIndexOf(File.separator) + 1) });
             }
         }
-        if(Utilities.directoryContainsVersions(directory)) {
+        if (Utilities.directoryContainsVersions(directory)) {
             getVersions(directory, versions, url);
         }
         return new Section(pages, rootNode, versions, directory.getPath(), url, getPrettyName(directory));
@@ -100,8 +101,8 @@ public class Section implements IPageElement{
 
     private static List<File> getValidAsciiDocFilesInSection(List<File> files) {
         List<File> validFiles = new ArrayList<File>();
-        for(File file : files) {
-            if(!file.isDirectory() &&
+        for (File file : files) {
+            if (!file.isDirectory() &&
                     Utilities.fileEndsWithValidAsciidocExtension(file.getName()) &&
                     !file.getName().contentEquals("toc.ad")) {
                 validFiles.add(file);
@@ -112,8 +113,8 @@ public class Section implements IPageElement{
 
     private static void getVersions(File directory, List<Section> versions, String url) {
         File versionDirectory = new File(Utilities.getConcatPath(new String[] { directory.getPath(), "v" }));
-        for(File file : versionDirectory.listFiles()) {
-            if(file.isDirectory()) {
+        for (File file : versionDirectory.listFiles()) {
+            if (file.isDirectory()) {
                 versions.add(getSectionFromDirectory(file, getVersionUrl(file.getPath(), url)));
             }
         }
@@ -122,9 +123,9 @@ public class Section implements IPageElement{
     public static String getVersionUrl(String directoryPath, String sectionName) {
         List<String> pathEntries = getDirectoriesOrFilesBetweenSeparators(directoryPath);
         String buffer = "";
-        for(String entry : pathEntries) {
+        for (String entry : pathEntries) {
             String temp = new StringBuilder(entry).reverse().toString();
-            if(!temp.contentEquals(sectionName)) {
+            if (!temp.contentEquals(sectionName)) {
                 buffer += entry + File.separator;
             } else {
                 return new StringBuilder(buffer + entry).reverse().toString();
@@ -137,12 +138,12 @@ public class Section implements IPageElement{
     private static List<String> getDirectoriesOrFilesBetweenSeparators(String directoryPath) {
         List<String> fileOrDirectories = new ArrayList<String>();
         String buffer = "";
-        for(int i = directoryPath.length() - 1; i > 0; i--) {
+        for (int i = directoryPath.length() - 1; i > 0; i--) {
             char current = directoryPath.charAt(i);
-            if(current != File.separatorChar) {
+            if (current != File.separatorChar) {
                 buffer += current;
             } else {
-                if(!buffer.isEmpty()) {
+                if (!buffer.isEmpty()) {
                     fileOrDirectories.add(buffer);
                     buffer = "";
                 }
@@ -152,8 +153,8 @@ public class Section implements IPageElement{
     }
 
     private static String getPrettyName(File directory) {
-        for(File file : directory.listFiles()) {
-            if(FilenameUtils.getExtension(file.getName()).contentEquals("version")) {
+        for (File file : directory.listFiles()) {
+            if (FilenameUtils.getExtension(file.getName()).contentEquals("version")) {
                 return FilenameUtils.getBaseName(file.getName());
             }
         }
@@ -162,13 +163,13 @@ public class Section implements IPageElement{
 
     private static String getBaseName(String directoryPath) {
         if (!directoryPath.contains(File.separator + "v" + File.separator)) {
-             return directoryPath.substring(directoryPath.lastIndexOf(File.separator) + 1);
+            return directoryPath.substring(directoryPath.lastIndexOf(File.separator) + 1);
         } else {
             List<String> paths = getDirectoriesOrFilesBetweenSeparators(directoryPath);
             String[] result = paths.toArray(new String[paths.size()]);
             String baseName = "";
-            for(int i = 0; i < result.length; i++) {
-                if(result[i].contentEquals("v")) {
+            for (int i = 0; i < result.length; i++) {
+                if (result[i].contentEquals("v")) {
                     baseName = new StringBuilder(result[i + 1]).reverse().toString();
                 }
             }
@@ -189,12 +190,12 @@ public class Section implements IPageElement{
 
     @Override
     public void accept(IPageElementVisitor visitor) {
-        if(visitor.visit(this)){
+        if (visitor.visit(this)) {
             rootNode.accept(visitor);
-            for(AsciiDocPage page:pages) {
+            for (AsciiDocPage page : pages) {
                 page.accept(visitor);
             }
-            for(Section version:this.versions){
+            for (Section version : this.versions) {
                 version.accept(visitor);
             }
         }

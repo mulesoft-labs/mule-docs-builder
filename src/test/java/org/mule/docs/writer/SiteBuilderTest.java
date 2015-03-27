@@ -29,6 +29,6 @@ public class SiteBuilderTest {
     }
 
     private File getValidOutputDirectory() {
-        return new File(Utilities.getConcatPath(new String[] {TestUtilities.getTestResourcesPath(), "output"}));
+        return new File(Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "output" }));
     }
 }

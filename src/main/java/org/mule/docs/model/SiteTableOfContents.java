@@ -14,6 +14,7 @@ import java.util.List;
  * Created by sean.osterberg on 3/11/15.
  */
 public class SiteTableOfContents {
+
     private List<TocNode> nodes;
 
     public SiteTableOfContents(List<TocNode> nodes) {
@@ -31,7 +32,7 @@ public class SiteTableOfContents {
         Document tocHtml = Jsoup.parse(html, "UTF-8");
         List<TocNode> nodes = new ArrayList<TocNode>();
         Elements tocSections = tocHtml.select("li");
-        for(int i = 0; i < tocSections.size(); i++) {
+        for (int i = 0; i < tocSections.size(); i++) {
             getNodeFromRawTocHtml(tocHtml, nodes);
         }
         return nodes;

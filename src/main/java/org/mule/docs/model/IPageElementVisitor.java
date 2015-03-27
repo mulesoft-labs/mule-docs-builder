@@ -9,7 +9,6 @@ public interface IPageElementVisitor {
      * Default visit method for all interfaces
      *
      * @param pageElement pageElement
-     *
      * @return true if the child's need to be visited
      */
     boolean visit(IPageElement pageElement);
@@ -18,7 +17,6 @@ public interface IPageElementVisitor {
      * Visit site
      *
      * @param site site
-     *
      * @return true if the child's need to be visited
      */
     boolean visit(Site site);
@@ -27,7 +25,6 @@ public interface IPageElementVisitor {
      * Visit asciiDocPage
      *
      * @param asciiDocPage asciiDocPage
-     *
      * @return true if the child's need to be visited
      */
     boolean visit(AsciiDocPage asciiDocPage);
@@ -36,7 +33,6 @@ public interface IPageElementVisitor {
      * Visit page
      *
      * @param page page
-     *
      * @return true if the child's need to be visited
      */
     boolean visit(Page page);
@@ -45,7 +41,6 @@ public interface IPageElementVisitor {
      * Visit the table of contents
      *
      * @param toc toc
-     *
      * @return true if the child's need to be visited
      */
     boolean visit(SiteTableOfContents toc);
@@ -54,13 +49,13 @@ public interface IPageElementVisitor {
      * Visit a section
      *
      * @param section section
-     *
      * @return true if the child's need to be visited
      */
     boolean visit(Section section);
 
     /**
      * Visit TocNode
+     *
      * @param rootNode node
      * @return true if the child's need to be visited
      */

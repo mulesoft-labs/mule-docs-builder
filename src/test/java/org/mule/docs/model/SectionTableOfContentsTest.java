@@ -33,8 +33,9 @@ public class SectionTableOfContentsTest {
     public void getRootNode_returnsValidRootNode() {
         SectionTableOfContents toc = SectionTableOfContents.fromAsciiDocFile(getValidTocFile());
         TocNode root = toc.getRootTocNode();
-        assertTrue(root != null);
-        assertTrue(root.getChildren() != null && root.getChildren().size() > 0);
+        assertNotNull(root);
+        assertNotNull(root.getChildren());
+        assertTrue(root.getChildren().size() > 0);
     }
 
     public File getValidTocFile() {

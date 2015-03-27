@@ -12,11 +12,12 @@ import org.mule.docs.utils.Utilities;
  * Created by sean.osterberg on 2/20/15.
  */
 public class RootNodeFromHtmlToc {
+
     private static Logger logger = Logger.getLogger(RootNodeFromHtmlToc.class);
     private TocNode rootNode;
 
     public RootNodeFromHtmlToc(TocNode rootNode) {
-        validateInputParams(new Object[] {rootNode});
+        validateInputParams(new Object[] { rootNode });
         this.rootNode = rootNode;
     }
 
@@ -46,7 +47,7 @@ public class RootNodeFromHtmlToc {
 
     private static void processToc(Element listElement, TocNode parentNode) {
         Element firstItem = listElement.select("li").first();
-        if(firstItem == null) {
+        if (firstItem == null) {
             return;
         }
         String parentLink = cleanupLink(firstItem.select("a").first().attr("href"));
@@ -56,11 +57,11 @@ public class RootNodeFromHtmlToc {
         Elements firstChildren = firstItem.children().select("ul");
         Elements listItems = firstChildren.select("li");
 
-        if(firstChildren.size() > 1) {
+        if (firstChildren.size() > 1) {
             processToc(firstChildren.first(), node);
             firstItem.remove();
             processToc(listElement, parentNode);
-        } else if(firstChildren.size() == 0) {
+        } else if (firstChildren.size() == 0) {
             firstItem.remove();
             processToc(listElement, parentNode);
         } else {
@@ -98,7 +99,7 @@ public class RootNodeFromHtmlToc {
     }
 
     private static String removeIndexFromLink(String link) {
-        if(link.contentEquals("index")) {
+        if (link.contentEquals("index")) {
             link = "";
         }
         return link;
@@ -109,7 +110,7 @@ public class RootNodeFromHtmlToc {
     }
 
     private static void validateThatAsciiDocPageIsToc(AsciiDocPage page) {
-        if(!page.getFilename().endsWith("toc.ad")) {
+        if (!page.getFilename().endsWith("toc.ad")) {
             String error = "AsciiDoc page appears to be invalid for processing table of contents: \"" + page.getFilename() + "\".";
             logger.fatal(error);
             throw new DocBuildException(error);

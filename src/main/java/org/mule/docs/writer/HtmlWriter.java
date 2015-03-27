@@ -81,13 +81,13 @@ public class HtmlWriter {
         Map<String, Object> childValues = new HashMap<String, Object>();
         childValues.put("title", parent.getTitle());
         childValues.put("sectionId", sectionId);
-        childValues.put("url", getCompleteUrl(baseUrl, parent.getUrl()) );
+        childValues.put("url", getCompleteUrl(baseUrl, parent.getUrl()));
         String templateName = "";
-        if(activeUrl == null) {
+        if (activeUrl == null) {
             templateName = "parentTocLink1";
-        } else if(parent.getUrl().equalsIgnoreCase(activeUrl)) {
+        } else if (parent.getUrl().equalsIgnoreCase(activeUrl)) {
             templateName = "parentTocLink2";
-        } else if(isFirstItem && !activeUrl.isEmpty()) {
+        } else if (isFirstItem && !activeUrl.isEmpty()) {
             templateName = "parentTocLink3";
         } else if (Utilities.isActiveUrlInSection(parent, activeUrl, false)) {
             templateName = "parentTocLink4";

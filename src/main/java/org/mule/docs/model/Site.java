@@ -5,7 +5,8 @@ import java.util.List;
 /**
  * Created by Mulesoft.
  */
-public class Site implements IPageElement{
+public class Site implements IPageElement {
+
     private List<Section> sections;
     private SiteTableOfContents toc;
 
@@ -27,12 +28,11 @@ public class Site implements IPageElement{
 
     @Override
     public void accept(IPageElementVisitor visitor) {
-            if(visitor.visit(this)){
-                visitor.visit(toc);
-                for(Section section:sections){
-                    section.accept(visitor);
-                }
+        if (visitor.visit(this)) {
+            visitor.visit(toc);
+            for (Section section : sections) {
+                section.accept(visitor);
             }
-
+        }
     }
 }
