@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="/docs/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link href="/docs/css/asciidoctor.css" rel="stylesheet">
+    <link href="/docs/css/mule-docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+    <script src="/docs/js/jquery-1.11.2.min.js"></script>
+    <script src="/docs/js/bootstrap.js"></script>
+    <title>MuleSoft Documentation - Building an HTTPS service</title>
+</head>
+<body>
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<div class="navbar navbar-inverse navbar-static-top">
+    <div class="navbar-inner">
+        <div class="container-fluid" id="top">
+            <img src="/docs/img/mule-docs-logo.png">
+        </div>
+    </div>
+</div>
+<div class="container" id="main">
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="toc">
+
+                <li class="toc-section"><div class="toc-section-header child"><a href="/docs/30-mins-with-mule/">First 30 Minutes with Mule</a><a href="#6I66R5TSIX" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="6I66R5TSIX"><a href="/docs/30-mins-with-mule/anypoint-platform-primer"><li class="child">Anypoint Platform Primer</li></a><a href="/docs/30-mins-with-mule/anypoint-studio-essentials"><li class="child">Anypoint Studio Essentials</li></a><a href="/docs/30-mins-with-mule/begin-with-the-basics"><li class="child">Begin with the Basics</li></a><a href="/docs/30-mins-with-mule/build+a+hello+world+application"><li class="child">Build a Hello World Application</li></a><a href="/docs/30-mins-with-mule/download-and-launch-anypoint-studio"><li class="child">Download and Launch Anypoint Studio</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub">CloudHub</a><a href="#YF7DKKFFC8" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="YF7DKKFFC8" style="height: 0px;"><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/getting-started-with-cloudhub">Getting Started with CloudHub</a><a href="#LYXM1JAFB6" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="LYXM1JAFB6" style="height: 0px;"><a href="/docs/cloudhub/v/3.6/cloudhub-at-a-glance"><li class="child">CloudHub at a Glance</li></a><a href="/docs/cloudhub/v/3.6/hello-world-on-cloudhub"><li class="child">Hello World on CloudHub</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-getting-started-with-connectors"><li class="child">Getting Started with Connectors</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub-tutorials">CloudHub Tutorials</a><a href="#39U93MJCUG" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="39U93MJCUG"><a href="/docs/cloudhub/v/3.6/cloudhub-building-an-https-service"><li class="child active">Building an HTTPS Service</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-custom-application-alerts"><li class="child">Custom Application Alerts</li></a></ul></li><a href="/docs/cloudhub/v/3.6/developing-a-cloudhub-application"><li class="child">Developing a CloudHub Application</li></a><a href="/docs/cloudhub/v/3.6/deploying-a-cloudhub-application"><li class="child">Deploying a CloudHub Application</li></a><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/managing-cloudhub-applications">Managing CloudHub Applications</a><a href="#YXCSAGTSA5" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="YXCSAGTSA5" style="height: 0px;"><a href="/docs/cloudhub/v/3.6/cloudhub-console-overview"><li class="child">CloudHub Console Overview</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-administration"><li class="child">CloudHub Administration</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-alerts-and-notifications"><li class="child">CloudHub Alerts and Notifications</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-fabric"><li class="child">CloudHub Fabric</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-insight"><li class="child">CloudHub Insight</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-command-line-tools"><li class="child">Command Line Tools</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-managing-application-data-with-object-stores"><li class="child">Managing Application Data with Object Stores</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-managing-queues"><li class="child">Managing Queues</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-managing-schedules"><li class="child">Managing Schedules</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-secure-application-properties"><li class="child">Secure Application Properties</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-viewing-log-data"><li class="child">Viewing Log Data</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-virtual-private-cloud"><li class="child">Virtual Private Cloud</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-worker-monitoring"><li class="child">CloudHub Worker Monitoring</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-penetration-testing-policies"><li class="child">Penetration Testing Policies</li></a><a href="/docs/cloudhub/v/3.6/secure-data-gateway"><li class="child">Secure Data Gateway</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub-api">CloudHub API</a><a href="#9PGPAS8YO5" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="9PGPAS8YO5" style="height: 0px;"><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub-applications">Applications</a><a href="#5BJWA9U6Q1" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="5BJWA9U6Q1" style="height: 0px;"><a href="/docs/cloudhub/v/3.6/cloudhub-create-application"><li class="child">Create Application</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-delete-application"><li class="child">Delete Application</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-deploy-application"><li class="child">Deploy Application</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-get-application"><li class="child">Get Application</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-list-all-applications"><li class="child">List All Applications</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-update-application-metadata"><li class="child">Update Application Metadata</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub-logs">Logs</a><a href="#M96K1CRIQQ" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="M96K1CRIQQ" style="height: 0px;"><a href="/docs/cloudhub/v/3.6/cloudhub-list-all-logs"><li class="child">List All Logs</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub-notifications">Notifications</a><a href="#CJDRYHNTV4" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="CJDRYHNTV4" style="height: 0px;"><a href="/docs/cloudhub/v/3.6/cloudhub-create-notification"><li class="child">Create Notification</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-list-notifications"><li class="child">List Notifications</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-update-all-notifications"><li class="child">Update All Notifications</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-update-notification"><li class="child">Update Notification</li></a></ul></li></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub-architecture">CloudHub Architecture</a><a href="#9OX90EQOC9" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="9OX90EQOC9" style="height: 0px;"><a href="/docs/cloudhub/v/3.6/cloudhub-networking-guide"><li class="child">CloudHub Networking Guide</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub-reference-materials">CloudHub Reference Materials</a><a href="#1HE0ZDK0R8" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="1HE0ZDK0R8" style="height: 0px;"><a href="/docs/cloudhub/v/3.6/cloudhub-amazon-rds-support"><li class="child">CloudHub Amazon RDS Support</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-configure-twitter-for-api-access"><li class="child">Configure Twitter for API Access</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-configure-twilio-for-api-access"><li class="child">Configure Twilio for API Access</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-salesforce-developer-account-setup"><li class="child">Salesforce Developer Account Setup</li></a></ul></li><a href="/docs/cloudhub/v/3.6/cloudhub-maintenance-and-upgrade-policy"><li class="child">Maintenance and Upgrade Policy</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-community-and-support"><li class="child">Community and Support</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-mule-esb-and-cloudhub"><li class="child">Mule ESB and CloudHub</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-faq"><li class="child">FAQ</li></a></ul></li>
+
+            </ul>
+
+        </div>
+        <!--/span-->
+        <div class="col-md-9">
+            <div id="content">
+
+                <ol class="breadcrumb"><li><a href="developers.mulesoft.com/docs/">MuleSoft Docs</a></li><li><a href="cloudhub">CloudHub</a></li><li><a href="cloudhub-tutorials">CloudHub Tutorials</a></li><li class="active">Building an HTTPS Service</li></ol>
+
+                <div id="header">
+                    <h1>Building an HTTPS service</h1>
+                </div>
+                <div id="doc-metadata">
+                    <!--<span class="updated-date" style="color:#B1B1B1;">Updated: January 15, 2015</span>
+                   <span class="updated-date" style="color:#DDD; padding: 0 0 0 7px;">/</span>-->
+                    <span class="updated-date" style="color:#B1B1B1; padding: 0 0 0 0px;">Version: </span>
+       <span class="dropdown" style="padding: 0 7px 0 0px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Current <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#">January 2015</a></li>
+            <li><a href="#">October 2014</a></li>
+            <li><a href="#">July 2014</a></li>
+        </ul> </span>
+                    <span class="updated-date" style="color:#DDD; padding: 0 0 0 0px;">/</span>
+       <span class="dropdown" style="padding: 0 7px 0 7px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Export <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#">PDF - Only this page</a></li>
+            <li><a href="#">PDF - CloudHub section</a></li>
+            <li><a href="#">EPub - MuleSoft Docs</a></li>
+        </ul> </span>
+                    <span class="updated-date" style="color:#DDD; padding: 0 0 0 0px;">/</span>
+       <span class="dropdown" style="padding: 0 7px 0 7px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Feedback <span class="caret"></span></a>
+       <ul class="dropdown-menu" role="menu">
+           <li><a href="#">Rate this Topic</a></li>
+           <li><a href="#">Edit on GitHub</a></li>
+       </ul> </span>
+                </div>
+
+                <div class="paragraph"> 
+ <p>CloudHub supports building HTTPS/SSL based services so you can be ensured of your data confidentiality. It is very easy to configure your service to support SSL.</p> 
+</div> 
+<div class="paragraph"> 
+ <p>This tutorial builds on existing tutorials, so to begin, you’ll need to build a service using the <a href="/documentation/display/current/Hello+World+on+CloudHub">Hello World</a>&nbsp;tutorial.</p> 
+</div> 
+<div class="paragraph"> 
+ <p>You can now modify your existing service to use HTTPS as detailed in the following steps.</p> 
+</div> 
+<div class="paragraph"> 
+ <p>First, if you don’t have a keystore for your service, you’ll need to generate a new keystore. You can do this using the command line and the keytool utility from the JDK.</p> 
+</div> 
+<div class="listingblock"> 
+ <div class="content"> 
+  <pre>keytool -genkey -alias mule -keyalg RSA -keystore keystore.jks</pre> 
+ </div> 
+</div> 
+<div class="paragraph"> 
+ <p>This command will create a file named <code>keystore.jks</code>. Before proceeding, verify that this file exists and that it is located in the folder <code>src/main/resources</code>.</p> 
+</div> 
+<div class="paragraph"> 
+ <p>Next, you will need to configure an HTTPS connector inside your Mule configuration:</p> 
+</div> 
+<div class="paragraph"> 
+ <p>For more details on how this is configured, see the <a href="/documentation/display/current/HTTPS+Transport+Reference">HTTPS Transport Reference</a>.</p> 
+</div> 
+<div class="paragraph"> 
+ <p>Finally, configure any endpoints you wish to use HTTPS on with the https scheme and the $\{https.port} variable for the port. Make sure to include a reference to the HTTPS global connector configuration. For example:</p> 
+</div> 
+<div class="paragraph"> 
+ <p>Your application is now ready to be deployed on CloudHub. You can access your endpoint via the normal HTTPS address, e.g.: <a href="https://yourdomain.cloudhub.io" class="bare">https://yourdomain.cloudhub.io</a>.</p> 
+</div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

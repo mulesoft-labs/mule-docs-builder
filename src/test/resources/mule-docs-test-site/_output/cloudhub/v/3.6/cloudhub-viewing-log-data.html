@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="/docs/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link href="/docs/css/asciidoctor.css" rel="stylesheet">
+    <link href="/docs/css/mule-docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+    <script src="/docs/js/jquery-1.11.2.min.js"></script>
+    <script src="/docs/js/bootstrap.js"></script>
+    <title>MuleSoft Documentation - Viewing Log Data</title>
+</head>
+<body>
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<div class="navbar navbar-inverse navbar-static-top">
+    <div class="navbar-inner">
+        <div class="container-fluid" id="top">
+            <img src="/docs/img/mule-docs-logo.png">
+        </div>
+    </div>
+</div>
+<div class="container" id="main">
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="toc">
+
+                <li class="toc-section"><div class="toc-section-header child"><a href="/docs/30-mins-with-mule/">First 30 Minutes with Mule</a><a href="#QQ54GI2COA" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="QQ54GI2COA"><a href="/docs/30-mins-with-mule/anypoint-platform-primer"><li class="child">Anypoint Platform Primer</li></a><a href="/docs/30-mins-with-mule/anypoint-studio-essentials"><li class="child">Anypoint Studio Essentials</li></a><a href="/docs/30-mins-with-mule/begin-with-the-basics"><li class="child">Begin with the Basics</li></a><a href="/docs/30-mins-with-mule/build+a+hello+world+application"><li class="child">Build a Hello World Application</li></a><a href="/docs/30-mins-with-mule/download-and-launch-anypoint-studio"><li class="child">Download and Launch Anypoint Studio</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub">CloudHub</a><a href="#1Z5UY4I11V" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="1Z5UY4I11V" style="height: 0px;"><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/getting-started-with-cloudhub">Getting Started with CloudHub</a><a href="#EZ95E6MATE" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="EZ95E6MATE" style="height: 0px;"><a href="/docs/cloudhub/v/3.6/cloudhub-at-a-glance"><li class="child">CloudHub at a Glance</li></a><a href="/docs/cloudhub/v/3.6/hello-world-on-cloudhub"><li class="child">Hello World on CloudHub</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-getting-started-with-connectors"><li class="child">Getting Started with Connectors</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub-tutorials">CloudHub Tutorials</a><a href="#3J7D9ES8TV" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="3J7D9ES8TV" style="height: 0px;"><a href="/docs/cloudhub/v/3.6/cloudhub-building-an-https-service"><li class="child">Building an HTTPS Service</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-custom-application-alerts"><li class="child">Custom Application Alerts</li></a></ul></li><a href="/docs/cloudhub/v/3.6/developing-a-cloudhub-application"><li class="child">Developing a CloudHub Application</li></a><a href="/docs/cloudhub/v/3.6/deploying-a-cloudhub-application"><li class="child">Deploying a CloudHub Application</li></a><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/managing-cloudhub-applications">Managing CloudHub Applications</a><a href="#IOXNAGLDMT" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="IOXNAGLDMT"><a href="/docs/cloudhub/v/3.6/cloudhub-console-overview"><li class="child">CloudHub Console Overview</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-administration"><li class="child">CloudHub Administration</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-alerts-and-notifications"><li class="child">CloudHub Alerts and Notifications</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-fabric"><li class="child">CloudHub Fabric</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-insight"><li class="child">CloudHub Insight</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-command-line-tools"><li class="child">Command Line Tools</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-managing-application-data-with-object-stores"><li class="child">Managing Application Data with Object Stores</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-managing-queues"><li class="child">Managing Queues</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-managing-schedules"><li class="child">Managing Schedules</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-secure-application-properties"><li class="child">Secure Application Properties</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-viewing-log-data"><li class="child active">Viewing Log Data</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-virtual-private-cloud"><li class="child">Virtual Private Cloud</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-worker-monitoring"><li class="child">CloudHub Worker Monitoring</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-penetration-testing-policies"><li class="child">Penetration Testing Policies</li></a><a href="/docs/cloudhub/v/3.6/secure-data-gateway"><li class="child">Secure Data Gateway</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub-api">CloudHub API</a><a href="#NR57SUT2NN" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="NR57SUT2NN" style="height: 0px;"><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub-applications">Applications</a><a href="#E1G9TBZUOJ" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="E1G9TBZUOJ" style="height: 0px;"><a href="/docs/cloudhub/v/3.6/cloudhub-create-application"><li class="child">Create Application</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-delete-application"><li class="child">Delete Application</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-deploy-application"><li class="child">Deploy Application</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-get-application"><li class="child">Get Application</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-list-all-applications"><li class="child">List All Applications</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-update-application-metadata"><li class="child">Update Application Metadata</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub-logs">Logs</a><a href="#1JFQJ832O8" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="1JFQJ832O8" style="height: 0px;"><a href="/docs/cloudhub/v/3.6/cloudhub-list-all-logs"><li class="child">List All Logs</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub-notifications">Notifications</a><a href="#L9K9XUPQO1" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="L9K9XUPQO1" style="height: 0px;"><a href="/docs/cloudhub/v/3.6/cloudhub-create-notification"><li class="child">Create Notification</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-list-notifications"><li class="child">List Notifications</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-update-all-notifications"><li class="child">Update All Notifications</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-update-notification"><li class="child">Update Notification</li></a></ul></li></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub-architecture">CloudHub Architecture</a><a href="#EZET14PQUC" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="EZET14PQUC" style="height: 0px;"><a href="/docs/cloudhub/v/3.6/cloudhub-networking-guide"><li class="child">CloudHub Networking Guide</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub-reference-materials">CloudHub Reference Materials</a><a href="#M21MX3178U" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="M21MX3178U" style="height: 0px;"><a href="/docs/cloudhub/v/3.6/cloudhub-amazon-rds-support"><li class="child">CloudHub Amazon RDS Support</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-configure-twitter-for-api-access"><li class="child">Configure Twitter for API Access</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-configure-twilio-for-api-access"><li class="child">Configure Twilio for API Access</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-salesforce-developer-account-setup"><li class="child">Salesforce Developer Account Setup</li></a></ul></li><a href="/docs/cloudhub/v/3.6/cloudhub-maintenance-and-upgrade-policy"><li class="child">Maintenance and Upgrade Policy</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-community-and-support"><li class="child">Community and Support</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-mule-esb-and-cloudhub"><li class="child">Mule ESB and CloudHub</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-faq"><li class="child">FAQ</li></a></ul></li>
+
+            </ul>
+
+        </div>
+        <!--/span-->
+        <div class="col-md-9">
+            <div id="content">
+
+                <ol class="breadcrumb"><li><a href="developers.mulesoft.com/docs/">MuleSoft Docs</a></li><li><a href="cloudhub">CloudHub</a></li><li><a href="managing-cloudhub-applications">Managing CloudHub Applications</a></li><li class="active">Viewing Log Data</li></ol>
+
+                <div id="header">
+                    <h1>Viewing Log Data</h1>
+                </div>
+                <div id="doc-metadata">
+                    <!--<span class="updated-date" style="color:#B1B1B1;">Updated: January 15, 2015</span>
+                   <span class="updated-date" style="color:#DDD; padding: 0 0 0 7px;">/</span>-->
+                    <span class="updated-date" style="color:#B1B1B1; padding: 0 0 0 0px;">Version: </span>
+       <span class="dropdown" style="padding: 0 7px 0 0px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Current <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#">January 2015</a></li>
+            <li><a href="#">October 2014</a></li>
+            <li><a href="#">July 2014</a></li>
+        </ul> </span>
+                    <span class="updated-date" style="color:#DDD; padding: 0 0 0 0px;">/</span>
+       <span class="dropdown" style="padding: 0 7px 0 7px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Export <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#">PDF - Only this page</a></li>
+            <li><a href="#">PDF - CloudHub section</a></li>
+            <li><a href="#">EPub - MuleSoft Docs</a></li>
+        </ul> </span>
+                    <span class="updated-date" style="color:#DDD; padding: 0 0 0 0px;">/</span>
+       <span class="dropdown" style="padding: 0 7px 0 7px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Feedback <span class="caret"></span></a>
+       <ul class="dropdown-menu" role="menu">
+           <li><a href="#">Rate this Topic</a></li>
+           <li><a href="#">Edit on GitHub</a></li>
+       </ul> </span>
+                </div>
+
+                <div id="preamble"> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>CloudHub provides access to log data so that you can monitor your application and diagnose any potential issues. CloudHub stores log data in Universal Time (UTC); however, the console displays the log using your computer’s local time zone.&nbsp;CloudHub saves 100,000 log events per application. Logs that exceed the limit are truncated every 24 hours to 100,000 events by discarding the oldest events past the limit. Individual log entries are limited to a maximum length of 100K characters; longer log entries are truncated to the limit.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p><span class="image"><img src="/documentation/download/attachments/118981345/CHSchedLogs.png?version=2&amp;modificationDate=1414205380821" alt="image"></span></p> 
+  </div> 
+  <div class="literalblock"> 
+   <div class="content"> 
+    <pre>&nbsp;</pre> 
+   </div> 
+  </div> 
+  <div class="literalblock"> 
+   <div class="content"> 
+    <pre>&nbsp;Contents
+ +
+link:#ViewingLogData-PausingandClearingaLog[Pausing and Clearing a Log]
+link:#ViewingLogData-LogSearchFilters[Log Search Filters]
+* link:#ViewingLogData-SearchbyDateandTime[Search by Date and Time]
+* link:#ViewingLogData-SearchbyMessagePriority[Search by Message
+Priority]
+* link:#ViewingLogData-WildcardSearching[Wildcard Searching]</pre> 
+   </div> 
+  </div> 
+  <div class="paragraph"> 
+   <p><a href="#ViewingLogData-LogPageControls">Log Page Controls</a> <a href="#ViewingLogData-DownloadingLogData">Downloading Log Data</a> &nbsp;</p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="ViewingLogData-PausingandClearingaLog"><a class="anchor" href="#ViewingLogData-PausingandClearingaLog"></a>Pausing and Clearing a Log</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>To pause the log so that entries are temporarily stopped from writing, click <strong>Live view</strong> and click <strong>Pause</strong>. While the log is paused, a green <strong>Resume</strong> button appears. Click <strong>Resume</strong> to enable more content to be written.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p><span class="image"><img src="/documentation/download/thumbnails/118981345/CHPause.png?version=1&amp;modificationDate=1414172825629" alt="image"></span></p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>In <strong>Live view</strong>, you can click the <strong>Clear</strong> button to clear the viewing window, so you only see the latest logs generated by the application, which is useful for debugging. The log contents are not deleted, so if you switch views to Archive and back to Live view, the full contents of the log reappear. You can also refresh your browser to see the full log.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p><span class="image"><img src="/documentation/download/attachments/118981345/CHClear.png?version=1&amp;modificationDate=1414172873106" alt="image"></span></p> 
+  </div> 
+  <div class="literalblock"> 
+   <div class="content"> 
+    <pre>&nbsp;</pre> 
+   </div> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="ViewingLogData-LogSearchFilters"><a class="anchor" href="#ViewingLogData-LogSearchFilters"></a>Log Search Filters</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>The <strong>Live view</strong> setting provides a live, continually updated stream of current log data from all an application’s workers.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Click&nbsp;<strong>Archive</strong> view and&nbsp;<strong>Advanced</strong> to&nbsp;set search filters to limit the log display to entries listed by date and time, or by priority:</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p><span class="image"><img src="/documentation/download/attachments/118981345/CHLogFilters.png?version=2&amp;modificationDate=1414205300869" alt="image"></span></p> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="ViewingLogData-SearchbyDateandTime"><a class="anchor" href="#ViewingLogData-SearchbyDateandTime"></a>Search by Date and Time</h3> 
+   <div class="paragraph"> 
+    <p>The <strong>Date &amp; time</strong> filter lets you specify a date range to search the log. Possible values are:</p> 
+   </div> 
+   <div class="ulist"> 
+    <ul> 
+     <li> <p>Last hour</p> </li> 
+     <li> <p>Last 24hrs</p> </li> 
+     <li> <p>Last week</p> </li> 
+     <li> <p>Last month</p> </li> 
+    </ul> 
+   </div> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="ViewingLogData-SearchbyMessagePriority"><a class="anchor" href="#ViewingLogData-SearchbyMessagePriority"></a>Search by Message Priority</h3> 
+   <div class="paragraph"> 
+    <p>The Priority filter lets you view specific events in the log.&nbsp;You can also specify different priorities by typing&nbsp;<em>priority:&lt;type&gt;</em>&nbsp;in the search box, as shown in the Command column in the table.</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>Possible values are:</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>Value Description Command All Priorities List all messages</p> 
+   </div> 
+   <div class="openblock"> 
+    <div class="content"> 
+     <div class="paragraph"> 
+      <p>ERROR List only error messages, such when an exception occurs. priority:ERROR FATAL List only fatal messages for when an application fails priority:FATAL INFO List informative messages priority:INFO SYSTEM List messages about application and worker startup priority:SYSTEM CONSOLE List message about console events such as setting the objectstore priority:CONSOLE WARN List warning messages priority:WARN DEBUG List debugging messages priority:DEBUG</p> 
+     </div> 
+     <div id="ViewingLogData-WildcardSearching" class="paragraph"> 
+      <p>=== Wildcard Searching</p> 
+     </div> 
+     <div class="paragraph"> 
+      <p>You can also filter log data by entering search terms into the search box at the top of the log page that match results in the log message. You can search for any exact term in the log message as well as a few common quantifiers for wildcard searching:</p> 
+     </div> 
+     <table class="tableblock frame-all grid-all spread"> 
+      <colgroup> 
+       <col style="width: %;"> 
+       <col style="width: %;"> 
+      </colgroup> 
+      <tbody> 
+       <tr> 
+        <td class="tableblock halign-left valign-top"><p class="tableblock">?</p></td> 
+        <td class="tableblock halign-left valign-top"><p class="tableblock">The question mark matches zero or one of the preceding element.</p></td> 
+       </tr> 
+       <tr> 
+        <td class="tableblock halign-left valign-top"><p class="tableblock">*</p></td> 
+        <td class="tableblock halign-left valign-top"><p class="tableblock">The asterisk matches zero or more of the preceding element.</p></td> 
+       </tr> 
+      </tbody> 
+     </table> 
+     <div class="literalblock"> 
+      <div class="content"> 
+       <pre>&nbsp;</pre> 
+      </div> 
+     </div> 
+     <div id="ViewingLogData-LogPageControls" class="paragraph"> 
+      <p>== Log Page Controls</p> 
+     </div> 
+     <div class="paragraph"> 
+      <p>CloudHub provides page controls to help you move through the logs when you view historical data. The most recent logs are on page one. The data gets older as you step through the higher pages.&nbsp;</p> 
+     </div> 
+     <div class="paragraph"> 
+      <p>You can configure the number of results that display on each page by clicking <strong>Archive</strong> and the down-arrow next to the number of entries:</p> 
+     </div> 
+     <div class="paragraph"> 
+      <p><span class="image"><img src="/documentation/download/attachments/118981345/CHLogPageControls.png?version=4&amp;modificationDate=1414179810930" alt="image"></span></p> 
+     </div> 
+     <div class="paragraph"> 
+      <p>Click <strong>FIRST</strong>, <strong>LAST</strong>, or the number of entries to view per page, <strong>10</strong>, <strong>25</strong>, or <strong>50</strong>.</p> 
+     </div> 
+     <div class="literalblock"> 
+      <div class="content"> 
+       <pre>&nbsp;</pre> 
+      </div> 
+     </div> 
+     <div id="ViewingLogData-DownloadingLogData" class="paragraph"> 
+      <p>== Downloading Log Data</p> 
+     </div> 
+     <div class="paragraph"> 
+      <p>Click <strong>Archive</strong> and click <strong>Download</strong> to save a copy of the current log view to your computer:</p> 
+     </div> 
+     <div class="paragraph"> 
+      <p><span class="image"><img src="/documentation/download/thumbnails/118981345/CHLogDownload.png?version=3&amp;modificationDate=1414179854077" alt="image"></span></p> 
+     </div> 
+     <div class="paragraph"> 
+      <p>You are prompted for a save location.&nbsp;You can download a maximum of 10,000 lines of log data with a single save. However, using repeated views with contiguous time windows as search criteria, the entire log may be downloaded.</p> 
+     </div> 
+     <div class="literalblock"> 
+      <div class="content"> 
+       <pre>&nbsp;</pre> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+ </div> 
+</div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

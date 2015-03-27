@@ -1,0 +1,1 @@
+<ol class="breadcrumb"><#list links as link>${link}</#list></ol>

@@ -1,0 +1,79 @@
+[[Notifications-WorkingwithNotifications]]
+= Working with Notifications
+
+The notifications API allows you to list notifications, create
+notifications and mark as read. All resources or methods that return or
+accept a type (except where noted) use the application JSON type. As an
+example, here's an example of what the result from the notifications
+resource looks like.
+
+[[Notifications-NotificationObjectProperties]]
+== Notification Object Properties
+
+The following are the properties for applications.
+
+Property
+
+Description
+
+createdAt
+
+The time the notification was created in ISO8601 format.
+
+domain
+The application that the notification is associated with, if any.
+href
+The URL of the notification. This can be used as the URL to update the
+notification status.
+message
+
+The notification message.
+
+priority
+
+The priority - INFO, WARN, ERROR
+
+properties
+A map of custom properties associated with this notification. These are
+supplied by an application when creating the notification.
+read
+Whether or not the notification has been read.
+readOn
+
+The time the notification was read in ISO8601 format.
+
+tenantId
+
+The ID of the tenant that the notification is associated with.
+
+transactionId
+The ID of the transaction that this notification is associated with.
+username
+The user who created the notification.
+[[Notifications-OperationsforNotifications]]
+== Operations for Notifications
+
+The following is a summary of notification related operations:
+
+Operation
+
+Resource
+
+Description
+
+link:/documentation/display/current/List+Notifications[GET]
+/api/notifications
+Lists notifications for all applications
+link:/documentation/display/current/Create+Notification[POST]
+/api/notifications
+Create a new notification.
+link:/documentation/display/current/Update+All+Notifications[PUT]
+/api/notifications
+Mark all notifications as read.
+link:/documentation/display/current/Update+Notification[PUT]
+/api/notifications/\{id}
+Update the status of a notification.
+ 
+
+ +
+

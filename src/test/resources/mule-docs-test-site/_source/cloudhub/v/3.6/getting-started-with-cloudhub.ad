@@ -1,0 +1,70 @@
+:sectanchors:
+
+= Getting Started with CloudHub
+
+CloudHub is an integration platform as a service (iPaaS). It allows you
+to deploy sophisticated cross-cloud integration applications, create new
+APIs on top of existing data sources, integrate on-premise applications
+with cloud services, and much more. With Mule Studio – the user-friendly
+development tool – you can quickly build these integration applications
+and deploy to CloudHub with just a few clicks. This guide will help you
+learn the basics and get started developing your first applications.
+
+[[GettingStartedwithCloudHub-LearnCloudHubBasics]]
+== Learn CloudHub Basics
+
+* Download
+https://www.mulesoft.org/download-mule-esb-community-edition[Anypoint
+Studio].
+* Read our
+link:/documentation/display/current/CloudHub+at+a+Glance[CloudHub at a
+Glance] guide to learn the basic concepts.
+* Follow our easy
+link:/documentation/display/current/Hello+World+on+CloudHub[Hello World
+on CloudHub] tutorial to get your first integration application up and
+running with Anypoint Studio and CloudHub.
+* Then,
+link:/documentation/display/current/Getting+Started+with+Connectors[get
+started with connectors] to connect to external services like Twitter.
+
+Still don't understand how CloudHub can be of use to you? Read more
+about
+http://www.mulesoft.com/cloudhub/ipaas-cloud-based-integration-demand[things
+you can do with CloudHub].
+
+[[GettingStartedwithCloudHub-BuildCloudHubApplications]]
+== Build CloudHub Applications
+
+Follow one of our tutorials to learn how to build CloudHub applications.
+
+* link:/documentation/display/current/Building+an+HTTPS+Service[Building
+an HTTPS Service on CloudHub]  
+* link:/documentation/display/current/Custom+Application+Alerts[Custom
+Application Alerts] 
+
+Want to learn more? Check out all
+the link:/documentation/display/current/Mule+Examples[Mule Examples],
+especially the
+link:/documentation/display/current/Connect+with+Salesforce+Example[Connect
+with Salesforce Example].
+
+[[GettingStartedwithCloudHub-BuildingConnectors]]
+== Building Connectors
+
+Are you interested in building your own connector? Use the link:#[Old
+Anypoint Connector DevKit] to rapidly build connectors and drop them
+inside of Studio.
+
+[[GettingStartedwithCloudHub-OtherResources]]
+== Other Resources
+
+*
+link:/documentation/display/current/Managing+CloudHub+Applications[Managing
+CloudHub Applications] 
+* link:/documentation/display/current/Reference+Materials[Reference
+Materials]
+* link:/documentation/display/current/Community+and+Support[Community
+and Support]
+* There are tons of APIs available. Check our MuleSoft Blog to see a
+http://blogs.mulesoft.org/top-10-weird-apis/[TOP 10 of the weirdest
+APIs] out there.

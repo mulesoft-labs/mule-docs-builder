@@ -1,0 +1,10 @@
+[[GetApplication-GetanApplication]]
+= Get an Application
+
+The GET operation specified with the /api/applications/\{domain}
+resource retrieves an application, where \{domain} is the application
+domain.
+
+Example Request:
+
+Example Response:

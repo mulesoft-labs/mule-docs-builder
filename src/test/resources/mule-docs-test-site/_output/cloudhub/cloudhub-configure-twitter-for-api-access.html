@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="/docs/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link href="/docs/css/asciidoctor.css" rel="stylesheet">
+    <link href="/docs/css/mule-docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+    <script src="/docs/js/jquery-1.11.2.min.js"></script>
+    <script src="/docs/js/bootstrap.js"></script>
+    <title>MuleSoft Documentation - Configure Twitter for API Access</title>
+</head>
+<body>
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<div class="navbar navbar-inverse navbar-static-top">
+    <div class="navbar-inner">
+        <div class="container-fluid" id="top">
+            <img src="/docs/img/mule-docs-logo.png">
+        </div>
+    </div>
+</div>
+<div class="container" id="main">
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="toc">
+
+                <li class="toc-section"><div class="toc-section-header child"><a href="/docs/30-mins-with-mule/">First 30 Minutes with Mule</a><a href="#9XIHYOJBZM" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="9XIHYOJBZM"><a href="/docs/30-mins-with-mule/anypoint-platform-primer"><li class="child">Anypoint Platform Primer</li></a><a href="/docs/30-mins-with-mule/anypoint-studio-essentials"><li class="child">Anypoint Studio Essentials</li></a><a href="/docs/30-mins-with-mule/begin-with-the-basics"><li class="child">Begin with the Basics</li></a><a href="/docs/30-mins-with-mule/build+a+hello+world+application"><li class="child">Build a Hello World Application</li></a><a href="/docs/30-mins-with-mule/download-and-launch-anypoint-studio"><li class="child">Download and Launch Anypoint Studio</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/">CloudHub</a><a href="#469S8IDII6" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="469S8IDII6" style="height: 0px;"><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/getting-started-with-cloudhub">Getting Started with CloudHub</a><a href="#DYFLF6ICWK" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="DYFLF6ICWK" style="height: 0px;"><a href="/docs/cloudhub/cloudhub-at-a-glance"><li class="child">CloudHub at a Glance</li></a><a href="/docs/cloudhub/hello-world-on-cloudhub"><li class="child">Hello World on CloudHub</li></a><a href="/docs/cloudhub/cloudhub-getting-started-with-connectors"><li class="child">Getting Started with Connectors</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-tutorials">CloudHub Tutorials</a><a href="#2QOD9BN8KV" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="2QOD9BN8KV" style="height: 0px;"><a href="/docs/cloudhub/cloudhub-building-an-https-service"><li class="child">Building an HTTPS Service</li></a><a href="/docs/cloudhub/cloudhub-custom-application-alerts"><li class="child">Custom Application Alerts</li></a></ul></li><a href="/docs/cloudhub/developing-a-cloudhub-application"><li class="child">Developing a CloudHub Application</li></a><a href="/docs/cloudhub/deploying-a-cloudhub-application"><li class="child">Deploying a CloudHub Application</li></a><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/managing-cloudhub-applications">Managing CloudHub Applications</a><a href="#0TCNYD7MUK" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="0TCNYD7MUK" style="height: 0px;"><a href="/docs/cloudhub/cloudhub-console-overview"><li class="child">CloudHub Console Overview</li></a><a href="/docs/cloudhub/cloudhub-administration"><li class="child">CloudHub Administration</li></a><a href="/docs/cloudhub/cloudhub-alerts-and-notifications"><li class="child">CloudHub Alerts and Notifications</li></a><a href="/docs/cloudhub/cloudhub-fabric"><li class="child">CloudHub Fabric</li></a><a href="/docs/cloudhub/cloudhub-insight"><li class="child">CloudHub Insight</li></a><a href="/docs/cloudhub/cloudhub-command-line-tools"><li class="child">Command Line Tools</li></a><a href="/docs/cloudhub/cloudhub-managing-application-data-with-object-stores"><li class="child">Managing Application Data with Object Stores</li></a><a href="/docs/cloudhub/cloudhub-managing-queues"><li class="child">Managing Queues</li></a><a href="/docs/cloudhub/cloudhub-managing-schedules"><li class="child">Managing Schedules</li></a><a href="/docs/cloudhub/cloudhub-secure-application-properties"><li class="child">Secure Application Properties</li></a><a href="/docs/cloudhub/cloudhub-viewing-log-data"><li class="child">Viewing Log Data</li></a><a href="/docs/cloudhub/cloudhub-virtual-private-cloud"><li class="child">Virtual Private Cloud</li></a><a href="/docs/cloudhub/cloudhub-worker-monitoring"><li class="child">CloudHub Worker Monitoring</li></a><a href="/docs/cloudhub/cloudhub-penetration-testing-policies"><li class="child">Penetration Testing Policies</li></a><a href="/docs/cloudhub/secure-data-gateway"><li class="child">Secure Data Gateway</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-api">CloudHub API</a><a href="#D222UKPH0I" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="D222UKPH0I" style="height: 0px;"><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-applications">Applications</a><a href="#L81Z0680LC" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="L81Z0680LC" style="height: 0px;"><a href="/docs/cloudhub/cloudhub-create-application"><li class="child">Create Application</li></a><a href="/docs/cloudhub/cloudhub-delete-application"><li class="child">Delete Application</li></a><a href="/docs/cloudhub/cloudhub-deploy-application"><li class="child">Deploy Application</li></a><a href="/docs/cloudhub/cloudhub-get-application"><li class="child">Get Application</li></a><a href="/docs/cloudhub/cloudhub-list-all-applications"><li class="child">List All Applications</li></a><a href="/docs/cloudhub/cloudhub-update-application-metadata"><li class="child">Update Application Metadata</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-logs">Logs</a><a href="#MPO1O2WE8M" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="MPO1O2WE8M" style="height: 0px;"><a href="/docs/cloudhub/cloudhub-list-all-logs"><li class="child">List All Logs</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-notifications">Notifications</a><a href="#NPB0BDG53G" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="NPB0BDG53G" style="height: 0px;"><a href="/docs/cloudhub/cloudhub-create-notification"><li class="child">Create Notification</li></a><a href="/docs/cloudhub/cloudhub-list-notifications"><li class="child">List Notifications</li></a><a href="/docs/cloudhub/cloudhub-update-all-notifications"><li class="child">Update All Notifications</li></a><a href="/docs/cloudhub/cloudhub-update-notification"><li class="child">Update Notification</li></a></ul></li></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-architecture">CloudHub Architecture</a><a href="#NFNM8UIR4Z" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="NFNM8UIR4Z" style="height: 0px;"><a href="/docs/cloudhub/cloudhub-networking-guide"><li class="child">CloudHub Networking Guide</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-reference-materials">CloudHub Reference Materials</a><a href="#9FLUYTAXKM" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="9FLUYTAXKM"><a href="/docs/cloudhub/cloudhub-amazon-rds-support"><li class="child">CloudHub Amazon RDS Support</li></a><a href="/docs/cloudhub/cloudhub-configure-twitter-for-api-access"><li class="child active">Configure Twitter for API Access</li></a><a href="/docs/cloudhub/cloudhub-configure-twilio-for-api-access"><li class="child">Configure Twilio for API Access</li></a><a href="/docs/cloudhub/cloudhub-salesforce-developer-account-setup"><li class="child">Salesforce Developer Account Setup</li></a></ul></li><a href="/docs/cloudhub/cloudhub-maintenance-and-upgrade-policy"><li class="child">Maintenance and Upgrade Policy</li></a><a href="/docs/cloudhub/cloudhub-community-and-support"><li class="child">Community and Support</li></a><a href="/docs/cloudhub/cloudhub-mule-esb-and-cloudhub"><li class="child">Mule ESB and CloudHub</li></a><a href="/docs/cloudhub/cloudhub-faq"><li class="child">FAQ</li></a></ul></li>
+
+            </ul>
+
+        </div>
+        <!--/span-->
+        <div class="col-md-9">
+            <div id="content">
+
+                <ol class="breadcrumb"><li><a href="developers.mulesoft.com/docs/">MuleSoft Docs</a></li><li><a href="">CloudHub</a></li><li><a href="cloudhub-reference-materials">CloudHub Reference Materials</a></li><li class="active">Configure Twitter for API Access</li></ol>
+
+                <div id="header">
+                    <h1>Configure Twitter for API Access</h1>
+                </div>
+                <div id="doc-metadata">
+                    <!--<span class="updated-date" style="color:#B1B1B1;">Updated: January 15, 2015</span>
+                   <span class="updated-date" style="color:#DDD; padding: 0 0 0 7px;">/</span>-->
+                    <span class="updated-date" style="color:#B1B1B1; padding: 0 0 0 0px;">Version: </span>
+       <span class="dropdown" style="padding: 0 7px 0 0px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Current <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#">January 2015</a></li>
+            <li><a href="#">October 2014</a></li>
+            <li><a href="#">July 2014</a></li>
+        </ul> </span>
+                    <span class="updated-date" style="color:#DDD; padding: 0 0 0 0px;">/</span>
+       <span class="dropdown" style="padding: 0 7px 0 7px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Export <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#">PDF - Only this page</a></li>
+            <li><a href="#">PDF - CloudHub section</a></li>
+            <li><a href="#">EPub - MuleSoft Docs</a></li>
+        </ul> </span>
+                    <span class="updated-date" style="color:#DDD; padding: 0 0 0 0px;">/</span>
+       <span class="dropdown" style="padding: 0 7px 0 7px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Feedback <span class="caret"></span></a>
+       <ul class="dropdown-menu" role="menu">
+           <li><a href="#">Rate this Topic</a></li>
+           <li><a href="#">Edit on GitHub</a></li>
+       </ul> </span>
+                </div>
+
+                <div id="preamble"> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>This document describes how to enable your Twitter account for API access. This is required for using the Twitter Connector.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>To enable API access, you need to create a "Twitter Application" on the Twitter Developer website. You will then obtain API credentials which are needed to configure the Twitter cloud connectors.</p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="ConfigureTwitterforAPIAccess-CreateaNewTwitterApplication"><a class="anchor" href="#ConfigureTwitterforAPIAccess-CreateaNewTwitterApplication"></a>Create a New Twitter Application</h2> 
+ <div class="sectionbody"> 
+  <div class="olist arabic"> 
+   <ol class="arabic"> 
+    <li> <p>If you don’t already have a Twitter account, create one at <a href="http://twitter.com/signup" class="bare">http://twitter.com/signup</a>. You may wish to create a demo account for testing. You will need these credentials in the next step.</p> </li> 
+    <li> <p>Go to: <a href="https://dev.twitter.com/apps/new" class="bare">https://dev.twitter.com/apps/new</a> to create a new <em>Twitter Application</em>. You may need to sign in using the Twitter account credentials you just created.</p> </li> 
+    <li> <p>Complete the Application Details form with the following information:<br></p> </li> 
+    <li> <p>Name – Must be unique to the Twitter system (you are not allowed to use the word "Twitter")</p> </li> 
+    <li> <p>Description – A brief overview of the application you are building</p> </li> 
+    <li> <p>Website – An entry is required here, however, your Twitter application will not be public unless you choose to do so, so this field is not meaningful and a placeholder may be entered.</p> </li> 
+    <li> <p>Callback URL – Leave this field blank, because we’re not configuring authentication right now.</p> </li> 
+    <li> <p>Agree to the terms, and click on <strong>Create your Twitter application</strong>.<br> <br> If your application was successfully created, you will be redirected to an application management page that shows various details about your application. Note that under the <strong>Application Settings</strong> heading, the first item is an <strong>Access Level</strong> setting that defaults to read-only. You may wish to change this in the following steps.</p> </li> 
+   </ol> 
+  </div> 
+  <div class="paragraph"> 
+   <p>[[ConfigureTwitterforAPIAccess-ChangeAccessLevel(IfNecessary)]] == Change Access Level (If Necessary)</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>If you are building a project that writes to Twitter, to post Tweets as an example, you will need to enable write-access for this Twitter application. To proceed with the following steps, you will need to have registered your mobile phone number with Twitter. For more information about how to register your number, see this&nbsp;https://support.twitter.com/articles/110250-adding-your-mobile-number-to-your-account-via-web[Twitter support article].</p> 
+  </div> 
+  <div class="olist arabic"> 
+   <ol class="arabic"> 
+    <li> <p>Click on the <strong>Settings</strong> tab in the top menu bar.</p> </li> 
+    <li> <p>Locate the <strong>Access&nbsp;</strong>tab and change the Access radio-button to <strong>Read and Write</strong>, or to <strong>Read, Write and Access direct messages</strong> if your project requires direct message functionality.</p> </li> 
+    <li> <p>Click on <strong>Update Settings</strong>&nbsp;to save your change.</p> </li> 
+    <li> <p>Click on the <strong>Details</strong> tab in the top menu bar to return to the application page.</p> </li> 
+   </ol> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="ConfigureTwitterforAPIAccess-ObtainAPICredentials"><a class="anchor" href="#ConfigureTwitterforAPIAccess-ObtainAPICredentials"></a>Obtain API Credentials</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>The final step is to generate an access token. If you have not yet created an access token, you will see an option to create as detailed below. If you have already created the access token, you can also generate a new one by following these steps. The access token is generated based on the access level specified (in the above steps), so if you change your access level, you need to create a new access token.</p> 
+  </div> 
+  <div class="olist arabic"> 
+   <ol class="arabic"> 
+    <li> <p>Click on the <strong>Keys and Access Tokens</strong> tab. Under the <strong>Your Access Token</strong> section, click the <strong>Create my access token</strong> button.&nbsp;</p> </li> 
+    <li> <p>The page will refresh and your new access token will be generated and ready to use.</p> </li> 
+   </ol> 
+  </div> 
+  <div class="paragraph"> 
+   <p>You have completed the steps for creating a Twitter application. You now need to copy the Consumer key, Consumer secret, Access token and Access token secret into Mule Studio to configure the Twitter connector.</p> 
+  </div> 
+  <table class="tableblock frame-all grid-all spread"> 
+   <colgroup> 
+    <col style="width: %;"> 
+    <col style="width: %;"> 
+   </colgroup> 
+   <tbody> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="/documentation/images/icons/emoticons/check.png" alt="image"></span></p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">As you copy fields from the Twitter application menu to the Mule Studio connector configuration, be sure that you do not copy in additional leading/trailing characters or spaces. It is a good idea to visually confirm that your copy and paste functions did not capture surrounding characters.</p></td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+</div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+[[CreateApplication-CreateApplication]]
+= Create Application
+
+The POST operation specified with the /api/applications resource creates
+a new CloudHub application.
+
+Example Request:
+
+Example Response:

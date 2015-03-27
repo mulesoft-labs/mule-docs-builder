@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="/docs/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link href="/docs/css/asciidoctor.css" rel="stylesheet">
+    <link href="/docs/css/mule-docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+    <script src="/docs/js/jquery-1.11.2.min.js"></script>
+    <script src="/docs/js/bootstrap.js"></script>
+    <title>MuleSoft Documentation - CloudHub Networking Guide</title>
+</head>
+<body>
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<div class="navbar navbar-inverse navbar-static-top">
+    <div class="navbar-inner">
+        <div class="container-fluid" id="top">
+            <img src="/docs/img/mule-docs-logo.png">
+        </div>
+    </div>
+</div>
+<div class="container" id="main">
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="toc">
+
+                <li class="toc-section"><div class="toc-section-header child"><a href="/docs/30-mins-with-mule/">First 30 Minutes with Mule</a><a href="#BI1XE5WUC3" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="BI1XE5WUC3"><a href="/docs/30-mins-with-mule/anypoint-platform-primer"><li class="child">Anypoint Platform Primer</li></a><a href="/docs/30-mins-with-mule/anypoint-studio-essentials"><li class="child">Anypoint Studio Essentials</li></a><a href="/docs/30-mins-with-mule/begin-with-the-basics"><li class="child">Begin with the Basics</li></a><a href="/docs/30-mins-with-mule/build+a+hello+world+application"><li class="child">Build a Hello World Application</li></a><a href="/docs/30-mins-with-mule/download-and-launch-anypoint-studio"><li class="child">Download and Launch Anypoint Studio</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub">CloudHub</a><a href="#G9F87TXCM5" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="G9F87TXCM5" style="height: 0px;"><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/getting-started-with-cloudhub">Getting Started with CloudHub</a><a href="#MN69Y0MLH5" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="MN69Y0MLH5" style="height: 0px;"><a href="/docs/cloudhub/v/3.6/cloudhub-at-a-glance"><li class="child">CloudHub at a Glance</li></a><a href="/docs/cloudhub/v/3.6/hello-world-on-cloudhub"><li class="child">Hello World on CloudHub</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-getting-started-with-connectors"><li class="child">Getting Started with Connectors</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub-tutorials">CloudHub Tutorials</a><a href="#K53C9GW5XG" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="K53C9GW5XG" style="height: 0px;"><a href="/docs/cloudhub/v/3.6/cloudhub-building-an-https-service"><li class="child">Building an HTTPS Service</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-custom-application-alerts"><li class="child">Custom Application Alerts</li></a></ul></li><a href="/docs/cloudhub/v/3.6/developing-a-cloudhub-application"><li class="child">Developing a CloudHub Application</li></a><a href="/docs/cloudhub/v/3.6/deploying-a-cloudhub-application"><li class="child">Deploying a CloudHub Application</li></a><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/managing-cloudhub-applications">Managing CloudHub Applications</a><a href="#K5U6RQSQ76" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="K5U6RQSQ76" style="height: 0px;"><a href="/docs/cloudhub/v/3.6/cloudhub-console-overview"><li class="child">CloudHub Console Overview</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-administration"><li class="child">CloudHub Administration</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-alerts-and-notifications"><li class="child">CloudHub Alerts and Notifications</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-fabric"><li class="child">CloudHub Fabric</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-insight"><li class="child">CloudHub Insight</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-command-line-tools"><li class="child">Command Line Tools</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-managing-application-data-with-object-stores"><li class="child">Managing Application Data with Object Stores</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-managing-queues"><li class="child">Managing Queues</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-managing-schedules"><li class="child">Managing Schedules</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-secure-application-properties"><li class="child">Secure Application Properties</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-viewing-log-data"><li class="child">Viewing Log Data</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-virtual-private-cloud"><li class="child">Virtual Private Cloud</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-worker-monitoring"><li class="child">CloudHub Worker Monitoring</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-penetration-testing-policies"><li class="child">Penetration Testing Policies</li></a><a href="/docs/cloudhub/v/3.6/secure-data-gateway"><li class="child">Secure Data Gateway</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub-api">CloudHub API</a><a href="#PT30C1G9TC" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="PT30C1G9TC" style="height: 0px;"><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub-applications">Applications</a><a href="#Y2IZDSCP1N" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="Y2IZDSCP1N" style="height: 0px;"><a href="/docs/cloudhub/v/3.6/cloudhub-create-application"><li class="child">Create Application</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-delete-application"><li class="child">Delete Application</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-deploy-application"><li class="child">Deploy Application</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-get-application"><li class="child">Get Application</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-list-all-applications"><li class="child">List All Applications</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-update-application-metadata"><li class="child">Update Application Metadata</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub-logs">Logs</a><a href="#LJKF4S5X45" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="LJKF4S5X45" style="height: 0px;"><a href="/docs/cloudhub/v/3.6/cloudhub-list-all-logs"><li class="child">List All Logs</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub-notifications">Notifications</a><a href="#UZYWLCFVMB" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="UZYWLCFVMB" style="height: 0px;"><a href="/docs/cloudhub/v/3.6/cloudhub-create-notification"><li class="child">Create Notification</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-list-notifications"><li class="child">List Notifications</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-update-all-notifications"><li class="child">Update All Notifications</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-update-notification"><li class="child">Update Notification</li></a></ul></li></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub-architecture">CloudHub Architecture</a><a href="#XN9B93YIBO" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="XN9B93YIBO"><a href="/docs/cloudhub/v/3.6/cloudhub-networking-guide"><li class="child active">CloudHub Networking Guide</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub-reference-materials">CloudHub Reference Materials</a><a href="#UPM1JWCBK9" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="UPM1JWCBK9" style="height: 0px;"><a href="/docs/cloudhub/v/3.6/cloudhub-amazon-rds-support"><li class="child">CloudHub Amazon RDS Support</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-configure-twitter-for-api-access"><li class="child">Configure Twitter for API Access</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-configure-twilio-for-api-access"><li class="child">Configure Twilio for API Access</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-salesforce-developer-account-setup"><li class="child">Salesforce Developer Account Setup</li></a></ul></li><a href="/docs/cloudhub/v/3.6/cloudhub-maintenance-and-upgrade-policy"><li class="child">Maintenance and Upgrade Policy</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-community-and-support"><li class="child">Community and Support</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-mule-esb-and-cloudhub"><li class="child">Mule ESB and CloudHub</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-faq"><li class="child">FAQ</li></a></ul></li>
+
+            </ul>
+
+        </div>
+        <!--/span-->
+        <div class="col-md-9">
+            <div id="content">
+
+                <ol class="breadcrumb"><li><a href="developers.mulesoft.com/docs/">MuleSoft Docs</a></li><li><a href="cloudhub">CloudHub</a></li><li><a href="cloudhub-architecture">CloudHub Architecture</a></li><li class="active">CloudHub Networking Guide</li></ol>
+
+                <div id="header">
+                    <h1>CloudHub Networking Guide</h1>
+                </div>
+                <div id="doc-metadata">
+                    <!--<span class="updated-date" style="color:#B1B1B1;">Updated: January 15, 2015</span>
+                   <span class="updated-date" style="color:#DDD; padding: 0 0 0 7px;">/</span>-->
+                    <span class="updated-date" style="color:#B1B1B1; padding: 0 0 0 0px;">Version: </span>
+       <span class="dropdown" style="padding: 0 7px 0 0px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Current <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#">January 2015</a></li>
+            <li><a href="#">October 2014</a></li>
+            <li><a href="#">July 2014</a></li>
+        </ul> </span>
+                    <span class="updated-date" style="color:#DDD; padding: 0 0 0 0px;">/</span>
+       <span class="dropdown" style="padding: 0 7px 0 7px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Export <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#">PDF - Only this page</a></li>
+            <li><a href="#">PDF - CloudHub section</a></li>
+            <li><a href="#">EPub - MuleSoft Docs</a></li>
+        </ul> </span>
+                    <span class="updated-date" style="color:#DDD; padding: 0 0 0 0px;">/</span>
+       <span class="dropdown" style="padding: 0 7px 0 7px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Feedback <span class="caret"></span></a>
+       <ul class="dropdown-menu" role="menu">
+           <li><a href="#">Rate this Topic</a></li>
+           <li><a href="#">Edit on GitHub</a></li>
+       </ul> </span>
+                </div>
+
+                <div class="sect1"> 
+ <h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>CloudHub provides a variety of tools to architect your integrations and APIs so that they are maintainable, secure, and scalable. This guide will cover the basic network architecture, DNS, and firewall rules.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p><span class="image"><img src="/documentation/download/attachments/116195377/CloudHub+Networking+Guide.jpg?version=1&amp;modificationDate=1407959728864" alt="image"></span></p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="CloudHubNetworkingGuide-LoadBalancing"><a class="anchor" href="#CloudHubNetworkingGuide-LoadBalancing"></a>Load Balancing</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>CloudHub provides a load balancing service for all integrations. This service does round robin load distribution across workers, allowing workers to scale linearly as they receive more requests as well as providing transparent switchover when an application is upgraded (see zero downtime upgrades for more information).</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Each application deployed on CloudHub has a <strong>CNAME</strong> record that refers to the load balancer - &nbsp;ex: <code>myapp.cloudhub.io</code>. Mule applications deployed on CloudHub must listen on&nbsp;<code>localhost</code> and ports assigned by CloudHub for HTTP and HTTPS. The load balancer then forwards requests from port 80 and 443 (SSL) to these ports on the Mule worker. These ports can be referenced via the expressions&nbsp;<code>${http.port}</code> and <code>${https.port}</code>, respectively. Here is an example of a Mule configuration that utilizes this to expose an HTTPS endpoint:</p> 
+  </div> 
+  <div class="admonitionblock note"> 
+   <table> 
+    <tbody> 
+     <tr> 
+      <td class="icon"> <i class="fa icon-note" title="Note"></i> </td> 
+      <td class="content"> Note: currently&nbsp; <code>${http.port}</code> and <code>${https.port}</code> are set to 8081 and 8082. While applications can have hard coded ports, CloudHub might introduce new configuration options in the future which would require that these be set to specific values. It is therefore recommended that you set these correctly to maintain compatibility in the future. </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="dns-records"><a class="anchor" href="#dns-records"></a>DNS records</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>The following DNS records are exposed for your CloudHub applications:</p> 
+  </div> 
+  <table class="tableblock frame-all grid-all spread"> 
+   <colgroup> 
+    <col style="width: 25%;"> 
+    <col style="width: 75%;"> 
+   </colgroup> 
+   <tbody> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>myapp.cloudhub.io</strong></p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Load balancer. Ports 80 and 443 are forwarded to&nbsp; <code>${http.port}</code> and <code>${https.port}</code> respectively.</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>mule-worker-myapp.cloudhub.io</strong></p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">The external IP address of the Mule workers. HTTP services are exposed on <code>${http.port}</code> and <code>${https.port}</code>.</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>mule-worker-internal.myapp.cloudhub.io</strong></p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">The internal IP address of the Mule workers. The IPs for this DNS record are only accessible inside of the Amazon network or through a VPC.</p></td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <div class="paragraph"> 
+   <p>Public HTTP services are exposed on <code>${http.port}</code> and <code>${https.port}</code> . Internal HTTP services are exposed on ports 8091/8092.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>In certain situations, you may want to know an application’s internal IPs:</p> 
+  </div> 
+  <div class="ulist"> 
+   <ul> 
+    <li> <p>When communicating with the worker directly through the VPC without sending data over the public internet</p> </li> 
+    <li> <p>When you already have services in Amazon, and do not want to pay the performance cost of leaving and returning to the Amazon network by using the public IP address</p> </li> 
+    <li> <p>When you wish to setup your own load balancer (see below)</p> </li> 
+   </ul> 
+  </div> 
+  <div class="paragraph"> 
+   <p>These IPs can be accessed through the&nbsp;<code>mule-worker-internal.myapp.cloudhub.io</code> record. If you access the workers directly, any load distribution benefits from the CloudHub load balancing layer will be lost.</p> 
+  </div> 
+  <div class="literalblock"> 
+   <div class="content"> 
+    <pre>&nbsp;</pre> 
+   </div> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="CloudHubNetworkingGuide-Firewallrulesandportaccess"><a class="anchor" href="#CloudHubNetworkingGuide-Firewallrulesandportaccess"></a>Firewall rules and port access</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>The only two ports exposed externally are <code>${http.port}</code> and <code>${https.port}</code> . If you wish to access other ports, you can do so through a VPC.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>If you wish to expose HTTP services only inside a VPC, these services can be exposed on ports 8091 and 8092, which are open by default on the internal network. In this case, these services will not be accessible on the public IPs or the load-balancer, ensuring that they will be accessed securely.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Additional ports can be open inside the VPC, e.g. for JMX based monitoring. To do this, please file a support ticket with the requested ports you would like to be opened.</p> 
+  </div> 
+  <div class="literalblock"> 
+   <div class="content"> 
+    <pre>&nbsp;</pre> 
+   </div> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="CloudHubNetworkingGuide-IPRangesandStaticIPs"><a class="anchor" href="#CloudHubNetworkingGuide-IPRangesandStaticIPs"></a>IP Ranges and Static IPs</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>As CloudHub deploys on Amazon EC2, IP addresses are chosen from the Amazon EC2 IP pool. For a list of these ranges, please consult <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-instance-addressing.html">their documentation</a> .</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>CloudHub supports allocating a static IP for applications so that they can be whitelisted for other services. To enable a static IP for your application, please request one via the <a href="http://www.mulesoft.org/documentation/display/current/Community+and+Support#CommunityandSupport-Support">support portal</a>.&nbsp;Once a static IP has been allocated for your application, it will be visible under the application deployment tab.</p> 
+  </div> 
+  <div class="literalblock"> 
+   <div class="content"> 
+    <pre>&nbsp;Static IPs are not supported for private IP addresses inside a VPC.</pre> 
+   </div> 
+  </div> 
+  <div class="admonitionblock warning"> 
+   <table> 
+    <tbody> 
+     <tr> 
+      <td class="icon"> <i class="fa icon-warning" title="Warning"></i> </td> 
+      <td class="content"> If your application is deleted, the static IP will be lost and you must request a new one. &nbsp; == Regional services </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Depending on what region you deploy your application in, the DNS record and the load balancer for your integration may change. The following table summarizes what DNS record will be available for your application for each region:</p> 
+  </div> 
+  <table class="tableblock frame-all grid-all spread"> 
+   <colgroup> 
+    <col style="width: 25%;"> 
+    <col style="width: 75%;"> 
+   </colgroup> 
+   <tbody> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">DNS Record</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Regions</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>myapp.cloudhub.io</strong></p></td> 
+     <td class="tableblock halign-left valign-top"> 
+      <div> 
+       <div class="paragraph"> 
+        <p>US West, US East</p> 
+       </div> 
+       <div class="paragraph"> 
+        <p>All other regions</p> 
+       </div> 
+      </div></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>myapp.eu.cloudhub.io</strong></p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Europe</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>myapp.au.cloudhub.io</strong></p></td> 
+     <td class="tableblock halign-left valign-top"> 
+      <div> 
+       <div class="paragraph"> 
+        <p>Singapore</p> 
+       </div> 
+       <div class="paragraph"> 
+        <p>Australia</p> 
+       </div> 
+      </div></td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <div class="literalblock"> 
+   <div class="content"> 
+    <pre>&nbsp;</pre> 
+   </div> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Deploying to a region will also affect your internal and external worker DNS address. For example, if you deploy in Europe, the DNS records for internal and external IPs will be <strong>mule-worker-myapp.eu.cloudhub.io</strong> and <strong>mule-worker-internal-myapp.eu.cloudhub.io</strong>.</p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="custom-load-balancing-configurations"><a class="anchor" href="#custom-load-balancing-configurations"></a>Custom Load Balancing Configurations</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>Under certain circumstances you may want to set up a custom load balancing layer for your Mule workers. For example, if you want to provide a custom domain name or SSL certificates.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Traffic can be routed from your load balancer to CloudHub workers through the internal or external DNS record for your workers. This record will contain an IP address for every worker in the application. Your load balancer must support dynamic DNS resolution for this approach to work. It is recommended that you set your DNS timeout to between 20-60 seconds so that any DNS changes are propagated quickly and minimize impact.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Zero downtime deploys are not fully supported in this situation. If you set your DNS timeout low enough, you should not notice any interruptions in services while updating workers. However, since CloudHub is not aware of your load balancer setup, it cannot check to see if the DNS record has been updated and if requests are being propagated correctly. This means there is a small window where it is theoretically possible for service to be interrupted.</p> 
+  </div> 
+ </div> 
+</div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

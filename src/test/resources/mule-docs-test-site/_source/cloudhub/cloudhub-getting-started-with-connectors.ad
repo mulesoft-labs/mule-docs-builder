@@ -1,0 +1,488 @@
+[[GettingStartedwithConnectors-GettingStartedwithConnectors]]
+= Getting Started with Connectors
+
+This tutorial follows
+link:/documentation/display/current/Hello+World+on+CloudHub[Hello
+World] as the second installment in the CloudHub Getting Started Guide.
+It introduces the Twitter Connector, and describes additional CloudHub
+concepts. After completing this tutorial, you'll gain an understanding
+of how Anypoint™ Connectors can be leveraged for a wide array of
+integration solutions with CloudHub.
+
+Completing this tutorial should take about 45 minutes. You will
+accomplish the following:
+
+* Learn about connectors, and build a project that accesses the Twitter
+API using Anypoint Studio
+* Learn about Mule Expression Language
+* Learn about the Expression Transformer and the Logger Component
+* Walk through the sign-up process for obtaining Twitter API access and
+credentials
+* Learn more about the CloudHub Dashboard, and how to monitor and debug
+your project once deployed to CloudHub
+
+[[GettingStartedwithConnectors-Prerequisites]]
+== Prerequisites
+
+This tutorial assumes that you are familiar with the concepts covered in
+link:/documentation/display/current/CloudHub+at+a+Glance[CloudHub at a
+Glance] and the
+link:/documentation/display/current/Hello+World+on+CloudHub[Hello World
+Tutorial]. Please take a moment to review them if you haven't already
+done so.
+
+You will also need to enable your Twitter account for API access with
+write privileges. Please see
+link:/documentation/display/current/Configure+Twitter+for+API+Access[Configure
+Twitter for API Access] for instructions on doing so.
+
+[[GettingStartedwithConnectors-ProjectOverview]]
+== Project Overview
+
+With Anypoint connectors, you can leverage many Software-as-a-Service
+(SaaS) platforms and quickly build cloud-to-cloud integrations,
+cloud-to-on-site applications, and much more. This tutorial introduces
+you to the Twitter connector, and shows you how to configure it to
+access your Twitter account. The tutorial also discusses payloads and
+shows you how to use expressions, using Mule Expression Language, to
+modify and view messages at various points in the project flow.
+
+*Key Concepts Covered in this Tutorial:*
+
+[cols="1,3"]
+|===
+| Concept | Description
+| *Twitter Connector* | To demonstrate how connectors simplify API integration, this project
+builds on the Twitter Connector to access a Twitter user stream and post
+status updates.
+| *HTTP Connector* | The HTTP Connector (also discussed in the
+link:/documentation/display/current/Hello+World+on+CloudHub[Hello World
+tutorial]) provides a web page for sending Twitter status updates via
+the URL query string.
+| *Expression Transformer* | The Expression Transformer sends a response to the web page.
+| *Logger* | The Logger component updates the CloudHub console with payload data.
+| *Mule Expression Language* | Mule Expression Language is used in various components to process the
+payload.
+|* CloudHub* | An introduction to the CloudHub console is provided, including details
+on starting, stopping applications, and viewing system log messages.
+|===
+
+*Running the Project:*
+
+Once this project is built and deployed to CloudHub, you run the project
+by opening a web browser and pointing it to the website produced by the
+HTTP Endpoint. You then add a query string to the website URL. This
+query string is then captured as a message in the Mule flow, using Mule
+Expression Language, and then sent to your Twitter user stream by the
+Twitter Connector.
+
+As an example, if you deploy this application to the domain
+**twittertutorial**, then the following URL will send a Tweet, "I just
+built a CloudHub integration using an Anypoint Connector", to your
+Twitter user stream:
+
+[[GettingStartedwithConnectors-Step1:CreateaNewAnypointStudioProject]]
+== Step 1: Create a New Anypoint Studio Project
+
+To begin building this application, start Anypoint Studio and create a
+new project:
+
+1.  Select *File > New > Mule Project*
+2.  In the New Mule Project configuration menu, provide a name for this
+project: *posttweets*
+3.  Click **Finish**.
+
+A new project opens with a blank canvas for building the flow.
+
+[[GettingStartedwithConnectors-Step2:ConfiguretheHTTPEndpoint]]
+== Step 2: Configure the HTTP Endpoint
+
+The first message processor in the flow is an HTTP Endpoint. This
+endpoint will launch a web page at the URL you choose when deploying the
+project.
+
+1.  Locate **HTTP** in the *Connectors* category of the Palette. Drag
+and place it on the canvas.  +
+ +
+image:/documentation/download/attachments/118981539/posttweetsflow1.png?version=1&modificationDate=1414034304100[image] +
+ +
+2.  Open the HTTP properties editor. To do so, click on the building
+block icon you just placed on the canvas.
+3.  Change the Display Name to something more meaningful, such as
+**Launch Website**.
+4.  Change the default Port from 8081 to **$\{http.port}**. The Host
+should remain **localhost**.
+5.  Enter *sendtweet* in the Path field. +
+ +
+image:/documentation/download/attachments/118981539/httptweet1.png?version=1&modificationDate=1414034303904[image] +
+ +
+ +
+
+[cols=",",]
+|=======================================================================
+|image:/documentation/images/icons/emoticons/check.png[image] |The port
+must be changed to `${http.port`} when deploying to CloudHub (as
+discussed in the
+link:/documentation/display/current/Hello+World+on+CloudHub[Hello World
+Tutorial].) This allows CloudHub to assign a dynamic port when deployed.
+|=======================================================================
+
+ 
+
+[[GettingStartedwithConnectors-Step3:ConfiguretheTwitterConnector]]
+== Step 3: Configure the Twitter Connector
+
+Before configuring the Twitter connector in Anypoint Studio, you will
+need to grant your Twitter account with API access. This allows the
+Twitter connector to post to your user stream.
+
+If you've never registered an application with Twitter before, please
+read link:/documentation/display/current/Configure+Twitter+for+API+Access[Configure
+Twitter for API Access] for instructions. Also, please be sure to enable
+*read and write* access as discussed in the above-mentioned document,
+which currently involves registering your mobile phone with Twitter. You
+will need the read and write permissions, as the default read-only
+permissions do not allow the Twitter connector to post Tweets to your
+user stream.
+
+Once you have obtained API access, you will need to copy the following
+credentials from your Twitter API application page to the Twitter
+connector configuration:
+
+* Consumer Key
+* Consumer Secret
+* Access Token
+* Access Token Secret
+
+Now you're ready to follow these steps in Anypoint Studio to integrate
+the Twitter connector:
+
+1.  Locate **Twitter** in the** Connectors** category of the Palette.
+Drag and place it on the canvas to the right of the HTTP Endpoint. If
+you are prompted to choose a version, click **Choose newest**. +
+ +
+image:/documentation/download/attachments/118981539/twitterflow2.png?version=1&modificationDate=1414034304176[image] +
+ +
+2.  Click on the **Twitter** connector in your flow to open its
+properties editor.
+3.  Note an error stating that "config-ref" is required, and an "x" next
+to the Connector Configuration field. Click on the "+" icon next to this
+form field to create a Twitter Global Configuration. +
+ +
+
+image:/documentation/download/attachments/118981539/twitter1.png?version=1&modificationDate=1414034304126[image] +
+ +
+ +
+4.  A **Global Element **properties menu opens. Copy in the Access Token
+and Access Token Secret from the Twitter website, and paste it into the
+Access Key and Access Secret fields. Similarly, copy over the Consumer
+Key and Consumer Secret values from the Twitter website and paste into
+the appropriate form fields.
++
+[cols=",",]
+|=======================================================================
+|image:/documentation/images/icons/emoticons/check.png[image] |A _Global
+Element_ allows to enter configuration information, such as your API
+credentials, once. You can then reference the Global Element many times
+within your flow (although for this project we only need to reference it
+once). Note the Global Elements tab under the Mule Studio canvas; this
+tab provides an alternative view for managing all Global Elements
+defined for this project.
+|=======================================================================
+5.  Leave *Use SSL* checked (Twitter requires a SSL connection), and
+click *OK* to close the Global Elements Properties menu. +
+ +
+
+image:/documentation/download/attachments/118981539/TwitterGEP.png?version=1&modificationDate=1414034304211[image] +
+ +
+6.  The Twitter properties editor should still be open. Notice that the
+Connector Configuration field has been updated to point to the new
+"Twitter" Global Element.
+7.  Select *Update Status* from the *Operation* drop-down field.
+8.  Enter `#[message.inboundProperties['http.query.params']['tweet']]`
+in the *Status* field. This is a Mule expression, which is discussed
+later in this tutorial. +
+ +
+image:/documentation/download/attachments/118981539/twitter2.png?version=1&modificationDate=1414034304135[image]
+
+The Twitter connector configuration is complete – click the save icon to
+save your configuration. The red "x" next to its icon in the flow should
+no longer be present.
+
+[[GettingStartedwithConnectors-Step4:ConfiguretheExpressionTransformer]]
+== Step 4: Configure the Expression Transformer
+
+After the Twitter connector sends a Tweet to your user stream, it would
+be a good idea to also return a response to the web page. We will do so
+by adding an Expression Transformer after the Twitter Connector.
+
+1.  Locate the *Expression* component in the *Transformers* category of
+the Palette. Drag and place it on the canvas to the right of the Twitter
+Connector. +
+ +
+image:/documentation/download/attachments/118981539/twitterflow3.png?version=1&modificationDate=1414034304184[image] +
+ +
+2.  Click on the *Expression* Transformer to open its properties editor.
+3.  Change the Display Name to *Return Website Response.*
+4.  Enter
+`"Thanks for Tweeting! Your message: " + #[message.payload.text]`** **in
+the *Expression* field. +
+ +
+
+image:/documentation/download/attachments/118981539/ExpressionTwitter.png?version=1&modificationDate=1414034303865[image] +
+ +
+
+[[GettingStartedwithConnectors-Step5:AddLoggerComponents]]
+== Step 5: Add Logger Components
+
+The Logger component is commonly used in CloudHub applications, as it
+can provide a detailed view of the information contained in a message at
+any specific point (or multiple points) in the flow. The Logger
+component is configured with an expression, and as the application runs,
+the result of this expression is sent to the CloudHub console.
+
+In this project, we will add two Logger components to the flow. In doing
+so, we will be able to view the data going into the Twitter Connector,
+and the subsequent response payload produced by Twitter.
+
+1.  Locate *Logger* in the *Components* category of the Palette. Place a
+Logger between the HTTP Endpoint and the Twitter Connector.
+2.  Drag another Logger component form the Palette and place it between
+the Twitter Connector and the Expression Transformer. Your flow should
+now look like this: +
+ +
+image:/documentation/download/attachments/118981539/twitterflowlogs.png?version=1&modificationDate=1414034304192[image] +
+ +
+3.  Open the configuration menu for the first Logger component.
+4.  Change the Display Name to: *Log Query String*
+5.  Add the following expression to the Message field: +
++
+`"Tweet:" + #[message.inboundProperties.'http.query.params'.tweet]`
++
+ +
+image:/documentation/download/attachments/118981539/logquerystring.png?version=1&modificationDate=1414034304036[image] +
+ +
+6.  Open the properties editor for the second Logger component.
+7.  Change the Display Name to **Log Payload**
+8.  Add the following expression to the Message field: `#[payload]` +
+ +
+image:/documentation/download/attachments/118981539/logpayload.png?version=1&modificationDate=1414034304029[image] +
+ +
+
+Note: In both cases, leave the Level set to **INFO**, as this will
+generate log entries while the application runs normally. If set to
+ERROR, as an example, log entries would only be generated on an error
+while executing the application, which is useful for debugging issues.
+
+[[GettingStartedwithConnectors-Step6:DeployYourApplicationtoCloudHub]]
+== Step 6: Deploy Your Application to CloudHub
+
+Before deploying your application, it's helpful to go to the CloudHub
+Console first. The benefits of doing so include:
+
+* You will be able to watch the deployment of your application as events
+are displayed in the log console.
+* Since your application includes Logger components, the log console
+will display events as they are encountered in the flow.
+* Finally, if things don't go as expected, and you become inundated with
+posts to your Twitter user stream, as an example, you can quickly stop
+the application from the CloudHub Console.
+
+If you are using a free CloudHub account, you need to stop any other
+application that might be running before deploying this new application
+(or upgrade to a paid plan so you can run multiple applications).
+
+[[GettingStartedwithConnectors-SigninandgototheCloudHubConsole]]
+=== Sign in and go to the CloudHub Console
+
+1.  https://anypoint.mulesoft.com/#/signin[Sign in to the Anypoint
+Platform] and go to the CloudHub Console by clicking on
+**CloudHub **from the top menu.
+2.  Once you are signed in, you will see a list of your uploaded
+applications. Note the application status indicator to the left of the
+application name. +
+ +
+image:/documentation/download/attachments/118981545/image2014-10-22+22%3A12%3A43.png?version=1&modificationDate=1414041811385[image] +
+ +
+
+[[GettingStartedwithConnectors-DeployYourApplication]]
+=== Deploy Your Application
+
+Now go back to Anypoint Studio to deploy your application.
+
+1.  Save your project by choosing **File > Save**.
+2.  Locate the project name in the Package Explorer view, right click
+and choose **CloudHub > Deploy to CloudHub**.
+3.  Enter your credentials in the menu that opens, and choose a unique
+domain where you will access the deployed application.
+4.  Select a domain and a runtime, then click **Finish**.
+
+[[GettingStartedwithConnectors-WatchtheCloudHubLogs]]
+=== Watch the CloudHub Logs
+
+It can take several minutes for your application to upload and deploy.
+This process can be monitored through the CloudHub dashboard. Since your
+application includes Logger components, the CloudHub console will also
+show you the log entries these components generate.
+
+1.  Go back to the CloudHub Console.
+2.  Click on Dashboard, you should see your new application listed.
+3.  Click on the application name, and then click on **Logs**.
+4.  Various status messages will be shown as your application is
+deployed.
+5.  Once deployment is completed, you should see a system message that
+the application was started. +
+ +
+image:/documentation/download/attachments/118981539/image2014-10-24+11%3A28%3A5.png?version=1&modificationDate=1414175285352[image]
+
+[[GettingStartedwithConnectors-Step7:RuntheProject]]
+== Step 7: Run the Project
+
+You are now ready to run the project! First, you need to determine the
+URL where it is running, and then add your Tweet as a query parameter to
+the URL.
+
+As an example, if you deployed your application to _twittertutorial_ and
+you would like to Tweet "I built a new CloudHub application", the URL
+would be:
+
+Note that for some browsers, you may need to replace spaces in the URL
+with "%20". In this case, enter the URL as follows:
+
+How did we arrive at this URL? Much of it is configured while building
+the project:
+
+* The sub-domain, **twittertesttest** (as an example), was entered as
+the "domain" when deploying the project from Anypoint Studio. This was
+an option you entered in the Deploy to CloudHub dialog when you deployed
+your application. Note that it must be unique across all CloudHub
+deployments.
+* */sendtweet* was defined as the *Path* in the HTTP Endpoint.
+* We configured the Twitter Connector with an expression:
+`#[message.inboundProperties.'http.query.params'.tweet]`. This
+expression passes the value of a query parameter ("tweet") in the URL
+string to your Twitter user stream.
+
+Now log into your Twitter account, you should see your new Tweet posted.
+If you try this again, be sure to change the Tweet contents, as Twitter
+bounces duplicate posts. The web page should also show a response:
+*Thanks for Tweeting!*
+
+The CloudHub console will also show various results from the logger
+components. These are discussed in the next section.
+
+[[GettingStartedwithConnectors-HowtheProjectWorks]]
+== How the Project Works
+
+In this section, we'll take an inside look at messages within the flow,
+and see how expressions allow us to control which data is sent to
+Twitter. We'll also revisit with the Logger component and view the
+output they produce in the CloudHub console.
+
+[[GettingStartedwithConnectors-AboutthePayload]]
+=== About the Payload
+
+The flow we built in Mule Studio contains message processors –-
+including the HTTP Endpoint, Twitter Connector and Expression
+Transformer — and it is “Mule messages” that carry data between these
+message processors.
+
+A Mule message contains the following components:
+
+* Payload – this is the actual data that we are concerned with in this
+application
+* Properties—Along with a set of standard parameters, user defined
+parameters may be included as well. We access an “inbound property” in
+this application to view the URL query parameter.
+* Attachments—Although not used in this project, other applications may
+include attachments such as an XML file or PDF attachment.
+
+[[GettingStartedwithConnectors-AboutMuleExpressionLanguage]]
+=== About Mule Expression Language
+
+Messages within the Mule flow can be quite complex, and it is often
+necessary to perform some operation on them, or extract pertinent
+information. In this project, we needed to extract a URL query parameter
+from the properties component of the message, and send it to the Twitter
+user stream. We used Mule Expression Language to do so.
+
+CloudHub supports many expression languages, including Groovy, xpath,
+regex and more. However, the syntax of these languages vary from one to
+another, and to allow for a common and easy-to-use syntax specifically
+for operating on Mule messages, Mule Expression Language was recently
+introduced.
+
+Mule Expression Language provides a powerful and comprehensive set of
+features. In this project, we used expressions at several points in the
+flow:
+
+* The Twitter Connector used the following Mule expression to pass the
+URL query parameter, "tweet" to the Twitter user stream: +
+ `#[message.inboundProperties.'http.query.params'.tweet]`
+
+* The Expression Transformer used the following Mule expression to
+extract the returned text, or Tweet, from the payload produced by
+Twitter: +
+ `"Thanks for Tweeting! Your message: " + #[message.payload.text]`
+
+* The logger component extracted the payload generated by Twitter: +
+ `#[payload]`
+
+[[GettingStartedwithConnectors-ViewLogsintheCloudHubconsole]]
+=== View Logs in the CloudHub console
+
+Now with an understanding of Mule messages and expressions, let's take a
+look at the log entries produced by the Logger components. First,
+produce a new Tweet by visiting a URL such as this (be sure to change
+"twittertutorial" to your unique sub-domain):
+
+http://twittertutorial.cloudhub.io/sendtweet?tweet=Sent from my CloudHub
+application
+Now log into the CloudHub console, select this application, and go to
+the "logs" tab (as detailed above). After you visited the URL above, you
+should see a new set of log entries.
+
+The first log entry was produced by the expression we configured in the
+Logger component:
+*`Tweet: #[message.inboundProperties.'http.query.params'.tweet]`*
+
+It produced this result in the CloudHub console:
+
+Note that we added the text "Tweet" to precede the results of the Mule
+expression; this is so that we could more easily identify this message
+in the log console.
+
+For the second Logger component, we used this
+expression:**` #[payload]`**
+
+This produced a much longer log result in the CloudHub console:
+
+This second Logger component shows us that the Twitter Connector
+produced a payload that is the API response from Twitter. This response
+includes the string we Tweeted, as well as the user name and other data
+about the user account associated with the user stream we accessed.
+
+Instead of logging the complete payload, you could log just the tweet by
+using the expression: `#[payload.text]`. You could also log a more
+complex expression, such as the user screen name which is further nested
+in the payload: `#[payload.user.ScreenName]`
+
+[[GettingStartedwithConnectors-NextSteps]]
+== Next Steps
+
+* Want to try another tutorial involving Anypoint Connectors? Try the
+link:/documentation/display/current/Anypoint+Connector+Tutorial[Anypoint
+Connector Tutorial].
+* Interested in learning more about the Mule message? Try the
+link:/documentation/display/current/Mule+Message+Tutorial[Mule Message
+Tutorial].
+* Learn more about
+link:/documentation/display/current/Managing+CloudHub+Applications[managing
+your applications on CloudHub].
+
+For further information about connectors, see these reference documents:
+
+* link:/documentation/display/current/Anypoint+Connectors[Anypoint
+Connectors]
+* http://mulesoft.github.com/twitter-connector/mule/twitter.html[Twitter
+Connector Reference]

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="/docs/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link href="/docs/css/asciidoctor.css" rel="stylesheet">
+    <link href="/docs/css/mule-docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+    <script src="/docs/js/jquery-1.11.2.min.js"></script>
+    <script src="/docs/js/bootstrap.js"></script>
+    <title>MuleSoft Documentation - Getting Started with Connectors</title>
+</head>
+<body>
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<div class="navbar navbar-inverse navbar-static-top">
+    <div class="navbar-inner">
+        <div class="container-fluid" id="top">
+            <img src="/docs/img/mule-docs-logo.png">
+        </div>
+    </div>
+</div>
+<div class="container" id="main">
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="toc">
+
+                <li class="toc-section"><div class="toc-section-header child"><a href="/docs/30-mins-with-mule/">First 30 Minutes with Mule</a><a href="#6UOXSOQESI" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="6UOXSOQESI"><a href="/docs/30-mins-with-mule/anypoint-platform-primer"><li class="child">Anypoint Platform Primer</li></a><a href="/docs/30-mins-with-mule/anypoint-studio-essentials"><li class="child">Anypoint Studio Essentials</li></a><a href="/docs/30-mins-with-mule/begin-with-the-basics"><li class="child">Begin with the Basics</li></a><a href="/docs/30-mins-with-mule/build+a+hello+world+application"><li class="child">Build a Hello World Application</li></a><a href="/docs/30-mins-with-mule/download-and-launch-anypoint-studio"><li class="child">Download and Launch Anypoint Studio</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/">CloudHub</a><a href="#U290A8UMTN" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="U290A8UMTN" style="height: 0px;"><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/getting-started-with-cloudhub">Getting Started with CloudHub</a><a href="#DTVLUDS26A" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="DTVLUDS26A"><a href="/docs/cloudhub/cloudhub-at-a-glance"><li class="child">CloudHub at a Glance</li></a><a href="/docs/cloudhub/hello-world-on-cloudhub"><li class="child">Hello World on CloudHub</li></a><a href="/docs/cloudhub/cloudhub-getting-started-with-connectors"><li class="child active">Getting Started with Connectors</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-tutorials">CloudHub Tutorials</a><a href="#0TDLSHL0BL" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="0TDLSHL0BL" style="height: 0px;"><a href="/docs/cloudhub/cloudhub-building-an-https-service"><li class="child">Building an HTTPS Service</li></a><a href="/docs/cloudhub/cloudhub-custom-application-alerts"><li class="child">Custom Application Alerts</li></a></ul></li><a href="/docs/cloudhub/developing-a-cloudhub-application"><li class="child">Developing a CloudHub Application</li></a><a href="/docs/cloudhub/deploying-a-cloudhub-application"><li class="child">Deploying a CloudHub Application</li></a><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/managing-cloudhub-applications">Managing CloudHub Applications</a><a href="#HQLO4UQGIQ" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="HQLO4UQGIQ" style="height: 0px;"><a href="/docs/cloudhub/cloudhub-console-overview"><li class="child">CloudHub Console Overview</li></a><a href="/docs/cloudhub/cloudhub-administration"><li class="child">CloudHub Administration</li></a><a href="/docs/cloudhub/cloudhub-alerts-and-notifications"><li class="child">CloudHub Alerts and Notifications</li></a><a href="/docs/cloudhub/cloudhub-fabric"><li class="child">CloudHub Fabric</li></a><a href="/docs/cloudhub/cloudhub-insight"><li class="child">CloudHub Insight</li></a><a href="/docs/cloudhub/cloudhub-command-line-tools"><li class="child">Command Line Tools</li></a><a href="/docs/cloudhub/cloudhub-managing-application-data-with-object-stores"><li class="child">Managing Application Data with Object Stores</li></a><a href="/docs/cloudhub/cloudhub-managing-queues"><li class="child">Managing Queues</li></a><a href="/docs/cloudhub/cloudhub-managing-schedules"><li class="child">Managing Schedules</li></a><a href="/docs/cloudhub/cloudhub-secure-application-properties"><li class="child">Secure Application Properties</li></a><a href="/docs/cloudhub/cloudhub-viewing-log-data"><li class="child">Viewing Log Data</li></a><a href="/docs/cloudhub/cloudhub-virtual-private-cloud"><li class="child">Virtual Private Cloud</li></a><a href="/docs/cloudhub/cloudhub-worker-monitoring"><li class="child">CloudHub Worker Monitoring</li></a><a href="/docs/cloudhub/cloudhub-penetration-testing-policies"><li class="child">Penetration Testing Policies</li></a><a href="/docs/cloudhub/secure-data-gateway"><li class="child">Secure Data Gateway</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-api">CloudHub API</a><a href="#PFKY9KRXFR" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="PFKY9KRXFR" style="height: 0px;"><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-applications">Applications</a><a href="#Z2FK1BWD6Q" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="Z2FK1BWD6Q" style="height: 0px;"><a href="/docs/cloudhub/cloudhub-create-application"><li class="child">Create Application</li></a><a href="/docs/cloudhub/cloudhub-delete-application"><li class="child">Delete Application</li></a><a href="/docs/cloudhub/cloudhub-deploy-application"><li class="child">Deploy Application</li></a><a href="/docs/cloudhub/cloudhub-get-application"><li class="child">Get Application</li></a><a href="/docs/cloudhub/cloudhub-list-all-applications"><li class="child">List All Applications</li></a><a href="/docs/cloudhub/cloudhub-update-application-metadata"><li class="child">Update Application Metadata</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-logs">Logs</a><a href="#ML7IE3H4OE" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="ML7IE3H4OE" style="height: 0px;"><a href="/docs/cloudhub/cloudhub-list-all-logs"><li class="child">List All Logs</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-notifications">Notifications</a><a href="#K54NJ9I9VL" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="K54NJ9I9VL" style="height: 0px;"><a href="/docs/cloudhub/cloudhub-create-notification"><li class="child">Create Notification</li></a><a href="/docs/cloudhub/cloudhub-list-notifications"><li class="child">List Notifications</li></a><a href="/docs/cloudhub/cloudhub-update-all-notifications"><li class="child">Update All Notifications</li></a><a href="/docs/cloudhub/cloudhub-update-notification"><li class="child">Update Notification</li></a></ul></li></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-architecture">CloudHub Architecture</a><a href="#BY77605FVO" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="BY77605FVO" style="height: 0px;"><a href="/docs/cloudhub/cloudhub-networking-guide"><li class="child">CloudHub Networking Guide</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-reference-materials">CloudHub Reference Materials</a><a href="#9FS5HCIWP5" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="9FS5HCIWP5" style="height: 0px;"><a href="/docs/cloudhub/cloudhub-amazon-rds-support"><li class="child">CloudHub Amazon RDS Support</li></a><a href="/docs/cloudhub/cloudhub-configure-twitter-for-api-access"><li class="child">Configure Twitter for API Access</li></a><a href="/docs/cloudhub/cloudhub-configure-twilio-for-api-access"><li class="child">Configure Twilio for API Access</li></a><a href="/docs/cloudhub/cloudhub-salesforce-developer-account-setup"><li class="child">Salesforce Developer Account Setup</li></a></ul></li><a href="/docs/cloudhub/cloudhub-maintenance-and-upgrade-policy"><li class="child">Maintenance and Upgrade Policy</li></a><a href="/docs/cloudhub/cloudhub-community-and-support"><li class="child">Community and Support</li></a><a href="/docs/cloudhub/cloudhub-mule-esb-and-cloudhub"><li class="child">Mule ESB and CloudHub</li></a><a href="/docs/cloudhub/cloudhub-faq"><li class="child">FAQ</li></a></ul></li>
+
+            </ul>
+
+        </div>
+        <!--/span-->
+        <div class="col-md-9">
+            <div id="content">
+
+                <ol class="breadcrumb"><li><a href="developers.mulesoft.com/docs/">MuleSoft Docs</a></li><li><a href="">CloudHub</a></li><li><a href="getting-started-with-cloudhub">Getting Started with CloudHub</a></li><li class="active">Getting Started with Connectors</li></ol>
+
+                <div id="header">
+                    <h1>Getting Started with Connectors</h1>
+                </div>
+                <div id="doc-metadata">
+                    <!--<span class="updated-date" style="color:#B1B1B1;">Updated: January 15, 2015</span>
+                   <span class="updated-date" style="color:#DDD; padding: 0 0 0 7px;">/</span>-->
+                    <span class="updated-date" style="color:#B1B1B1; padding: 0 0 0 0px;">Version: </span>
+       <span class="dropdown" style="padding: 0 7px 0 0px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Current <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#">January 2015</a></li>
+            <li><a href="#">October 2014</a></li>
+            <li><a href="#">July 2014</a></li>
+        </ul> </span>
+                    <span class="updated-date" style="color:#DDD; padding: 0 0 0 0px;">/</span>
+       <span class="dropdown" style="padding: 0 7px 0 7px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Export <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#">PDF - Only this page</a></li>
+            <li><a href="#">PDF - CloudHub section</a></li>
+            <li><a href="#">EPub - MuleSoft Docs</a></li>
+        </ul> </span>
+                    <span class="updated-date" style="color:#DDD; padding: 0 0 0 0px;">/</span>
+       <span class="dropdown" style="padding: 0 7px 0 7px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Feedback <span class="caret"></span></a>
+       <ul class="dropdown-menu" role="menu">
+           <li><a href="#">Rate this Topic</a></li>
+           <li><a href="#">Edit on GitHub</a></li>
+       </ul> </span>
+                </div>
+
+                <div id="preamble"> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>This tutorial follows <a href="/documentation/display/current/Hello+World+on+CloudHub">Hello World</a>&nbsp;as the second installment in the CloudHub Getting Started Guide. It introduces the Twitter Connector, and describes additional CloudHub concepts. After completing this tutorial, you’ll gain an understanding of how Anypoint™ Connectors can be leveraged for a wide array of integration solutions with CloudHub.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Completing this tutorial should take about 45 minutes. You will accomplish the following:</p> 
+  </div> 
+  <div class="ulist"> 
+   <ul> 
+    <li> <p>Learn about connectors, and build a project that accesses the Twitter API using Anypoint Studio</p> </li> 
+    <li> <p>Learn about Mule Expression Language</p> </li> 
+    <li> <p>Learn about the Expression Transformer and the Logger Component</p> </li> 
+    <li> <p>Walk through the sign-up process for obtaining Twitter API access and credentials</p> </li> 
+    <li> <p>Learn more about the CloudHub Dashboard, and how to monitor and debug your project once deployed to CloudHub</p> </li> 
+   </ul> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="GettingStartedwithConnectors-Prerequisites"><a class="anchor" href="#GettingStartedwithConnectors-Prerequisites"></a>Prerequisites</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>This tutorial assumes that you are familiar with the concepts covered in <a href="/documentation/display/current/CloudHub+at+a+Glance">CloudHub at a Glance</a>&nbsp;and the <a href="/documentation/display/current/Hello+World+on+CloudHub">Hello World Tutorial</a>. Please take a moment to review them if you haven’t already done so.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>You will also need to enable your Twitter account for API access with write privileges. Please see <a href="/documentation/display/current/Configure+Twitter+for+API+Access">Configure Twitter for API Access</a> for instructions on doing so.</p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="GettingStartedwithConnectors-ProjectOverview"><a class="anchor" href="#GettingStartedwithConnectors-ProjectOverview"></a>Project Overview</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>With Anypoint connectors, you can leverage many Software-as-a-Service (SaaS) platforms and quickly build cloud-to-cloud integrations, cloud-to-on-site applications, and much more. This tutorial introduces you to the Twitter connector, and shows you how to configure it to access your Twitter account. The tutorial also discusses payloads and shows you how to use expressions, using Mule Expression Language, to modify and view messages at various points in the project flow.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p><strong>Key Concepts Covered in this Tutorial:</strong></p> 
+  </div> 
+  <table class="tableblock frame-all grid-all spread"> 
+   <colgroup> 
+    <col style="width: 25%;"> 
+    <col style="width: 75%;"> 
+   </colgroup> 
+   <tbody> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Concept</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Twitter Connector</strong></p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">To demonstrate how connectors simplify API integration, this project builds on the Twitter Connector to access a Twitter user stream and post status updates.</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>HTTP Connector</strong></p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">The HTTP Connector (also discussed in the <a href="/documentation/display/current/Hello+World+on+CloudHub">Hello World tutorial</a>) provides a web page for sending Twitter status updates via the URL query string.</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Expression Transformer</strong></p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">The Expression Transformer sends a response to the web page.</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Logger</strong></p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">The Logger component updates the CloudHub console with payload data.</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Mule Expression Language</strong></p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Mule Expression Language is used in various components to process the payload.</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">* CloudHub*</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">An introduction to the CloudHub console is provided, including details on starting, stopping applications, and viewing system log messages.</p></td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <div class="paragraph"> 
+   <p><strong>Running the Project:</strong></p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Once this project is built and deployed to CloudHub, you run the project by opening a web browser and pointing it to the website produced by the HTTP Endpoint. You then add a query string to the website URL. This query string is then captured as a message in the Mule flow, using Mule Expression Language, and then sent to your Twitter user stream by the Twitter Connector.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>As an example, if you deploy this application to the domain <strong>twittertutorial</strong>, then the following URL will send a Tweet, "I just built a CloudHub integration using an Anypoint Connector", to your Twitter user stream:</p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="GettingStartedwithConnectors-Step1:CreateaNewAnypointStudioProject"><a class="anchor" href="#GettingStartedwithConnectors-Step1:CreateaNewAnypointStudioProject"></a>Step 1: Create a New Anypoint Studio Project</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>To begin building this application, start Anypoint Studio and create a new project:</p> 
+  </div> 
+  <div class="olist arabic"> 
+   <ol class="arabic"> 
+    <li> <p>Select <strong>File &gt; New &gt; Mule Project</strong></p> </li> 
+    <li> <p>In the New Mule Project configuration menu, provide a name for this project: <strong>posttweets</strong></p> </li> 
+    <li> <p>Click <strong>Finish</strong>.</p> </li> 
+   </ol> 
+  </div> 
+  <div class="paragraph"> 
+   <p>A new project opens with a blank canvas for building the flow.</p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="GettingStartedwithConnectors-Step2:ConfiguretheHTTPEndpoint"><a class="anchor" href="#GettingStartedwithConnectors-Step2:ConfiguretheHTTPEndpoint"></a>Step 2: Configure the HTTP Endpoint</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>The first message processor in the flow is an HTTP Endpoint. This endpoint will launch a web page at the URL you choose when deploying the project.</p> 
+  </div> 
+  <div class="olist arabic"> 
+   <ol class="arabic"> 
+    <li> <p>Locate&nbsp;<strong>HTTP</strong>&nbsp;in the <strong>Connectors</strong> category of the Palette. Drag and place it on the canvas.&nbsp;<br> <br> <span class="image"><img src="/documentation/download/attachments/118981539/posttweetsflow1.png?version=1&amp;modificationDate=1414034304100" alt="image"></span><br> <br></p> </li> 
+    <li> <p>Open the HTTP properties editor. To do so, click on the building block icon you just placed on the canvas.</p> </li> 
+    <li> <p>Change the Display Name to something more meaningful, such as <strong>Launch Website</strong>.</p> </li> 
+    <li> <p>Change the default Port from 8081 to <strong>$\{http.port}</strong>. The Host should remain <strong>localhost</strong>.</p> </li> 
+    <li> <p>Enter <strong>sendtweet</strong> in the Path field.<br> <br> <span class="image"><img src="/documentation/download/attachments/118981539/httptweet1.png?version=1&amp;modificationDate=1414034303904" alt="image"></span><br> <br> <br></p> </li> 
+   </ol> 
+  </div> 
+  <table class="tableblock frame-all grid-all spread"> 
+   <colgroup> 
+    <col style="width: %;"> 
+    <col style="width: %;"> 
+   </colgroup> 
+   <tbody> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="/documentation/images/icons/emoticons/check.png" alt="image"></span></p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">The port must be changed to <code>${http.port</code>} when deploying to CloudHub (as discussed in the <a href="/documentation/display/current/Hello+World+on+CloudHub">Hello World Tutorial</a>.) This allows CloudHub to assign a dynamic port when deployed.</p></td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <div class="literalblock"> 
+   <div class="content"> 
+    <pre>&nbsp;</pre> 
+   </div> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="GettingStartedwithConnectors-Step3:ConfiguretheTwitterConnector"><a class="anchor" href="#GettingStartedwithConnectors-Step3:ConfiguretheTwitterConnector"></a>Step 3: Configure the Twitter Connector</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>Before configuring the Twitter connector in Anypoint Studio, you will need to grant your Twitter account with API access. This allows the Twitter connector to post to your user stream.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>If you’ve never registered an application with Twitter before, please read&nbsp;<a href="/documentation/display/current/Configure+Twitter+for+API+Access">Configure Twitter for API Access</a> for instructions. Also, please be sure to enable <strong>read and write</strong> access as discussed in the above-mentioned document, which currently involves registering your mobile phone with Twitter. You will need the read and write permissions, as the default read-only permissions do not allow the Twitter connector to post Tweets to your user stream.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Once you have obtained API access, you will need to copy the following credentials from your Twitter API application page to the Twitter connector configuration:</p> 
+  </div> 
+  <div class="ulist"> 
+   <ul> 
+    <li> <p>Consumer Key</p> </li> 
+    <li> <p>Consumer Secret</p> </li> 
+    <li> <p>Access Token</p> </li> 
+    <li> <p>Access Token Secret</p> </li> 
+   </ul> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Now you’re ready to follow these steps in Anypoint Studio to integrate the Twitter connector:</p> 
+  </div> 
+  <div class="olist arabic"> 
+   <ol class="arabic"> 
+    <li> <p>Locate&nbsp;<strong>Twitter</strong>&nbsp;in the<strong>&nbsp;Connectors</strong> category of the Palette. Drag and place it on the canvas to the right of the HTTP Endpoint. If you are prompted to choose a version, click&nbsp;<strong>Choose newest</strong>.<br> <br> <span class="image"><img src="/documentation/download/attachments/118981539/twitterflow2.png?version=1&amp;modificationDate=1414034304176" alt="image"></span><br> <br></p> </li> 
+    <li> <p>Click on the <strong>Twitter</strong>&nbsp;connector in your flow to open its properties editor.</p> </li> 
+    <li> <p>Note an error stating that "config-ref" is required, and an "x" next to the Connector Configuration field. Click on the "+" icon next to this form field to create a Twitter Global Configuration.<br> <br></p> </li> 
+   </ol> 
+  </div> 
+  <div class="paragraph"> 
+   <p><span class="image"><img src="/documentation/download/attachments/118981539/twitter1.png?version=1&amp;modificationDate=1414034304126" alt="image"></span><br> <br> <br> 4. A <strong>Global Element&nbsp;</strong>properties menu opens. Copy in the Access Token and Access Token Secret from the Twitter website, and paste it into the Access Key and Access Secret fields. Similarly, copy over the Consumer Key and Consumer Secret values from the Twitter website and paste into the appropriate form fields.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>+</p> 
+  </div> 
+  <table class="tableblock frame-all grid-all spread"> 
+   <colgroup> 
+    <col style="width: %;"> 
+    <col style="width: %;"> 
+   </colgroup> 
+   <tbody> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="/documentation/images/icons/emoticons/check.png" alt="image"></span></p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">A <em>Global Element</em> allows to enter configuration information, such as your API credentials, once. You can then reference the Global Element many times within your flow (although for this project we only need to reference it once). Note the Global Elements tab under the Mule Studio canvas; this tab provides an alternative view for managing all Global Elements defined for this project.</p></td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <div class="olist arabic"> 
+   <ol class="arabic"> 
+    <li> <p>Leave <strong>Use SSL</strong> checked (Twitter requires a SSL connection), and click <strong>OK</strong> to close the Global Elements Properties menu.<br> <br></p> </li> 
+   </ol> 
+  </div> 
+  <div class="paragraph"> 
+   <p><span class="image"><img src="/documentation/download/attachments/118981539/TwitterGEP.png?version=1&amp;modificationDate=1414034304211" alt="image"></span><br> <br> 6. The Twitter properties editor should still be open. Notice that the Connector Configuration field has been updated to point to the new "Twitter" Global Element. 7. Select <strong>Update Status</strong> from the <strong>Operation</strong> drop-down field. 8. Enter <code>#[message.inboundProperties['http.query.params']['tweet']]</code> in the <strong>Status</strong> field. This is a Mule expression, which is discussed later in this tutorial.<br> <br> <span class="image"><img src="/documentation/download/attachments/118981539/twitter2.png?version=1&amp;modificationDate=1414034304135" alt="image"></span></p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>The Twitter connector configuration is complete – click the save icon to save your configuration. The red "x" next to its icon in the flow should no longer be present.</p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="GettingStartedwithConnectors-Step4:ConfiguretheExpressionTransformer"><a class="anchor" href="#GettingStartedwithConnectors-Step4:ConfiguretheExpressionTransformer"></a>Step 4: Configure the Expression Transformer</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>After the Twitter connector sends a Tweet to your user stream, it would be a good idea to also return a response to the web page. We will do so by adding an Expression Transformer after the Twitter Connector.</p> 
+  </div> 
+  <div class="olist arabic"> 
+   <ol class="arabic"> 
+    <li> <p>Locate the <strong>Expression</strong> component in the <strong>Transformers</strong> category of the Palette. Drag and place it on the canvas to the right of the Twitter Connector.<br> <br> <span class="image"><img src="/documentation/download/attachments/118981539/twitterflow3.png?version=1&amp;modificationDate=1414034304184" alt="image"></span><br> <br></p> </li> 
+    <li> <p>Click on the <strong>Expression</strong> Transformer to open its properties editor.</p> </li> 
+    <li> <p>Change the Display Name to <strong>Return Website Response.</strong></p> </li> 
+    <li> <p>Enter <code>"Thanks for Tweeting! Your message: " + #[message.payload.text]</code><strong>&nbsp;</strong>in the <strong>Expression</strong> field.<br> <br></p> </li> 
+   </ol> 
+  </div> 
+  <div class="paragraph"> 
+   <p><span class="image"><img src="/documentation/download/attachments/118981539/ExpressionTwitter.png?version=1&amp;modificationDate=1414034303865" alt="image"></span><br> <br></p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="GettingStartedwithConnectors-Step5:AddLoggerComponents"><a class="anchor" href="#GettingStartedwithConnectors-Step5:AddLoggerComponents"></a>Step 5: Add Logger Components</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>The Logger component is commonly used in CloudHub applications, as it can provide a detailed view of the information contained in a message at any specific point (or multiple points) in the flow. The Logger component is configured with an expression, and as the application runs, the result of this expression is sent to the CloudHub console.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>In this project, we will add two Logger components to the flow. In doing so, we will be able to view the data going into the Twitter Connector, and the subsequent response payload produced by Twitter.</p> 
+  </div> 
+  <div class="olist arabic"> 
+   <ol class="arabic"> 
+    <li> <p>Locate <strong>Logger</strong> in the <strong>Components</strong> category of the Palette. Place a Logger between the HTTP Endpoint and the Twitter Connector.</p> </li> 
+    <li> <p>Drag another Logger component form the Palette and place it between the Twitter Connector and the Expression Transformer. Your flow should now look like this:<br> <br> <span class="image"><img src="/documentation/download/attachments/118981539/twitterflowlogs.png?version=1&amp;modificationDate=1414034304192" alt="image"></span><br> <br></p> </li> 
+    <li> <p>Open the configuration menu for the first Logger component.</p> </li> 
+    <li> <p>Change the Display Name to: <strong>Log Query String</strong></p> </li> 
+    <li> <p>Add the following expression to the Message field:<br></p> 
+     <div class="paragraph"> 
+      <p><code>"Tweet:" + #[message.inboundProperties.'http.query.params'.tweet]</code></p> 
+     </div> 
+     <div class="literalblock"> 
+      <div class="content"> 
+       <pre> +
+image:/documentation/download/attachments/118981539/logquerystring.png?version=1&amp;modificationDate=1414034304036[image] +
+ +
+6.  Open the properties editor for the second Logger component.
+7.  Change the Display Name to&nbsp;**Log Payload**
+8.  Add the following expression to the Message field: `#[payload]` +
+ +
+image:/documentation/download/attachments/118981539/logpayload.png?version=1&amp;modificationDate=1414034304029[image] +
+ +</pre> 
+      </div> 
+     </div> </li> 
+   </ol> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Note: In both cases, leave the Level set to <strong>INFO</strong>, as this will generate log entries while the application runs normally. If set to ERROR, as an example, log entries would only be generated on an error while executing the application, which is useful for debugging issues.</p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="GettingStartedwithConnectors-Step6:DeployYourApplicationtoCloudHub"><a class="anchor" href="#GettingStartedwithConnectors-Step6:DeployYourApplicationtoCloudHub"></a>Step 6: Deploy Your Application to CloudHub</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>Before deploying your application, it’s helpful to go to the CloudHub Console first. The benefits of doing so include:</p> 
+  </div> 
+  <div class="ulist"> 
+   <ul> 
+    <li> <p>You will be able to watch the deployment of your application as events are displayed in the log console.</p> </li> 
+    <li> <p>Since your application includes Logger components, the log console will display events as they are encountered in the flow.</p> </li> 
+    <li> <p>Finally, if things don’t go as expected, and you become inundated with posts to your Twitter user stream, as an example, you can quickly stop the application from the CloudHub Console.</p> </li> 
+   </ul> 
+  </div> 
+  <div class="paragraph"> 
+   <p>If you are using a free CloudHub account, you need to stop any other application that might be running before deploying this new application (or upgrade to a paid plan so you can run multiple applications).</p> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="GettingStartedwithConnectors-SigninandgototheCloudHubConsole"><a class="anchor" href="#GettingStartedwithConnectors-SigninandgototheCloudHubConsole"></a>Sign in and go to the CloudHub Console</h3> 
+   <div class="olist arabic"> 
+    <ol class="arabic"> 
+     <li> <p><a href="https://anypoint.mulesoft.com/#/signin">Sign in to the Anypoint Platform</a> and go to the CloudHub Console by clicking on <strong>CloudHub&nbsp;</strong>from the top menu.</p> </li> 
+     <li> <p>Once you are signed in, you will see a list of your uploaded applications. Note the application status indicator to the left of the application name.<br> <br> <span class="image"><img src="/documentation/download/attachments/118981545/image2014-10-22+22%3A12%3A43.png?version=1&amp;modificationDate=1414041811385" alt="image"></span><br> <br></p> </li> 
+    </ol> 
+   </div> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="GettingStartedwithConnectors-DeployYourApplication"><a class="anchor" href="#GettingStartedwithConnectors-DeployYourApplication"></a>Deploy Your Application</h3> 
+   <div class="paragraph"> 
+    <p>Now go back to Anypoint Studio to deploy your application.</p> 
+   </div> 
+   <div class="olist arabic"> 
+    <ol class="arabic"> 
+     <li> <p>Save your project by choosing <strong>File &gt; Save</strong>.</p> </li> 
+     <li> <p>Locate the project name in the Package Explorer view, right click and choose <strong>CloudHub &gt; Deploy to CloudHub</strong>.</p> </li> 
+     <li> <p>Enter your credentials in the menu that opens, and choose a unique domain where you will access the deployed application.</p> </li> 
+     <li> <p>Select a domain and a runtime, then click <strong>Finish</strong>.</p> </li> 
+    </ol> 
+   </div> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="GettingStartedwithConnectors-WatchtheCloudHubLogs"><a class="anchor" href="#GettingStartedwithConnectors-WatchtheCloudHubLogs"></a>Watch the CloudHub Logs</h3> 
+   <div class="paragraph"> 
+    <p>It can take several minutes for your application to upload and deploy. This process can be monitored through the CloudHub dashboard. Since your application includes Logger components, the CloudHub console will also show you the log entries these components generate.</p> 
+   </div> 
+   <div class="olist arabic"> 
+    <ol class="arabic"> 
+     <li> <p>Go back to the CloudHub Console.</p> </li> 
+     <li> <p>Click on Dashboard, you should see your new application listed.</p> </li> 
+     <li> <p>Click on the application name, and then click on <strong>Logs</strong>.</p> </li> 
+     <li> <p>Various status messages will be shown as your application is deployed.</p> </li> 
+     <li> <p>Once deployment is completed, you should see a system message that the application was started.<br> <br> <span class="image"><img src="/documentation/download/attachments/118981539/image2014-10-24+11%3A28%3A5.png?version=1&amp;modificationDate=1414175285352" alt="image"></span></p> </li> 
+    </ol> 
+   </div> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="GettingStartedwithConnectors-Step7:RuntheProject"><a class="anchor" href="#GettingStartedwithConnectors-Step7:RuntheProject"></a>Step 7: Run the Project</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>You are now ready to run the project! First, you need to determine the URL where it is running, and then add your Tweet as a query parameter to the URL.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>As an example, if you deployed your application to <em>twittertutorial</em> and you would like to Tweet "I built a new CloudHub application", the URL would be:</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Note that for some browsers, you may need to replace spaces in the URL with "%20". In this case, enter the URL as follows:</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>How did we arrive at this URL? Much of it is configured while building the project:</p> 
+  </div> 
+  <div class="ulist"> 
+   <ul> 
+    <li> <p>The sub-domain, <strong>twittertesttest</strong>&nbsp;(as an example), was entered as the "domain" when deploying the project from Anypoint Studio. This was an option you entered in the Deploy to CloudHub dialog when you deployed your application. Note that it must be unique across all CloudHub deployments.</p> </li> 
+    <li> <p><strong>/sendtweet</strong> was defined as the <strong>Path</strong> in the HTTP Endpoint.</p> </li> 
+    <li> <p>We configured the Twitter Connector with an expression: <code>#[message.inboundProperties.'http.query.params'.tweet]</code>. This expression passes the value of a query parameter ("tweet") in the URL string to your Twitter user stream.</p> </li> 
+   </ul> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Now log into your Twitter account, you should see your new Tweet posted. If you try this again, be sure to change the Tweet contents, as Twitter bounces duplicate posts. The web page should also show a response: <strong>Thanks for Tweeting!</strong></p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>The CloudHub console will also show various results from the logger components. These are discussed in the next section.</p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="GettingStartedwithConnectors-HowtheProjectWorks"><a class="anchor" href="#GettingStartedwithConnectors-HowtheProjectWorks"></a>How the Project Works</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>In this section, we’ll take an inside look at messages within the flow, and see how expressions allow us to control which data is sent to Twitter. We’ll also revisit with the Logger component and view the output they produce in the CloudHub console.</p> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="GettingStartedwithConnectors-AboutthePayload"><a class="anchor" href="#GettingStartedwithConnectors-AboutthePayload"></a>About the Payload</h3> 
+   <div class="paragraph"> 
+    <p>The flow we built in Mule Studio contains message processors –- including the HTTP Endpoint, Twitter Connector and Expression Transformer — and it is “Mule messages” that carry data between these message processors.</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>A Mule message contains the following components:</p> 
+   </div> 
+   <div class="ulist"> 
+    <ul> 
+     <li> <p>Payload – this is the actual data that we are concerned with in this application</p> </li> 
+     <li> <p>Properties—Along with a set of standard parameters, user defined parameters may be included as well. We access an “inbound property” in this application to view the URL query parameter.</p> </li> 
+     <li> <p>Attachments—Although not used in this project, other applications may include attachments such as an XML file or PDF attachment.</p> </li> 
+    </ul> 
+   </div> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="GettingStartedwithConnectors-AboutMuleExpressionLanguage"><a class="anchor" href="#GettingStartedwithConnectors-AboutMuleExpressionLanguage"></a>About Mule Expression Language</h3> 
+   <div class="paragraph"> 
+    <p>Messages within the Mule flow can be quite complex, and it is often necessary to perform some operation on them, or extract pertinent information. In this project, we needed to extract a URL query parameter from the properties component of the message, and send it to the Twitter user stream. We used Mule Expression Language to do so.</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>CloudHub supports many expression languages, including Groovy, xpath, regex and more. However, the syntax of these languages vary from one to another, and to allow for a common and easy-to-use syntax specifically for operating on Mule messages, Mule Expression Language was recently introduced.</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>Mule Expression Language provides a powerful and comprehensive set of features. In this project, we used expressions at several points in the flow:</p> 
+   </div> 
+   <div class="ulist"> 
+    <ul> 
+     <li> <p>The Twitter Connector used the following Mule expression to pass the URL query parameter, "tweet" to the Twitter user stream:<br> <code>#[message.inboundProperties.'http.query.params'.tweet]</code></p> </li> 
+     <li> <p>The Expression Transformer used the following Mule expression to extract the returned text, or Tweet, from the payload produced by Twitter:<br> <code>"Thanks for Tweeting! Your message: " + #[message.payload.text]</code></p> </li> 
+     <li> <p>The logger component extracted the payload generated by Twitter:<br> <code>#[payload]</code></p> </li> 
+    </ul> 
+   </div> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="GettingStartedwithConnectors-ViewLogsintheCloudHubconsole"><a class="anchor" href="#GettingStartedwithConnectors-ViewLogsintheCloudHubconsole"></a>View Logs in the CloudHub console</h3> 
+   <div class="paragraph"> 
+    <p>Now with an understanding of Mule messages and expressions, let’s take a look at the log entries produced by the Logger components. First, produce a new Tweet by visiting a URL such as this (be sure to change "twittertutorial" to your unique sub-domain):</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p><a href="http://twittertutorial.cloudhub.io/sendtweet?tweet=Sent" class="bare">http://twittertutorial.cloudhub.io/sendtweet?tweet=Sent</a> from my CloudHub application Now log into the CloudHub console, select this application, and go to the "logs" tab (as detailed above). After you visited the URL above, you should see a new set of log entries.</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>The first log entry was produced by the expression we configured in the Logger component: <strong><code>Tweet: #[message.inboundProperties.'http.query.params'.tweet]</code></strong></p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>It produced this result in the CloudHub console:</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>Note that we added the text "Tweet" to precede the results of the Mule expression; this is so that we could more easily identify this message in the log console.</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>For the second Logger component, we used this expression:<strong><code>&nbsp;#[payload]</code></strong></p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>This produced a much longer log result in the CloudHub console:</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>This second Logger component shows us that the Twitter Connector produced a payload that is the API response from Twitter. This response includes the string we Tweeted, as well as the user name and other data about the user account associated with the user stream we accessed.</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>Instead of logging the complete payload, you could log just the tweet by using the expression: <code><mark>[payload.text]</mark></code>. You could also log a more complex expression, such as the user screen name which is further nested in the payload: <code>[payload.user.ScreenName]</code></p> 
+   </div> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="GettingStartedwithConnectors-NextSteps"><a class="anchor" href="#GettingStartedwithConnectors-NextSteps"></a>Next Steps</h2> 
+ <div class="sectionbody"> 
+  <div class="ulist"> 
+   <ul> 
+    <li> <p>Want to try another tutorial involving Anypoint Connectors? Try the <a href="/documentation/display/current/Anypoint+Connector+Tutorial">Anypoint Connector Tutorial</a>.</p> </li> 
+    <li> <p>Interested in learning more about the Mule message? Try the <a href="/documentation/display/current/Mule+Message+Tutorial">Mule Message Tutorial</a>.</p> </li> 
+    <li> <p>Learn more about <a href="/documentation/display/current/Managing+CloudHub+Applications">managing your applications on CloudHub</a>.</p> </li> 
+   </ul> 
+  </div> 
+  <div class="paragraph"> 
+   <p>For further information about&nbsp;connectors, see these reference documents:</p> 
+  </div> 
+  <div class="ulist"> 
+   <ul> 
+    <li> <p><a href="/documentation/display/current/Anypoint+Connectors">Anypoint Connectors</a></p> </li> 
+    <li> <p><a href="http://mulesoft.github.com/twitter-connector/mule/twitter.html">Twitter Connector Reference</a></p> </li> 
+   </ul> 
+  </div> 
+ </div> 
+</div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

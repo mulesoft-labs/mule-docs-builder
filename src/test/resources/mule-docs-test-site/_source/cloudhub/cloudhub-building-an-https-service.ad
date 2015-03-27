@@ -1,0 +1,42 @@
+[[BuildinganHTTPSService-BuildinganHTTPSservice]]
+= Building an HTTPS service
+
+CloudHub supports building HTTPS/SSL based services so you can be
+ensured of your data confidentiality. It is very easy to configure your
+service to support SSL.
+
+This tutorial builds on existing tutorials, so to begin, you'll need to
+build a service using the
+link:/documentation/display/current/Hello+World+on+CloudHub[Hello
+World] tutorial.
+
+You can now modify your existing service to use HTTPS as detailed in the
+following steps.
+
+First, if you don't have a keystore for your service, you'll need to
+generate a new keystore. You can do this using the command line and the
+keytool utility from the JDK.
+
+----
+keytool -genkey -alias mule -keyalg RSA -keystore keystore.jks
+----
+
+This command will create a file named `keystore.jks`. Before proceeding,
+verify that this file exists and that it is located in the folder
+`src/main/resources`.
+
+Next, you will need to configure an HTTPS connector inside your Mule
+configuration:
+
+For more details on how this is configured, see the
+link:/documentation/display/current/HTTPS+Transport+Reference[HTTPS
+Transport Reference].
+
+Finally, configure any endpoints you wish to use HTTPS on with the https
+scheme and the $\{https.port} variable for the port. Make sure to
+include a reference to the HTTPS global connector configuration. For
+example:
+
+Your application is now ready to be deployed on CloudHub. You can access
+your endpoint via the normal HTTPS address, e.g.:
+https://yourdomain.cloudhub.io.

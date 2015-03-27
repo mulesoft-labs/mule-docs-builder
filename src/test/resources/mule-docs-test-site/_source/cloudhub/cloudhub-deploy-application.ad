@@ -1,0 +1,15 @@
+[[DeployApplication-DeployApplication]]
+= Deploy Application
+
+The POST method, specified with the /api/applications/\{domain}/deploy
+resource (where \{domain} is the application domain), allows you to
+deploy a Mule application zip file to CloudHub. This is commonly done
+after you've created the application in Mule Studio or using Maven from
+the command line- then you need to upload the actual zip file to
+CloudHub. After you've deployed the zip file, you can monitor the status
+of your deployment by link:/documentation/display/current/Logs[viewing
+the logs].
+
+Example Request:
+
+Example Response:

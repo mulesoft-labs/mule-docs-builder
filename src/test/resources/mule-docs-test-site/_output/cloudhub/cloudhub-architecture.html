@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="/docs/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link href="/docs/css/asciidoctor.css" rel="stylesheet">
+    <link href="/docs/css/mule-docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+    <script src="/docs/js/jquery-1.11.2.min.js"></script>
+    <script src="/docs/js/bootstrap.js"></script>
+    <title>MuleSoft Documentation - CloudHub Architecture</title>
+</head>
+<body>
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<div class="navbar navbar-inverse navbar-static-top">
+    <div class="navbar-inner">
+        <div class="container-fluid" id="top">
+            <img src="/docs/img/mule-docs-logo.png">
+        </div>
+    </div>
+</div>
+<div class="container" id="main">
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="toc">
+
+                <li class="toc-section"><div class="toc-section-header child"><a href="/docs/30-mins-with-mule/">First 30 Minutes with Mule</a><a href="#N0QL5L528Y" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="N0QL5L528Y"><a href="/docs/30-mins-with-mule/anypoint-platform-primer"><li class="child">Anypoint Platform Primer</li></a><a href="/docs/30-mins-with-mule/anypoint-studio-essentials"><li class="child">Anypoint Studio Essentials</li></a><a href="/docs/30-mins-with-mule/begin-with-the-basics"><li class="child">Begin with the Basics</li></a><a href="/docs/30-mins-with-mule/build+a+hello+world+application"><li class="child">Build a Hello World Application</li></a><a href="/docs/30-mins-with-mule/download-and-launch-anypoint-studio"><li class="child">Download and Launch Anypoint Studio</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/">CloudHub</a><a href="#CMVHLKTRGI" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="CMVHLKTRGI" style="height: 0px;"><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/getting-started-with-cloudhub">Getting Started with CloudHub</a><a href="#21T3BOGH59" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="21T3BOGH59" style="height: 0px;"><a href="/docs/cloudhub/cloudhub-at-a-glance"><li class="child">CloudHub at a Glance</li></a><a href="/docs/cloudhub/hello-world-on-cloudhub"><li class="child">Hello World on CloudHub</li></a><a href="/docs/cloudhub/cloudhub-getting-started-with-connectors"><li class="child">Getting Started with Connectors</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-tutorials">CloudHub Tutorials</a><a href="#W189AHGHPH" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="W189AHGHPH" style="height: 0px;"><a href="/docs/cloudhub/cloudhub-building-an-https-service"><li class="child">Building an HTTPS Service</li></a><a href="/docs/cloudhub/cloudhub-custom-application-alerts"><li class="child">Custom Application Alerts</li></a></ul></li><a href="/docs/cloudhub/developing-a-cloudhub-application"><li class="child">Developing a CloudHub Application</li></a><a href="/docs/cloudhub/deploying-a-cloudhub-application"><li class="child">Deploying a CloudHub Application</li></a><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/managing-cloudhub-applications">Managing CloudHub Applications</a><a href="#55NJ7Z88YU" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="55NJ7Z88YU" style="height: 0px;"><a href="/docs/cloudhub/cloudhub-console-overview"><li class="child">CloudHub Console Overview</li></a><a href="/docs/cloudhub/cloudhub-administration"><li class="child">CloudHub Administration</li></a><a href="/docs/cloudhub/cloudhub-alerts-and-notifications"><li class="child">CloudHub Alerts and Notifications</li></a><a href="/docs/cloudhub/cloudhub-fabric"><li class="child">CloudHub Fabric</li></a><a href="/docs/cloudhub/cloudhub-insight"><li class="child">CloudHub Insight</li></a><a href="/docs/cloudhub/cloudhub-command-line-tools"><li class="child">Command Line Tools</li></a><a href="/docs/cloudhub/cloudhub-managing-application-data-with-object-stores"><li class="child">Managing Application Data with Object Stores</li></a><a href="/docs/cloudhub/cloudhub-managing-queues"><li class="child">Managing Queues</li></a><a href="/docs/cloudhub/cloudhub-managing-schedules"><li class="child">Managing Schedules</li></a><a href="/docs/cloudhub/cloudhub-secure-application-properties"><li class="child">Secure Application Properties</li></a><a href="/docs/cloudhub/cloudhub-viewing-log-data"><li class="child">Viewing Log Data</li></a><a href="/docs/cloudhub/cloudhub-virtual-private-cloud"><li class="child">Virtual Private Cloud</li></a><a href="/docs/cloudhub/cloudhub-worker-monitoring"><li class="child">CloudHub Worker Monitoring</li></a><a href="/docs/cloudhub/cloudhub-penetration-testing-policies"><li class="child">Penetration Testing Policies</li></a><a href="/docs/cloudhub/secure-data-gateway"><li class="child">Secure Data Gateway</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-api">CloudHub API</a><a href="#QNY8WRZWZ2" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="QNY8WRZWZ2" style="height: 0px;"><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-applications">Applications</a><a href="#PK6EZMEPML" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="PK6EZMEPML" style="height: 0px;"><a href="/docs/cloudhub/cloudhub-create-application"><li class="child">Create Application</li></a><a href="/docs/cloudhub/cloudhub-delete-application"><li class="child">Delete Application</li></a><a href="/docs/cloudhub/cloudhub-deploy-application"><li class="child">Deploy Application</li></a><a href="/docs/cloudhub/cloudhub-get-application"><li class="child">Get Application</li></a><a href="/docs/cloudhub/cloudhub-list-all-applications"><li class="child">List All Applications</li></a><a href="/docs/cloudhub/cloudhub-update-application-metadata"><li class="child">Update Application Metadata</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-logs">Logs</a><a href="#OAT2OZ51VT" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="OAT2OZ51VT" style="height: 0px;"><a href="/docs/cloudhub/cloudhub-list-all-logs"><li class="child">List All Logs</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-notifications">Notifications</a><a href="#W0COQP89QB" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="W0COQP89QB" style="height: 0px;"><a href="/docs/cloudhub/cloudhub-create-notification"><li class="child">Create Notification</li></a><a href="/docs/cloudhub/cloudhub-list-notifications"><li class="child">List Notifications</li></a><a href="/docs/cloudhub/cloudhub-update-all-notifications"><li class="child">Update All Notifications</li></a><a href="/docs/cloudhub/cloudhub-update-notification"><li class="child">Update Notification</li></a></ul></li></ul></li><li class="toc-section"><div class="toc-section-header active"><a href="/docs/cloudhub/cloudhub-architecture" style="color: white">CloudHub Architecture</a><a href="#2S6H4HIPN6" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="2S6H4HIPN6"><a href="/docs/cloudhub/cloudhub-networking-guide"><li class="child">CloudHub Networking Guide</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-reference-materials">CloudHub Reference Materials</a><a href="#WG3BDBWABJ" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="WG3BDBWABJ" style="height: 0px;"><a href="/docs/cloudhub/cloudhub-amazon-rds-support"><li class="child">CloudHub Amazon RDS Support</li></a><a href="/docs/cloudhub/cloudhub-configure-twitter-for-api-access"><li class="child">Configure Twitter for API Access</li></a><a href="/docs/cloudhub/cloudhub-configure-twilio-for-api-access"><li class="child">Configure Twilio for API Access</li></a><a href="/docs/cloudhub/cloudhub-salesforce-developer-account-setup"><li class="child">Salesforce Developer Account Setup</li></a></ul></li><a href="/docs/cloudhub/cloudhub-maintenance-and-upgrade-policy"><li class="child">Maintenance and Upgrade Policy</li></a><a href="/docs/cloudhub/cloudhub-community-and-support"><li class="child">Community and Support</li></a><a href="/docs/cloudhub/cloudhub-mule-esb-and-cloudhub"><li class="child">Mule ESB and CloudHub</li></a><a href="/docs/cloudhub/cloudhub-faq"><li class="child">FAQ</li></a></ul></li>
+
+            </ul>
+
+        </div>
+        <!--/span-->
+        <div class="col-md-9">
+            <div id="content">
+
+                <ol class="breadcrumb"><li><a href="developers.mulesoft.com/docs/">MuleSoft Docs</a></li><li><a href="">CloudHub</a></li><li class="active">CloudHub Architecture</li></ol>
+
+                <div id="header">
+                    <h1>CloudHub Architecture</h1>
+                </div>
+                <div id="doc-metadata">
+                    <!--<span class="updated-date" style="color:#B1B1B1;">Updated: January 15, 2015</span>
+                   <span class="updated-date" style="color:#DDD; padding: 0 0 0 7px;">/</span>-->
+                    <span class="updated-date" style="color:#B1B1B1; padding: 0 0 0 0px;">Version: </span>
+       <span class="dropdown" style="padding: 0 7px 0 0px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Current <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#">January 2015</a></li>
+            <li><a href="#">October 2014</a></li>
+            <li><a href="#">July 2014</a></li>
+        </ul> </span>
+                    <span class="updated-date" style="color:#DDD; padding: 0 0 0 0px;">/</span>
+       <span class="dropdown" style="padding: 0 7px 0 7px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Export <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#">PDF - Only this page</a></li>
+            <li><a href="#">PDF - CloudHub section</a></li>
+            <li><a href="#">EPub - MuleSoft Docs</a></li>
+        </ul> </span>
+                    <span class="updated-date" style="color:#DDD; padding: 0 0 0 0px;">/</span>
+       <span class="dropdown" style="padding: 0 7px 0 7px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Feedback <span class="caret"></span></a>
+       <ul class="dropdown-menu" role="menu">
+           <li><a href="#">Rate this Topic</a></li>
+           <li><a href="#">Edit on GitHub</a></li>
+       </ul> </span>
+                </div>
+
+                <div class="sect1"> 
+ <h2 id="CloudHubArchitecture-CloudHubArchitecture"><a class="anchor" href="#CloudHubArchitecture-CloudHubArchitecture"></a>CloudHub Architecture</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>CloudHub has been built from the ground up to provide enterprises with a multi-tenant, secure, elastic, and highly available integration platform as a service (iPaaS). This document describes how the underlying mechanisms of the CloudHub platform work to achieve these goals.&nbsp;</p> 
+  </div> 
+  <div class="literalblock"> 
+   <div class="content"> 
+    <pre>&nbsp;Contents
+link:#CloudHubArchitecture-CloudHubArchitecture[CloudHub Architecture]
+link:#CloudHubArchitecture-CloudHubArchitecture.1[CloudHub Architecture]
+* link:#CloudHubArchitecture-IntegrationApplications[Integration
+Applications]
+* link:#CloudHubArchitecture-ManagementConsole[Management Console]
+* link:#CloudHubArchitecture-PlatformServices[Platform Services]
+* link:#CloudHubArchitecture-CloudHubWorkers[CloudHub Workers]
+* link:#CloudHubArchitecture-GlobalWorkerClouds[Global Worker Clouds]
+* link:#CloudHubArchitecture-WorkersandMultitenancy[Workers and
+Multitenancy]</pre> 
+   </div> 
+  </div> 
+  <div class="paragraph"> 
+   <p><a href="#CloudHubArchitecture-CloudHubAvailabilityandScalability">CloudHub Availability and Scalability</a> <a href="#CloudHubArchitecture-RedundantPlatform">Redundant Platform</a> <a href="#CloudHubArchitecture-IntelligentHealing">Intelligent Healing</a> <a href="#CloudHubArchitecture-ZeroDowntimeUpdates">Zero Downtime Updates</a> <a href="#CloudHubArchitecture-CloudHubFabric">CloudHub Fabric</a> * <a href="#CloudHubArchitecture-WorkerScale-OutandDataCenterRedundancy">Worker Scale-Out and Data Center Redundancy</a> * <a href="#CloudHubArchitecture-PersistentQueues">Persistent Queues</a></p> 
+  </div> 
+  <div class="paragraph"> 
+   <p><a href="#CloudHubArchitecture-Security">Security</a> <a href="#CloudHubArchitecture-GoFurther">Go Further</a> &nbsp;</p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="CloudHubArchitecture-CloudHubArchitecture.1"><a class="anchor" href="#CloudHubArchitecture-CloudHubArchitecture.1"></a>CloudHub Architecture</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>To understand CloudHub’s approach to security and availability, it’s important to understand the architecture behind CloudHub. CloudHub includes three major components: the management console, the platform services, and the worker cloud. These three components work together to run your integration applications.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p><span class="image"><img src="/documentation/download/attachments/118981856/image2014-10-25+0%3A25%3A28.png?version=1&amp;modificationDate=1414221949231" alt="image"></span></p> 
+  </div> 
+  <table class="tableblock frame-all grid-all spread"> 
+   <colgroup> 
+    <col style="width: %;"> 
+    <col style="width: %;"> 
+    <col style="width: %;"> 
+   </colgroup> 
+   <tbody> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#CloudHubArchitecture-IntegrationApplications">Integration Applications</a></p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">These are applications that you create and deploy to CloudHub to perform integration logic for your business.</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="/documentation/download/thumbnails/118981856/blue-1.png?version=1&amp;modificationDate=1414221949179" alt="image"></span></p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#CloudHubArchitecture-ManagementConsole">Management Console</a></p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">The management console is the face of CloudHub, allowing you to deploy and monitor integrations, and configure your account, among other things.</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="/documentation/download/thumbnails/118981856/blue-2.png?version=1&amp;modificationDate=1414221949206" alt="image"></span></p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#CloudHubArchitecture-PlatformServices">Platform Services</a></p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">This set of shared CloudHub platform services and APIs includes CloudHub Insight, alerting, logging, account management, secure data gateway, load balancing, and others.</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="/documentation/download/thumbnails/118981856/blue-3.png?version=1&amp;modificationDate=1414221949213" alt="image"></span></p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#CloudHubArchitecture-CloudHubWorkers">Worker Cloud</a></p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">This is an elastic cloud of Mule instances that run integration applications.</p></td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <table class="tableblock frame-all grid-all spread"> 
+   <colgroup> 
+    <col style="width: %;"> 
+   </colgroup> 
+   <tbody> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="/documentation/images/icons/emoticons/information.png" alt="image"></span></p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">View the live status and detailed service history for the CloudHub management console, platform services, and the worker cloud on&nbsp;http://trust.mulesoft.com/[trust.mulesoft.com].</p></td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <div class="sect2"> 
+   <h3 id="CloudHubArchitecture-IntegrationApplications"><a class="anchor" href="#CloudHubArchitecture-IntegrationApplications"></a>Integration Applications</h3> 
+   <div class="paragraph"> 
+    <p>An&nbsp;integration application&nbsp;is any integration that you’ve built using Mule Studio. These applications can do everything from synchronizing data from Salesforce to a database, to publishing a SOAP or REST API, to creating complex orchestrations of business processes.</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>For more about creating and deploying integration applications, see <a href="/documentation/display/current/Getting+Started+with+CloudHub">Getting Started with CloudHub</a> and <a href="/documentation/display/current/Deploying+a+CloudHub+Application">Deploying a CloudHub Application</a>.</p> 
+   </div> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="CloudHubArchitecture-ManagementConsole"><a class="anchor" href="#CloudHubArchitecture-ManagementConsole"></a>Management Console</h3> 
+   <div class="paragraph"> 
+    <p>The CloudHub management console is hosted at <a href="https://cloudhub.io/login.html">cloudhub.io</a>. Log in with your credentials to upload and manage your integration applications at runtime. The console surfaces useful monitoring information from the platform services and also works as a comprehensive dashboard for both application-level and account-level management.&nbsp;</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>Administrator account holders can use the management console to add and manage other users in the organization, define user roles, and create and manage sandbox environments.&nbsp;</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>For more information about the console, see <a href="/documentation/display/current/CloudHub+Console+Overview">CloudHub Console Overview</a>. For more information about using the console for account management, see <a href="/documentation/display/current/Anypoint+Platform+Administration">Account Management</a>.</p> 
+   </div> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="CloudHubArchitecture-PlatformServices"><a class="anchor" href="#CloudHubArchitecture-PlatformServices"></a>Platform Services</h3> 
+   <div class="paragraph"> 
+    <p>CloudHub’s platform services are responsible for coordinating all aspects of the platform. They coordinate deployment of applications, monitor integrations, provide analytics data, store application data, run scheduled jobs, and more. Many of these services are also exposed through RESTful APIs.&nbsp;</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>For more information about the CloudHub API, refer to the <a href="/documentation/display/current/CloudHub+API">CloudHub API Reference</a>.</p> 
+   </div> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="CloudHubArchitecture-CloudHubWorkers"><a class="anchor" href="#CloudHubArchitecture-CloudHubWorkers"></a>CloudHub Workers</h3> 
+   <div class="paragraph"> 
+    <p>Applications on CloudHub are run by one or more instances of Mule, called <strong>workers</strong>. Workers are a unit of:</p> 
+   </div> 
+   <div class="ulist"> 
+    <ul> 
+     <li> <p><strong>Capacity</strong>: Each worker has a specific amount of capacity to process data.</p> </li> 
+     <li> <p><strong>Isolation</strong>: Each worker runs in a separate container from every other application.</p> </li> 
+     <li> <p><strong>Manageability</strong>: Each worker is deployed and monitored independently.</p> </li> 
+     <li> <p><strong>Locality</strong>: Each worker runs in a specific worker cloud, the US, EU, Australia, etc.</p> </li> 
+    </ul> 
+   </div> 
+   <div class="paragraph"> 
+    <p>Each worker is a dedicated instance of Mule that runs your integration application. Each worker includes 1.5 GB of memory and 1 virtual core of processing power. Workers can be scaled vertically by selecting one of the available worker sizes:</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p><strong>Worker Size</strong> <strong>Virtual CPUs</strong> <strong>Memory (GB)</strong> Regular 1 1.5 Double 2 3 Shared Shared workers offer limited CPU and IO for smaller workloads,<br> with burst capacity of up to 1 virtual CPU</p> 
+   </div> 
+   <div class="literalblock"> 
+    <div class="content"> 
+     <pre>&nbsp;</pre> 
+    </div> 
+   </div> 
+   <div class="paragraph"> 
+    <p>With <a href="/documentation/display/current/CloudHub+Fabric">CloudHub Fabric</a>, you can also scale your applications horizontally by adding multiple workers and load distribution over queues.&nbsp;For more information about scaling workers, see <a href="/documentation/display/current/CloudHub+Fabric#CloudHubFabric-WorkerScaleout">Worker Scaleout</a>. For more information about using persistent queues on CloudHub, see <a href="/documentation/display/current/CloudHub+Fabric#CloudHubFabric-PersistentQueues">Persistent Queues</a>.</p> 
+   </div> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="CloudHubArchitecture-GlobalWorkerClouds"><a class="anchor" href="#CloudHubArchitecture-GlobalWorkerClouds"></a>Global Worker Clouds</h3> 
+   <div class="paragraph"> 
+    <p>CloudHub offers different worker clouds in different regions of the world: the United States, the European Union, and Australia. This global distribution allows you to host your integration in a location that is closest to your services, thus reducing latency. It may also allow you to adhere with local laws, such as the EU Data Protection Directive. The management console and platform services are hosted in the United States.</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>When your application is running in the EU, all HTTP services are also available over the eu.cloudhub.io domain. For example, if you created the application "myapp", then its domain would be "myapp.eu.cloudhub.io." This load balancer is hosted in the EU, ensuring that your data will never be transferred outside the EU when invoking HTTP services.</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>For more information about deploying applications to different regions, refer to the <a href="/documentation/display/current/Deploying+a+CloudHub+Application#DeployingaCloudHubApplication-AdvancedApplicationOptions">deployment guide</a>. For more information about CloudHub’s security and compliance, download the <a href="/documentation/download/attachments/118981856/Anypoint_Platform_Cloud_Security_and_Compliance.pdf?version=1&amp;modificationDate=1414221949159">Anypoint Cloud Security &amp; Compliance whitepaper</a>.</p> 
+   </div> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="CloudHubArchitecture-WorkersandMultitenancy"><a class="anchor" href="#CloudHubArchitecture-WorkersandMultitenancy"></a>Workers and Multitenancy</h3> 
+   <div class="paragraph"> 
+    <p>Because different levels of security and isolation are needed depending on the service, the platform provides two different levels of multitenancy.</p> 
+   </div> 
+   <div class="ulist"> 
+    <ul> 
+     <li> <p>First, the worker cloud is a multitenant cloud of virtual machines. These VMs provide the security and isolation needed for your integrations to run custom code without affecting others.&nbsp;</p> </li> 
+     <li> <p>Second, the management console and the platform services have a "shared everything" architecture&nbsp;–&nbsp;all tenants share the same web UI, monitoring services, load balancers, etc. These services do no not process or transmit your data.</p> 
+      <div class="literalblock"> 
+       <div class="content"> 
+        <pre>&nbsp;</pre> 
+       </div> 
+      </div> </li> 
+    </ul> 
+   </div> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="CloudHubArchitecture-CloudHubAvailabilityandScalability"><a class="anchor" href="#CloudHubArchitecture-CloudHubAvailabilityandScalability"></a>CloudHub Availability and Scalability</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>CloudHub has been designed to be highly available and scalable through redundancy, intelligent healing, and zero downtime updates. It also provides customers with the ability to scale and have added reliability through CloudHub Fabric.&nbsp;</p> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="CloudHubArchitecture-RedundantPlatform"><a class="anchor" href="#CloudHubArchitecture-RedundantPlatform"></a>Redundant Platform</h3> 
+   <div class="paragraph"> 
+    <p>All of CloudHub’s platform services, from load balancing to the API layer, have at least one, built-in layer of redundancy and are available in at least two data centers at all times. All data centers are at least 60 miles apart. This redundancy ensures that even if there is a data center outage, the platform remains available.&nbsp;</p> 
+   </div> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="CloudHubArchitecture-IntelligentHealing"><a class="anchor" href="#CloudHubArchitecture-IntelligentHealing"></a>Intelligent Healing</h3> 
+   <div class="paragraph"> 
+    <p>CloudHub monitors the worker clouds for any type of problems and provides a self-healing mechanism to recover from problems. If the underlying hardware suffers a failure, the platform migrates your application to a new worker automatically. In the case of an application crash –&nbsp;whether due to a problem with custom code or a bug in the underlying stack –&nbsp;the platform recognizes the crash and can restart the worker automatically.&nbsp;</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>For more information about application monitoring and automatic restarts, see the <a href="/documentation/display/current/Deploying+a+CloudHub+Application#DeployingaCloudHubApplication-MonitoringandAutomaticRestart">deployment guide</a>.</p> 
+   </div> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="CloudHubArchitecture-ZeroDowntimeUpdates"><a class="anchor" href="#CloudHubArchitecture-ZeroDowntimeUpdates"></a>Zero Downtime Updates</h3> 
+   <div class="paragraph"> 
+    <p>CloudHub supports updating your applications at runtime so end users of your HTTP APIs experience zero downtime. While your application update is deploying, CloudHub keeps the old version of your application running. Your domain points to the old version of your application until the newly uploaded version is fully started. This allows you to keep servicing requests from your old application while the new version of your application is starting.</p> 
+   </div> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="CloudHubArchitecture-CloudHubFabric"><a class="anchor" href="#CloudHubArchitecture-CloudHubFabric"></a>CloudHub Fabric</h3> 
+   <div class="paragraph"> 
+    <p>CloudHub Fabric provides scalability, workload distribution, and added reliability to CloudHub applications on a per-application basis. These capabilities are powered by CloudHub’s scalable load-balancing service,&nbsp;http://www.mulesoft.org/documentation/display/current/CloudHub+Fabric#CloudHubFabric-WorkerScaleout[worker scaleout], and&nbsp;http://www.mulesoft.org/documentation/display/current/CloudHub+Fabric#CloudHubFabric-PersistentQueues[persistent queueing]&nbsp;features.</p> 
+   </div> 
+   <div class="sect3"> 
+    <h4 id="CloudHubArchitecture-WorkerScale-OutandDataCenterRedundancy"><a class="anchor" href="#CloudHubArchitecture-WorkerScale-OutandDataCenterRedundancy"></a>Worker Scale-Out and Data Center Redundancy</h4> 
+    <div class="paragraph"> 
+     <p>With CloudHub Fabric, you can add multiple workers to your application to make it horizontally scale. This also adds additional reliability. CloudHub automatically distributes multiple workers for the same application across two or more datacenters for maximum reliability.</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>When deploying your application to two or more workers, the HTTP load balancing service distributes requests across these workers, allowing you to scale your services horizontally. Requests are distributed on a round-robin basis.</p> 
+    </div> 
+   </div> 
+   <div class="sect3"> 
+    <h4 id="CloudHubArchitecture-PersistentQueues"><a class="anchor" href="#CloudHubArchitecture-PersistentQueues"></a>Persistent Queues</h4> 
+    <div class="paragraph"> 
+     <p>Persistent queues ensure zero message loss and allow you to distribute non-HTTP workloads across a set of workers.&nbsp;For example, if your application is deployed to more than one worker, persistent queues allow interworker communication and workload distribution. If a large file is placed in the queue, your workers can divide it up and process it in parallel.</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>Persistent queues also guarantee delivery of your messages; even if one or more workers or datacenters go down, persistent queues facilitate disaster recovery and provide resilience to hardware or application failures.</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>For more details about worker scale-out and persistent queues, refer to <a href="/documentation/display/current/CloudHub+Fabric">CloudHub Fabric</a>.</p> 
+    </div> 
+    <div class="literalblock"> 
+     <div class="content"> 
+      <pre>&nbsp;</pre> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="CloudHubArchitecture-Security"><a class="anchor" href="#CloudHubArchitecture-Security"></a>Security</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>CloudHub architecture provides a secure platform for your integrations.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Securing your payload data is critically important. To this end, CloudHub does not inspect, store, or otherwise interact directly with payload data. CloudHub workers provide a secure facility for transmitting and processing data by giving each application its own virtual machine. This ensures complete isolation between tenants for payload security, and isolation from other tenants’ code.&nbsp;</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>CloudHub collects monitoring, analytics, and log data from CloudHub workers and may perform actions on behalf of the user on CloudHub workers. All communication between CloudHub platform services and the worker cloud is secured using SSL with client certificate authentication. This ensures that unauthorized parties cannot read data and that they cannot initiate unauthorized actions.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>For more information about MuleSoft’s approach to security, please see the <a href="http://mulesoft.com/downloads/whitepapers/security-whitepaper.pdf">Anypoint Cloud Security &amp; Compliance whitepaper</a>.</p> 
+  </div> 
+  <div class="literalblock"> 
+   <div class="content"> 
+    <pre>&nbsp;</pre> 
+   </div> 
+  </div> 
+  <div class="literalblock"> 
+   <div class="content"> 
+    <pre>&nbsp;</pre> 
+   </div> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="CloudHubArchitecture-GoFurther"><a class="anchor" href="#CloudHubArchitecture-GoFurther"></a>Go Further</h2> 
+ <div class="sectionbody"> 
+  <div class="ulist"> 
+   <ul> 
+    <li> <p>Read the <a href="/documentation/display/current/CloudHub+Networking+Guide">CloudHub Networking Guide</a></p> </li> 
+    <li> <p>Read more about how to <a href="/documentation/display/current/Anypoint+Platform+Administration">manage your AnyPoint Platfrom account</a>.</p> </li> 
+    <li> <p>Having a technical issue? Check out the <a href="/documentation/display/current/FAQ">FAQ</a>.</p> </li> 
+    <li> <p>Find out how <a href="/documentation/display/current/Mule+ESB+and+CloudHub">CloudHub differs from Mule ESB</a>.</p> </li> 
+    <li> <p>Refer to our&nbsp;<a href="/documentation/display/current/Maintenance+and+Upgrade+Policy">Maintenance and Upgrade Policy</a>.</p> </li> 
+    <li> <p>Learn how to access&nbsp;<a href="/documentation/display/current/Community+and+Support">Community and Support</a> resources.</p> </li> 
+   </ul> 
+  </div> 
+ </div> 
+</div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

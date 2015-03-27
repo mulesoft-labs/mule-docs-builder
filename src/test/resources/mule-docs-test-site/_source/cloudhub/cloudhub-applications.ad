@@ -1,0 +1,102 @@
+= Working with Applications
+
+This is a test - TEST!
+
+The application API allows you to list, create, update, and delete
+applications. All resources or methods that return or accept a type
+(except where noted) use the application JSON type. As an example,
+here's data you might receive, in JSON format, in response to a request
+to get an application:
+
+
+== Application Properties
+
+The following are the properties for applications.
+
+Property
+
+Description
+
+domain
+
+The short domain name of the application.
+
+fullDomain
+
+The long domain name of the application.
+
+hasFile
+
+Whether or not an application file has been supplied for this
+application.
+
+muleVersion
+
+The Mule version for this application. Either 3.1.2 or 3.2.0.
+
+properties
+
+A set of environment variables that get set when the application is
+started.
+
+workers
+
+The number of workers associated with this application.
+
+status
+
+The status of the application. STARTED, DEPLOYING, UNDEPLOYED,
+DEPLOYED_FAILED are valid values.
+
+secureDataGateway
+
+Whether or not the data gateway is connected, and how long it's been
+connected.
+
+[[Applications-OperationsforApplications]]
+== Operations for Applications
+
+The following is a summary of the operations you can perform on your
+application and the resource you specify for each.
+
+Operation
+
+Resource
+
+Description
+
+link:/documentation/display/current/List+All+Applications[GET]
+
+/api/applications
+
+Lists all applications.
+
+link:/documentation/display/current/Create+Application[POST]
+
+/api/applications
+
+Creates an application.
+
+link:/documentation/display/current/Get+Application[GET]
+
+/api/applications/\{domain}
+
+Gets an application.
+
+link:/documentation/display/current/Deploy+Application[POST]
+
+/api/applications/\{domain}/deploy
+
+Deploys a Mule application file.
+
+link:/documentation/display/current/Update+Application+Metadata[PUT]
+
+/api/applications/\{domain}
+
+Updates the metadata for an application.
+
+link:/documentation/display/current/Delete+Application[DELETE]
+
+/api/applications/\{domain}
+
+Deletes an application.

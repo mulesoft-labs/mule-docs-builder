@@ -1,0 +1,80 @@
+= Download and Launch Anypoint Studio
+:imagesdir: images
+
+This introductory content focuses primarily on using *Anypoint Studio*,
+Mule graphical IDE.
+
+For details on installing the Mule standalone runtime, the Mule
+Management Console, and Mule's Community runtime, refer to the
+comprehensive link:http://www.mulesoft.org/documentation/display/current/Installing[installation
+instructions]. 
+
+1.  Before installing, be sure to install one of
+the http://www.oracle.com/technetwork/java/javase/downloads/index.html[Java
+Development Kits] on your host machine:  +
+* Java SE Development Kit Standard Edition 1.6.0_26 (also known as Java
+SE 6 Update 26)
+* Java SE Development Kit 7 (also known as Java SE 7u13)
+2.  Set your `JAVA_HOME` environment variable to the path in which you
+installed the JDK.
+3.  Visit http://www.mulesoft.com/platform/mule-studio[mulesoft.com] to
+download *Anypoint Studio. * 
+4.  Click to download the version of Studio that is compatible with your
+operating system: Windows, Mac, or Linux. +
+5.  Unzip the downloaded file to a directory on a hard drive located on
+your host machine. The *AnypointStudio* folder or directory appears when
+the unzip operation completes. +
+6.  If on a Mac, double-click the *AnypointStudio* file, located in
+the *AnypointStudio* folder. +
+If using Windows, the *anypointStudio.exe* file, located in
+the *AnypointStudio* directory. +
+If using Linux, double-click the *anypointStudio* file icon, located in
+the *AnypointStudio* directory. +
+ +
+ +
+image::Studiofolderstructure.png[image] +
+ +
+7.  Click *OK* to accept the default workspace. +
+ +
+image::workspacelauncher.png[image] +
+ +
+8.  Anypoint Studio launches, then displays a Welcome page.
+Click *Create a Project* to begin development immediately.
+
+.Running Studio on a Mac?
+[NOTE]
+===============================
+If you're using Mac OS X Mountain Lion, there are two extra
+considerations to be mindful of when running Anypoint Studio.
+
+.Java Runtime Environment
+
+Check to confirm that Java runtime environment 6 or 7 is in place on
+your system. From the command line (Terminal app), run: ` java -version`
+
+The response should appear similar to the following:
+[source] 
+----
+Java(TM) SE Runtime Environment (build 1.6.0_43-b01-447-11M4203)
+Java HotSpot(TM) 64-Bit Server VM (build 20.14-b01-447, mixed mode)
+----
+If a Java runtime environment is _not_ installed, the command triggers a
+prompt to install the JDK tools directly from Apple. Follow the
+instructions to download and install JDK 6 or 7.
+
+.Application Execution
+
+By default, Mac OS X restricts execution of applications acquired
+outside the Apple App Store. Because you download Anypoint Studio
+_outside_ the App Store, your system may prevent you from running
+Anypoint Studio applications and issue a warning message advising you to
+change your security settings to proceed. If you have Administrator
+privileges, you can adjust the security settings under *System
+Preferences > Security & Privacy*. However, you can also right-click on
+the application to bypass the security warning and proceed to open the
+app. 
+===============================
+
+
+ 
+

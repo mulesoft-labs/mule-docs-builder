@@ -1,0 +1,10 @@
+[[DeleteApplication-DeleteanApplication]]
+= Delete an Application
+
+The DELETE operation, specified with the /api/applications/\{domain}
+(where \{domain} is the application domain), deletes the specified
+application.
+
+Example Request:
+
+Example Response:

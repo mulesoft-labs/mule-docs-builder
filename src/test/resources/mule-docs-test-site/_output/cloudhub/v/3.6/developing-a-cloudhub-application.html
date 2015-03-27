@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="/docs/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link href="/docs/css/asciidoctor.css" rel="stylesheet">
+    <link href="/docs/css/mule-docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+    <script src="/docs/js/jquery-1.11.2.min.js"></script>
+    <script src="/docs/js/bootstrap.js"></script>
+    <title>MuleSoft Documentation - Developing a CloudHub Application</title>
+</head>
+<body>
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<div class="navbar navbar-inverse navbar-static-top">
+    <div class="navbar-inner">
+        <div class="container-fluid" id="top">
+            <img src="/docs/img/mule-docs-logo.png">
+        </div>
+    </div>
+</div>
+<div class="container" id="main">
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="toc">
+
+                <li class="toc-section"><div class="toc-section-header child"><a href="/docs/30-mins-with-mule/">First 30 Minutes with Mule</a><a href="#OJCNNJ1SC8" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="OJCNNJ1SC8"><a href="/docs/30-mins-with-mule/anypoint-platform-primer"><li class="child">Anypoint Platform Primer</li></a><a href="/docs/30-mins-with-mule/anypoint-studio-essentials"><li class="child">Anypoint Studio Essentials</li></a><a href="/docs/30-mins-with-mule/begin-with-the-basics"><li class="child">Begin with the Basics</li></a><a href="/docs/30-mins-with-mule/build+a+hello+world+application"><li class="child">Build a Hello World Application</li></a><a href="/docs/30-mins-with-mule/download-and-launch-anypoint-studio"><li class="child">Download and Launch Anypoint Studio</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub">CloudHub</a><a href="#UI1A2WI2ZI" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="UI1A2WI2ZI" style="height: 0px;"><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/getting-started-with-cloudhub">Getting Started with CloudHub</a><a href="#GFPX6CSH5N" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="GFPX6CSH5N" style="height: 0px;"><a href="/docs/cloudhub/v/3.6/cloudhub-at-a-glance"><li class="child">CloudHub at a Glance</li></a><a href="/docs/cloudhub/v/3.6/hello-world-on-cloudhub"><li class="child">Hello World on CloudHub</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-getting-started-with-connectors"><li class="child">Getting Started with Connectors</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub-tutorials">CloudHub Tutorials</a><a href="#1RRJCN9I4F" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="1RRJCN9I4F" style="height: 0px;"><a href="/docs/cloudhub/v/3.6/cloudhub-building-an-https-service"><li class="child">Building an HTTPS Service</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-custom-application-alerts"><li class="child">Custom Application Alerts</li></a></ul></li><a href="/docs/cloudhub/v/3.6/developing-a-cloudhub-application"><li class="child active">Developing a CloudHub Application</li></a><a href="/docs/cloudhub/v/3.6/deploying-a-cloudhub-application"><li class="child">Deploying a CloudHub Application</li></a><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/managing-cloudhub-applications">Managing CloudHub Applications</a><a href="#A3MPYUIJBI" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="A3MPYUIJBI" style="height: 0px;"><a href="/docs/cloudhub/v/3.6/cloudhub-console-overview"><li class="child">CloudHub Console Overview</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-administration"><li class="child">CloudHub Administration</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-alerts-and-notifications"><li class="child">CloudHub Alerts and Notifications</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-fabric"><li class="child">CloudHub Fabric</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-insight"><li class="child">CloudHub Insight</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-command-line-tools"><li class="child">Command Line Tools</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-managing-application-data-with-object-stores"><li class="child">Managing Application Data with Object Stores</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-managing-queues"><li class="child">Managing Queues</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-managing-schedules"><li class="child">Managing Schedules</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-secure-application-properties"><li class="child">Secure Application Properties</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-viewing-log-data"><li class="child">Viewing Log Data</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-virtual-private-cloud"><li class="child">Virtual Private Cloud</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-worker-monitoring"><li class="child">CloudHub Worker Monitoring</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-penetration-testing-policies"><li class="child">Penetration Testing Policies</li></a><a href="/docs/cloudhub/v/3.6/secure-data-gateway"><li class="child">Secure Data Gateway</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub-api">CloudHub API</a><a href="#6QS9Y7ZEND" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="6QS9Y7ZEND" style="height: 0px;"><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub-applications">Applications</a><a href="#PX3UXHG17E" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="PX3UXHG17E" style="height: 0px;"><a href="/docs/cloudhub/v/3.6/cloudhub-create-application"><li class="child">Create Application</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-delete-application"><li class="child">Delete Application</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-deploy-application"><li class="child">Deploy Application</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-get-application"><li class="child">Get Application</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-list-all-applications"><li class="child">List All Applications</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-update-application-metadata"><li class="child">Update Application Metadata</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub-logs">Logs</a><a href="#JFXMY767Q3" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="JFXMY767Q3" style="height: 0px;"><a href="/docs/cloudhub/v/3.6/cloudhub-list-all-logs"><li class="child">List All Logs</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub-notifications">Notifications</a><a href="#OHTPISHUT8" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="OHTPISHUT8" style="height: 0px;"><a href="/docs/cloudhub/v/3.6/cloudhub-create-notification"><li class="child">Create Notification</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-list-notifications"><li class="child">List Notifications</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-update-all-notifications"><li class="child">Update All Notifications</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-update-notification"><li class="child">Update Notification</li></a></ul></li></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub-architecture">CloudHub Architecture</a><a href="#OO4WYY4UMO" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="OO4WYY4UMO" style="height: 0px;"><a href="/docs/cloudhub/v/3.6/cloudhub-networking-guide"><li class="child">CloudHub Networking Guide</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/v/3.6/cloudhub-reference-materials">CloudHub Reference Materials</a><a href="#QSJZC8G5NS" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse" id="QSJZC8G5NS" style="height: 0px;"><a href="/docs/cloudhub/v/3.6/cloudhub-amazon-rds-support"><li class="child">CloudHub Amazon RDS Support</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-configure-twitter-for-api-access"><li class="child">Configure Twitter for API Access</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-configure-twilio-for-api-access"><li class="child">Configure Twilio for API Access</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-salesforce-developer-account-setup"><li class="child">Salesforce Developer Account Setup</li></a></ul></li><a href="/docs/cloudhub/v/3.6/cloudhub-maintenance-and-upgrade-policy"><li class="child">Maintenance and Upgrade Policy</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-community-and-support"><li class="child">Community and Support</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-mule-esb-and-cloudhub"><li class="child">Mule ESB and CloudHub</li></a><a href="/docs/cloudhub/v/3.6/cloudhub-faq"><li class="child">FAQ</li></a></ul></li>
+
+            </ul>
+
+        </div>
+        <!--/span-->
+        <div class="col-md-9">
+            <div id="content">
+
+                <ol class="breadcrumb"><li><a href="developers.mulesoft.com/docs/">MuleSoft Docs</a></li><li><a href="cloudhub">CloudHub</a></li><li class="active">Developing a CloudHub Application</li></ol>
+
+                <div id="header">
+                    <h1>Developing a CloudHub Application</h1>
+                </div>
+                <div id="doc-metadata">
+                    <!--<span class="updated-date" style="color:#B1B1B1;">Updated: January 15, 2015</span>
+                   <span class="updated-date" style="color:#DDD; padding: 0 0 0 7px;">/</span>-->
+                    <span class="updated-date" style="color:#B1B1B1; padding: 0 0 0 0px;">Version: </span>
+       <span class="dropdown" style="padding: 0 7px 0 0px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Current <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#">January 2015</a></li>
+            <li><a href="#">October 2014</a></li>
+            <li><a href="#">July 2014</a></li>
+        </ul> </span>
+                    <span class="updated-date" style="color:#DDD; padding: 0 0 0 0px;">/</span>
+       <span class="dropdown" style="padding: 0 7px 0 7px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Export <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#">PDF - Only this page</a></li>
+            <li><a href="#">PDF - CloudHub section</a></li>
+            <li><a href="#">EPub - MuleSoft Docs</a></li>
+        </ul> </span>
+                    <span class="updated-date" style="color:#DDD; padding: 0 0 0 0px;">/</span>
+       <span class="dropdown" style="padding: 0 7px 0 7px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Feedback <span class="caret"></span></a>
+       <ul class="dropdown-menu" role="menu">
+           <li><a href="#">Rate this Topic</a></li>
+           <li><a href="#">Edit on GitHub</a></li>
+       </ul> </span>
+                </div>
+
+                <div id="preamble"> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>The best place to learn how to develop a CloudHub application is in the <a href="/documentation/display/current/Getting+Started+with+CloudHub">Getting Started with CloudHub</a> guide, which includes some walkthroughs of the basic concepts and some examples to get you familiar with the process of developing and deploying your applications for CloudHub.&nbsp;</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>This page covers some additional details relevant to deployment.</p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="specifying-your-host-name"><a class="anchor" href="#specifying-your-host-name"></a>Specifying Your Host Name</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>The host name for all endpoints in your CloudHub configuration should be defined as <strong>localhost</strong>. CloudHub will then route requests from your application domain URL to the endpoint. If you deploy on multiple <a href="/documentation/display/current/FAQ">workers</a>, CloudHub will load-balance incoming traffic automatically across those workers for you. As your application scales, load will be distributed over all of your workers.</p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="providing-an-external-http-or-https-port"><a class="anchor" href="#providing-an-external-http-or-https-port"></a>Providing an External HTTP or HTTPS Port</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>If your application requires an externally accessible HTTP or HTTPS port to receive messages, trigger events, or expose a web service or user interface, you must declare the port using the reserved property&nbsp;<code>${http.port}&nbsp;`or</code> ${https.port}`. On CloudHub, port&nbsp;<code>${http.port} `or</code>&nbsp;${https.port}`&nbsp;is assigned automatically by the platform services. Traffic on port 80 to your application domain URL will be routed to this port.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>CloudHub only supports incoming traffic on port 80 of your application domain URL. To support routing to multiple CloudHub services over this port, you need to configure them each with unique paths on the URL that is exposed. For example:</p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="running-your-application-locally"><a class="anchor" href="#running-your-application-locally"></a>Running Your Application Locally</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>If you want to run a CloudHub application locally, you need to create an <a href="/documentation/display/current/Deployment+Descriptor">application properties</a> file named <strong>mule-app.properties&nbsp;</strong>in the <code>src/main/app</code> folder of your project. You need to do this whether you work in Mule Studio or another IDE. This allows you to define a local value for the variable <code>http.port</code> or <code>https.port</code>.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>If you have other runtime settings that you want configured differently when running locally, you may also place them in the application properties file and refer to them using the syntax&nbsp;<code>${propertyname}</code>&nbsp;in your mule application configuration. Each application can declare a set of environment variables when it is deployed in order to provide a different value when deploying on CloudHub. You can define these environment variables using the <a href="/documentation/display/current/Deploying+a+CloudHub+Application">CloudHub Console</a> or the <a href="/documentation/display/current/Command+Line+Tools">Command Line Tools</a>.</p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="logging"><a class="anchor" href="#logging"></a>Logging</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>All log messages from your application will be captured by the CloudHub logging service and available through the <a href="/documentation/display/current/Viewing+Log+Data">log search tool</a> in the CloudHub console. If you wish to expose additional information in your logs for diagnostic or audit purposes, Mule provides a <a href="/documentation/display/current/Logger+Component+Reference">logger element</a>&nbsp;for fine grained logging of message content.</p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="packaging-third-party-libraries"><a class="anchor" href="#packaging-third-party-libraries"></a>Packaging Third-Party Libraries</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>CloudHub provides services in the platform that support connecting over many different protocols and transforming many data formats. All the standard Mule libraries are included and available to your application. If you have the need to include a different third party library, you will need to package that library in the <code>&lt;mule application zip&gt;/lib</code> folder of your <a href="/documentation/display/current/Application+Format">application package</a>. Any libraries that are packaged in your mule application lib folder will be made available on the classpath to your application at run time.</p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="accessing-resources-behind-the-firewall"><a class="anchor" href="#accessing-resources-behind-the-firewall"></a>Accessing Resources Behind the Firewall</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>When developing an application that needs to access resources from inside your firewall, CloudHub provides the <a href="/documentation/display/current/Secure+Data+Gateway">Secure Data Gateway</a> as a channel to securely reach these.</p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="accessing-third-party-apis-and-services"><a class="anchor" href="#accessing-third-party-apis-and-services"></a>Accessing Third-Party APIs and Services</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>CloudHub includes connectors for many third party applications, such as Salesforce, Netsuite, Twitter, and others. Anypoint™ Studio includes a few of the most common ones out of the box for developing with CloudHub, and the <a href="#">Old Anypoint Connector DevKit</a>&nbsp;documentation provides more detail on how to find and deploy these connectors with your application.</p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="adding-a-ui-for-your-application"><a class="anchor" href="#adding-a-ui-for-your-application"></a>Adding a UI for Your Application</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>CloudHub applications can have a web UI using HTML and JavaScript. The AJAX Module&nbsp;provides support for interacting with your application from the browser and provides support for serving up static content.</p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="go-further"><a class="anchor" href="#go-further"></a>Go Further</h2> 
+ <div class="sectionbody"> 
+  <div class="ulist"> 
+   <ul> 
+    <li> <p>Learn about&nbsp;<a href="/documentation/display/current/Deploying+a+CloudHub+Application">Deploying a CloudHub Application</a></p> </li> 
+    <li> <p>Once you have developed and deployed your application, read about&nbsp;<a href="/documentation/display/current/Managing+CloudHub+Applications">Managing CloudHub Applications</a> at runtime.</p> 
+     <div class="literalblock"> 
+      <div class="content"> 
+       <pre>&nbsp;</pre> 
+      </div> 
+     </div> </li> 
+   </ul> 
+  </div> 
+ </div> 
+</div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

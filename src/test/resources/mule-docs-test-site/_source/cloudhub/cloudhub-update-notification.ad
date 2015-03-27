@@ -1,0 +1,10 @@
+[[UpdateNotification-UpdateApplication]]
+= Update Application
+
+The PUT operation specified with the /api/notifications/\{id} resource
+updates a notification. Currently, the only update that can be applied
+is marking a notification as read.
+
+Example Request:
+
+Example Response:

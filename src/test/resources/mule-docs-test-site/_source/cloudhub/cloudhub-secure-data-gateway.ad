@@ -1,0 +1,180 @@
+[[SecureDataGateway-SecureDataGateway]]
+= Secure Data Gateway
+
+[cols=",",]
+|=======================================================================
+|image:/documentation/images/icons/emoticons/forbidden.png[image] a|
+Secure Data Gateway is no longer included by default in CloudHub plans.
+
+For all customers connecting to their own data centers,
+link:/documentation/display/current/Virtual+Private+Cloud[Virtual
+Private Cloud] is our recommended solution. If you believe you need
+Secure Data Gateway, please contact your account executive.
+
+|=======================================================================
+
+The CloudHub Secure Data Gateway (SDG) Client provides a secure data
+link between your CloudHub application and enterprise data sources. Any
+private services or data sources behind an enterprise firewall can be
+made available to your CloudHub application by using the SDG client.
+
+ Contents
+link:#SecureDataGateway-InstallingtheSecureDataGateway[Installing the
+Secure Data Gateway]
+* link:#SecureDataGateway-PrerequisiteJDK[Prerequisite JDK]
+* link:#SecureDataGateway-DownloadtheSDGClient[Download the SDG Client]
+* link:#SecureDataGateway-ConfiguretheSDGClient[Configure the SDG
+Client]
+* link:#SecureDataGateway-SetupSDGMappings[Set up SDG Mappings]
+* link:#SecureDataGateway-LaunchtheSDGClient[Launch the SDG Client]
+
+link:#SecureDataGateway-ManagingandMonitoring[Managing and Monitoring]
+ 
+
+[[SecureDataGateway-InstallingtheSecureDataGateway]]
+== Installing the Secure Data Gateway
+
+The SDG Client is distributed as a zip file that you need to save and
+expand on a system within the private network (including the same
+machine where your data sources are running). Once launched, the SDG
+provides connectivity to your private data sources. This means that the
+SDG system must have the authority to connect to, and perform the
+desired operations on, these private data sources.
+
+image:/documentation/download/attachments/66061012/modif-ion_sdg.jpg?version=1&modificationDate=1414509267334[image]
+
+To set up the SDG Client, you need to:
+
+* link:#SecureDataGateway-PrerequisiteJDK/JRE[Prerequisite JDK]
+* link:#SecureDataGateway-DownloadtheSDGClient[Download the SDG Client]
+* link:#SecureDataGateway-ConfiguretheSDGClient[Configure the SDG
+Client]
+* link:#SecureDataGateway-SetupSDGMappings[Set up SDG Mappings]
+* link:#SecureDataGateway-LaunchtheSDGClient[Launch the SDG Client]
+
+[[SecureDataGateway-PrerequisiteJDK]]
+=== Prerequisite JDK
+
+* SDG is a Java application, in order to run it you'll to have a Java
+JDK installed. One way to check if you have Java installed is to run
+"java --version" on the command line.
+* If you find our that you need to install Java, please download the
+appropriate version from: http://www.java.com/en/download/manual.jsp and
+follow the instructions for installation.
+
+[[SecureDataGateway-DownloadtheSDGClient]]
+=== Download the SDG Client
+
+link:/documentation/download/attachments/66061012/sdg-client-1.0.10.zip?version=1&modificationDate=1414536766732[sdg-client-1.0.10.zip]
+MD5: 6e6311d17a863d0162c12b1df36c98cd
+Updated: 28 Oct 2014
+* Download the SDG Client zip file from the link above.
+* Confirm MD5 checksum matches what's specified above.
+* Copy the zip file to the SDG server (that is, the system where the SDG
+client application will run).
+* Expand the SDG zip file to your SDG system.
+
+[[SecureDataGateway-ConfiguretheSDGClient]]
+=== Configure the SDG Client
+
+On the SDG server, navigate to the sdg-client directory (that is, where
+you expanded the SDG client zip file as explained in
+link:#SecureDataGateway-DownloadtheSDGClient[Download the SDG Client]).
+Then edit the conf/config.xml file. This file contains the configuration
+parameters used to connect to CloudHub and to obtain information about
+your running CloudHub applications.
+
+The following examples assume that the cloudhub-sdg-client directory is
+in /opt/ion-sdg-client-version.
+
+Enter you application domain names:
+
+[cols=",",]
+|=======================================================================
+|image:/documentation/images/icons/emoticons/warning.png[image] |The
+domains element should contain a comma separated list of the short
+unqualified domain names of the applications that need to make use of
+the SDG.
+|=======================================================================
+
+Enter your CloudHub username and password:
+
+By default, the SDG client tunnels socket connections via SSH over HTTP.
+If the network where the SDG is running supports outbound SSH traffic,
+SSH can be used by the SDG directly. To disable the use of HTTP
+tunneling:
+
+ 
+
+The domains parameter in the conf/config.xml file identifies the
+applications that will be auto-detected by the Secure Data Gateway when
+the applications are running. The mappings in the mappings.xml file are
+used to establish secure tunnels with the workers for the domains.
+
+[[SecureDataGateway-SetupSDGMappings]]
+=== Set up SDG Mappings
+
+The SDG client works by securely mapping network ports from your
+CloudHub application worker to hosts/ports in your private network.
+These mappings are read from the conf/mappings.xml file by the SDG
+Client when it discovers your CloudHub application.
+
+The default mappings.xml file that comes with the download looks
+something like this:
+
+This configuration maps port 10000 on the mydomain application worker to
+port 3306 on the SDG Client system. That is, if a MySQL database is
+running on port 3306 of the client system, a JDBC connector running on
+CloudHub could refer to localhost:10000 and interact with the MySQL
+database on the SDG Client system.
+
+There is no reason the data sources need to run on the SDG Client, and
+there are no limits to the number of mappings supported.
+
+[cols=",",]
+|=======================================================================
+|image:/documentation/images/icons/emoticons/warning.png[image] |It is
+important to pay attention to the domain element for each mapping,
+especially when mapping ports for multiple application domains. The
+domain element should map to one of the domains specified in the domains
+element of the config.xml file.
+|=======================================================================
+
+[[SecureDataGateway-LaunchtheSDGClient]]
+=== Launch the SDG Client
+
+Navigate to the cloudhub-sdg-client directory and execute the invoke
+script that matches your operating system.
+
+The following examples assume that the cloudhub-sdg-client directory is
+in /opt/ion-sdg-client-1.0
+
+On Linux or Mac OS X:
+
+On Windows:
+
+When this script launches, it reads the configuration data from
+conf/config.xml and connects to CloudHub. It receives information that
+it uses to establish secure connections directly to your running
+CloudHub applications. Periodic polling enables the SDG client to adapt
+to changes in the location and number of applications you have running
+on CloudHub.
+
+Example output:
+
+code,term--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+code,term
+Initializing Secure Data GatewayEstablishing connection to CloudHub plaform server cloudhub.ioConnecting to 75.101.227.200 port 9999Connection establishedRemote version string: SSH-2.0-OpenSSH_5.3p1 Debian-3ubuntu4Local version string: SSH-2.0-JSCH-0.1.44CheckCiphers: aes256-ctr,aes192-ctr,aes128-ctr,aes256-cbc,aes192-cbc,aes128-cbc,3des-ctr,arcfour,arcfour128,arcfour256SSH_MSG_KEXINIT sentSSH_MSG_KEXINIT receivedkex: server->client aes128-ctr hmac-md5 nonekex: client->server aes128-ctr hmac-md5 noneSSH_MSG_KEXDH_INIT sentexpecting SSH_MSG_KEXDH_REPLYssh_rsa_verify: signature trueSSH_MSG_NEWKEYS sentSSH_MSG_NEWKEYS receivedSSH_MSG_SERVICE_REQUEST sentSSH_MSG_SERVICE_ACCEPT receivedAuthentications that can continue: publickey,keyboard-interactive,passwordNext authentication method: publickeyAuthentication succeeded (publickey).Secure tunnel established 75.101.227.200:10000 -> localhost:3306
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[[SecureDataGateway-ManagingandMonitoring]]
+== Managing and Monitoring
+
+image:/documentation/download/attachments/66061012/sdg+-+connected.png?version=1&modificationDate=1332915305691[image]
+The status of the SDG can be seen on the application dashboard. When
+it's connected, you'll see the a green icon, when it was started, and
+when it was last seen. Additionally, you can receive email alerts
+whenever the SDG connects and disconnects, allowing you to quickly fix
+anything if it goes wrong with your installation. For more information,
+see link:/documentation/display/current/Alerts+and+Notifications[Alerts
+and Notifications].

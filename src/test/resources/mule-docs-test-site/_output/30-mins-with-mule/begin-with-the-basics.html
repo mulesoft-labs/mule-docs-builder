@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="/docs/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/docs/css/bootstrap.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link href="/docs/css/asciidoctor.css" rel="stylesheet">
+    <link href="/docs/css/mule-docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+    <script src="/docs/js/jquery-1.11.2.min.js"></script>
+    <script src="/docs/js/bootstrap.js"></script>
+    <title>MuleSoft Documentation - Begin with the Basics</title>
+</head>
+<body>
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<div class="navbar navbar-inverse navbar-static-top">
+    <div class="navbar-inner">
+        <div class="container-fluid" id="top">
+            <img src="/docs/img/mule-docs-logo.png">
+        </div>
+    </div>
+</div>
+<div class="container" id="main">
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="toc">
+
+                <li class="toc-section"><div class="toc-section-header child"><a href="/docs/30-mins-with-mule/">First 30 Minutes with Mule</a><a href="#DU4Z3WT8HW" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="DU4Z3WT8HW" style="height: 0px;"><a href="/docs/30-mins-with-mule/anypoint-platform-primer"><li class="child">Anypoint Platform Primer</li></a><a href="/docs/30-mins-with-mule/anypoint-studio-essentials"><li class="child">Anypoint Studio Essentials</li></a><a href="/docs/30-mins-with-mule/begin-with-the-basics"><li class="child active">Begin with the Basics</li></a><a href="/docs/30-mins-with-mule/build+a+hello+world+application"><li class="child">Build a Hello World Application</li></a><a href="/docs/30-mins-with-mule/download-and-launch-anypoint-studio"><li class="child">Download and Launch Anypoint Studio</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/">CloudHub</a><a href="#MC3C53KK2F" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="MC3C53KK2F"><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/getting-started-with-cloudhub">Getting Started with CloudHub</a><a href="#5J9YCRUV7Y" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="5J9YCRUV7Y"><a href="/docs/cloudhub/cloudhub-at-a-glance"><li class="child">CloudHub at a Glance</li></a><a href="/docs/cloudhub/hello-world-on-cloudhub"><li class="child">Hello World on CloudHub</li></a><a href="/docs/cloudhub/cloudhub-getting-started-with-connectors"><li class="child">Getting Started with Connectors</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-tutorials">CloudHub Tutorials</a><a href="#A9NL7HDL4Z" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="A9NL7HDL4Z"><a href="/docs/cloudhub/cloudhub-building-an-https-service"><li class="child">Building an HTTPS Service</li></a><a href="/docs/cloudhub/cloudhub-custom-application-alerts"><li class="child">Custom Application Alerts</li></a></ul></li><a href="/docs/cloudhub/developing-a-cloudhub-application"><li class="child">Developing a CloudHub Application</li></a><a href="/docs/cloudhub/deploying-a-cloudhub-application"><li class="child">Deploying a CloudHub Application</li></a><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/managing-cloudhub-applications">Managing CloudHub Applications</a><a href="#OSIWHGZLLD" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="OSIWHGZLLD"><a href="/docs/cloudhub/cloudhub-console-overview"><li class="child">CloudHub Console Overview</li></a><a href="/docs/cloudhub/cloudhub-administration"><li class="child">CloudHub Administration</li></a><a href="/docs/cloudhub/cloudhub-alerts-and-notifications"><li class="child">CloudHub Alerts and Notifications</li></a><a href="/docs/cloudhub/cloudhub-fabric"><li class="child">CloudHub Fabric</li></a><a href="/docs/cloudhub/cloudhub-insight"><li class="child">CloudHub Insight</li></a><a href="/docs/cloudhub/cloudhub-command-line-tools"><li class="child">Command Line Tools</li></a><a href="/docs/cloudhub/cloudhub-managing-application-data-with-object-stores"><li class="child">Managing Application Data with Object Stores</li></a><a href="/docs/cloudhub/cloudhub-managing-queues"><li class="child">Managing Queues</li></a><a href="/docs/cloudhub/cloudhub-managing-schedules"><li class="child">Managing Schedules</li></a><a href="/docs/cloudhub/cloudhub-secure-application-properties"><li class="child">Secure Application Properties</li></a><a href="/docs/cloudhub/cloudhub-viewing-log-data"><li class="child">Viewing Log Data</li></a><a href="/docs/cloudhub/cloudhub-virtual-private-cloud"><li class="child">Virtual Private Cloud</li></a><a href="/docs/cloudhub/cloudhub-worker-monitoring"><li class="child">CloudHub Worker Monitoring</li></a><a href="/docs/cloudhub/cloudhub-penetration-testing-policies"><li class="child">Penetration Testing Policies</li></a><a href="/docs/cloudhub/secure-data-gateway"><li class="child">Secure Data Gateway</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-api">CloudHub API</a><a href="#ZDOJ28EUYD" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="ZDOJ28EUYD"><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-applications">Applications</a><a href="#PQAHIYDTE1" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="PQAHIYDTE1"><a href="/docs/cloudhub/cloudhub-create-application"><li class="child">Create Application</li></a><a href="/docs/cloudhub/cloudhub-delete-application"><li class="child">Delete Application</li></a><a href="/docs/cloudhub/cloudhub-deploy-application"><li class="child">Deploy Application</li></a><a href="/docs/cloudhub/cloudhub-get-application"><li class="child">Get Application</li></a><a href="/docs/cloudhub/cloudhub-list-all-applications"><li class="child">List All Applications</li></a><a href="/docs/cloudhub/cloudhub-update-application-metadata"><li class="child">Update Application Metadata</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-logs">Logs</a><a href="#GXPUJIB7K5" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="GXPUJIB7K5"><a href="/docs/cloudhub/cloudhub-list-all-logs"><li class="child">List All Logs</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-notifications">Notifications</a><a href="#305UP02K2B" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="305UP02K2B"><a href="/docs/cloudhub/cloudhub-create-notification"><li class="child">Create Notification</li></a><a href="/docs/cloudhub/cloudhub-list-notifications"><li class="child">List Notifications</li></a><a href="/docs/cloudhub/cloudhub-update-all-notifications"><li class="child">Update All Notifications</li></a><a href="/docs/cloudhub/cloudhub-update-notification"><li class="child">Update Notification</li></a></ul></li></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-architecture">CloudHub Architecture</a><a href="#J2PGLNY877" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="J2PGLNY877"><a href="/docs/cloudhub/cloudhub-networking-guide"><li class="child">CloudHub Networking Guide</li></a></ul></li><li class="toc-section"><div class="toc-section-header child"><a href="/docs/cloudhub/cloudhub-reference-materials">CloudHub Reference Materials</a><a href="#B0HUSE75WO" data-toggle="collapse" class="collapsed"><div class="toc-section-header-arrow"></div></a></div><ul class="collapsed child-section collapse in" id="B0HUSE75WO"><a href="/docs/cloudhub/cloudhub-amazon-rds-support"><li class="child">CloudHub Amazon RDS Support</li></a><a href="/docs/cloudhub/cloudhub-configure-twitter-for-api-access"><li class="child">Configure Twitter for API Access</li></a><a href="/docs/cloudhub/cloudhub-configure-twilio-for-api-access"><li class="child">Configure Twilio for API Access</li></a><a href="/docs/cloudhub/cloudhub-salesforce-developer-account-setup"><li class="child">Salesforce Developer Account Setup</li></a></ul></li><a href="/docs/cloudhub/cloudhub-maintenance-and-upgrade-policy"><li class="child">Maintenance and Upgrade Policy</li></a><a href="/docs/cloudhub/cloudhub-community-and-support"><li class="child">Community and Support</li></a><a href="/docs/cloudhub/cloudhub-mule-esb-and-cloudhub"><li class="child">Mule ESB and CloudHub</li></a><a href="/docs/cloudhub/cloudhub-faq"><li class="child">FAQ</li></a></ul></li>
+
+            </ul>
+
+        </div>
+        <!--/span-->
+        <div class="col-md-9">
+            <div id="content">
+
+                <ol class="breadcrumb"><li><a href="developers.mulesoft.com/docs/">MuleSoft Docs</a></li><li><a href="">First 30 Minutes with Mule</a></li><li class="active">Begin with the Basics</li></ol>
+
+                <div id="header">
+                    <h1>Begin with the Basics</h1>
+                </div>
+                <div id="doc-metadata">
+                    <!--<span class="updated-date" style="color:#B1B1B1;">Updated: January 15, 2015</span>
+                   <span class="updated-date" style="color:#DDD; padding: 0 0 0 7px;">/</span>-->
+                    <span class="updated-date" style="color:#B1B1B1; padding: 0 0 0 0px;">Version: </span>
+       <span class="dropdown" style="padding: 0 7px 0 0px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Current <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#">January 2015</a></li>
+            <li><a href="#">October 2014</a></li>
+            <li><a href="#">July 2014</a></li>
+        </ul> </span>
+                    <span class="updated-date" style="color:#DDD; padding: 0 0 0 0px;">/</span>
+       <span class="dropdown" style="padding: 0 7px 0 7px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Export <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#">PDF - Only this page</a></li>
+            <li><a href="#">PDF - CloudHub section</a></li>
+            <li><a href="#">EPub - MuleSoft Docs</a></li>
+        </ul> </span>
+                    <span class="updated-date" style="color:#DDD; padding: 0 0 0 0px;">/</span>
+       <span class="dropdown" style="padding: 0 7px 0 7px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Feedback <span class="caret"></span></a>
+       <ul class="dropdown-menu" role="menu">
+           <li><a href="#">Rate this Topic</a></li>
+           <li><a href="#">Edit on GitHub</a></li>
+       </ul> </span>
+                </div>
+
+                <div id="preamble"> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>The following sections aim to help you get up to speed on some key Anypoint Platform™ concepts you’ll need to be familiar with to be successful. If you feel that you need more background on any of these concepts, follow the provided links to the appropriate reference material.</p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="flows-and-messages"><a class="anchor" href="#flows-and-messages"></a>Flows and Messages</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>Mule applications accept and process&nbsp;messages through a series of&nbsp;<strong>message processors</strong>&nbsp;plugged together in a&nbsp;<strong>flow</strong>. A typical flow has a&nbsp;<strong>message source</strong>, which accepts a message from an external source triggering the execution of the flow, and any number of&nbsp;<strong>message processors</strong>, which transform, filter, enrich, and otherwise process the message. A single flow can be a complete application by itself, or you can connect multiple flows together to create more complex applications.&nbsp;&nbsp;&nbsp;</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Mule applications also make use of&nbsp;<strong>global elements</strong>, which are reusable chunks of code that sit outside of flows and can be invoked by multiple elements in any flow within the application.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>A Mule message consists of a&nbsp;<strong>header</strong>&nbsp;and a&nbsp;<strong>payload</strong>. The payload contains the message data, and the header contains metadata about the message in the form of&nbsp;<strong>properties</strong>&nbsp;and&nbsp;<strong>variables</strong>. Both properties and variables are key-value pairs that contain useful information about a message that help to get it where it’s going.&nbsp;</p> 
+  </div> 
+  <div class="imageblock"> 
+   <div class="content"> 
+    <img src="images/flow.png" alt="image"> 
+   </div> 
+  </div> 
+  <div class="admonitionblock tip"> 
+   <table> 
+    <tbody> 
+     <tr> 
+      <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td> 
+      <td class="content"> 
+       <div class="title">
+         Learn more 
+       </div> 
+       <div class="paragraph"> 
+        <p><a href="http://www.mulesoft.org/documentation/display/current/Mule+Concepts">Mule Concepts</a></p> 
+       </div> 
+       <div class="paragraph"> 
+        <p><a href="http://www.mulesoft.org/documentation/display/current/Global+Elements">Global Elements</a></p> 
+       </div> 
+       <div class="paragraph"> 
+        <p><a href="http://www.mulesoft.org/documentation/display/current/Basic+Studio+Tutorial">Basic Studio Tutorial</a></p> 
+       </div> 
+       <div class="paragraph"> 
+        <p><a href="http://www.mulesoft.org/documentation/display/current/Mule+Message+Tutorial">Mule Message Tutorial</a></p> 
+       </div> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="message-processors"><a class="anchor" href="#message-processors"></a>Message Processors</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>Use <strong>Message Processors</strong> to act upon a message to manipulate or enrich the message payload, or to add or remove message properties or variables. Divided into groups according to their function, each message processor falls into one of several categories:</p> 
+  </div> 
+  <div class="ulist"> 
+   <ul> 
+    <li> <p>*Connectors&nbsp;*plug into external data sources via standard protocols or third-party APIs</p> </li> 
+    <li> <p><strong>Filters</strong> limit processing of messages based on set criteria.</p> </li> 
+    <li> <p><strong>Components</strong> execute specific logic upon a message, including custom-logic programmed in Java, Javascript, Groovy, Python or Ruby.</p> </li> 
+    <li> <p><strong>Routers</strong> direct messages through different pathways in an application depending upon content or other set criteria.</p> </li> 
+    <li> <p><strong>Scopes</strong> wrap snippets of code to define fine-grained behavior within a flow.</p> </li> 
+    <li> <p><strong>Transformers</strong> convert data types and formats so as to "translate" messages between applications or systems.</p> </li> 
+    <li> <p><strong>Exception Strategies</strong> handle any errors that occur during message processing.</p> </li> 
+    <li> <p><strong>Business Events</strong> capture data related to key performance indicators</p> </li> 
+   </ul> 
+  </div> 
+  <div class="admonitionblock tip"> 
+   <table> 
+    <tbody> 
+     <tr> 
+      <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td> 
+      <td class="content"> 
+       <div class="title">
+         Learn more 
+       </div> 
+       <div class="paragraph"> 
+        <p><a href="http://www.mulesoft.org/documentation/display/current/Message+Processors">Batch Processing</a></p> 
+       </div> 
+       <div class="paragraph"> 
+        <p><a href="http://www.mulesoft.org/documentation/display/current/Error+Handling">Example: Salesforce to Database with Batch</a></p> 
+       </div> 
+       <div class="paragraph"> 
+        <p><a href="http://www.mulesoft.org/documentation/display/current/Business+Events">Business Events</a></p> 
+       </div> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="batch-processing"><a class="anchor" href="#batch-processing"></a>Batch Processing</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>Anypoint Studio also supports <strong>batch jobs</strong> as an alternative to standard flows. A batch job is a block of code that splits messages into individual records, performs actions upon each record, then reports on the results and potentially pushes the processed output to other systems or queues. This functionality is particularly useful when working with streaming input or when engineering "near real-time" data integration between SaaS applications.</p> 
+  </div> 
+  <div class="admonitionblock tip"> 
+   <table> 
+    <tbody> 
+     <tr> 
+      <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td> 
+      <td class="content"> 
+       <div class="title">
+         Learn more 
+       </div> 
+       <div class="paragraph"> 
+        <p><a href="http://www.mulesoft.org/documentation/display/current/Batch+Processing">Batch Processing</a></p> 
+       </div> 
+       <div class="paragraph"> 
+        <p><a href="http://www.mulesoft.org/documentation/display/current/Salesforce+to+Database+Example">Example: Salesforce to Database with Batch</a></p> 
+       </div> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="mule-expression-language"><a class="anchor" href="#mule-expression-language"></a>Mule Expression Language</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>Mule Expression Language (MEL)*&nbsp;is the primary language used for formulating expressions in Mule,&nbsp;allowing you to access, manipulate, and use information from the message and its environment.&nbsp;</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>At runtime, Mule evaluates expressions while executing a flow to:</p> 
+  </div> 
+  <div class="ulist"> 
+   <ul> 
+    <li> <p>extract information that it can use to process the current message</p> </li> 
+    <li> <p>set or manipulate a value in the message header or payload</p> </li> 
+    <li> <p>perform an operation on information in the message, application, Mule instance, or server</p> </li> 
+   </ul> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlight"><code class="language-xml" data-lang="xml">#[message.inboundProperties.propertyName]</code></pre> 
+   </div> 
+  </div> 
+  <div class="admonitionblock tip"> 
+   <table> 
+    <tbody> 
+     <tr> 
+      <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td> 
+      <td class="content"> 
+       <div class="title">
+         Learn more 
+       </div> 
+       <div class="paragraph"> 
+        <p><a href="http://www.mulesoft.org/documentation/display/current/Mule+Expression+Language+MEL">Mule Expression Language </a></p> 
+       </div> 
+       <div class="paragraph"> 
+        <p><a href="http://www.mulesoft.org/documentation/display/current/Mule+Expression+Language+Basic+Syntax">Mule Expression Language Basic Syntax</a></p> 
+       </div> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="running-applications"><a class="anchor" href="#running-applications"></a>Running Applications</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>Once you have created a Mule application, then what? How and where do you make the code come to life so you can see it in action? The quickest, easiest way is to deploy your application on the embedded&nbsp;<strong>Mule Server</strong>, included with Anypoint Studio. There’s a shiny&nbsp;<strong>play</strong>&nbsp;button on the top menu bar, just like in Eclipse. Click it and Studio deploys your application to a&nbsp;virtual server running on your machine.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>This is great for testing, but probably not ideal for the final implementation of your service; there are several other deployment options to chose from:</p> 
+  </div> 
+  <div class="ulist"> 
+   <ul> 
+    <li> <p>export the application to a&nbsp;<strong>Mule Enterprise Server</strong></p> </li> 
+    <li> <p>deploy the application in the&nbsp;<strong>Mule Management Console’s</strong>&nbsp;Application Repository</p> </li> 
+    <li> <p>deploy to&nbsp;<strong>CloudHub</strong></p> </li> 
+    <li> <p>deploy to an <strong>API Gateway</strong></p> </li> 
+   </ul> 
+  </div> 
+  <div class="admonitionblock tip"> 
+   <table> 
+    <tbody> 
+     <tr> 
+      <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td> 
+      <td class="content"> 
+       <div class="title">
+         Learn more 
+       </div> 
+       <div class="paragraph"> 
+        <p><a href="http://www.mulesoft.org/documentation/display/current/Deploying+Mule+Applications">Deploying Mule Applications</a></p> 
+       </div> 
+       <div class="paragraph"> 
+        <p><a href="http://www.mulesoft.org/documentation/display/current/Deployment+Scenarios">Deployment Scenarios</a></p> 
+       </div> 
+       <div class="paragraph"> 
+        <p><a href="http://www.mulesoft.org/documentation/display/current/Mule+Management+Console">Mule Management Console</a></p> 
+       </div> 
+       <div class="paragraph"> 
+        <p><a href="http://www.mulesoft.org/documentation/display/current/CloudHub">CloudHub</a></p> 
+       </div> 
+       <div class="paragraph"> 
+        <p><a href="http://www.mulesoft.org/documentation/display/current/API+Gateway">API Gateway</a></p> 
+       </div> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div> 
+ </div> 
+</div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
