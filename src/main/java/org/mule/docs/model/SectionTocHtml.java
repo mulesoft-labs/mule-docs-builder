@@ -4,9 +4,6 @@ import org.apache.log4j.Logger;
 import org.mule.docs.utils.Utilities;
 import org.mule.docs.writer.HtmlWriter;
 
-import javax.swing.text.html.HTMLWriter;
-import java.util.HashMap;
-
 /**
  * Created by sean.osterberg on 2/21/15.
  */
@@ -44,7 +41,7 @@ public class SectionTocHtml {
 
     private static void generateTocHtml(TocNode parent, StringBuilder html, boolean isFirstItem, String activeUrl, String baseUrl) {
 
-        html.append(HtmlWriter.getIntance().getParentTocLink(activeUrl, baseUrl, parent, isFirstItem));
+        html.append(HtmlWriter.getInstance().getParentTocLink(activeUrl, baseUrl, parent, isFirstItem));
 
         if (parent.getChildren().size() == 0) {
             return;
@@ -59,7 +56,7 @@ public class SectionTocHtml {
             if (child.getChildren().size() > 0) {
                 generateTocHtml(child, html, false, activeUrl, baseUrl);
             } else {
-                html.append(HtmlWriter.getIntance().getChildTocLink(activeUrl, baseUrl, child));
+                html.append(HtmlWriter.getInstance().getChildTocLink(activeUrl, baseUrl, child));
 
             }
         }

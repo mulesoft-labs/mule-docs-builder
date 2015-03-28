@@ -44,7 +44,6 @@ public class PageTest {
     }
 
     @Test
-    @Ignore
     public void forSection_WithOldVersion_HasCorrectBreadcrumbLinks() {
         List<Page> pages = Page.forSection(validOldVersionSection(), validSections(), validTemplates(), getSiteToc());
         String content = pages.get(1).getContent();
