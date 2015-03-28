@@ -83,7 +83,7 @@ public class Section implements IPageElement {
     private static Section getSectionFromDirectory(File directory, String url) {
         List<File> validFiles = getValidAsciiDocFilesInSection(new ArrayList<File>(Arrays.asList(directory.listFiles())));
         List<AsciiDocPage> pages = AsciiDocPage.fromFiles(validFiles);
-        File tocFile = new File(Utilities.getConcatPath(new String[] { directory.getPath(), "toc.ad" }));
+        File tocFile = new File(directory, "toc.ad");
         TocNode rootNode = SectionTableOfContents.fromAsciiDocFile(tocFile).getRootTocNode();
         List<Section> versions = new ArrayList<Section>();
         if (!url.contains(File.separator + "v" + File.separator)) {
@@ -112,7 +112,7 @@ public class Section implements IPageElement {
     }
 
     private static void getVersions(File directory, List<Section> versions, String url) {
-        File versionDirectory = new File(Utilities.getConcatPath(new String[] { directory.getPath(), "v" }));
+        File versionDirectory = new File(directory,"v");
         for (File file : versionDirectory.listFiles()) {
             if (file.isDirectory()) {
                 versions.add(getSectionFromDirectory(file, getVersionUrl(file.getPath(), url)));

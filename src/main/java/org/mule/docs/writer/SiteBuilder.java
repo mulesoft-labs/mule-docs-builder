@@ -62,7 +62,7 @@ public class SiteBuilder {
 
     private List<Template> getTemplates(File sourceDirectory) {
         List<Template> templates = new ArrayList<Template>();
-        File templateDirectory = new File(Utilities.getConcatPath(new String[] { sourceDirectory.getPath(), "_templates" }));
+        File templateDirectory = new File(sourceDirectory, "_templates");
         if (templateDirectory.isDirectory()) {
             for (File templateFile : templateDirectory.listFiles()) {
                 if (FilenameUtils.getExtension(templateFile.getName()).equalsIgnoreCase("template")) {
@@ -94,7 +94,7 @@ public class SiteBuilder {
     }
 
     private SiteTableOfContents getSiteToc(File masterDirectory) {
-        File masterTocFile = new File(Utilities.getConcatPath(new String[] { masterDirectory.getPath(), "toc.ad" }));
+        File masterTocFile = new File(masterDirectory,"toc.ad");
         return SiteTableOfContents.fromAsciiDocFile(masterTocFile);
     }
 

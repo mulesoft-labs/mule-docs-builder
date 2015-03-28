@@ -240,7 +240,7 @@ public class Utilities {
     }
 
     public static boolean directoryContainsVersions(File directory) {
-        File versionDir = new File(Utilities.getConcatPath(new String[] { directory.getPath(), "v" }));
+        File versionDir = new File(directory, "v");
         if (!versionDir.exists()) {
             return false;
         }
