@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by Mulesoft.
  */
-public class TocNode {
+public class TocNode extends AbstractBaseDocElement {
 
     private String url;
     private String title;
@@ -42,5 +42,14 @@ public class TocNode {
 
     public void setChildren(List<TocNode> children) {
         this.children = children;
+    }
+
+    @Override
+    public void accept(IPageElementVisitor visitor) {
+        if (visitor.visit(this)) {
+            for (TocNode node : children) {
+                node.accept(visitor);
+            }
+        }
     }
 }

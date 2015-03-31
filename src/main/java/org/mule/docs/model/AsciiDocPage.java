@@ -18,7 +18,7 @@ import org.mule.docs.utils.Utilities;
 /**
  * Created by sean.osterberg on 2/20/15.
  */
-public class AsciiDocPage implements IPageElement {
+public class AsciiDocPage {
 
     private static Logger logger = Logger.getLogger(AsciiDocPage.class);
     private static Asciidoctor processor;
@@ -117,8 +117,4 @@ public class AsciiDocPage implements IPageElement {
         return title;
     }
 
-    @Override
-    public void accept(IPageElementVisitor visitor) {
-        visitor.visit(this);
-    }
 }

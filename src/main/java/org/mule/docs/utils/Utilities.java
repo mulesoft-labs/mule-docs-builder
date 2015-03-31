@@ -1,7 +1,7 @@
 package org.mule.docs.utils;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
@@ -22,10 +22,9 @@ public class Utilities {
     static Logger logger = Logger.getLogger(Utilities.class);
 
     public static String getFileContentsFromFile(File file) {
-        String contents = "";
+
         try {
-            FileReader reader = new FileReader(file);
-            contents = IOUtils.toString(reader);
+            return FileUtils.readFileToString(file);
         } catch (FileNotFoundException ffe) {
             String error = "The file \"" + file.getName() + "\" was not found.";
             logger.fatal(error, ffe);
@@ -35,24 +34,12 @@ public class Utilities {
             logger.fatal(error, ioe);
             throw new DocBuildException(error);
         }
-        return contents;
     }
 
     public static List<String> getFileContentsFromFiles(List<File> files) {
         List<String> fileContents = new ArrayList<String>();
         for (File file : files) {
-            try {
-                FileReader reader = new FileReader(file);
-                fileContents.add(IOUtils.toString(reader));
-            } catch (FileNotFoundException ffe) {
-                String error = "The file \"" + file.getName() + "\" was not found.";
-                logger.fatal(error, ffe);
-                throw new DocBuildException(error);
-            } catch (IOException ioe) {
-                String error = "Cannot get file contents for \"" + file.getName() + "\".";
-                logger.fatal(error, ioe);
-                throw new DocBuildException(error);
-            }
+            fileContents.add(getFileContentsFromFile(file));
         }
         return fileContents;
     }
@@ -77,7 +64,7 @@ public class Utilities {
         }
     }
 
-    public static String getConcatPath(String[] filesOrDirectoriesToAppend) {
+    public static String getConcatPath(String... filesOrDirectoriesToAppend) {
         String temp = filesOrDirectoriesToAppend[0];
         for (int i = 1; i < filesOrDirectoriesToAppend.length; i++) {
             if (!temp.isEmpty() && !temp.endsWith("/")) {

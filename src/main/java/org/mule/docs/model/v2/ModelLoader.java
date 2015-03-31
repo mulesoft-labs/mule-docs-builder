@@ -1,7 +1,11 @@
 package org.mule.docs.model.v2;
 
+import org.apache.commons.io.FilenameUtils;
+import org.mule.docs.utils.Utilities;
+
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -9,27 +13,5 @@ import java.util.List;
  */
 public class ModelLoader {
 
-    public void load(File sourceDirectory, File outputDirectory){
-        Site site = new Site();
-        List<Section> sections = new ArrayList<Section>();
-        if (sourceDirectory.isDirectory()) {
-            for (File file : sourceDirectory.listFiles()) {
-                if (isValidSectionDirectory(file)) {
-                    Section section = new Section();
-                    org.mule.docs.model.Section.fromDirectory(file);
-                    sections.add(section);
-                }
-            }
-        }
-        site.setSections(sections);
-    }
 
-    private boolean isValidSectionDirectory(File directory) {
-        if (!directory.isDirectory() ||
-                directory.getName().startsWith("_") ||
-                directory.getName().contentEquals(".DS_Store")) {
-            return false;
-        }
-        return true;
-    }
 }

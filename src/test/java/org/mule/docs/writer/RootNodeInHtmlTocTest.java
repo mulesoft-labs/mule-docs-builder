@@ -46,7 +46,7 @@ public class RootNodeInHtmlTocTest {
 
     @Test(expected = DocBuildException.class)
     public void getRootNodeFromRawTocHtml_FromTocDocWithMoreThanOneRootNode_ThrowsException() {
-        String path = Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "bad-files", "toc.ad" });
+        String path = Utilities.getConcatPath( TestUtilities.getTestResourcesPath(), "bad-files", "toc.ad" );
         AsciiDocPage page = AsciiDocPage.fromFile(new File(path));
         RootNodeFromHtmlToc htmlToc = RootNodeFromHtmlToc.fromTocAsciiDocPage(page);
     }
@@ -64,13 +64,13 @@ public class RootNodeInHtmlTocTest {
     }
 
     private AsciiDocPage getValidPage() {
-        String path = Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "toc.ad" });
+        String path = Utilities.getConcatPath( TestUtilities.getPathToMasterFolder(), "cloudhub", "toc.ad" );
         AsciiDocPage page = AsciiDocPage.fromFile(new File(path));
         return page;
     }
 
     private AsciiDocPage getInvalidPage() {
-        String path = Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub.ad" });
+        String path = Utilities.getConcatPath( TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub.ad" );
         AsciiDocPage page = AsciiDocPage.fromFile(new File(path));
         return page;
     }

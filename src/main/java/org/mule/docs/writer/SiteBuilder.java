@@ -27,11 +27,10 @@ public class SiteBuilder {
         this.sections = getSections(sourceDirectory);
         this.toc = getSiteToc(sourceDirectory);
         this.templates = getTemplates(sourceDirectory);
-        writeSections();
     }
 
     public static void buildSite(File sourceDirectory, File outputDirectory) {
-        SiteBuilder builder = new SiteBuilder(sourceDirectory, outputDirectory);
+        new SiteBuilder(sourceDirectory, outputDirectory).writeSections();
     }
 
     public List<Section> getSections(File sourceDirectory) {
@@ -49,11 +48,11 @@ public class SiteBuilder {
 
     private void writeSections() {
         for (Section section : sections) {
-            String sectionPath = Utilities.getConcatPath(new String[] { outputDirectory.getPath(), Utilities.removeLeadingSlashes(section.getUrl()) });
+            String sectionPath = Utilities.getConcatPath( outputDirectory.getPath(), Utilities.removeLeadingSlashes(section.getUrl()) );
             Utilities.makeTargetDirectory(sectionPath);
             writePagesForSection(section);
             for (Section version : section.getVersions()) {
-                String versionPath = Utilities.getConcatPath(new String[] { outputDirectory.getPath(), Utilities.removeLeadingSlashes(version.getUrl()) });
+                String versionPath = Utilities.getConcatPath( outputDirectory.getPath(), Utilities.removeLeadingSlashes(version.getUrl()) );
                 Utilities.makeTargetDirectory(versionPath);
                 writePagesForSection(version);
             }
@@ -77,7 +76,7 @@ public class SiteBuilder {
         List<Page> pages = Page.forSection(section, this.sections, this.templates, this.toc);
         for (Page page : pages) {
             String pagePath =
-                    Utilities.getConcatPath(new String[] { this.outputDirectory.getPath(), Utilities.removeLeadingSlashes(section.getUrl()), page.getBaseName() }) + ".html";
+                    Utilities.getConcatPath( this.outputDirectory.getPath(), Utilities.removeLeadingSlashes(section.getUrl()), page.getBaseName() ) + ".html";
             Utilities.writeFileToDirectory(pagePath, page.getContent());
         }
     }

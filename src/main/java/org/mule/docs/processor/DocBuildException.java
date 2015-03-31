@@ -8,4 +8,8 @@ public class DocBuildException extends RuntimeException {
     public DocBuildException(String m) {
         super(m);
     }
+
+    public DocBuildException(String m,Throwable e) {
+        super(m,e);
+    }
 }

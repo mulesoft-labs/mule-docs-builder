@@ -88,13 +88,13 @@ public class AsciiDocPageTest {
     }
 
     private File getValidFile() {
-        String path = Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub.ad" });
+        String path = Utilities.getConcatPath(TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub.ad");
         return new File(path);
     }
 
     private List<File> getValidFiles() {
         List<File> files = new ArrayList<File>();
-        String path = Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub" });
+        String path = Utilities.getConcatPath(TestUtilities.getPathToMasterFolder(), "cloudhub");
         File cloudhubDir = new File(path);
         for (File file : cloudhubDir.listFiles()) {
             if (Utilities.fileEndsWithValidAsciidocExtension(file.getName())) {
@@ -105,15 +105,15 @@ public class AsciiDocPageTest {
     }
 
     private File getInvalidFile() {
-        String fooPath = Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "foo.ad" });
+        String fooPath = Utilities.getConcatPath(TestUtilities.getPathToMasterFolder(), "cloudhub", "foo.ad");
         return new File(fooPath);
     }
 
     private List<File> getInvalidFiles() {
         List<File> files = new ArrayList<File>();
-        String fooPath = Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "foo.ad" });
+        String fooPath = Utilities.getConcatPath(TestUtilities.getPathToMasterFolder(), "cloudhub", "foo.ad");
         files.add(new File(fooPath));
-        String barPath = Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "bar.ad" });
+        String barPath = Utilities.getConcatPath(TestUtilities.getPathToMasterFolder(), "cloudhub", "bar.ad");
         files.add(new File(barPath));
         return files;
     }

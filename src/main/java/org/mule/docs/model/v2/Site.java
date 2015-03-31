@@ -1,11 +1,13 @@
 package org.mule.docs.model.v2;
 
+
 import java.util.List;
 
 /**
  * Created by Mulesoft.
  */
-public class Site {
+public class Site extends AbstractBaseDocElement {
+
     List<Section> sections;
     TableOfContents toc;
 
@@ -24,5 +26,15 @@ public class Site {
 
     public void setSections(List<Section> sections) {
         this.sections = sections;
+    }
+
+    @Override
+    public void accept(IPageElementVisitor visitor) {
+        if (visitor.visit(this)) {
+            toc.accept(visitor);
+            for (Section section : sections) {
+                section.accept(visitor);
+            }
+        }
     }
 }

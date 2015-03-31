@@ -32,7 +32,7 @@ public class VersionSelectorTest {
     public void htmlForPage_WithValidSection_ContainsHtml() {
         VersionSelector selector = VersionSelector.fromSection(getValidSection());
         String html = selector.htmlForPage(
-                AsciiDocPage.fromFile(new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub.ad" }))));
+                AsciiDocPage.fromFile(new File(Utilities.getConcatPath( TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub.ad" ))));
         assertFalse(StringUtils.isBlank(html));
     }
 
@@ -86,12 +86,12 @@ public class VersionSelectorTest {
     }
 
     public Section getValidSection() {
-        File file = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub" }));
+        File file = new File(Utilities.getConcatPath( TestUtilities.getPathToMasterFolder(), "cloudhub" ));
         return Section.fromDirectory(file);
     }
 
     public Section getInvalidSection() {
-        File file = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "_templates" }));
+        File file = new File(Utilities.getConcatPath( TestUtilities.getPathToMasterFolder(), "_templates" ));
         return Section.fromDirectory(file);
     }
 }

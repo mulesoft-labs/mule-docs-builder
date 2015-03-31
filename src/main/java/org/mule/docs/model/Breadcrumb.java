@@ -22,7 +22,7 @@ public class Breadcrumb {
     }
 
     public static Breadcrumb fromRootNode(TocNode rootNode) {
-        validateInputParams(new Object[] { rootNode });
+        assert(rootNode!=null);
         return new Breadcrumb(rootNode);
     }
 
@@ -70,10 +70,6 @@ public class Breadcrumb {
             }
         }
         return;
-    }
-
-    private static void validateInputParams(Object[] params) {
-        Utilities.validateCtorObjectsAreNotNull(params, Breadcrumb.class.getSimpleName());
     }
 
 }

@@ -1,24 +1,34 @@
 package org.mule.docs.model.v2;
 
-import com.sun.source.tree.AssertTree;
-
+import java.io.File;
 import java.util.List;
 
 /**
  * Created by Mulesoft.
  */
-public class Page {
-    private String content;
+public class Page extends AbstractBaseDocElement {
+
+    private File origin;
     private String baseName;
+    private String title;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public File getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(File origin) {
+        this.origin = origin;
+    }
+
     private List<Asset> assets;
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
 
     public String getBaseName() {
         return baseName;
@@ -34,5 +44,15 @@ public class Page {
 
     public void setAssets(List<Asset> assets) {
         this.assets = assets;
+    }
+
+    @Override
+    public void accept(IPageElementVisitor visitor) {
+        visitor.visit(this);
+    }
+
+    @Override
+    public String toString() {
+        return "Page:" + origin.getAbsolutePath();
     }
 }

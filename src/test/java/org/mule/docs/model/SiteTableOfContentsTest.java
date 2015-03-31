@@ -35,7 +35,7 @@ public class SiteTableOfContentsTest {
     }
 
     public File getValidTocFile() {
-        String tocPath = Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "toc.ad" });
+        String tocPath = Utilities.getConcatPath( TestUtilities.getPathToMasterFolder(), "toc.ad" );
         return new File(tocPath);
     }
 }

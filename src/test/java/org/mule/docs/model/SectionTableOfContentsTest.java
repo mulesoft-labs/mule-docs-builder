@@ -37,7 +37,7 @@ public class SectionTableOfContentsTest {
     }
 
     public File getValidTocFile() {
-        String tocPath = Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "toc.ad" });
+        String tocPath = Utilities.getConcatPath( TestUtilities.getPathToMasterFolder(), "cloudhub", "toc.ad" );
         return new File(tocPath);
     }
 }

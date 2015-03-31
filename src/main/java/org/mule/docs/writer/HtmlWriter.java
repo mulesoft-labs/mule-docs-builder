@@ -115,7 +115,7 @@ public class HtmlWriter {
         fruitsMap.put("title", node.getTitle());
         String templateName = "activeBreadcrumbLink";
         if (!node.getUrl().contentEquals(activeUrl)) {
-            String url = Utilities.getConcatPath(new String[] { baseUrl, node.getUrl() });
+            String url = Utilities.getConcatPath( baseUrl, node.getUrl() );
             fruitsMap.put("url", url);
             templateName = "breadcrumbLink";
         }
@@ -153,6 +153,6 @@ public class HtmlWriter {
     }
 
     private static String getCompleteUrl(String baseUrl, String url) {
-        return Utilities.getConcatPath(new String[] { baseUrl, url });
+        return Utilities.getConcatPath( baseUrl, url );
     }
 }

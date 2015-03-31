@@ -1,5 +1,4 @@
-package org.mule.docs.model;
-
+package org.mule.docs.model.v2;
 
 /**
  * Created by Mulesoft.
@@ -15,12 +14,12 @@ public interface IPageElementVisitor {
     boolean visit(IPageElement pageElement);
 
     /**
-     * Visit asciiDocPage
+     * Visit site
      *
-     * @param asciiDocPage asciiDocPage
+     * @param site site
      * @return true if the child's need to be visited
      */
-    boolean visit(AsciiDocPage asciiDocPage);
+    boolean visit(Site site);
 
     /**
      * Visit page
@@ -36,7 +35,7 @@ public interface IPageElementVisitor {
      * @param toc toc
      * @return true if the child's need to be visited
      */
-    boolean visit(SiteTableOfContents toc);
+    boolean visit(TableOfContents toc);
 
     /**
      * Visit a section
@@ -53,4 +52,11 @@ public interface IPageElementVisitor {
      * @return true if the child's need to be visited
      */
     boolean visit(TocNode rootNode);
+
+    /**
+     * Visit asset
+     * @param asset asset
+     * @return true if it should visit the child's
+     */
+    boolean visit(Asset asset);
 }

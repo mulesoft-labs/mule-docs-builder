@@ -1,4 +1,4 @@
-package org.mule.docs.model;
+package org.mule.docs.model.v2;
 
 /**
  * Created by Mulesoft.

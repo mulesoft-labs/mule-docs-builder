@@ -52,43 +52,43 @@ public class SiteTocHtmlTest {
         String html = siteToc.getTocHtmlForSectionAndPage(getOldVersionSection(), getValidOldAsciiDocPage());
         assertFalse(StringUtils.isBlank(html));
         assertTrue(html.length() > 500);
-        assertTrue(html.contains("<a href=\"/docs/cloudhub/v/4.0/\">CloudHub</a>"));
+        assertTrue(html.contains("<a href=\"/docs/cloudhub/v/4.0/cloudhub\">CloudHub</a>"));
         assertTrue(html.contains("<li class=\"child active\">Deploying a CloudHub Application</li>"));
     }
 
     public SiteTableOfContents getValidTocFile() {
-        String tocPath = Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "toc.ad" });
+        String tocPath = Utilities.getConcatPath( TestUtilities.getPathToMasterFolder(), "toc.ad" );
         return SiteTableOfContents.fromAsciiDocFile(new File(tocPath));
     }
 
     private List<Section> getValidSections() {
         List<Section> sections = new ArrayList<Section>();
-        File section1 = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub" }));
-        File section2 = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "anypoint-platform" }));
+        File section1 = new File(Utilities.getConcatPath( TestUtilities.getPathToMasterFolder(), "cloudhub" ));
+        File section2 = new File(Utilities.getConcatPath( TestUtilities.getPathToMasterFolder(), "anypoint-platform" ));
         sections.add(Section.fromDirectory(section1));
         sections.add(Section.fromDirectory(section2));
         return sections;
     }
 
     private Section getValidSection() {
-        return Section.fromDirectory(new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub" })));
+        return Section.fromDirectory(new File(Utilities.getConcatPath( TestUtilities.getPathToMasterFolder(), "cloudhub" )));
     }
 
     private Section getOldVersionSection() {
-        return Section.fromDirectory(new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "v", "4.0" })));
+        return Section.fromDirectory(new File(Utilities.getConcatPath( TestUtilities.getPathToMasterFolder(), "cloudhub", "v", "4.0" )));
     }
 
     private AsciiDocPage getValidAsciiDocPage() {
-        return AsciiDocPage.fromFile(new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "deploying-a-cloudhub-application.ad" })));
+        return AsciiDocPage.fromFile(new File(Utilities.getConcatPath( TestUtilities.getPathToMasterFolder(), "cloudhub", "deploying-a-cloudhub-application.ad" )));
     }
 
     private AsciiDocPage getValidOldAsciiDocPage() {
         return AsciiDocPage
-                .fromFile(new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "v", "4.0", "deploying-a-cloudhub-application.ad" })));
+                .fromFile(new File(Utilities.getConcatPath( TestUtilities.getPathToMasterFolder(), "cloudhub", "v", "4.0", "deploying-a-cloudhub-application.ad" )));
     }
 
     private AsciiDocPage getOrphanedAsciiDocPage() {
-        return AsciiDocPage.fromFile(new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "index.ad" })));
+        return AsciiDocPage.fromFile(new File(Utilities.getConcatPath( TestUtilities.getPathToMasterFolder(), "cloudhub", "index.ad" )));
     }
 
 }

@@ -3,7 +3,8 @@ package org.mule.docs.model.v2;
 /**
  * Created by Mulesoft.
  */
-public class Asset {
+public class Asset extends AbstractBaseDocElement {
+
     private String content;
     private String baseName;
 
@@ -21,5 +22,10 @@ public class Asset {
 
     public void setBaseName(String baseName) {
         this.baseName = baseName;
+    }
+
+    @Override
+    public void accept(IPageElementVisitor visitor) {
+        visitor.visit(this);
     }
 }

@@ -25,10 +25,10 @@ public class SiteBuilderTest {
     }
 
     private File getValidSourceDirectory() {
-        return new File(Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "master-folder" }));
+        return new File(Utilities.getConcatPath( TestUtilities.getTestResourcesPath(), "master-folder" ));
     }
 
     private File getValidOutputDirectory() {
-        return new File(Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "output" }));
+        return new File(Utilities.getConcatPath( TestUtilities.getTestResourcesPath(), "output" ));
     }
 }

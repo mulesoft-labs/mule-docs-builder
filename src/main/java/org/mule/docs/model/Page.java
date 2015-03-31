@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by sean.osterberg on 2/22/15.
  */
-public class Page implements IPageElement {
+public class Page {
 
     private static Logger logger = Logger.getLogger(Page.class);
     private String content;
@@ -44,8 +44,4 @@ public class Page implements IPageElement {
         return baseName;
     }
 
-    @Override
-    public void accept(IPageElementVisitor visitor) {
-        visitor.visit(this);
-    }
 }

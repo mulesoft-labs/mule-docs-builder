@@ -1,10 +1,12 @@
 package org.mule.docs.writer;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.mule.docs.processor.DocBuildException;
 import org.mule.docs.utils.Utilities;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +42,11 @@ public class Template {
     }
 
     private static String getTemplateContents(File file) {
-        return Utilities.getFileContentsFromFile(file);
+        try {
+            return FileUtils.readFileToString(file);
+        } catch (IOException e) {
+            throw new DocBuildException("Unable to read content",e);
+        }
     }
 
     private static TemplateType getTemplateType(File file) {

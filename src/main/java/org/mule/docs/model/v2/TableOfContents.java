@@ -1,18 +1,29 @@
 package org.mule.docs.model.v2;
 
-import java.util.List;
+import java.io.File;
 
 /**
  * Created by Mulesoft.
  */
-public class TableOfContents {
-    private List<TocNode> nodes;
+public class TableOfContents extends AbstractBaseDocElement {
 
-    public List<TocNode> getNodes() {
-        return nodes;
+    private File tocFile;
+
+    public File getTocFile() {
+        return tocFile;
     }
 
-    public void setNodes(List<TocNode> nodes) {
-        this.nodes = nodes;
+    public void setTocFile(File tocFile) {
+        this.tocFile = tocFile;
+    }
+
+    @Override
+    public void accept(IPageElementVisitor visitor) {
+        visitor.visit(this);
+    }
+
+    @Override
+    public String toString() {
+        return "TOC:" + tocFile.getAbsolutePath();
     }
 }

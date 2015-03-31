@@ -11,7 +11,7 @@ import java.util.*;
  * Created by sean.osterberg on 2/22/15.
  */
 
-public class Section implements IPageElement {
+public class Section {
 
     private static Logger logger = Logger.getLogger(Section.class);
     private List<AsciiDocPage> pages;
@@ -81,7 +81,7 @@ public class Section implements IPageElement {
     }
 
     private static Section getSectionFromDirectory(File directory, String url) {
-        List<File> validFiles = getValidAsciiDocFilesInSection(new ArrayList<File>(Arrays.asList(directory.listFiles())));
+        List<File> validFiles = getValidAsciiDocFilesInSection(Arrays.asList(directory.listFiles()));
         List<AsciiDocPage> pages = AsciiDocPage.fromFiles(validFiles);
         File tocFile = new File(directory, "toc.ad");
         TocNode rootNode = SectionTableOfContents.fromAsciiDocFile(tocFile).getRootTocNode();
@@ -90,7 +90,7 @@ public class Section implements IPageElement {
             if (url.isEmpty() && directory.getPath().contains(File.separator + "v" + File.separator)) {
                 url = getVersionUrl(directory.getPath(), getBaseName(directory.getPath()));
             } else {
-                url = Utilities.getConcatPath(new String[] { url, directory.getPath().substring(directory.getPath().lastIndexOf(File.separator) + 1) });
+                url = Utilities.getConcatPath( url, directory.getPath().substring(directory.getPath().lastIndexOf(File.separator) + 1) );
             }
         }
         if (Utilities.directoryContainsVersions(directory)) {
@@ -186,18 +186,5 @@ public class Section implements IPageElement {
 
     private static void validateInputParams(Object[] params) {
         Utilities.validateCtorObjectsAreNotNull(params, Section.class.getSimpleName());
-    }
-
-    @Override
-    public void accept(IPageElementVisitor visitor) {
-        if (visitor.visit(this)) {
-            rootNode.accept(visitor);
-            for (AsciiDocPage page : pages) {
-                page.accept(visitor);
-            }
-            for (Section version : this.versions) {
-                version.accept(visitor);
-            }
-        }
     }
 }

@@ -1,4 +1,4 @@
-package org.mule.docs.model;
+package org.mule.docs.model.v2;
 
 import org.apache.log4j.Logger;
 
@@ -11,37 +11,40 @@ public class DefaultPageElementVisitor implements IPageElementVisitor {
 
     @Override
     public boolean visit(IPageElement pageElement) {
-        logger.debug("Visiting pageElement:" + pageElement);
+        logger.info("Visiting pageElement:" + pageElement);
         return true;
     }
 
-    @Override
-    public boolean visit(AsciiDocPage asciiDocPage) {
-        logger.debug("Visiting asciiDocPage:" + asciiDocPage);
+    @Override public boolean visit(Site site) {
+        logger.info("Visiting asciiDocPage:" + site);
         return true;
     }
 
     @Override
     public boolean visit(Page page) {
-        logger.debug("Visiting page:" + page);
+        logger.info("Visiting page:" + page);
         return true;
     }
 
-    @Override
-    public boolean visit(SiteTableOfContents toc) {
-        logger.debug("Visiting toc:" + toc);
+    @Override public boolean visit(TableOfContents toc) {
+        logger.info("Visiting toc:" + toc);
         return true;
     }
 
     @Override
     public boolean visit(Section section) {
-        logger.debug("Visiting section:" + section);
+        logger.info("Visiting section:" + section);
         return true;
     }
 
     @Override
     public boolean visit(TocNode rootNode) {
-        logger.debug("Visiting TocNode:" + rootNode);
+        logger.info("Visiting TocNode:" + rootNode);
+        return true;
+    }
+
+    @Override public boolean visit(Asset asset) {
+        logger.info("Visiting asset:" + asset);
         return true;
     }
 }

@@ -7,7 +7,7 @@ import java.io.File;
 /**
  * Created by sean.osterberg on 2/20/15.
  */
-public class SectionTableOfContents implements IPageElement {
+public class SectionTableOfContents {
 
     private TocNode rootTocNode;
 
@@ -35,10 +35,4 @@ public class SectionTableOfContents implements IPageElement {
         this.rootTocNode = rootTocNode;
     }
 
-    @Override
-    public void accept(IPageElementVisitor visitor) {
-        if (visitor.visit(this)) {
-            rootTocNode.accept(visitor);
-        }
-    }
 }
