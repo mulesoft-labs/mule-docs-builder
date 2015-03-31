@@ -33,7 +33,7 @@ public class Page {
     public static String getCompletePageContent(Section section, List<Section> sections, SiteTableOfContents toc, AsciiDocPage page, List<Template> templates) {
 
         logger.debug("Built page from template for \"" + page.getTitle() + "\".");
-        return HtmlWriter.getIntance().getPageContent(section, sections, toc, page);
+        return HtmlWriter.getInstance().getPageContent(section, sections, toc, page);
     }
 
     public String getContent() {

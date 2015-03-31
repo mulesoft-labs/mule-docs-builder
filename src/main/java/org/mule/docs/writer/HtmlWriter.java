@@ -7,10 +7,8 @@ import org.jsoup.nodes.Document;
 import org.mule.docs.model.*;
 import org.mule.docs.utils.Utilities;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,13 +19,13 @@ import java.util.Map;
 public class HtmlWriter {
 
     Configuration configuration;
-    private static HtmlWriter intance;
+    private static HtmlWriter instance;
 
-    public static HtmlWriter getIntance() {
-        if (intance == null) {
-            intance = new HtmlWriter();
+    public static HtmlWriter getInstance() {
+        if (instance == null) {
+            instance = new HtmlWriter();
         }
-        return intance;
+        return instance;
     }
 
     private HtmlWriter() {

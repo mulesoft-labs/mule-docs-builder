@@ -1,7 +1,6 @@
 package org.mule.docs.model;
 
 import org.apache.log4j.Logger;
-import org.mule.docs.model.TocNode;
 import org.mule.docs.utils.Utilities;
 import org.mule.docs.writer.HtmlWriter;
 
@@ -37,11 +36,11 @@ public class Breadcrumb {
         List<TocNode> nodes = getBreadcrumbs(activeUrl);
         List<String> links = new ArrayList<String>();
         for (TocNode node : nodes) {
-            links.add(HtmlWriter.getIntance().getBreadCrumbLink(node, activeUrl, baseUrl));
+            links.add(HtmlWriter.getInstance().getBreadCrumbLink(node, activeUrl, baseUrl));
         }
         logger.info("Created breadcrumb for \"" + baseUrl + activeUrl + "\".");
 
-        return HtmlWriter.getIntance().getBreadCrumb(links);
+        return HtmlWriter.getInstance().getBreadCrumb(links);
     }
 
     public List<TocNode> getBreadcrumbs(String activeUrl) {
