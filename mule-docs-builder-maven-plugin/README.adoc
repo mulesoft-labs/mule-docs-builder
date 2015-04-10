@@ -1,0 +1,56 @@
+# mule-docs-builder
+= Mule Docs Builder Maven Plugin
+Mojo for building the new MuleSoft documentation site.
+
+== Usage
+
+On your github repository you need to have all your folder at the root folder or specify the source folder.
+
+It has 2 properties that can be configured:
+
+* sourceDirectory: Source for the site builder.
+
+* outputDirectory: Directory were the HTML will be generated, by default it will be the *target* directory.
+
+By default, the root directory of your project will be used as the source directory unless specified as in the follow example.
+
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.mule.docs.generator.it</groupId>
+    <artifactId>simple-it</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <description>A simple IT verifying the basic use case.</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>@project.groupId@</groupId>
+                <artifactId>@project.artifactId@</artifactId>
+                <version>@project.version@</version>
+                <executions>
+                    <execution>
+                        <id>build</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirectory>${basedir}/asciidoc/</sourceDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+----
