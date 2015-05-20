@@ -72,7 +72,8 @@ public class Section implements IPageElement {
         List<Section> sections = new ArrayList<Section>();
         if (masterDirectory.isDirectory()) {
             for (File directory : masterDirectory.listFiles()) {
-                if (directory.isDirectory() && !directory.getName().startsWith("_")) {
+                //Ignore hidden directories
+                if (directory.isDirectory() && !directory.getName().startsWith("_") && !directory.getName().startsWith(".")) {
                     sections.add(fromDirectory(directory));
                 }
             }

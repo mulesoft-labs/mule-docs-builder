@@ -99,9 +99,8 @@ public class SiteBuilder {
     }
 
     private boolean isValidSectionDirectory(File directory) {
-        if (!directory.isDirectory() ||
-                directory.getName().startsWith("_") ||
-                directory.getName().contentEquals(".DS_Store")) {
+        if ((!directory.isDirectory()) || directory.isHidden() ||
+                directory.getName().startsWith("_")) {
             return false;
         }
         return true;
