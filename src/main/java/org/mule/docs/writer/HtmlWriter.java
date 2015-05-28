@@ -33,8 +33,8 @@ public class HtmlWriter {
         configuration = new Configuration();
         //FileTemplateLoader fileTemplate = new FileTemplateLoader(new File("/tmp/templates"));
 
-        stringLoader.putTemplate("breadcrumbLink", "<li><a href=\"${url}\">${title}</a></li>");
-        stringLoader.putTemplate("activeBreadcrumbLink", "<li class=\"active\">${title}</li>");
+        stringLoader.putTemplate("breadcrumbLink", "<a href=\"${url}\">${title}</a>");
+        stringLoader.putTemplate("activeBreadcrumbLink", "<a href=\"${url}\"class=\"breadcrumb-active-link\">${title}</li>");
         stringLoader.putTemplate("childTocLink", "<a href=\"${url}\"><li class=\"child\">${title}</li></a>");
         stringLoader.putTemplate("activeChildTocLink", "<a href=\"${url}\"><li class=\"child active\">${title}</li></a>");
         stringLoader.putTemplate("parentTocLink1",
