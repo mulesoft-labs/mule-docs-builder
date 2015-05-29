@@ -28,7 +28,7 @@ public class AsciiDocPageTests {
     public void getPagesFromFiles_ReturnsNonEmptyPages() {
         List<AsciiDocPage> pages = AsciiDocPage.fromFiles(getValidFiles());
         for(AsciiDocPage page : pages) {
-            assertTrue(!Utilities.isStringNullOrEmptyOrWhitespace(page.getFilename()));
+            assertTrue(!Utilities.isStringNullOrEmptyOrWhitespace(page.getFilePath()));
             assertTrue(!Utilities.isStringNullOrEmptyOrWhitespace(page.getAsciiDoc()));
         }
     }
@@ -47,7 +47,7 @@ public class AsciiDocPageTests {
     @Test
     public void getPageFromFile_ReturnsNonEmptyPage() {
         AsciiDocPage page = AsciiDocPage.fromFile(getValidFile());
-        assertTrue(!Utilities.isStringNullOrEmptyOrWhitespace(page.getFilename()));
+        assertTrue(!Utilities.isStringNullOrEmptyOrWhitespace(page.getFilePath()));
         assertTrue(!Utilities.isStringNullOrEmptyOrWhitespace(page.getAsciiDoc()));
     }
 
