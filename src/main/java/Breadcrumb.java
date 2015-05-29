@@ -29,16 +29,16 @@ public class Breadcrumb {
 
     private String generateBreadcrumbsForActiveUrl(String activeUrl, String baseUrl) {
         List<TocNode> nodes = getBreadcrumbs(activeUrl);
-        StringBuilder html = new StringBuilder("<ol class=\"breadcrumb\">");
+        StringBuilder html = new StringBuilder("<div class=\"breadcrumb-section\">");
         for(TocNode node : nodes) {
+            String url = Utilities.getConcatPath(new String[]{baseUrl, node.getUrl()});
             if(!node.getUrl().contentEquals(activeUrl)) {
-                String url = Utilities.getConcatPath(new String[]{baseUrl, node.getUrl()});
-                html.append("<li><a href=\"" + url + "\">" + node.getTitle() + "</a></li>");
+                html.append("<a href=\"" + url + "\">" + node.getTitle() + "</a>/");
             } else {
-                html.append("<li class=\"active\">" + node.getTitle() + "</li>");
+                html.append("<a href=\"" + url + "\" class=\"breadcrumb-active-link\">" + node.getTitle() + "</a>");
             }
         }
-        html.append("</ol>");
+        html.append("</div>");
         logger.info("Created breadcrumb for \"" + baseUrl + activeUrl + "\".");
         return html.toString();
     }

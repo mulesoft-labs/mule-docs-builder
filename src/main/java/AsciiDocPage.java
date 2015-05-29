@@ -97,12 +97,13 @@ public class AsciiDocPage {
         return options;
     }
 
-    private static Map<String, Object> getAttributesForConversion() {
+    public static Map<String, Object> getAttributesForConversion() {
         Map<String, Object> attributes = new HashMap<String, Object>();
         attributes.put("sectanchors", "true");
         attributes.put("idprefix", "");
         attributes.put("idseparator", "-");
         attributes.put("icons", "font");
+        attributes.put("source-highlighter", "coderay");
         return attributes;
     }
 
