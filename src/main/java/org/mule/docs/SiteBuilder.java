@@ -1,3 +1,5 @@
+package org.mule.docs;
+
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.*;

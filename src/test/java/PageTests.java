@@ -1,4 +1,6 @@
 import org.junit.Test;
+import org.mule.docs.*;
+
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertThat;
 
@@ -57,12 +59,12 @@ public class PageTests {
 
     private List<Section> validSections() {
         List<Section> sections = new ArrayList<Section>();
-        sections.add(Section.fromDirectory(new File(Utilities.getConcatPath(new String[] {TestUtilities.getTestResourcesPath(), "master-folder", "cloudhub"}))));
+        sections.add(Section.fromDirectory(new File(Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "master-folder", "cloudhub"}))));
         sections.add(Section.fromDirectory(new File(Utilities.getConcatPath(new String[] {TestUtilities.getTestResourcesPath(), "master-folder", "anypoint-platform"}))));
         return sections;
     }
 
     private SiteTableOfContents getSiteToc() {
-        return SiteTableOfContents.fromAsciiDocFile(new File(Utilities.getConcatPath(new String[] {TestUtilities.getTestResourcesPath(), "master-folder", "toc.ad"})));
+        return SiteTableOfContents.fromAsciiDocFile(new File(Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "master-folder", "toc.ad"})));
     }
 }

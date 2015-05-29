@@ -1,4 +1,5 @@
 import org.junit.Test;
+import org.mule.docs.*;
 
 import java.io.File;
 import java.util.ArrayList;

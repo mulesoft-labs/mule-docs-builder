@@ -1,3 +1,5 @@
+package org.mule.docs;
+
 import java.util.HashMap;
 import java.util.Map;
 

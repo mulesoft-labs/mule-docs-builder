@@ -1,3 +1,5 @@
+package org.mule.docs;
+
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;

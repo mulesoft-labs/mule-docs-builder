@@ -1,3 +1,5 @@
+package org.mule.docs;
+
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -47,7 +49,7 @@ public class Page {
                 }
             }
         }
-        // Todo: implement with logic for other templates and probably move to the Template class instead.
+        // Todo: implement with logic for other templates and probably move to the org.mule.docs.Template class instead.
         return null;
     }
 

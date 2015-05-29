@@ -1,3 +1,7 @@
+import org.mule.docs.SectionTableOfContents;
+import org.mule.docs.TocNode;
+import org.mule.docs.Utilities;
+
 import java.io.File;
 
 /**
@@ -10,7 +14,7 @@ public class TestUtilities {
     }
 
     public static String getPathToMasterFolder() {
-        return Utilities.getConcatPath(new String[] {getTestResourcesPath(), "master-folder"});
+        return Utilities.getConcatPath(new String[]{getTestResourcesPath(), "master-folder"});
     }
 
     public static TocNode getValidRootNode() {

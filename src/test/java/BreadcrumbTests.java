@@ -1,4 +1,8 @@
 import org.junit.Test;
+import org.mule.docs.Breadcrumb;
+import org.mule.docs.DocBuildException;
+import org.mule.docs.TocNode;
+import org.mule.docs.Utilities;
 
 import java.util.ArrayList;
 import java.util.List;

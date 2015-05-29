@@ -1,3 +1,5 @@
+package org.mule.docs;
+
 import org.asciidoctor.Asciidoctor;
 import org.asciidoctor.Options;
 import org.asciidoctor.SafeMode;

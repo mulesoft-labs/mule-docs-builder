@@ -1,4 +1,9 @@
 import org.junit.Test;
+import org.mule.docs.DocBuildException;
+import org.mule.docs.SectionTableOfContents;
+import org.mule.docs.TocNode;
+import org.mule.docs.Utilities;
+
 import static org.junit.Assert.*;
 
 import static org.hamcrest.CoreMatchers.instanceOf;

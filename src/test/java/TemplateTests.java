@@ -1,4 +1,9 @@
 import org.junit.Test;
+import org.mule.docs.DocBuildException;
+import org.mule.docs.Template;
+import org.mule.docs.TemplateType;
+import org.mule.docs.Utilities;
+
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertThat;
 

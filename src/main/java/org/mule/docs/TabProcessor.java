@@ -1,4 +1,4 @@
-/**
+package org.mule.docs; /**
  * Created by sean.osterberg on 5/28/15.
  */
 import org.asciidoctor.Asciidoctor;
@@ -25,7 +25,7 @@ public class TabProcessor extends BlockProcessor {
 
     public TabProcessor(String name, Asciidoctor asciidoctor) {
         super(name, configs);
-        this.asciidoctor = asciidoctor;
+        this.asciidoctor = AsciiDocProcessor.getProcessorInstance().asciidoctor;
     }
 
     @Override

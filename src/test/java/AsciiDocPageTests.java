@@ -1,7 +1,8 @@
-import org.asciidoctor.ast.ContentPart;
-import org.asciidoctor.ast.Document;
-import org.asciidoctor.ast.StructuredDocument;
 import org.junit.Test;
+import org.mule.docs.AsciiDocPage;
+import org.mule.docs.DocBuildException;
+import org.mule.docs.Utilities;
+
 import static org.junit.Assert.*;
 
 import java.io.File;

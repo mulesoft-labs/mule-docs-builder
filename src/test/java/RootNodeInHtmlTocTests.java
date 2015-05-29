@@ -1,4 +1,6 @@
 import org.junit.Test;
+import org.mule.docs.*;
+
 import static org.junit.Assert.*;
 
 import static org.hamcrest.CoreMatchers.instanceOf;

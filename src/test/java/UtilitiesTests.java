@@ -1,6 +1,10 @@
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import org.mule.docs.AsciiDocPage;
+import org.mule.docs.DocBuildException;
+import org.mule.docs.TocNode;
+import org.mule.docs.Utilities;
 
 import java.io.File;
 import java.util.ArrayList;

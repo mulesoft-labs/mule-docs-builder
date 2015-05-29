@@ -1,3 +1,5 @@
+package org.mule.docs;
+
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -289,7 +291,7 @@ public class Utilities {
     public static void validateTemplateFile(File templateFile) {
         validateFileExists(templateFile);
         if(!FilenameUtils.getExtension(templateFile.getName()).contentEquals("template")) {
-            String error = "Template file does not have valid '.template' extension: \"" + templateFile.getPath() + "\".";
+            String error = "org.mule.docs.Template file does not have valid '.template' extension: \"" + templateFile.getPath() + "\".";
             logger.fatal(error);
             throw new DocBuildException(error);
         }

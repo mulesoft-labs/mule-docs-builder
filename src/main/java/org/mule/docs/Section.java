@@ -1,3 +1,5 @@
+package org.mule.docs;
+
 import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 
@@ -27,7 +29,7 @@ public class Section {
         this.url = url;
         this.prettyName = prettyName;
         this.baseName = getBaseName(filepath);
-        logger.info("Created Section for directory \"" + filepath + "\".");
+        logger.info("Created org.mule.docs.Section for directory \"" + filepath + "\".");
     }
 
     public List<AsciiDocPage> getPages() {

@@ -1,3 +1,5 @@
+package org.mule.docs;
+
 import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 
@@ -38,7 +40,7 @@ public class AsciiDocPage {
         List<AsciiDocPage> docPages = new ArrayList<AsciiDocPage>();
         for (File file : asciiDocFiles) {
             docPages.add(getPageFromFile(file));
-            logger.debug("Created AsciiDocPage from file: \"" + file.getPath() + "\".");
+            logger.debug("Created org.mule.docs.AsciiDocPage from file: \"" + file.getPath() + "\".");
         }
         return docPages;
     }
@@ -61,7 +63,7 @@ public class AsciiDocPage {
     }
 
     public Map<String, Object> getAttributes() {
-        Asciidoctor processor = this.getProcessor();
+        Asciidoctor processor = AsciiDocProcessor.getProcessorInstance().asciidoctor;
         DocumentHeader header = processor.readDocumentHeader(this.getAsciiDoc());
         return header.getAttributes();
     }
@@ -102,10 +104,6 @@ public class AsciiDocPage {
 
     public String getBaseName() {
         return baseName;
-    }
-
-    public Asciidoctor getProcessor() {
-        return processor;
     }
 
     public String getTitle() {

@@ -1,4 +1,7 @@
 import org.junit.Test;
+import org.mule.docs.DocBuildException;
+import org.mule.docs.Section;
+import org.mule.docs.Utilities;
 
 import java.io.File;
 import java.util.List;
@@ -104,7 +107,7 @@ public class SectionTests {
     }
 
     public Section getValidSection() {
-        File validDirectory = new File(Utilities.getConcatPath(new String[] {TestUtilities.getPathToMasterFolder(), "cloudhub"}));
+        File validDirectory = new File(Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub"}));
         return Section.fromDirectory(validDirectory);
 
     }

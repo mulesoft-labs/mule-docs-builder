@@ -1,3 +1,5 @@
+package org.mule.docs;
+
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
@@ -45,7 +47,7 @@ public class Template {
         } else if(baseName.contentEquals("landing_page")) {
             return TemplateType.LANDING_PAGE;
         }
-        String error = "Template file's type is not valid: \"" + file.getName() + "\".";
+        String error = "org.mule.docs.Template file's type is not valid: \"" + file.getName() + "\".";
         throw new DocBuildException(error);
     }
 

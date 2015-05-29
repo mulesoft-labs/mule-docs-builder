@@ -1,4 +1,5 @@
 import org.junit.Test;
+import org.mule.docs.*;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -66,7 +67,7 @@ public class SiteTocHtmlTests {
     }
 
     private Section getOldVersionSection() {
-        return Section.fromDirectory(new File(Utilities.getConcatPath(new String[] {TestUtilities.getPathToMasterFolder(), "cloudhub", "v", "4.0"})));
+        return Section.fromDirectory(new File(Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "v", "4.0"})));
     }
 
     private AsciiDocPage getValidAsciiDocPage() {

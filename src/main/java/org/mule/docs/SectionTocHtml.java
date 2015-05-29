@@ -1,3 +1,5 @@
+package org.mule.docs;
+
 import org.apache.log4j.Logger;
 
 /**
@@ -76,7 +78,7 @@ public class SectionTocHtml {
             html.append(getCompleteUrl(baseUrl, parent.getUrl()) + "\">" + parent.getTitle() + "</a>");
             html.append("<a href=\"#" + sectionId +  "\" data-toggle=\"collapse\" class=\"collapsed\"><div class=\"toc-section-header-arrow\"></div></a></div>");
             html.append("<ul class=\"collapsed child-section collapse in\" id=\"" + sectionId + "\" style=\"height: 0px;\">");
-        } else if (Utilities.isActiveUrlInSection(parent, activeUrl, false)) {
+        } else if (org.mule.docs.Utilities.isActiveUrlInSection(parent, activeUrl, false)) {
             html.append("<li class=\"toc-section\"><div class=\"toc-section-header child\"><a href=\"");
             html.append(getCompleteUrl(baseUrl, parent.getUrl()) + "\">" + parent.getTitle() + "</a>");
             html.append("<a href=\"#" + sectionId +  "\" data-toggle=\"collapse\" class=\"collapsed\"><div class=\"toc-section-header-arrow\"></div></a></div>");

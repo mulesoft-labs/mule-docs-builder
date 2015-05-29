@@ -1,6 +1,8 @@
 import org.junit.Test;
+import org.mule.docs.DocBuildException;
+import org.mule.docs.SectionTocHtml;
+
 import static org.junit.Assert.*;
-import java.util.*;
 import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**

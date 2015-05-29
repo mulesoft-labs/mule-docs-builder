@@ -1,4 +1,6 @@
 import org.junit.Test;
+import org.mule.docs.AsciiDocPage;
+import org.mule.docs.Utilities;
 
 import java.io.File;
 
