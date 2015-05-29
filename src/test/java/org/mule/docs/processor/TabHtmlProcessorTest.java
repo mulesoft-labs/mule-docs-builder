@@ -1,6 +1,7 @@
 package org.mule.docs.processor;
 
 import org.junit.Test;
+import org.mule.docs.model.AsciiDocPage;
 import org.mule.docs.utils.TestUtilities;
 import org.mule.docs.utils.Utilities;
 
@@ -23,8 +24,13 @@ public class TabHtmlProcessorTest {
         String foo = "foo";
     }
 
+    @Test
+    public void yellBlockTest() {
+        AsciiDocPage page = AsciiDocPage.fromFile(getValidFile());
+    }
+
     private File getValidFile() {
-        String path = Utilities.getConcatPath(TestUtilities.getTestResourcesPath(), "html-processors", "tabs.adoc");
+        String path = "/Users/sean.osterberg/mulesoft-docs/dev/src/test/resources/text-files/tab-test.adoc";
         return new File(path);
     }
 

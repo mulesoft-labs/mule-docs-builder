@@ -29,8 +29,8 @@ public class YellBlock extends BlockProcessor {
 
     @Override
     public Object process(AbstractBlock parent, Reader reader, Map<String, Object> attributes) {
-        String buffer = reader.read();
-        StructuredDocument doc = asciidoctor.readDocumentStructure(buffer, attributes);
+        //String buffer = reader.read();
+        //StructuredDocument doc = asciidoctor.readDocumentStructure(buffer, attributes);
         List<String> lines = reader.readLines();
         String upperLines = null;
         for (String line : lines) {
