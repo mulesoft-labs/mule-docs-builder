@@ -11,6 +11,7 @@ import java.io.File;
 import java.util.*;
 
 import org.asciidoctor.ast.DocumentHeader;
+import org.asciidoctor.extension.JavaExtensionRegistry;
 import org.jsoup.Jsoup;
 
 /**
@@ -37,6 +38,7 @@ public class AsciiDocPage {
 
     public static List<AsciiDocPage> fromFiles(List<File> asciiDocFiles) {
         processor = create();
+        registerExtensions(processor);
         List<AsciiDocPage> docPages = new ArrayList<AsciiDocPage>();
         for(File file : asciiDocFiles) {
             docPages.add(getPageFromFile(file));
@@ -47,10 +49,12 @@ public class AsciiDocPage {
 
     public static AsciiDocPage fromFile(File asciiDocFile) {
         processor = create();
+        registerExtensions(processor);
         return getPageFromFile(asciiDocFile);
     }
 
     private static AsciiDocPage getPageFromFile(File asciiDocFile) {
+        registerExtensions(processor);
         Utilities.validateAsciiDocFile(asciiDocFile);
         String html = processor.convertFile(asciiDocFile, getOptionsForConversion());
         AsciiDocPage page = new AsciiDocPage(
@@ -61,6 +65,11 @@ public class AsciiDocPage {
                 getPageTitle(html)
         );
         return page;
+    }
+
+    public static void registerExtensions(Asciidoctor processor) {
+        JavaExtensionRegistry extensionRegistry = processor.javaExtensionRegistry();
+        extensionRegistry.block("tabs", TabProcessor.class);
     }
 
     public Map<String, Object> getAttributes() {
