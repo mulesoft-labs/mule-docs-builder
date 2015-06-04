@@ -41,23 +41,23 @@ public class SectionTocHtml {
 
         if(isFirstItem) {
             html.append("<li class=\"category parent_li\">\n<i></i>\n" +
-            "<a href=\"" + getCompleteUrl(baseUrl, parent.getUrl()) + "\"</a>" +
-            parent.getTitle() +
+            "<a href=\"" + getCompleteUrl(baseUrl, parent.getUrl()) + "\">" +
+            parent.getTitle() + "</a>" +
             "<ul class=\"expanded\" style=\"display: none;\">\n");
         } else if(activeUrl == null) {
             html.append("<li class=\"parent_li\">\n<i></i>\n" +
-                    "<a href=\"" + getCompleteUrl(baseUrl, parent.getUrl()) + "\"</a>" +
-                    parent.getTitle() +
+                    "<a href=\"" + getCompleteUrl(baseUrl, parent.getUrl()) + "\">" +
+                    parent.getTitle() + "</a>" +
                     "<ul class=\"expanded\" style=\"display: none;\">\n");
         } else if(Utilities.isActiveUrlInSection(parent, activeUrl, false)) {
             html.append("<li class=\"parent_li\">\n<i></i>\n" +
-            "<a href=\"" + getCompleteUrl(baseUrl, parent.getUrl()) + "\"</a>" +
-                    parent.getTitle() +
+                    "<a href=\"" + getCompleteUrl(baseUrl, parent.getUrl()) + "\">" +
+                    parent.getTitle() + "</a>" +
             "<ul class=\"expanded\" style=\"display: block;\">\n");
         } else {
             html.append("<li class=\"parent_li\">\n<i></i>\n" +
-            "<a href=\"" + getCompleteUrl(baseUrl, parent.getUrl()) + "\"</a>" +
-                    parent.getTitle() +
+                    "<a href=\"" + getCompleteUrl(baseUrl, parent.getUrl()) + "\">" +
+                    parent.getTitle() + "</a>" +
             "<ul class=\"expanded\" style=\"display: none;\">\n");
         }
 

@@ -120,6 +120,19 @@ public class Utilities {
         }
     }
 
+    public static String cleanPageFileNames(String originalFilename) {
+        if(originalFilename != null) {
+            String finalFilename;
+            finalFilename = originalFilename.toLowerCase();
+            finalFilename = StringUtils.replacePattern(finalFilename, "((\\%28)|(\\%29))", "-");
+            finalFilename = StringUtils.replacePattern(finalFilename, "(\\+)(\\+*)", "-");
+            finalFilename = StringUtils.replacePattern(finalFilename, "(\\-)(\\-*)", "-");
+            finalFilename = StringUtils.replacePattern(finalFilename, " ", "-");
+            return finalFilename;
+        } else
+            throw new NullPointerException("String references are null.");
+    }
+
     public static void validateCtorObjectsAreNotNull(Object[] params, String className) {
         for(Object obj : params) {
             if (obj == null) {

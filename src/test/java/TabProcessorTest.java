@@ -14,6 +14,7 @@ public class TabProcessorTest {
     @Test
     public void testGetBlocks() {
         AsciiDocPage page = AsciiDocPage.fromFile(getValidFile());
+        System.out.println(page.getHtml());
     }
 
     private File getValidFile() {

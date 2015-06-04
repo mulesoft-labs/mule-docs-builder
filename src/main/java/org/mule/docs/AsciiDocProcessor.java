@@ -1,5 +1,6 @@
 package org.mule.docs;
 
+import org.apache.log4j.Logger;
 import org.asciidoctor.Asciidoctor;
 import org.asciidoctor.Options;
 import org.asciidoctor.SafeMode;
@@ -16,6 +17,7 @@ import static org.asciidoctor.Asciidoctor.Factory.create;
  */
 public class AsciiDocProcessor {
 
+    private static Logger logger = Logger.getLogger(AsciiDocProcessor.class);
     private static AsciiDocProcessor processor;
     public Asciidoctor asciidoctor;
 
@@ -33,7 +35,14 @@ public class AsciiDocProcessor {
     public String convertFile(File asciiDocFile) {
         JavaExtensionRegistry extensionRegistry = asciidoctor.javaExtensionRegistry();
         extensionRegistry.block("tabs", TabProcessor.class);
-        return asciidoctor.convertFile(asciiDocFile, getOptionsForConversion());
+        logger.info("Processing AsciiDoc file: \"" + asciiDocFile.getAbsolutePath());
+        String result = asciidoctor.convertFile(asciiDocFile, getOptionsForConversion());
+        logger.info("Successfully processed AsciiDoc file: \"" + asciiDocFile.getAbsolutePath());
+        return result;
+    }
+
+    public String convertAsciiDocString(String asciiDoc) {
+        return asciidoctor.convert(asciiDoc, getOptionsForConversion());
     }
 
     private Options getOptionsForConversion() {
@@ -52,6 +61,7 @@ public class AsciiDocProcessor {
         attributes.put("idprefix", "");
         attributes.put("idseparator", "-");
         attributes.put("icons", "font");
+        attributes.put("source-highlighter", "coderay");
         return attributes;
     }
 }
