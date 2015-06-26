@@ -18,13 +18,13 @@ public class TestUtilities {
     }
 
     public static TocNode getValidRootNode() {
-        String tocPath = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "toc.ad"});
+        String tocPath = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "_toc.adoc"});
         SectionTableOfContents toc = SectionTableOfContents.fromAsciiDocFile(new File(tocPath));
         return toc.getRootTocNode();
     }
 
     public static TocNode getInvalidRootNode() {
-        String tocPath = Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "bad-files", "toc.ad"});
+        String tocPath = Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "bad-files", "_toc.adoc"});
         SectionTableOfContents toc = SectionTableOfContents.fromAsciiDocFile(new File(tocPath));
         return toc.getRootTocNode();
     }

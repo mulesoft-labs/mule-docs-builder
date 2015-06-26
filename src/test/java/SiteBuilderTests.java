@@ -14,10 +14,19 @@ public class SiteBuilderTests {
         SiteBuilder.buildSite(getValidSourceDirectory(), getValidOutputDirectory());
     }
 
+    /*@Test
+    public void buildSite_withRealFolders_BuildsSite() {
+        //File source = new File("/Users/sean.osterberg/mulesoft-docs/_source/");
+        File source = new File("/Users/sean.osterberg/mulesoft-docs/docsite-demo-connect/anypoint-connector-devkit/output/");
+        File output = new File("/Users/sean.osterberg/mulesoft-docs/_output/docs");
+        SiteBuilder.buildSite(source, output);
+    }*/
+
     @Test
     public void buildSite_withRealFolders_BuildsSite() {
-        File source = new File("/Users/sean.osterberg/mulesoft-docs/_source/");
-        File output = new File("/Users/sean.osterberg/mulesoft-docs/_output/docs");
+        //File source = new File("/Users/sean.osterberg/mulesoft-docs/_source/");
+        File source = new File("/Users/sean.osterberg/mulesoft-docs/docsite-demo-connect/site-source/");
+        File output = new File("/Users/sean.osterberg/mulesoft-docs/docsite-demo-connect/_output/");
         SiteBuilder.buildSite(source, output);
     }
 

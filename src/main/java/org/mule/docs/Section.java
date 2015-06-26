@@ -81,7 +81,7 @@ public class Section {
     private static Section getSectionFromDirectory(File directory, String url) {
         List<File> validFiles = getValidAsciiDocFilesInSection(new ArrayList<File>(Arrays.asList(directory.listFiles())));
         List<AsciiDocPage> pages = AsciiDocPage.fromFiles(validFiles);
-        File tocFile = new File(Utilities.getConcatPath(new String[]{directory.getPath(), "toc.ad"}));
+        File tocFile = new File(Utilities.getConcatPath(new String[]{directory.getPath(), "_toc.adoc"}));
         TocNode rootNode = SectionTableOfContents.fromAsciiDocFile(tocFile).getRootTocNode();
         List<Section> versions = new ArrayList<Section>();
         if (!url.contains(File.separator + "v" + File.separator)) {
@@ -102,7 +102,7 @@ public class Section {
         for(File file : files) {
             if(!file.isDirectory() &&
                     Utilities.fileEndsWithValidAsciidocExtension(file.getName()) &&
-                    !file.getName().contentEquals("toc.ad")) {
+                    !file.getName().contentEquals("_toc.adoc")) {
                 validFiles.add(file);
             }
         }

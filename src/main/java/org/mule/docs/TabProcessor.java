@@ -30,7 +30,7 @@ public class TabProcessor extends BlockProcessor {
     public Object process(AbstractBlock parent, Reader reader, Map<String, Object> attributes) {
         Map<String, Object> inherited = new HashMap<String, Object>();
 
-        AbstractBlock container = createBlock(parent, "open", (String) null, inherited, new HashMap<Object, Object>());
+        AbstractBlock container = createBlock(parent, "open", (String)null, inherited, new HashMap<Object, Object>());
         Map<String, String> titleAndId = new LinkedHashMap<String, String>();
 
         int count = 0;

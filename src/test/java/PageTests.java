@@ -45,7 +45,9 @@ public class PageTests {
 
 
     private Section validSection() {
-        return Section.fromDirectory(new File(Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "master-folder", "cloudhub"})));
+        File validDirectory = new File(Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "master-folder", "cloudhub"}));
+        Section result = Section.fromDirectory(validDirectory);
+        return result;
     }
 
     private Section validOldVersionSection() {
@@ -65,6 +67,6 @@ public class PageTests {
     }
 
     private SiteTableOfContents getSiteToc() {
-        return SiteTableOfContents.fromAsciiDocFile(new File(Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "master-folder", "toc.ad"})));
+        return SiteTableOfContents.fromAsciiDocFile(new File(Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "master-folder", "_toc.adoc"})));
     }
 }

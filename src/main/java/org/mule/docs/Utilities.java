@@ -224,7 +224,7 @@ public class Utilities {
     public static boolean directoryContainsTocFile(File directory) {
         boolean isValid = false;
         for(File file : directory.listFiles()) {
-            if(file.getName().contentEquals("toc.ad")) {
+            if(file.getName().contentEquals("_toc.adoc")) {
                 isValid = true;
             }
         }

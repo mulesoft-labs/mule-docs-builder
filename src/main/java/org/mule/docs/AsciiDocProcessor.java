@@ -33,8 +33,7 @@ public class AsciiDocProcessor {
     }
 
     public String convertFile(File asciiDocFile) {
-        JavaExtensionRegistry extensionRegistry = asciidoctor.javaExtensionRegistry();
-        extensionRegistry.block("tabs", TabProcessor.class);
+        registerExtensions();
         logger.info("Processing AsciiDoc file: \"" + asciiDocFile.getAbsolutePath());
         String result = asciidoctor.convertFile(asciiDocFile, getOptionsForConversion());
         logger.info("Successfully processed AsciiDoc file: \"" + asciiDocFile.getAbsolutePath());
@@ -42,7 +41,13 @@ public class AsciiDocProcessor {
     }
 
     public String convertAsciiDocString(String asciiDoc) {
+        registerExtensions();
         return asciidoctor.convert(asciiDoc, getOptionsForConversion());
+    }
+
+    public void registerExtensions() {
+        //JavaExtensionRegistry extensionRegistry = asciidoctor.javaExtensionRegistry();
+        //extensionRegistry.block("tabs", TabProcessor.class);
     }
 
     private Options getOptionsForConversion() {
@@ -62,6 +67,7 @@ public class AsciiDocProcessor {
         attributes.put("idseparator", "-");
         attributes.put("icons", "font");
         attributes.put("source-highlighter", "coderay");
+        attributes.put("imagesdir", "../images");
         return attributes;
     }
 }

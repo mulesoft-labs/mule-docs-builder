@@ -41,7 +41,7 @@ public class Breadcrumb {
             }
         }
         html.append("</div>");
-        logger.info("Created breadcrumb for \"" + baseUrl + activeUrl + "\".");
+        logger.info("Created breadcrumb for \"" + baseUrl + "/" + activeUrl + "\".");
         return html.toString();
     }
 

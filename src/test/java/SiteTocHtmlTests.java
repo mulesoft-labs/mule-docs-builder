@@ -49,7 +49,7 @@ public class SiteTocHtmlTests {
     }
 
     public SiteTableOfContents getValidTocFile() {
-        String tocPath = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "toc.ad"});
+        String tocPath = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "_toc.adoc"});
         return SiteTableOfContents.fromAsciiDocFile(new File(tocPath));
     }
 

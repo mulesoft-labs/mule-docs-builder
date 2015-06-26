@@ -56,6 +56,15 @@ public class SiteBuilder {
         }
     }
 
+    /**
+     * There are multiple kinds of assets, including things like images, snippets, diagrams, etc.
+     */
+    private void writeAssets() {
+
+    }
+
+
+
     private List<Template> getTemplates(File sourceDirectory) {
         List<Template> templates = new ArrayList<Template>();
         File templateDirectory = new File(Utilities.getConcatPath(new String[]{sourceDirectory.getPath(), "_templates"}));
@@ -89,14 +98,15 @@ public class SiteBuilder {
     }
 
     private SiteTableOfContents getSiteToc(File masterDirectory) {
-        File masterTocFile = new File(Utilities.getConcatPath(new String[] {masterDirectory.getPath(), "toc.ad"}));
+        File masterTocFile = new File(Utilities.getConcatPath(new String[] {masterDirectory.getPath(), "_toc.adoc"}));
         return SiteTableOfContents.fromAsciiDocFile(masterTocFile);
     }
 
     private boolean isValidSectionDirectory(File directory) {
         if(!directory.isDirectory() ||
                 directory.getName().startsWith("_") ||
-                directory.getName().contentEquals(".DS_Store")) {
+                directory.getName().contentEquals(".DS_Store") ||
+                directory.getName().contentEquals("images")) {
             return false;
         }
         return true;

@@ -43,10 +43,12 @@ public class SiteTocHtml {
 
     private String getSelectedSectionHtml(Section section, AsciiDocPage page) {
         String pageUrl = page.getBaseName();
-        return SectionTocHtml.getSelectedTocFromRootNode(section.getRootNode(), pageUrl, "/docs/" + section.getUrl()).getHtml(); // Todo: add global baseUrl
+        // Can insert "/docs/" as the third parameter for production site
+        return SectionTocHtml.getSelectedTocFromRootNode(section.getRootNode(), pageUrl, "/" + section.getUrl()).getHtml(); // Todo: add global baseUrl
     }
 
     private String getUnselectedSectionHtml(Section section) {
-        return SectionTocHtml.getUnselectedTocFromRootNode(section.getRootNode(), "/docs/" + section.getUrl()).getHtml();
+        // Can insert "/docs/" as the third parameter for production site
+        return SectionTocHtml.getUnselectedTocFromRootNode(section.getRootNode(), "/" + section.getUrl()).getHtml();
     }
 }

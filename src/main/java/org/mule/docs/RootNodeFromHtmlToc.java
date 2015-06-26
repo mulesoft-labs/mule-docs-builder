@@ -107,7 +107,7 @@ public class RootNodeFromHtmlToc {
     }
 
     private static void validateThatAsciiDocPageIsToc(AsciiDocPage page) {
-        if(!page.getFilePath().endsWith("toc.ad")) {
+        if(!page.getFilePath().endsWith("_toc.adoc")) {
             String error = "AsciiDoc page appears to be invalid for processing table of contents: \"" + page.getFilePath() + "\".";
             logger.fatal(error);
             throw new DocBuildException(error);
