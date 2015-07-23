@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 /**
  * Created by sean.osterberg on 2/20/15.
  */
-public class UtilitiesTests {
+public class UtilitiesTest {
 
     @Test
     public void validateAsciiDocFile_IsValidForAsciiDocExtension() {

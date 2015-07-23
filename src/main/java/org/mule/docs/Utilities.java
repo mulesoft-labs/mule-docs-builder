@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.w3c.tidy.Tidy;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -348,5 +349,23 @@ public class Utilities {
             logger.fatal(error);
             throw new DocBuildException(error);
         }
+    }
+
+    public static String fixIndexBaseName(String baseName) {
+        if(baseName.equals("index")) {
+            return "";
+        }
+        return baseName;
+    }
+
+    public static String tidyHtml(String html) {
+        Tidy tidy = new Tidy();
+        boolean xhtml = false;
+        tidy.setXHTML(xhtml);
+        InputStream htmlStream = new ByteArrayInputStream(html.getBytes());
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        org.w3c.dom.Document doc = tidy.parseDOM(htmlStream, outputStream);
+        tidy.pprint(doc, outputStream);
+        return outputStream.toString();
     }
 }

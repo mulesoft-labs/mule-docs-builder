@@ -12,7 +12,7 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 /**
  * Created by sean.osterberg on 2/22/15.
  */
-public class SiteTocHtmlTests {
+public class SiteTocHtmlTest {
 
     @Test
     public void fromSiteTocAndSections_WithValidParams_CreatesInstance() {
@@ -26,7 +26,7 @@ public class SiteTocHtmlTests {
         String html = siteToc.getTocHtmlForSectionAndPage(getValidSection(), getValidAsciiDocPage());
         assertFalse(Utilities.isStringNullOrEmptyOrWhitespace(html));
         assertTrue(html.length() > 500);
-        assertTrue(html.contains("<li class=\"child active\">Deploying a CloudHub Application</li>"));
+        assertTrue(html.contains("<li class=\"active\"><i></i><a href=\"/cloudhub/deploying-a-cloudhub-application\">Deploying a CloudHub Application</a>"));
     }
 
     @Test
@@ -44,8 +44,8 @@ public class SiteTocHtmlTests {
         String html = siteToc.getTocHtmlForSectionAndPage(getOldVersionSection(), getValidOldAsciiDocPage());
         assertFalse(Utilities.isStringNullOrEmptyOrWhitespace(html));
         assertTrue(html.length() > 500);
-        assertTrue(html.contains("<a href=\"/docs/cloudhub/v/4.0/\">CloudHub</a>"));
-        assertTrue(html.contains("<li class=\"child active\">Deploying a CloudHub Application</li>"));
+        assertTrue(html.contains("<a href=\"/cloudhub/v/4.0/\">CloudHub</a>"));
+        assertTrue(html.contains("<li class=\"active\"><i></i><a href=\"/cloudhub/v/4.0/deploying-a-cloudhub-application\">Deploying a CloudHub Application</a>"));
     }
 
     public SiteTableOfContents getValidTocFile() {

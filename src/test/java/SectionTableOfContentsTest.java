@@ -13,7 +13,7 @@ import java.io.File;
 /**
  * Created by sean.osterberg on 2/20/15.
  */
-public class SectionTableOfContentsTests {
+public class SectionTableOfContentsTest {
 
     @Test
     public void fromAsciiDocFile_canGetNewObjectFromValidFile() {

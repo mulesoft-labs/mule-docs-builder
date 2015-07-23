@@ -17,10 +17,11 @@ public class Section {
     private String filepath;
     private String url;
     private String prettyName;
+    private String versionPrettyName;
     private String baseName;
     private List<Section> versions;
 
-    public Section(List<AsciiDocPage> pages, TocNode rootNode, List<Section> versions, String filepath, String url, String prettyName) {
+    public Section(List<AsciiDocPage> pages, TocNode rootNode, List<Section> versions, String filepath, String url, String prettyName, String versionPrettyName) {
         validateInputParams(new Object[] {pages, rootNode, versions, filepath});
         this.pages = pages;
         this.rootNode = rootNode;
@@ -29,6 +30,7 @@ public class Section {
         this.url = url;
         this.prettyName = prettyName;
         this.baseName = getBaseName(filepath);
+        this.versionPrettyName = versionPrettyName;
         logger.info("Created org.mule.docs.Section for directory \"" + filepath + "\".");
     }
 
@@ -50,6 +52,10 @@ public class Section {
 
     public String getPrettyName() {
         return prettyName;
+    }
+
+    public String getVersionPrettyName() {
+        return versionPrettyName;
     }
 
     public String getBaseName() {
@@ -94,7 +100,7 @@ public class Section {
         if(Utilities.directoryContainsVersions(directory)) {
             getVersions(directory, versions, url);
         }
-        return new Section(pages, rootNode, versions, directory.getPath(), url, getPrettyName(directory));
+        return new Section(pages, rootNode, versions, directory.getPath(), url, getPrettyName(directory), getVersionPrettyName(directory));
     }
 
     private static List<File> getValidAsciiDocFilesInSection(List<File> files) {
@@ -152,8 +158,21 @@ public class Section {
 
     private static String getPrettyName(File directory) {
         for(File file : directory.listFiles()) {
+            if(FilenameUtils.getExtension(file.getName()).contentEquals("section")) {
+                String baseName = FilenameUtils.getBaseName(file.getName());
+                int length = baseName.length();
+                return baseName.substring(1, length); // Need to remove the _ underscore in front of the name
+            }
+        }
+        return null;
+    }
+
+    private static String getVersionPrettyName(File directory) {
+        for(File file : directory.listFiles()) {
             if(FilenameUtils.getExtension(file.getName()).contentEquals("version")) {
-                return FilenameUtils.getBaseName(file.getName());
+                String baseName = FilenameUtils.getBaseName(file.getName());
+                int length = baseName.length();
+                return baseName.substring(1, length); // Need to remove the _ underscore in front of the version
             }
         }
         return null;

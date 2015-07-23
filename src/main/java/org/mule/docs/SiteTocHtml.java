@@ -25,7 +25,8 @@ public class SiteTocHtml {
             for(Section currentSection : this.sections) {
                 if(currentSection.getBaseName().contentEquals(section.getBaseName())) {
                     if(node.getUrl().contentEquals(section.getBaseName())) { //
-                        if(Utilities.isActiveUrlInSection(section.getRootNode(), page.getBaseName(), false)) {
+                        String fixedBaseName = Utilities.fixIndexBaseName(page.getBaseName());
+                        if(Utilities.isActiveUrlInSection(section.getRootNode(), fixedBaseName, false)) {
                             builder.append(getSelectedSectionHtml(section, page));
                         } else {
                             builder.append(getUnselectedSectionHtml(currentSection));
@@ -42,7 +43,7 @@ public class SiteTocHtml {
     }
 
     private String getSelectedSectionHtml(Section section, AsciiDocPage page) {
-        String pageUrl = page.getBaseName();
+        String pageUrl = Utilities.fixIndexBaseName(page.getBaseName()); // Replaces "index" with "" so it matches the node's expected URL
         // Can insert "/docs/" as the third parameter for production site
         return SectionTocHtml.getSelectedTocFromRootNode(section.getRootNode(), pageUrl, "/" + section.getUrl()).getHtml(); // Todo: add global baseUrl
     }

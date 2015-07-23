@@ -31,13 +31,19 @@ public class Breadcrumb {
 
     private String generateBreadcrumbsForActiveUrl(String activeUrl, String baseUrl) {
         List<TocNode> nodes = getBreadcrumbs(activeUrl);
-        StringBuilder html = new StringBuilder("<div class=\"breadcrumb-section\">");
+        StringBuilder html = new StringBuilder("<div class=\"breadcrumb-section\" data-swiftype-index='false'>");
         for(TocNode node : nodes) {
+            if(node.getUrl().equals("")) { // This code is to make sure we can link to a section root properly
+                node.setUrl("./");
+            }
             String url = Utilities.getConcatPath(new String[]{baseUrl, node.getUrl()});
             if(!node.getUrl().contentEquals(activeUrl)) {
                 html.append("<a href=\"" + url + "\">" + node.getTitle() + "</a>/");
             } else {
                 html.append("<a href=\"" + url + "\" class=\"breadcrumb-active-link\">" + node.getTitle() + "</a>");
+            }
+            if(node.getUrl().equals("./")) { // This code is to fix the above change before the TOC gets built
+                node.setUrl("");
             }
         }
         html.append("</div>");
@@ -70,7 +76,6 @@ public class Breadcrumb {
                 getActiveNode(node, activeUrl, activeNode);
             }
         }
-        return;
     }
 
     private static void validateInputParams(Object[] params) {

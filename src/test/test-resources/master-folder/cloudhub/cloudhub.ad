@@ -1,4 +1,5 @@
-= Siebel Connector
+= CloudHub
+:test-attribute: foo
 
 To configure the Siebel connector global elements in your Mule application:
 

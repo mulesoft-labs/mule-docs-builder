@@ -58,7 +58,8 @@ public class TabProcessor extends BlockProcessor {
                 count++;
 
                 // NOTE workaround missing append method on the AbstractBlock interface
-                JavaEmbedUtils.invokeMethod(rubyRuntime, container, "append", new Object[]{block}, Object.class);
+                //JavaEmbedUtils.invokeMethod(rubyRuntime, container, "append", new Object[]{block}, Object.class);
+                container.blocks().add(block);
             }
         }
 

@@ -1,4 +1,4 @@
-= Siebel Connector
+= CloudHub
 
 To configure the Siebel connector global elements in your Mule application:
 

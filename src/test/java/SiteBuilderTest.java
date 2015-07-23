@@ -7,7 +7,7 @@ import java.io.File;
 /**
  * Created by sean.osterberg on 3/17/15.
  */
-public class SiteBuilderTests {
+public class SiteBuilderTest {
 
     @Test
     public void buildSite_withValidFolders_BuildsSite() {
@@ -26,7 +26,7 @@ public class SiteBuilderTests {
     public void buildSite_withRealFolders_BuildsSite() {
         //File source = new File("/Users/sean.osterberg/mulesoft-docs/_source/");
         File source = new File("/Users/sean.osterberg/mulesoft-docs/docsite-demo-connect/site-source/");
-        File output = new File("/Users/sean.osterberg/mulesoft-docs/docsite-demo-connect/_output/");
+        File output = new File("/Users/sean.osterberg/mulesoft-docs/_output/");
         SiteBuilder.buildSite(source, output);
     }
 

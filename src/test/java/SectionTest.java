@@ -12,7 +12,7 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 /**
  * Created by sean.osterberg on 2/22/15.
  */
-public class SectionTests {
+public class SectionTest {
 
     @Test
     public void fromDirectory_WithValidSectionDirectory_ReturnsNewInstance() {
@@ -69,7 +69,7 @@ public class SectionTests {
     @Test
     public void fromDirectory_WithValidSectionDirectory_VersionCorrectPrettyName() {
         Section section = getValidSection();
-        assertTrue(section.getPrettyName().contentEquals("October 2014"));
+        assertTrue(section.getVersionPrettyName().contentEquals("October 2014"));
     }
 
     @Test(expected = DocBuildException.class)

@@ -12,15 +12,34 @@ import java.util.Map;
  * on the page, output the version selector HTML contextual to the page.
  */
 public class VersionSelector {
-    public static VersionSelector fromSection(Section section) {
-        if(section.getVersions().size() > 0) {
+    Section section;
 
-        }
-        return new VersionSelector();
+    public VersionSelector(Section section) {
+        this.section = section;
+    }
+
+    public static VersionSelector fromSection(Section section) {
+        return new VersionSelector(section);
     }
 
     public String htmlForPage(AsciiDocPage page) {
-        return "foo";
+        String output = "";
+        List<PageVersion> versions = getAllVersionMappingsForSection(this.section);
+        for(PageVersion version : versions) {
+            if(version.getBaseName().equals(page.getBaseName())) {
+                output += "<label for=\"version-selector\">" + this.section.getPrettyName() + " Version</label>\n";
+                output += "            <select id=\"version-selector\">\n";
+                int count = 1;
+                for(Map.Entry<String, String> entry : version.getVersionUrlAndPrettyName().entrySet()) {
+                    output += "                    <option value=\"" + count + "\"><a href=\"" + entry.getKey() + "\">"
+                            + entry.getValue() + "</a></option>\n";
+                    count++;
+                }
+                output += "    </select>\n";
+            }
+        }
+
+        return output;
     }
 
     public static List<PageVersion> getAllVersionMappingsForSection(Section section) {
@@ -53,13 +72,18 @@ public class VersionSelector {
         PageVersion match = getInstanceOfPageVersionIfMatch(page.getBaseName(), pageVersions);
         if(match == null) {
             PageVersion version = new PageVersion(page.getBaseName());
-            version.addUrlAndName(section.getUrl(), section.getPrettyName());
+            version.addUrlAndName(removeRootFromSectionUrl(section.getUrl()), section.getVersionPrettyName());
             pageVersions.add(version);
         } else {
-            if(!checkIfUrlAndNameAlreadyContains(match, section.getUrl(), section.getPrettyName())) {
-                match.addUrlAndName(section.getUrl(), section.getPrettyName());
+            if(!checkIfUrlAndNameAlreadyContains(match, section.getUrl(), section.getVersionPrettyName())) {
+                match.addUrlAndName(removeRootFromSectionUrl(section.getUrl()), section.getVersionPrettyName());
             }
         }
+    }
+
+    private static String removeRootFromSectionUrl(String sectionUrl) {
+        int index = sectionUrl.indexOf("/") + 1; // consume the slash as well as the section path
+        return sectionUrl.substring(index, sectionUrl.length());
     }
 
     private static PageVersion getInstanceOfPageVersionIfMatch(String baseName, List<PageVersion> pageVersions) {

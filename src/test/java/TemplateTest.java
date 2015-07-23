@@ -14,7 +14,7 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 /**
  * Created by sean.osterberg on 3/9/15.
  */
-public class TemplateTests {
+public class TemplateTest {
 
     @Test
     public void fromFile_WithValidFile_ReturnsNewInstance() {

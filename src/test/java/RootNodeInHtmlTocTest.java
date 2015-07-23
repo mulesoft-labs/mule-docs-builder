@@ -10,7 +10,7 @@ import java.io.File;
 /**
  * Created by sean.osterberg on 2/20/15.
  */
-public class RootNodeInHtmlTocTests {
+public class RootNodeInHtmlTocTest {
 
     @Test
     public void fromAsciiDocTocPage_ReturnsNewObject() {

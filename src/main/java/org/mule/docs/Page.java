@@ -37,6 +37,8 @@ public class Page {
         html = Utilities.replaceText(html, "{{ page.content }}", getContentHtml(page));
         html = Utilities.replaceText(html, "{{ page.version }}", getVersionHtml(section, page));
         html = Utilities.replaceText(html, "{{ page.sections }}", getSectionNavigator(page));
+        html = Utilities.replaceText(html, "{{ page.metadata }}", getPageMetadata(page));
+        html = Utilities.replaceText(html, "{{ page.swifttype-metadata }}", getSwiftTypeMetadata(page));
         logger.info("Built page from template for \"" + getPageTitle(page) + "\".");
         return html.toString();
     }
@@ -64,7 +66,7 @@ public class Page {
 
     private static String getBreadcrumbHtml(Section section, AsciiDocPage page) {
         Breadcrumb breadcrumb = Breadcrumb.fromRootNode(section.getRootNode());
-        return breadcrumb.getHtmlForActiveUrl(page.getBaseName(), "/docs/" + section.getUrl());
+        return breadcrumb.getHtmlForActiveUrl(page.getBaseName(), ""); //Todo: add "/docs/" as second param
     }
 
     private static String getContentHtml(AsciiDocPage page) {
@@ -75,6 +77,16 @@ public class Page {
     private static String getVersionHtml(Section section, AsciiDocPage page) {
         VersionSelector version = VersionSelector.fromSection(section);
         return version.htmlForPage(page);
+    }
+
+    private static String getPageMetadata(AsciiDocPage page) {
+        String metadata = PageMetadata.fromAsciiDocPage(page);
+        return metadata;
+    }
+
+    private static String getSwiftTypeMetadata(AsciiDocPage page) {
+        String metadata = SwiftTypeMetadata.fromAsciiDocPage(page);
+        return metadata;
     }
 
     private static String getSectionNavigator(AsciiDocPage page) {

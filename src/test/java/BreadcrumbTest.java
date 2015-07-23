@@ -14,7 +14,7 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 /**
  * Created by sean.osterberg on 2/22/15.
  */
-public class BreadcrumbTests {
+public class BreadcrumbTest {
 
     @Test
     public void fromRootNode_WithValidRootNodeAndUrl_ReturnsObject() {
@@ -56,7 +56,7 @@ public class BreadcrumbTests {
     public void getBreadcrumbs_WithValidRootNodeAndUrl_ReturnsCorrectHtml() {
         Breadcrumb breadcrumb = Breadcrumb.fromRootNode(TestUtilities.getValidRootNode());
         String html = breadcrumb.getHtmlForActiveUrl("cloudhub-managing-queues", "");
-        String desiredResult = "<div class=\"breadcrumb-section\"><a href=\"\">CloudHub</a>/"
+        String desiredResult = "<div class=\"breadcrumb-section\"><a href=\"./\">CloudHub</a>/"
                 + "<a href=\"managing-cloudhub-applications\">Managing CloudHub Applications</a>/"
                 + "<a href=\"cloudhub-managing-queues\" class=\"breadcrumb-active-link\">Managing Queues</a></div>";
         assertTrue(html.contentEquals(desiredResult));
@@ -65,8 +65,8 @@ public class BreadcrumbTests {
     @Test
     public void getBreadcrumbs_WithBaseUrl_ReturnsCorrectHtml() {
         Breadcrumb breadcrumb = Breadcrumb.fromRootNode(TestUtilities.getValidRootNode());
-        String html = breadcrumb.getHtmlForActiveUrl("cloudhub-managing-queues", "/docs/cloudhub/");
-        String desiredResult = "<div class=\"breadcrumb-section\"><a href=\"/docs/cloudhub/\">CloudHub</a>/"
+        String html = breadcrumb.getHtmlForActiveUrl("cloudhub-managing-queues", "/docs/cloudhub");
+        String desiredResult = "<div class=\"breadcrumb-section\"><a href=\"/docs/cloudhub/./\">CloudHub</a>/"
                 + "<a href=\"/docs/cloudhub/managing-cloudhub-applications\">Managing CloudHub Applications</a>/"
                 + "<a href=\"/docs/cloudhub/cloudhub-managing-queues\" class=\"breadcrumb-active-link\">Managing Queues</a></div>";
         assertTrue(html.contentEquals(desiredResult));
@@ -76,7 +76,7 @@ public class BreadcrumbTests {
     public void getBreadcrumbs_WithVersionSection_ReturnsCorrectHtml() {
         Breadcrumb breadcrumb = Breadcrumb.fromRootNode(TestUtilities.getValidRootNode());
         String html = breadcrumb.getHtmlForActiveUrl("cloudhub-managing-queues", "/docs/cloudhub/v/3.6");
-        String desiredResult = "<div class=\"breadcrumb-section\"><a href=\"/docs/cloudhub/v/3.6/\">CloudHub</a>/"
+        String desiredResult = "<div class=\"breadcrumb-section\"><a href=\"/docs/cloudhub/v/3.6/./\">CloudHub</a>/"
                 + "<a href=\"/docs/cloudhub/v/3.6/managing-cloudhub-applications\">Managing CloudHub Applications</a>/"
                 + "<a href=\"/docs/cloudhub/v/3.6/cloudhub-managing-queues\" class=\"breadcrumb-active-link\">Managing Queues</a></div>";
         assertTrue(html.contentEquals(desiredResult));

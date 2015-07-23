@@ -28,7 +28,6 @@ public class SectionTocHtml {
             Utilities.validateIfActiveUrlIsInSection(rootNode, url);
         }
         generateTocHtml(rootNode, builder, true, url, baseUrl);
-        logger.info("Created TOC HTML for section \"" + rootNode.getTitle() + "\".");
         return new SectionTocHtml(builder.toString());
     }
 
@@ -37,58 +36,33 @@ public class SectionTocHtml {
     }
 
     private static void generateTocHtml(TocNode parent, StringBuilder html, boolean isFirstItem, String activeUrl, String baseUrl) {
-        String sectionId = Utilities.getRandomAlphaNumericString(10);
+        String closed = "<li>\n<i></i>\n<a href=\"" + getCompleteUrl(baseUrl, parent.getUrl()) +
+                        "\">" + parent.getTitle() + "</a><ul>\n";
+        String opened = "<li class=\"expanded\">\n<i></i>\n<a href=\"" + getCompleteUrl(baseUrl, parent.getUrl()) +
+                        "\">" + parent.getTitle() + "</a><ul style=\"display: block;\">\n";
+        String selected = "<li class=\"active expanded\">\n<i></i>\n<a href=\"" + getCompleteUrl(baseUrl, parent.getUrl()) +
+                "\">" + parent.getTitle() + "</a><ul style=\"display: block;\">\n";
 
-        if(isFirstItem) {
-            html.append("<li class=\"category parent_li\">\n<i></i>\n" +
-            "<a href=\"" + getCompleteUrl(baseUrl, parent.getUrl()) + "\">" +
-            parent.getTitle() + "</a>" +
-            "<ul class=\"expanded\" style=\"display: none;\">\n");
-        } else if(activeUrl == null) {
-            html.append("<li class=\"parent_li\">\n<i></i>\n" +
-                    "<a href=\"" + getCompleteUrl(baseUrl, parent.getUrl()) + "\">" +
-                    parent.getTitle() + "</a>" +
-                    "<ul class=\"expanded\" style=\"display: none;\">\n");
-        } else if(Utilities.isActiveUrlInSection(parent, activeUrl, false)) {
-            html.append("<li class=\"parent_li\">\n<i></i>\n" +
-                    "<a href=\"" + getCompleteUrl(baseUrl, parent.getUrl()) + "\">" +
-                    parent.getTitle() + "</a>" +
-            "<ul class=\"expanded\" style=\"display: block;\">\n");
+        if(activeUrl != null) {
+            // Case: The parent topic for the expanded section should open its children
+            if (parent.getUrl().equalsIgnoreCase(activeUrl)) {
+                html.append(selected);
+
+            // Case: The item is the first in the section (the absolute parent), therefore the section should be open
+            } else if (isFirstItem && !activeUrl.isEmpty()) {
+                html.append(opened);
+
+            // Case: The selected topic is deeper in the section, therefore the section must be expanded
+            } else if (Utilities.isActiveUrlInSection(parent, activeUrl, false)) {
+                html.append(opened);
+
+            // Case: The default, which isn't expanded
+            } else {
+                html.append(closed);
+            }
         } else {
-            html.append("<li class=\"parent_li\">\n<i></i>\n" +
-                    "<a href=\"" + getCompleteUrl(baseUrl, parent.getUrl()) + "\">" +
-                    parent.getTitle() + "</a>" +
-            "<ul class=\"expanded\" style=\"display: none;\">\n");
+            html.append(closed);
         }
-
-        /*
-        if(activeUrl == null) {
-            html.append("<li class=\"toc-section\"><div class=\"toc-section-header child\"><a href=\"");
-            html.append(getCompleteUrl(baseUrl, parent.getUrl()) + "\">" + parent.getTitle() + "</a>");
-            html.append("<a href=\"#" + sectionId +  "\" data-toggle=\"collapse\" class=\"collapsed\"><div class=\"toc-section-header-arrow\"></div></a></div>");
-            html.append("<ul class=\"collapsed child-section collapse in\" id=\"" + sectionId + "\">");
-
-        } else if(parent.getUrl().equalsIgnoreCase(activeUrl)) {
-            html.append("<li class=\"toc-section\"><div class=\"toc-section-header active\"><a href=\"");
-            html.append(getCompleteUrl(baseUrl, parent.getUrl()) + "\" style=\"color: white\">" + parent.getTitle() + "</a>");
-            html.append("<a href=\"#" + sectionId +  "\" data-toggle=\"collapse\" class=\"collapsed\"><div class=\"toc-section-header-arrow\"></div></a></div>");
-            html.append("<ul class=\"collapsed child-section collapse in\" id=\"" + sectionId + "\">");
-        } else if(isFirstItem && !activeUrl.isEmpty()) {
-            html.append("<li class=\"toc-section\"><div class=\"toc-section-header child\"><a href=\"");
-            html.append(getCompleteUrl(baseUrl, parent.getUrl()) + "\">" + parent.getTitle() + "</a>");
-            html.append("<a href=\"#" + sectionId +  "\" data-toggle=\"collapse\" class=\"collapsed\"><div class=\"toc-section-header-arrow\"></div></a></div>");
-            html.append("<ul class=\"collapsed child-section collapse in\" id=\"" + sectionId + "\" style=\"height: 0px;\">");
-        } else if (org.mule.docs.Utilities.isActiveUrlInSection(parent, activeUrl, false)) {
-            html.append("<li class=\"toc-section\"><div class=\"toc-section-header child\"><a href=\"");
-            html.append(getCompleteUrl(baseUrl, parent.getUrl()) + "\">" + parent.getTitle() + "</a>");
-            html.append("<a href=\"#" + sectionId +  "\" data-toggle=\"collapse\" class=\"collapsed\"><div class=\"toc-section-header-arrow\"></div></a></div>");
-            html.append("<ul class=\"collapsed child-section collapse in\" id=\"" + sectionId + "\">");
-        } else {
-            html.append("<li class=\"toc-section\"><div class=\"toc-section-header child\"><a href=\"");
-            html.append(getCompleteUrl(baseUrl, parent.getUrl()) + "\">" + parent.getTitle() + "</a>");
-            html.append("<a href=\"#" + sectionId +  "\" data-toggle=\"collapse\" class=\"collapsed\"><div class=\"toc-section-header-arrow\"></div></a></div>");
-            html.append("<ul class=\"collapsed child-section collapse\" id=\"" + sectionId + "\" style=\"height: 0px;\">");
-        }*/
 
         if(parent.getChildren().size() == 0) {
             return;
@@ -103,10 +77,11 @@ public class SectionTocHtml {
             if(child.getChildren().size() > 0) {
                 generateTocHtml(child, html, false, activeUrl, baseUrl);
             } else {
-                html.append("<li><i></i><a href=\"" + getCompleteUrl(baseUrl, child.getUrl()) + "\">");
+                html.append("<li");
                 if(activeUrl != null && activeUrl.equalsIgnoreCase(child.getUrl())) {
-                    // html.append(" active"); //Todo: Not sure what the active will be
+                    html.append(" class=\"active\"");
                 }
+                html.append("><i></i><a href=\"" + getCompleteUrl(baseUrl, child.getUrl()) + "\">");
                 html.append(child.getTitle() + "</a></li>");
             }
         }

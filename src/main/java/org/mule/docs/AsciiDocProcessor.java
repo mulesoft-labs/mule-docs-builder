@@ -13,7 +13,7 @@ import java.util.Map;
 import static org.asciidoctor.Asciidoctor.Factory.create;
 
 /**
- * Created by Mulesoft.
+ * Created by MuleSoft.
  */
 public class AsciiDocProcessor {
 

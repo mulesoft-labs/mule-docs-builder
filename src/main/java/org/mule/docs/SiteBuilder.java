@@ -4,6 +4,8 @@ import org.apache.commons.io.FilenameUtils;
 
 import java.io.*;
 import java.util.*;
+
+import org.apache.log4j.Logger;
 import org.w3c.tidy.*;
 import org.w3c.dom.*;
 
@@ -11,6 +13,7 @@ import org.w3c.dom.*;
  * Created by sean.osterberg on 2/22/15.
  */
 public class SiteBuilder {
+    private static Logger logger = Logger.getLogger(SiteBuilder.class);
     private List<Section> sections;
     private SiteTableOfContents toc;
     private File sourceDirectory;
@@ -46,13 +49,17 @@ public class SiteBuilder {
     private void writeSections(List<Section> sections, File outputDirectory) {
         for(Section section : sections) {
             String sectionPath = Utilities.getConcatPath(new String[] {outputDirectory.getPath(), Utilities.removeLeadingSlashes(section.getUrl())});
+            logger.info("Started creating directory for \"" + section.getPrettyName() + "\" section: " + sectionPath + "...");
             Utilities.makeTargetDirectory(sectionPath);
+            logger.info("Finished creating section directory.");
+            logger.info("Started writing pages for section \"" + section + "\".");
             writePagesForSection(section);
             for(Section version : section.getVersions()) {
                 String versionPath = Utilities.getConcatPath(new String[] {outputDirectory.getPath(), Utilities.removeLeadingSlashes(version.getUrl())});
                 Utilities.makeTargetDirectory(versionPath);
                 writePagesForSection(version);
             }
+            logger.info("Finished writing pages for section \"" + section + "\".");
         }
     }
 
@@ -63,15 +70,16 @@ public class SiteBuilder {
 
     }
 
-
-
     private List<Template> getTemplates(File sourceDirectory) {
         List<Template> templates = new ArrayList<Template>();
         File templateDirectory = new File(Utilities.getConcatPath(new String[]{sourceDirectory.getPath(), "_templates"}));
         if(templateDirectory.isDirectory()) {
-            for (File templateFile : templateDirectory.listFiles()) {
-                if(FilenameUtils.getExtension(templateFile.getName()).equalsIgnoreCase("template")) {
-                    templates.add(Template.fromFile(templateFile));
+            File[] templateFiles = templateDirectory.listFiles();
+            if(templateFiles != null) {
+                for (File templateFile : templateFiles) {
+                    if (FilenameUtils.getExtension(templateFile.getName()).equalsIgnoreCase("template")) {
+                        templates.add(Template.fromFile(templateFile));
+                    }
                 }
             }
         }
@@ -82,7 +90,9 @@ public class SiteBuilder {
         List<Page> pages = Page.forSection(section, this.sections, this.templates, this.toc);
         for(Page page : pages) {
             String pagePath = Utilities.getConcatPath(new String[] {this.outputDirectory.getPath(), Utilities.removeLeadingSlashes(section.getUrl()), page.getBaseName()}) + ".html";
+            logger.info("Started writing page \"" + pagePath + "\"...");
             Utilities.writeFileToDirectory(pagePath, page.getContent());
+            logger.info("Finished writing page.");
         }
     }
 

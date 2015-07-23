@@ -12,7 +12,7 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 /**
  * Created by sean.osterberg on 2/22/15.
  */
-public class VersionSelectorTests {
+public class VersionSelectorTest {
 
     @Test
     public void fromSection_WithValidSection_ReturnsNewInstance() {

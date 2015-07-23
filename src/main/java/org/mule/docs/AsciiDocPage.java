@@ -83,7 +83,7 @@ public class AsciiDocPage {
     }
 
     private static String getPageTitle(String html) {
-        return Jsoup.parse(html, "UTF-8").title();
+        return Jsoup.parse(html, "UTF-8").title().trim();
     }
 
     private void validateInputParams(String[] params) {
