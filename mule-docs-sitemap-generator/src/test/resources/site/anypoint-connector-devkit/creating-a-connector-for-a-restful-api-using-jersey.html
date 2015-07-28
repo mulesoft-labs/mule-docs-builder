@@ -1,0 +1,1720 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MuleSoft Documentation // Creating a Connector for a RESTful API Using Jersey</title>
+    <link rel="stylesheet" type="text/css" href="../css/asciidoctor.css">
+    <link rel="stylesheet" type="text/css" href="../bootstrap-3.3.4-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet/less" type="text/css" href="../css/styles.less" />
+    <link rel="stylesheet/less" type="text/css" href="../css/scroll-menu.less" />
+    <link rel="stylesheet/less" type="text/css" href="../css/sidebar-menu.less" />
+    <link rel="stylesheet/less" type="text/css" href="../css/sub-header.less" />
+    <link rel="stylesheet/less" type="text/css" href="../css/article-content.less" />
+    <script src="../js/less.js"></script>
+    <script src="../js/jquery-1.11.2.min.js"></script>
+    <script src="../bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+    <script src="../js/scripts.js"></script>
+    <meta charset="utf-8">
+    <meta name="description" content="This discussion presents the steps required to build a Jersey Client connector for a RESTful Web service. Jersey interacts with the service, a..." />
+    <meta class="swiftype" name="title" data-type="string" content="Creating a Connector for a RESTful API Using Jersey" />
+
+</head>
+<body>
+<!-- Swiftype Code -->
+
+<script type="text/javascript">
+(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','Y6NSC3YWFiMQgK63xPb7','2.0.0');
+</script>
+<style>
+.st-autocomplete-results, .st-ui-autocomplete {
+  font-family: "OpenSans", Helvetica, Arial, sans-serif;
+  width: 340px;
+}
+
+.st-ui-search-input, .st-default-search-input {
+  color: white;
+}
+</style>
+
+<!-- End Swiftype Code -->
+
+<!-- DUMMY HEADER -->
+<div class="row header" style="background:#323031;height:70px;"></div>
+<!-- /DUMMY HEADER -->
+
+<div class="container">
+    <div class="row sub-header" data-swiftype-index='false'>
+      <div class="search-box col-md-3 col-xs-8">
+          <form action="">
+              <a href="#"><i class="tree-icon glyphicon glyphicon-th-list"></i></a>
+              <i class="glyphicon glyphicon-search"></i><input class="search-field st-default-search-input" type="text" name="search-docs" placeholder="Search the docs">
+              <input type="submit" value="Submit">
+          </form>
+      </div>
+      <div class="toolbar col-md-4 col-xs-4">
+          <div class="toolbar-dropdown edit-github">
+              <a href="#"><img class="github-icon" alt="github-icon"/><span>Edit on GitHub</span></a>
+          </div>
+          <div class="toolbar-dropdown helpful">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdown-helpful" data-toggle="dropdown" aria-expanded="true">
+                  <i class="glyphicon glyphicon-star-empty"></i><span>Helpful?</span>
+              </button>
+
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-helpful">
+                  <li role="presentation">
+                      <i class="glyphicon glyphicon-star"></i>
+                      <i class="glyphicon glyphicon-star"></i>
+                      <i class="glyphicon glyphicon-star"></i>
+                      <i class="glyphicon glyphicon-star-empty"></i>
+                      <i class="glyphicon glyphicon-star-empty"></i>
+                  </li>
+                  <li role="presentation"><textarea name="feedback-textarea" id="" cols="30" rows="5" placeholder="Feedback..."></textarea></li>
+                  <li role="presentation"><input type="submit" value="Submit"></li>
+              </ul>
+          </div>
+          <div class="toolbar-dropdown export">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdown-export" data-toggle="dropdown" aria-expanded="true">
+                  <i class="glyphicon glyphicon-log-out"></i><span>Export</span>
+              </button>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-export">
+                  <li role="presentation"><a href="#">Export as FORMAT1</a></li>
+                  <li role="presentation"><a href="#">Export as FORMAT2</a></li>
+                  <li role="presentation"><a href="#">Export as FORMAT3</a></li>
+              </ul>
+          </div>
+
+      </div>
+
+
+
+
+      <div class="version-selector col-md-5 col-xs-12">
+          
+
+          <!--
+          <label for="version-selector">CloudHub Version</label>
+          <select id="version-selector">
+              <option value="1">v 1.1238327285739</option>
+              <option value="2">v 1.2348577374539</option>
+              <option value="3">v 1.3583456695739</option>
+              <option value="4">v 1.4238456875739</option>
+          </select> -->
+
+      </div>
+
+    </div>
+    <div class="row">
+        <div class="sidebar-nav col-md-3" data-swiftype-index='false'>
+            <div class="marker"></div>
+            <div class="active-marker"></div>
+            <nav>
+                <ul class="tree">
+
+                  <li>
+<i></i>
+<a href="/mule-fundamentals/">Mule Fundamentals</a><ul>
+<li>
+<i></i>
+<a href="/mule-fundamentals/first-30-minutes-with-mule">First 30 Minutes with Mule</a><ul>
+<li><i></i><a href="/mule-fundamentals/anypoint-platform-primer">Anypoint Platform Primer</a></li><li><i></i><a href="/mule-fundamentals/begin-with-the-basics">Begin with the Basics</a></li><li><i></i><a href="/mule-fundamentals/download-and-launch-anypoint-studio">Download and Launch Anypoint Studio</a></li><li><i></i><a href="/mule-fundamentals/anypoint-studio-essentials">Anypoint Studio Essentials</a></li><li><i></i><a href="/mule-fundamentals/build-a-hello-world-application">Build a Hello World Application</a></li><li><i></i><a href="/mule-fundamentals/anypoint-exchange">Anypoint Exchange</a></li></ul></li>
+<li>
+<i></i>
+<a href="/mule-fundamentals/first-day-with-mule">First Day with Mule</a><ul>
+<li><i></i><a href="/mule-fundamentals/mule-concepts">Mule Concepts</a></li><li>
+<i></i>
+<a href="/mule-fundamentals/elements-in-a-mule-flow">Elements in a Mule Flow</a><ul>
+<li><i></i><a href="/mule-fundamentals/mule-connectors">Mule Connectors</a></li><li><i></i><a href="/mule-fundamentals/mule-components">Mule Components</a></li><li><i></i><a href="/mule-fundamentals/mule-transformers">Mule Transformers</a></li><li><i></i><a href="/mule-fundamentals/mule-filters-scopes-and-routers">Mule Filters Scopes and Routers</a></li><li><i></i><a href="/mule-fundamentals/mule-exception-strategies">Mule Exception Strategies</a></li></ul></li>
+<li><i></i><a href="/mule-fundamentals/mule-message-structure">Mule Message Structure</a></li><li><i></i><a href="/mule-fundamentals/message-state">Message State</a></li><li><i></i><a href="/mule-fundamentals/global-elements">Global Elements</a></li><li><i></i><a href="/mule-fundamentals/basic-studio-tutorial">Basic Studio Tutorial</a></li><li><i></i><a href="/mule-fundamentals/content-based-routing-tutorial">Content-Based Routing Tutorial</a></li><li><i></i><a href="/mule-fundamentals/anypoint-connector-tutorial">Anypoint Connector Tutorial</a></li><li><i></i><a href="/mule-fundamentals/mule-message-tutorial">Mule Message Tutorial</a></li></ul></li>
+<li>
+<i></i>
+<a href="/mule-fundamentals/first-week-with-mule">First Week with Mule</a><ul>
+<li><i></i><a href="/mule-fundamentals/mule-application-architecture">Mule Application Architecture</a></li><li>
+<i></i>
+<a href="/mule-fundamentals/flows-and-subflows">Flows and Subflows</a><ul>
+<li><i></i><a href="/mule-fundamentals/flow-architecture-advanced-use-case">Flow Architecture Advanced Use Case</a></li></ul></li>
+<li><i></i><a href="/mule-fundamentals/deploying-mule-applications">Deploying Mule Applications</a></li><li><i></i><a href="/mule-fundamentals/keyboard-shortcuts-in-studio">Keyboard Shortcuts in Studio</a></li><li><i></i><a href="/mule-fundamentals/mule-security">Mule Security</a></li><li><i></i><a href="/mule-fundamentals/extending-mule">Extending Mule</a></li></ul></li>
+</ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/">Mule User Guide</a><ul>
+<li>
+<i></i>
+<a href="/mule-user-guide/installing">Installing</a><ul>
+<li><i></i><a href="/mule-user-guide/hardware-and-software-requirements">Hardware and Software Requirements</a></li><li><i></i><a href="/mule-user-guide/compatibility">Compatibility</a></li><li><i></i><a href="/mule-user-guide/downloading-and-starting-mule-esb">Downloading and Starting Mule ESB</a></li><li><i></i><a href="/mule-user-guide/adding-community-runtime">Adding Community Runtime</a></li><li><i></i><a href="/mule-user-guide/installing-an-enterprise-license">Installing an Enterprise License</a></li><li><i></i><a href="/mule-user-guide/installing-extensions">Installing Extensions</a></li><li><i></i><a href="/mule-user-guide/studio-update-sites">Studio Update Sites</a></li><li><i></i><a href="/mule-user-guide/studio-in-eclipse">Studio in Eclipse</a></li></ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/developing">Developing</a><ul>
+<li>
+<i></i>
+<a href="/mule-user-guide/anypoint-connectors">Anypoint Connectors</a><ul>
+<li>
+<i></i>
+<a href="/mule-user-guide/connectors-user-guide">Connectors User Guide</a><ul>
+<li><i></i><a href="/mule-user-guide/installing-connectors">Installing Connectors</a></li><li><i></i><a href="/mule-user-guide/connector-configuration-reference">Connector Configuration Reference</a></li><li><i></i><a href="/mule-user-guide/working-with-multiple-versions-of-connectors">Working with Multiple Versions of Connectors</a></li><li><i></i><a href="/mule-user-guide/using-a-connector-to-access-an-oauth-api">Using a Connector to Access an OAuth API</a></li><li><i></i><a href="/mule-user-guide/auto-paging-in-anypoint-connectors">Auto-Paging in Anypoint Connectors</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/ajax-connector">Ajax Connector</a></li><li>
+<i></i>
+<a href="/mule-user-guide/amqp-connector">AMQP Connector</a><ul>
+<li><i></i><a href="/mule-user-guide/amqp-connector-examples">AMQP Connector Examples</a></li><li><i></i><a href="/mule-user-guide/amqp-connector-reference">AMQP Connector Reference</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/cassandra-connector">Cassandra Connector</a></li><li><i></i><a href="/mule-user-guide/cmis-connector">CMIS Connector</a></li><li><i></i><a href="/mule-user-guide/concur-connector">Concur Connector</a></li><li>
+<i></i>
+<a href="/mule-user-guide/database-connector">Database Connector</a><ul>
+<li><i></i><a href="/mule-user-guide/database-connector-examples">Database Connector Examples</a></li><li><i></i><a href="/mule-user-guide/database-connector-reference">Database Connector Reference</a></li></ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/dotnet-connector-guide">DotNet Connector Guide</a><ul>
+<li><i></i><a href="/mule-user-guide/dotnet-connector-user-guide">DotNet Connector User Guide</a></li><li><i></i><a href="/mule-user-guide/dotnet-connector-migration-guide">DotNet Connector Migration Guide</a></li><li><i></i><a href="/mule-user-guide/dotnet-connector-faqs">DotNet Connector FAQs</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/file-connector">File Connector</a></li><li><i></i><a href="/mule-user-guide/ftp-connector">FTP Connector</a></li><li><i></i><a href="/mule-user-guide/generic-connector">Generic Connector</a></li><li><i></i><a href="/mule-user-guide/hdfs-connector">HDFS Connector</a></li><li>
+<i></i>
+<a href="/mule-user-guide/http-connector">HTTP Connector</a><ul>
+<li><i></i><a href="/mule-user-guide/http-listener-connector">HTTP Listener Connector</a></li><li><i></i><a href="/mule-user-guide/http-request-connector">HTTP Request Connector</a></li><li><i></i><a href="/mule-user-guide/tls-configuration">TLS Configuration</a></li><li><i></i><a href="/mule-user-guide/migrating-to-the-new-http-connector">Migrating to the New HTTP Connector</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/http-connector-deprecated">HTTP Connector - Deprecated</a></li><li><i></i><a href="/mule-user-guide/imap-connector">IMAP Connector</a></li><li><i></i><a href="/mule-user-guide/jdbc-connector">JDBC Connector</a></li><li><i></i><a href="/mule-user-guide/microsoft-dynamics-ax-2012-connector">Microsoft Dynamics AX 2012 Connector</a></li><li><i></i><a href="/mule-user-guide/microsoft-dynamics-crm-connector">Microsoft Dynamics CRM Connector</a></li><li>
+<i></i>
+<a href="/mule-user-guide/microsoft-service-bus-connector">Microsoft Service Bus Connector</a><ul>
+<li><i></i><a href="/mule-user-guide/microsoft-service-bus-connector-faq">Microsoft Service Bus Connector FAQ</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/microsoft-sharepoint-2013-connector">Microsoft SharePoint 2013 Connector</a></li><li><i></i><a href="/mule-user-guide/microsoft-sharepoint-2010-connector">Microsoft SharePoint 2010 Connector</a></li><li>
+<i></i>
+<a href="/mule-user-guide/msmq-connector">MSMQ Connector</a><ul>
+<li><i></i><a href="/mule-user-guide/msmq-connector-user-guide">MSMQ Connector User Guide</a></li><li><i></i><a href="/mule-user-guide/windows-gateway-services-guide">Windows Gateway Services Guide</a></li><li><i></i><a href="/mule-user-guide/msmq-connector-faqs">MSMQ Connector FAQs</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/netsuite-connector">NetSuite Connector</a></li><li><i></i><a href="/mule-user-guide/oracle-e-business-suite-connector">Oracle E-Business Suite Connector</a></li><li><i></i><a href="/mule-user-guide/peoplesoft-connector">PeopleSoft Connector</a></li><li><i></i><a href="/mule-user-guide/pop3-connector">POP3 Connector</a></li><li><i></i><a href="/mule-user-guide/quartz-connector">Quartz Connector</a></li><li><i></i><a href="/mule-user-guide/salesforce-analytics-cloud-connector">Salesforce Analytics Cloud Connector</a></li><li>
+<i></i>
+<a href="/mule-user-guide/salesforce-connector">Salesforce Connector</a><ul>
+<li><i></i><a href="/mule-user-guide/salesforce-connector-reference">Salesforce Connector Reference</a></li><li><i></i><a href="/mule-user-guide/salesforce-connector-authentication">Salesforce Connector Authentication</a></li><li><i></i><a href="/mule-user-guide/salesforce-contact-aggregation-example">Salesforce Contact Aggregation Example</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/sap-connector">SAP Connector</a></li><li><i></i><a href="/mule-user-guide/servicenow-connector">ServiceNow Connector</a></li><li><i></i><a href="/mule-user-guide/servlet-connector">Servlet Connector</a></li><li><i></i><a href="/mule-user-guide/sftp-connector">SFTP Connector</a></li><li><i></i><a href="/mule-user-guide/siebel-connector">Siebel Connector</a></li><li>
+<i></i>
+<a href="/mule-user-guide/web-service-consumer">Web Service Consumer</a><ul>
+<li><i></i><a href="/mule-user-guide/web-service-consumer-reference">Web Service Consumer Reference</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/windows-powershell-connector-guide">Windows PowerShell Connector Guide</a></li><li><i></i><a href="/mule-user-guide/wmq-connector">WMQ Connector</a></li><li><i></i><a href="/mule-user-guide/workday-connector">Workday Connector</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/message-processors">Message Processors</a></li><li>
+<i></i>
+<a href="/mule-user-guide/components">Components</a><ul>
+<li>
+<i></i>
+<a href="/mule-user-guide/configuring-components">Configuring Components</a><ul>
+<li><i></i><a href="/mule-user-guide/configuring-java-components">Configuring Java Components</a></li><li><i></i><a href="/mule-user-guide/developing-components">Developing Components</a></li><li><i></i><a href="/mule-user-guide/component-bindings">Component Bindings</a></li><li><i></i><a href="/mule-user-guide/using-interceptors">Using Interceptors</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/cxf-component-reference">CXF Component Reference</a></li><li><i></i><a href="/mule-user-guide/echo-component-reference">Echo Component Reference</a></li><li><i></i><a href="/mule-user-guide/expression-component-reference">Expression Component Reference</a></li><li><i></i><a href="/mule-user-guide/flow-reference-component-reference">Flow Reference Component Reference</a></li><li><i></i><a href="/mule-user-guide/http-static-resource-handler">HTTP Static Resource Handler</a></li><li><i></i><a href="/mule-user-guide/http-response-builder">HTTP Response Builder</a></li><li><i></i><a href="/mule-user-guide/invoke-component-reference">Invoke Component Reference</a></li><li><i></i><a href="/mule-user-guide/java-component-reference">Java Component Reference</a></li><li>
+<i></i>
+<a href="/mule-user-guide/logger-component-reference">Logger Component Reference</a><ul>
+<li><i></i><a href="/mule-user-guide/logging-in-mule">Logging in Mule</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/rest-component-reference">REST Component Reference</a></li><li>
+<i></i>
+<a href="/mule-user-guide/script-component-reference">Script Component Reference</a><ul>
+<li><i></i><a href="/mule-user-guide/groovy-component-reference">Groovy Component Reference</a></li><li><i></i><a href="/mule-user-guide/javascript-component-reference">JavaScript Component Reference</a></li><li><i></i><a href="/mule-user-guide/python-component-reference">Python Component Reference</a></li><li><i></i><a href="/mule-user-guide/ruby-component-reference">Ruby Component Reference</a></li></ul></li>
+</ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/filters">Filters</a><ul>
+<li><i></i><a href="/mule-user-guide/custom-filter">Custom Filter</a></li><li><i></i><a href="/mule-user-guide/exception-filter">Exception Filter</a></li><li><i></i><a href="/mule-user-guide/filter-ref">Filter Ref</a></li><li><i></i><a href="/mule-user-guide/json-schema-validator">JSON Schema Validator</a></li><li><i></i><a href="/mule-user-guide/logic-filter">Logic Filter</a></li><li><i></i><a href="/mule-user-guide/message-filter">Message Filter</a></li><li><i></i><a href="/mule-user-guide/message-property-filter">Message Property Filter</a></li><li><i></i><a href="/mule-user-guide/regex-filter">Regex Filter</a></li><li><i></i><a href="/mule-user-guide/schema-validation-filter">Schema Validation Filter</a></li><li><i></i><a href="/mule-user-guide/wildcard-filter">Wildcard Filter</a></li></ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/routers">Routers</a><ul>
+<li><i></i><a href="/mule-user-guide/all-flow-control-reference">All Flow Control Reference</a></li><li><i></i><a href="/mule-user-guide/choice-flow-control-reference">Choice Flow Control Reference</a></li><li><i></i><a href="/mule-user-guide/scatter-gather">Scatter-Gather</a></li><li><i></i><a href="/mule-user-guide/splitter-flow-control-reference">Splitter Flow Control Reference</a></li></ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/scopes">Scopes</a><ul>
+<li><i></i><a href="/mule-user-guide/async-scope-reference">Async Scope Reference</a></li><li><i></i><a href="/mule-user-guide/cache-scope">Cache Scope</a></li><li><i></i><a href="/mule-user-guide/foreach">Foreach</a></li><li><i></i><a href="/mule-user-guide/message-enricher">Message Enricher</a></li><li>
+<i></i>
+<a href="/mule-user-guide/poll-reference">Poll Reference</a><ul>
+<li><i></i><a href="/mule-user-guide/poll-schedulers">Poll Schedulers</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/request-reply-scope">Request-Reply Scope</a></li><li><i></i><a href="/mule-user-guide/transactional">Transactional</a></li><li><i></i><a href="/mule-user-guide/until-successful-scope">Until Successful Scope</a></li></ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/transformers">Transformers</a><ul>
+<li>
+<i></i>
+<a href="/mule-user-guide/using-transformers">Using Transformers</a><ul>
+<li><i></i><a href="/mule-user-guide/transformers-configuration-reference">Transformers Configuration Reference</a></li><li><i></i><a href="/mule-user-guide/native-support-for-json">Native Support for JSON</a></li><li><i></i><a href="/mule-user-guide/xmlprettyprinter-transformer">XmlPrettyPrinter Transformer</a></li><li><i></i><a href="/mule-user-guide/creating-custom-transformers">Creating Custom Transformers</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/append-string-transformer-reference">Append String Transformer Reference</a></li><li><i></i><a href="/mule-user-guide/attachment-transformer-reference">Attachment Transformer Reference</a></li><li><i></i><a href="/mule-user-guide/expression-transformer-reference">Expression Transformer Reference</a></li><li><i></i><a href="/mule-user-guide/java-transformer-reference">Java Transformer Reference</a></li><li><i></i><a href="/mule-user-guide/object-to-xml-transformer-reference">Object to XML Transformer Reference</a></li><li><i></i><a href="/mule-user-guide/parse-template-reference">Parse Template Reference</a></li><li><i></i><a href="/mule-user-guide/property-transformer-reference">Property Transformer Reference</a></li><li><i></i><a href="/mule-user-guide/script-transformer-reference">Script Transformer Reference</a></li><li><i></i><a href="/mule-user-guide/session-variable-transformer-reference">Session Variable Transformer Reference</a></li><li><i></i><a href="/mule-user-guide/set-payload-transformer-reference">Set Payload Transformer Reference</a></li><li><i></i><a href="/mule-user-guide/variable-transformer-reference">Variable Transformer Reference</a></li><li><i></i><a href="/mule-user-guide/xml-to-object-transformer-reference">XML to Object Transformer Reference</a></li><li><i></i><a href="/mule-user-guide/xslt-transformer-reference">XSLT Transformer Reference</a></li><li>
+<i></i>
+<a href="/mule-user-guide/datamapper-user-guide-and-reference">Datamapper User Guide and Reference</a><ul>
+<li><i></i><a href="/mule-user-guide/datamapper-concepts">DataMapper Concepts</a></li><li><i></i><a href="/mule-user-guide/datamapper-visual-reference">DataMapper Visual Reference</a></li><li><i></i><a href="/mule-user-guide/defining-datamapper-input-and-output-metadata">Defining DataMapper Input and Output Metadata</a></li><li><i></i><a href="/mule-user-guide/building-a-mapping-flow-in-the-graphical-mapping-editor">Building a Mapping Flow in the Graphical Mapping Editor</a></li><li><i></i><a href="/mule-user-guide/updating-metadata-in-an-existing-mapping">Updating Metadata in an Existing Mapping</a></li><li><i></i><a href="/mule-user-guide/mapping-elements-inside-lists">Mapping Elements Inside Lists</a></li><li><i></i><a href="/mule-user-guide/previewing-datamapper-results-on-sample-data">Previewing DataMapper Results on Sample Data</a></li><li><i></i><a href="/mule-user-guide/datamapper-examples">DataMapper Examples</a></li><li><i></i><a href="/mule-user-guide/datamapper-supplemental-topics">DataMapper Supplemental Topics</a></li></ul></li>
+</ul></li>
+<li><i></i><a href="/mule-user-guide/business-events">Business Events</a></li><li>
+<i></i>
+<a href="/mule-user-guide/error-handling">Error Handling</a><ul>
+<li><i></i><a href="/mule-user-guide/catch-exception-strategy">Catch Exception Strategy</a></li><li><i></i><a href="/mule-user-guide/choice-exception-strategy">Choice Exception Strategy</a></li><li><i></i><a href="/mule-user-guide/reference-exception-strategy">Reference Exception Strategy</a></li><li><i></i><a href="/mule-user-guide/rollback-exception-strategy">Rollback Exception Strategy</a></li><li><i></i><a href="/mule-user-guide/exception-strategy-most-common-use-cases">Exception Strategy Most Common Use Cases</a></li></ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/mule-expression-language-mel">Mule Expression Language MEL</a><ul>
+<li><i></i><a href="/mule-user-guide/mule-expression-language-basic-syntax">Mule Expression Language Basic Syntax</a></li><li><i></i><a href="/mule-user-guide/mule-expression-language-examples">Mule Expression Language Examples</a></li><li>
+<i></i>
+<a href="/mule-user-guide/mule-expression-language-reference">Mule Expression Language Reference</a><ul>
+<li><i></i><a href="/mule-user-guide/mule-expression-language-date-and-time-functions">Mule Expression Language Date and Time Functions</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/mule-expression-language-tips">Mule Expression Language Tips</a></li></ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/datasense">DataSense</a><ul>
+<li><i></i><a href="/mule-user-guide/testing-connections">Testing Connections</a></li><li><i></i><a href="/mule-user-guide/using-perceptive-flow-design">Using Perceptive Flow Design</a></li><li><i></i><a href="/mule-user-guide/datasense-enabled-connectors">DataSense-enabled Connectors</a></li><li><i></i><a href="/mule-user-guide/using-the-datasense-explorer">Using the DataSense Explorer</a></li><li><i></i><a href="/mule-user-guide/datasense-query-editor">DataSense Query Editor</a></li><li><i></i><a href="/mule-user-guide/datasense-query-language">DataSense Query Language</a></li></ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/using-maven-with-mule">Using Maven with Mule</a><ul>
+<li>
+<i></i>
+<a href="/mule-user-guide/using-maven-in-anypoint-studio">Using Maven in Anypoint Studio</a><ul>
+<li><i></i><a href="/mule-user-guide/maven-support-in-anypoint-studio">Maven Support in Anypoint Studio</a></li><li><i></i><a href="/mule-user-guide/building-a-mule-application-with-maven-in-studio">Building a Mule Application with Maven in Studio</a></li><li><i></i><a href="/mule-user-guide/enabling-maven-support-for-a-studio-project">Enabling Maven Support for a Studio Project</a></li><li><i></i><a href="/mule-user-guide/importing-a-maven-project-into-studio">Importing a Maven Project into Studio</a></li></ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/using-maven-in-mule-esb">Using Maven in Mule ESB</a><ul>
+<li><i></i><a href="/mule-user-guide/configuring-maven-to-work-with-mule-esb">Configuring Maven to Work with Mule ESB</a></li><li><i></i><a href="/mule-user-guide/maven-tools-for-mule-esb">Maven Tools for Mule ESB</a></li><li><i></i><a href="/mule-user-guide/mule-esb-plugin-for-maven">Mule ESB Plugin For Maven</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/maven-reference">Maven Reference</a></li></ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/batch-processing">Batch Processing</a><ul>
+<li><i></i><a href="/mule-user-guide/batch-filters-and-batch-commit">Batch Filters and Batch Commit</a></li><li>
+<i></i>
+<a href="/mule-user-guide/batch-processing-reference">Batch Processing Reference</a><ul>
+<li><i></i><a href="/mule-user-guide/using-mel-with-batch-processing">Using MEL with Batch Processing</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/batch-streaming-and-job-execution">Batch Streaming and Job Execution</a></li><li><i></i><a href="/mule-user-guide/record-variable">Record Variable</a></li></ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/transaction-management">Transaction Management</a><ul>
+<li><i></i><a href="/mule-user-guide/single-resource-transactions">Single Resource Transactions</a></li><li><i></i><a href="/mule-user-guide/multiple-resource-transactions">Multiple Resource Transactions</a></li><li><i></i><a href="/mule-user-guide/xa-transactions">XA Transactions</a></li><li><i></i><a href="/mule-user-guide/using-bitronix-to-manage-transactions">Using Bitronix to Manage Transactions</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/the-properties-editor">The Properties Editor</a></li><li><i></i><a href="/mule-user-guide/importing-and-exporting-in-studio">Importing and Exporting in Studio</a></li><li><i></i><a href="/mule-user-guide/adding-and-removing-user-libraries">Adding and Removing User Libraries</a></li><li><i></i><a href="/mule-user-guide/changing-runtimes-in-studio">Changing Runtimes in Studio</a></li><li><i></i><a href="/mule-user-guide/starting-the-runtime-in-cluster-mode-in-studio">Starting the Runtime in Cluster Mode in Studio</a></li><li>
+<i></i>
+<a href="/mule-user-guide/shared-resources">Shared Resources</a><ul>
+<li><i></i><a href="/mule-user-guide/setting-environment-variables">Setting Environment Variables</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/mule-versus-web-application-server">Mule versus Web Application Server</a></li><li>
+<i></i>
+<a href="/mule-user-guide/publishing-and-consuming-apis-with-mule">Publishing and Consuming APIs with Mule</a><ul>
+<li>
+<i></i>
+<a href="/mule-user-guide/publishing-a-soap-api">Publishing a SOAP API</a><ul>
+<li><i></i><a href="/mule-user-guide/securing-a-soap-api">Securing a SOAP API</a></li><li><i></i><a href="/mule-user-guide/extra-cxf-component-configurations">Extra CXF Component Configurations</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/consuming-a-soap-api">Consuming a SOAP API</a></li><li><i></i><a href="/mule-user-guide/publishing-a-rest-api">Publishing a REST API</a></li><li>
+<i></i>
+<a href="/mule-user-guide/consuming-a-rest-api">Consuming a REST API</a><ul>
+<li><i></i><a href="/mule-user-guide/rest-api-examples">REST API Examples</a></li></ul></li>
+</ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/advanced-usage-of-mule-esb">Advanced Usage of Mule ESB</a><ul>
+<li><i></i><a href="/mule-user-guide/storing-objects-in-the-registry">Storing Objects in the Registry</a></li><li><i></i><a href="/mule-user-guide/object-scopes">Object Scopes</a></li><li>
+<i></i>
+<a href="/mule-user-guide/using-mule-with-spring">Using Mule with Spring</a><ul>
+<li><i></i><a href="/mule-user-guide/sending-and-receiving-mule-events-in-spring">Sending and Receiving Mule Events in Spring</a></li><li><i></i><a href="/mule-user-guide/spring-application-contexts">Spring Application Contexts</a></li><li><i></i><a href="/mule-user-guide/using-spring-beans-as-flow-components">Using Spring Beans as Flow Components</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/configuring-properties">Configuring Properties</a></li><li><i></i><a href="/mule-user-guide/creating-and-managing-a-cluster-manually">Creating and Managing a Cluster Manually</a></li><li><i></i><a href="/mule-user-guide/distributed-file-polling">Distributed File Polling</a></li><li><i></i><a href="/mule-user-guide/distributed-locking">Distributed Locking</a></li><li><i></i><a href="/mule-user-guide/streaming">Streaming</a></li><li><i></i><a href="/mule-user-guide/about-configuration-builders">About Configuration Builders</a></li><li><i></i><a href="/mule-user-guide/internationalizing-strings">Internationalizing Strings</a></li><li><i></i><a href="/mule-user-guide/bootstrapping-the-registry">Bootstrapping the Registry</a></li><li><i></i><a href="/mule-user-guide/tuning-performance">Tuning Performance</a></li><li>
+<i></i>
+<a href="/mule-user-guide/mule-agents">Mule Agents</a><ul>
+<li><i></i><a href="/mule-user-guide/agent-security%3a-disabled-weak-ciphers">Agent Security: Disabled Weak Ciphers</a></li><li><i></i><a href="/mule-user-guide/jmx-management">JMX Management</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/flow-processing-strategies">Flow Processing Strategies</a></li><li><i></i><a href="/mule-user-guide/mule-object-stores">Mule Object Stores</a></li><li><i></i><a href="/mule-user-guide/configuring-reconnection-strategies">Configuring Reconnection Strategies</a></li><li><i></i><a href="/mule-user-guide/using-the-mule-client">Using the Mule Client</a></li><li>
+<i></i>
+<a href="/mule-user-guide/using-web-services">Using Web Services</a><ul>
+<li><i></i><a href="/mule-user-guide/proxying-web-services">Proxying Web Services</a></li><li><i></i><a href="/mule-user-guide/using-.net-web-services-with-mule">Using .NET Web Services with Mule</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/passing-additional-arguments-to-the-jvm-to-control-mule">Passing Additional Arguments to the JVM to Control Mule</a></li></ul></li>
+</ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/securing">Securing</a><ul>
+<li>
+<i></i>
+<a href="/mule-user-guide/anypoint-enterprise-security">Anypoint Enterprise Security</a><ul>
+<li><i></i><a href="/mule-user-guide/installing-anypoint-enterprise-security">Installing Anypoint Enterprise Security</a></li><li>
+<i></i>
+<a href="/mule-user-guide/mule-secure-token-service">Mule Secure Token Service</a><ul>
+<li><i></i><a href="/mule-user-guide/creating-an-oauth-2.0a-web-service-provider">Creating an OAuth 2.0a Web Service Provider</a></li><li><i></i><a href="/mule-user-guide/authorization-grant-types">Authorization Grant Types</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/mule-credentials-vault">Mule Credentials Vault</a></li><li>
+<i></i>
+<a href="/mule-user-guide/mule-message-encryption-processor">Mule Message Encryption Processor</a><ul>
+<li><i></i><a href="/mule-user-guide/pgp-encrypter">PGP Encrypter</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/mule-digital-signature-processor">Mule Digital Signature Processor</a></li><li><i></i><a href="/mule-user-guide/anypoint-filter-processor">Anypoint Filter Processor</a></li><li><i></i><a href="/mule-user-guide/mule-crc32-processor">Mule CRC32 Processor</a></li><li><i></i><a href="/mule-user-guide/anypoint-enterprise-security-example-application">Anypoint Enterprise Security Example Application</a></li><li><i></i><a href="/mule-user-guide/mule-sts-oauth-2.0a-example-application">Mule STS OAuth 2.0a Example Application</a></li></ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/configuring-security">Configuring Security</a><ul>
+<li><i></i><a href="/mule-user-guide/configuring-the-spring-security-manager">Configuring the Spring Security Manager</a></li><li><i></i><a href="/mule-user-guide/component-authorization-using-spring-security">Component Authorization Using Spring Security</a></li><li><i></i><a href="/mule-user-guide/setting-up-ldap-provider-for-spring-security">Setting up LDAP Provider for Spring Security</a></li><li><i></i><a href="/mule-user-guide/upgrading-from-acegi-to-spring-security">Upgrading from Acegi to Spring Security</a></li><li><i></i><a href="/mule-user-guide/encryption-strategies">Encryption Strategies</a></li><li><i></i><a href="/mule-user-guide/pgp-security">PGP Security</a></li><li><i></i><a href="/mule-user-guide/jaas-security">Jaas Security</a></li><li><i></i><a href="/mule-user-guide/saml-module">SAML Module</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/fips-140-2-compliance-support">FIPS 140-2 Compliance Support</a></li></ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/debugging">Debugging</a><ul>
+<li><i></i><a href="/mule-user-guide/studio-visual-debugger">Studio Visual Debugger</a></li><li>
+<i></i>
+<a href="/mule-user-guide/troubleshooting">Troubleshooting</a><ul>
+<li><i></i><a href="/mule-user-guide/configuring-mule-stacktraces">Configuring Mule Stacktraces</a></li><li><i></i><a href="/mule-user-guide/debugging-outside-studio">Debugging Outside Studio</a></li><li><i></i><a href="/mule-user-guide/logging">Logging</a></li></ul></li>
+</ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/testing">Testing</a><ul>
+<li><i></i><a href="/mule-user-guide/introduction-to-testing-mule">Introduction to Testing Mule</a></li><li><i></i><a href="/mule-user-guide/unit-testing">Unit Testing</a></li><li><i></i><a href="/mule-user-guide/functional-testing">Functional Testing</a></li><li><i></i><a href="/mule-user-guide/testing-strategies">Testing Strategies</a></li><li><i></i><a href="/mule-user-guide/munit">MUnit</a></li></ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/deploying">Deploying</a><ul>
+<li><i></i><a href="/mule-user-guide/starting-and-stopping-mule-esb">Starting and Stopping Mule ESB</a></li><li>
+<i></i>
+<a href="/mule-user-guide/deployment-scenarios">Deployment Scenarios</a><ul>
+<li><i></i><a href="/mule-user-guide/choosing-the-right-clustering-topology">Choosing the Right Clustering Topology</a></li><li><i></i><a href="/mule-user-guide/embedding-mule-in-a-java-application-or-webapp">Embedding Mule in a Java Application or Webapp</a></li><li>
+<i></i>
+<a href="/mule-user-guide/deploying-mule-to-jboss">Deploying Mule to JBoss</a><ul>
+<li><i></i><a href="/mule-user-guide/mule-as-mbean">Mule as MBean</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/deploying-mule-to-weblogic">Deploying Mule to WebLogic</a></li><li><i></i><a href="/mule-user-guide/deploying-mule-to-websphere">Deploying Mule to WebSphere</a></li><li><i></i><a href="/mule-user-guide/deploying-mule-as-a-service-to-tomcat">Deploying Mule as a Service to Tomcat</a></li><li><i></i><a href="/mule-user-guide/application-server-based-hot-deployment">Application Server Based Hot Deployment</a></li><li>
+<i></i>
+<a href="/mule-user-guide/classloader-control-in-mule">Classloader Control in Mule</a><ul>
+<li><i></i><a href="/mule-user-guide/fine-grain-classloader-control">Fine Grain Classloader Control</a></li></ul></li>
+</ul></li>
+<li><i></i><a href="/mule-user-guide/deploying-to-multiple-environments">Deploying to Multiple Environments</a></li><li>
+<i></i>
+<a href="/mule-user-guide/mule-high-availability-ha-clusters">Mule High Availability HA Clusters</a><ul>
+<li>
+<i></i>
+<a href="/mule-user-guide/evaluating-mule-high-availability-clusters-demo">Evaluating Mule High Availability Clusters Demo</a><ul>
+<li><i></i><a href="/mule-user-guide/1-installing-the-demo-bundle">1 - Installing the Demo Bundle</a></li><li><i></i><a href="/mule-user-guide/2-creating-a-cluster">2 - Creating a Cluster</a></li><li><i></i><a href="/mule-user-guide/3-deploying-an-application">3 - Deploying an Application</a></li><li><i></i><a href="/mule-user-guide/4-applying-load-to-the-cluster">4 - Applying Load to the Cluster</a></li><li><i></i><a href="/mule-user-guide/5-witnessing-failover">5 - Witnessing Failover</a></li><li><i></i><a href="/mule-user-guide/6-troubleshooting-and-next-steps">6 - Troubleshooting and Next Steps</a></li></ul></li>
+</ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/mule-deployment-model">Mule Deployment Model</a><ul>
+<li><i></i><a href="/mule-user-guide/hot-deployment">Hot Deployment</a></li><li><i></i><a href="/mule-user-guide/application-deployment">Application Deployment</a></li><li><i></i><a href="/mule-user-guide/application-format">Application Format</a></li><li>
+<i></i>
+<a href="/mule-user-guide/mule-application-deployment-descriptor">Mule Application Deployment Descriptor</a><ul>
+<li><i></i><a href="/mule-user-guide/application-plugin-format">Application Plugin Format</a></li><li><i></i><a href="/mule-user-guide/mule-plugin-format">Mule Plugin Format</a></li></ul></li>
+</ul></li>
+<li><i></i><a href="/mule-user-guide/mule-server-notifications">Mule Server Notifications</a></li><li><i></i><a href="/mule-user-guide/profiling-mule">Profiling Mule</a></li><li><i></i><a href="/mule-user-guide/hardening-your-mule-installation">Hardening your Mule Installation</a></li><li>
+<i></i>
+<a href="/mule-user-guide/configuring-mule-for-different-deployment-scenarios">Configuring Mule for Different Deployment Scenarios</a><ul>
+<li><i></i><a href="/mule-user-guide/configuring-mule-as-a-linux-or-unix-daemon">Configuring Mule as a Linux or Unix Daemon</a></li><li><i></i><a href="/mule-user-guide/configuring-mule-as-a-windows-service">Configuring Mule as a Windows Service</a></li><li><i></i><a href="/mule-user-guide/configuring-mule-to-run-from-a-script">Configuring Mule to Run From a Script</a></li><li><i></i><a href="/mule-user-guide/configuring-mule-to-run-from-maven">Configuring Mule to Run From Maven</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/preparing-a-gitignore-file">Preparing a gitignore File</a></li><li><i></i><a href="/mule-user-guide/using-subversion-with-studio">Using Subversion with Studio</a></li></ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/extending">Extending</a><ul>
+<li><i></i><a href="/mule-user-guide/extending-components">Extending Components</a></li><li><i></i><a href="/mule-user-guide/custom-message-processors">Custom Message Processors</a></li><li><i></i><a href="/mule-user-guide/creating-example-archetypes">Creating Example Archetypes</a></li><li><i></i><a href="/mule-user-guide/creating-a-custom-xml-namespace">Creating a Custom XML Namespace</a></li><li><i></i><a href="/mule-user-guide/creating-module-archetypes">Creating Module Archetypes</a></li><li><i></i><a href="/mule-user-guide/creating-catalog-archetypes">Creating Catalog Archetypes</a></li><li><i></i><a href="/mule-user-guide/creating-project-archetypes">Creating Project Archetypes</a></li><li>
+<i></i>
+<a href="/mule-user-guide/creating-transports">Creating Transports</a><ul>
+<li><i></i><a href="/mule-user-guide/transport-archetype">Transport Archetype</a></li><li><i></i><a href="/mule-user-guide/transport-service-descriptors">Transport Service Descriptors</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/creating-custom-routers">Creating Custom Routers</a></li></ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/reference">Reference</a><ul>
+<li>
+<i></i>
+<a href="/mule-user-guide/team-development-with-mule">Team Development with Mule</a><ul>
+<li><i></i><a href="/mule-user-guide/modularizing-your-configuration-files-for-team-development">Modularizing Your Configuration Files for Team Development</a></li><li><i></i><a href="/mule-user-guide/using-side-by-side-configuration-files">Using Side-by-Side Configuration Files</a></li><li><i></i><a href="/mule-user-guide/using-modules-in-your-application">Using Modules In Your Application</a></li><li><i></i><a href="/mule-user-guide/sharing-custom-code">Sharing Custom Code</a></li><li><i></i><a href="/mule-user-guide/sharing-custom-configuration-fragments">Sharing Custom Configuration Fragments</a></li><li><i></i><a href="/mule-user-guide/sharing-custom-configuration-patterns">Sharing Custom Configuration Patterns</a></li><li><i></i><a href="/mule-user-guide/sharing-applications">Sharing Applications</a></li><li>
+<i></i>
+<a href="/mule-user-guide/sustainable-software-development-practices-with-mule">Sustainable Software Development Practices with Mule</a><ul>
+<li><i></i><a href="/mule-user-guide/reproducible-builds">Reproducible Builds</a></li><li><i></i><a href="/mule-user-guide/continuous-integration">Continuous Integration</a></li></ul></li>
+</ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/configuration-patterns">Configuration Patterns</a><ul>
+<li>
+<i></i>
+<a href="/mule-user-guide/understanding-mule-configuration">Understanding Mule Configuration</a><ul>
+<li><i></i><a href="/mule-user-guide/about-the-xml-configuration-file">About the XML Configuration File</a></li></ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/choosing-between-flows-and-patterns">Choosing Between Flows and Patterns</a><ul>
+<li><i></i><a href="/mule-user-guide/using-flows-for-service-orchestration">Using Flows for Service Orchestration</a></li><li><i></i><a href="/mule-user-guide/using-mule-configuration-patterns">Using Mule Configuration Patterns</a></li></ul></li>
+</ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/filter-references">Filter References</a><ul>
+<li><i></i><a href="/mule-user-guide/idempotent-filter">Idempotent Filter</a></li></ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/general-configuration-reference">General Configuration Reference</a><ul>
+<li><i></i><a href="/mule-user-guide/bpm-configuration-reference">BPM Configuration Reference</a></li><li><i></i><a href="/mule-user-guide/component-configuration-reference">Component Configuration Reference</a></li><li>
+<i></i>
+<a href="/mule-user-guide/endpoint-configuration-reference">Endpoint Configuration Reference</a><ul>
+<li><i></i><a href="/mule-user-guide/mule-endpoint-uris">Mule Endpoint URIs</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/exception-strategy-configuration-reference">Exception Strategy Configuration Reference</a></li><li><i></i><a href="/mule-user-guide/filters-configuration-reference">Filters Configuration Reference</a></li><li><i></i><a href="/mule-user-guide/global-settings-configuration-reference">Global Settings Configuration Reference</a></li><li><i></i><a href="/mule-user-guide/notifications-configuration-reference">Notifications Configuration Reference</a></li><li><i></i><a href="/mule-user-guide/properties-configuration-reference">Properties Configuration Reference</a></li><li><i></i><a href="/mule-user-guide/security-manager-configuration-reference">Security Manager Configuration Reference</a></li><li><i></i><a href="/mule-user-guide/transactions-configuration-reference">Transactions Configuration Reference</a></li></ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/transports-reference">Transports Reference</a><ul>
+<li>
+<i></i>
+<a href="/mule-user-guide/connecting-using-transports">Connecting Using Transports</a><ul>
+<li><i></i><a href="/mule-user-guide/configuring-a-transport">Configuring a Transport</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/ajax-transport-reference">AJAX Transport Reference</a></li><li><i></i><a href="/mule-user-guide/ejb-transport-reference">EJB Transport Reference</a></li><li><i></i><a href="/mule-user-guide/email-transport-reference">Email Transport Reference</a></li><li><i></i><a href="/mule-user-guide/file-transport-reference">File Transport Reference</a></li><li><i></i><a href="/mule-user-guide/ftp-transport-reference">FTP Transport Reference</a></li><li>
+<i></i>
+<a href="/mule-user-guide/mulesoft-enterprise-java-connector-for-sap-reference">MuleSoft Enterprise Java Connector for SAP Reference</a><ul>
+<li><i></i><a href="/mule-user-guide/sap-jco-extended-properties">SAP JCo Extended Properties</a></li><li><i></i><a href="/mule-user-guide/sap-jco-server-services-configuration">SAP JCo Server Services Configuration</a></li><li><i></i><a href="/mule-user-guide/outbound-endpoint-transactions">Outbound Endpoint Transactions</a></li><li><i></i><a href="/mule-user-guide/troubleshooting-sap-connector">Troubleshooting SAP Connector</a></li><li><i></i><a href="/mule-user-guide/xml-definitions">XML Definitions</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/http-transport-reference">HTTP Transport Reference</a></li><li><i></i><a href="/mule-user-guide/https-transport-reference">HTTPS Transport Reference</a></li><li><i></i><a href="/mule-user-guide/imap-transport-reference">IMAP Transport Reference</a></li><li><i></i><a href="/mule-user-guide/jdbc-transport-reference">JDBC Transport Reference</a></li><li>
+<i></i>
+<a href="/mule-user-guide/jetty-transport-reference">Jetty Transport Reference</a><ul>
+<li><i></i><a href="/mule-user-guide/jetty-ssl-transport">Jetty SSL Transport</a></li></ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/jms-transport-reference">JMS Transport Reference</a><ul>
+<li><i></i><a href="/mule-user-guide/activemq-integration">ActiveMQ Integration</a></li><li><i></i><a href="/mule-user-guide/hornetq-integration">HornetQ Integration</a></li><li><i></i><a href="/mule-user-guide/open-mq-integration">Open MQ Integration</a></li><li><i></i><a href="/mule-user-guide/solace-jms">Solace JMS</a></li><li><i></i><a href="/mule-user-guide/tibco-ems-integration">Tibco EMS Integration</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/multicast-transport-reference">Multicast Transport Reference</a></li><li><i></i><a href="/mule-user-guide/pop3-transport-reference">POP3 Transport Reference</a></li><li><i></i><a href="/mule-user-guide/quartz-transport-reference">Quartz Transport Reference</a></li><li><i></i><a href="/mule-user-guide/rmi-transport-reference">RMI Transport Reference</a></li><li><i></i><a href="/mule-user-guide/servlet-transport-reference">Servlet Transport Reference</a></li><li><i></i><a href="/mule-user-guide/sftp-transport-reference">SFTP Transport Reference</a></li><li><i></i><a href="/mule-user-guide/smtp-transport-reference">SMTP Transport Reference</a></li><li><i></i><a href="/mule-user-guide/ssl-and-tls-transports-reference">SSL and TLS Transports Reference</a></li><li><i></i><a href="/mule-user-guide/stdio-transport-reference">STDIO Transport Reference</a></li><li><i></i><a href="/mule-user-guide/tcp-transport-reference">TCP Transport Reference</a></li><li><i></i><a href="/mule-user-guide/udp-transport-reference">UDP Transport Reference</a></li><li><i></i><a href="/mule-user-guide/vm-transport-reference">VM Transport Reference</a></li><li><i></i><a href="/mule-user-guide/mule-wmq-transport-reference">Mule WMQ Transport Reference</a></li><li><i></i><a href="/mule-user-guide/wsdl-connectors">WSDL Connectors</a></li><li><i></i><a href="/mule-user-guide/xmpp-transport-reference">XMPP Transport Reference</a></li></ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/modules-reference">Modules Reference</a><ul>
+<li><i></i><a href="/mule-user-guide/atom-module-reference">Atom Module Reference</a></li><li>
+<i></i>
+<a href="/mule-user-guide/bpm-module-reference">BPM Module Reference</a><ul>
+<li><i></i><a href="/mule-user-guide/drools-module-reference">Drools Module Reference</a></li><li><i></i><a href="/mule-user-guide/jboss-jbpm-module-reference">JBoss jBPM Module Reference</a></li></ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/cxf-module-reference">CXF Module Reference</a><ul>
+<li><i></i><a href="/mule-user-guide/cxf-module-overview">CXF Module Overview</a></li><li><i></i><a href="/mule-user-guide/building-web-services-with-cxf">Building Web Services with CXF</a></li><li><i></i><a href="/mule-user-guide/consuming-web-services-with-cxf">Consuming Web Services with CXF</a></li><li><i></i><a href="/mule-user-guide/enabling-ws-addressing">Enabling WS-Addressing</a></li><li><i></i><a href="/mule-user-guide/enabling-ws-security">Enabling WS-Security</a></li><li><i></i><a href="/mule-user-guide/cxf-error-handling">CXF Error Handling</a></li><li><i></i><a href="/mule-user-guide/proxying-web-services-with-cxf">Proxying Web Services with CXF</a></li><li><i></i><a href="/mule-user-guide/supported-web-service-standards">Supported Web Service Standards</a></li><li><i></i><a href="/mule-user-guide/using-a-web-service-client-directly">Using a Web Service Client Directly</a></li><li><i></i><a href="/mule-user-guide/using-http-get-requests">Using HTTP GET Requests</a></li><li><i></i><a href="/mule-user-guide/using-mtom">Using MTOM</a></li><li><i></i><a href="/mule-user-guide/cxf-module-configuration-reference">CXF Module Configuration Reference</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/data-bindings-reference">Data Bindings Reference</a></li><li><i></i><a href="/mule-user-guide/jaas-module-reference">JAAS Module Reference</a></li><li><i></i><a href="/mule-user-guide/jboss-transaction-manager-reference">JBoss Transaction Manager Reference</a></li><li><i></i><a href="/mule-user-guide/jersey-module-reference">Jersey Module Reference</a></li><li><i></i><a href="/mule-user-guide/json-module-reference">JSON Module Reference</a></li><li><i></i><a href="/mule-user-guide/rss-module-reference">RSS Module Reference</a></li><li><i></i><a href="/mule-user-guide/scripting-module-reference">Scripting Module Reference</a></li><li><i></i><a href="/mule-user-guide/spring-extras-module-reference">Spring Extras Module Reference</a></li><li><i></i><a href="/mule-user-guide/sxc-module-reference">SXC Module Reference</a></li><li>
+<i></i>
+<a href="/mule-user-guide/xml-module-reference">XML Module Reference</a><ul>
+<li><i></i><a href="/mule-user-guide/domtoxml-transformer">DomToXml Transformer</a></li><li><i></i><a href="/mule-user-guide/jaxb-bindings">JAXB Bindings</a></li><li><i></i><a href="/mule-user-guide/jaxb-transformers">JAXB Transformers</a></li><li><i></i><a href="/mule-user-guide/jxpath-extractor-transformer">JXPath Extractor Transformer</a></li><li><i></i><a href="/mule-user-guide/xml-namespaces">XML Namespaces</a></li><li><i></i><a href="/mule-user-guide/xmlobject-transformers">XmlObject Transformers</a></li><li><i></i><a href="/mule-user-guide/xmltoxmlstreamreader-transformer">XmlToXMLStreamReader Transformer</a></li><li><i></i><a href="/mule-user-guide/xquery-support">XQuery Support</a></li><li><i></i><a href="/mule-user-guide/xquery-transformer">XQuery Transformer</a></li><li><i></i><a href="/mule-user-guide/xslt-transformer">XSLT Transformer</a></li><li><i></i><a href="/mule-user-guide/xpath-extractor-transformer">XPath Extractor Transformer</a></li><li><i></i><a href="/mule-user-guide/xpath">XPath</a></li></ul></li>
+</ul></li>
+<li>
+<i></i>
+<a href="/mule-user-guide/non-mel-expressions-configuration-reference">Non-MEL Expressions Configuration Reference</a><ul>
+<li><i></i><a href="/mule-user-guide/using-non-mel-expressions">Using Non-MEL Expressions</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/creating-non-mel-expression-evaluators">Creating Non-MEL Expression Evaluators</a></li><li>
+<i></i>
+<a href="/mule-user-guide/schema-documentation">Schema Documentation</a><ul>
+<li><i></i><a href="/mule-user-guide/notes-on-mule-3.0-schema-changes">Notes on Mule 3.0 Schema Changes</a></li></ul></li>
+<li><i></i><a href="/mule-user-guide/mule-esb-3-and-test-api-javadoc">Mule ESB 3 and Test API Javadoc</a></li><li><i></i><a href="/mule-user-guide/mulesoft-security-update-policy">MuleSoft Security Update Policy</a></li></ul></li>
+</ul></li>
+<li>
+<i></i>
+<a href="/mule-agent/">The Mule Agent</a><ul>
+<li><i></i><a href="/mule-agent/installing-mule-agent">Installing Mule Agent</a></li><li><i></i><a href="/mule-agent/mule-agent-architecture">Mule Agent Architecture</a></li><li><i></i><a href="/mule-agent/administration-service">Administration Service</a></li><li><i></i><a href="/mule-agent/managing-applications-and-domains">Managing Applications and Domains</a></li><li><i></i><a href="/mule-agent/event-tracking">Event Tracking</a></li><li><i></i><a href="/mule-agent/jmx-service">JMX Service</a></li><li><i></i><a href="/mule-agent/mule-agent-notifications">Mule Agent Notifications</a></li><li><i></i><a href="/mule-agent/extending-the-mule-agent">Extending the Mule Agent</a></li><li><i></i><a href="/mule-agent/internal-handler-buffering">Internal Handler Buffering</a></li></ul></li>
+<li>
+<i></i>
+<a href="/mule-management-console/">Mule Management Console</a><ul>
+<li>
+<i></i>
+<a href="/mule-management-console/installing-mmc">Installing MMC</a><ul>
+<li><i></i><a href="/mule-management-console/installing-the-trial-version-of-mmc">Installing the Trial Version of MMC</a></li><li>
+<i></i>
+<a href="/mule-management-console/installing-the-production-version-of-mmc">Installing the Production Version of MMC</a><ul>
+<li><i></i><a href="/mule-management-console/installing-and-deploying-mmc-to-weblogic">Installing and Deploying MMC to Weblogic</a></li><li><i></i><a href="/mule-management-console/installing-and-deploying-mmc-to-websphere">Installing and Deploying MMC to WebSphere</a></li></ul></li>
+<li>
+<i></i>
+<a href="/mule-management-console/upgrading-the-management-console">Upgrading the Management Console</a><ul>
+<li><i></i><a href="/mule-management-console/configuration-files-for-ldap-and-external-dbs-in-mmc-before-and-after-3.4.2">Configuration Files for LDAP and External DBs in MMC Before and After 3.4.2</a></li><li><i></i><a href="/mule-management-console/migration-scripts-for-business-events">Migration Scripts for Business Events</a></li><li><i></i><a href="/mule-management-console/upgrading-to-mmc-3.6.0-with-an-external-database">Upgrading to MMC 3.6.0 with an External Database</a></li><li><i></i><a href="/mule-management-console/upgrading-to-mmc-3.6.0-with-ldap">Upgrading to MMC 3.6.0 with LDAP</a></li></ul></li>
+<li><i></i><a href="/mule-management-console/upgrading-from-mmc-3.4.1-for-ms-sql-server-to-mmc-3.6.0-for-ms-sql-server">Upgrading from MMC 3.4.1 for MS-SQL Server to MMC 3.6.0 for MS-SQL Server</a></li></ul></li>
+<li><i></i><a href="/mule-management-console/orientation-to-the-console">Orientation to the Console</a></li><li><i></i><a href="/mule-management-console/mmc-walkthrough">MMC Walkthrough</a></li><li><i></i><a href="/mule-management-console/architecture-of-the-mule-management-console">Architecture of the Mule Management Console</a></li><li>
+<i></i>
+<a href="/mule-management-console/setting-up-mmc">Setting Up MMC</a><ul>
+<li><i></i><a href="/mule-management-console/setting-up-mmc-mule-esb-communications">Setting Up MMC-Mule ESB Communications</a></li><li>
+<i></i>
+<a href="/mule-management-console/persisting-mmc-data-on-external-databases">Persisting MMC Data On External Databases</a><ul>
+<li><i></i><a href="/mule-management-console/configuring-mmc-for-external-databases-quick-reference">Configuring MMC for External Databases - Quick Reference</a></li><li><i></i><a href="/mule-management-console/persisting-mmc-data-to-ms-sql-server">Persisting MMC Data to MS SQL Server</a></li><li><i></i><a href="/mule-management-console/persisting-mmc-data-to-mysql">Persisting MMC Data to MySQL</a></li><li><i></i><a href="/mule-management-console/persisting-mmc-data-to-oracle">Persisting MMC Data to Oracle</a></li><li><i></i><a href="/mule-management-console/persisting-mmc-data-to-postgresql">Persisting MMC Data to PostgreSQL</a></li></ul></li>
+<li><i></i><a href="/mule-management-console/encrypting-ldap-and-database-passwords-in-mmc">Encrypting LDAP and Database Passwords in MMC</a></li><li>
+<i></i>
+<a href="/mule-management-console/managing-mmc-users-and-roles">Managing MMC Users and Roles</a><ul>
+<li>
+<i></i>
+<a href="/mule-management-console/setting-up-and-managing-users-in-mmc">Setting Up and Managing Users in MMC</a><ul>
+<li><i></i><a href="/mule-management-console/encrypting-mmc-user-passwords">Encrypting MMC User Passwords</a></li></ul></li>
+<li><i></i><a href="/mule-management-console/setting-up-and-managing-users-via-ldap">Setting Up and Managing Users via LDAP</a></li></ul></li>
+</ul></li>
+<li><i></i><a href="/mule-management-console/deploying-applications">Deploying Applications</a></li><li>
+<i></i>
+<a href="/mule-management-console/managing-with-mmc">Managing with MMC</a><ul>
+<li><i></i><a href="/mule-management-console/managing-mule-servers-clusters-and-groups">Managing Mule Servers Clusters and Groups</a></li><li><i></i><a href="/mule-management-console/maintaining-the-server-application-repository">Maintaining the Server Application Repository</a></li><li><i></i><a href="/mule-management-console/working-with-flows">Working with Flows</a></li><li>
+<i></i>
+<a href="/mule-management-console/managing-mule-high-availability-ha-clusters">Managing Mule High Availability (HA) Clusters</a><ul>
+<li><i></i><a href="/mule-management-console/configuring-mule-ha-clustering">Configuring Mule HA Clustering</a></li><li><i></i><a href="/mule-management-console/creating-or-disbanding-a-cluster">Creating or Disbanding a Cluster</a></li><li><i></i><a href="/mule-management-console/deploying%2c-redeploying%2c-or-undeploying-an-application-to-or-from-a-cluster">Deploying, Redeploying, or Undeploying an Application To or From a Cluster</a></li><li><i></i><a href="/mule-management-console/dynamically-adding-or-removing-nodes-in-a-cluster">Dynamically Adding or Removing Nodes in a Cluster</a></li><li><i></i><a href="/mule-management-console/monitoring-a-cluster">Monitoring a Cluster</a></li><li><i></i><a href="/mule-management-console/reliability-patterns">Reliability Patterns</a></li></ul></li>
+</ul></li>
+<li>
+<i></i>
+<a href="/mule-management-console/mmc-rest-api">MMC REST API</a><ul>
+<li>
+<i></i>
+<a href="/mule-management-console/rest-api-reference">REST API Reference</a><ul>
+<li><i></i><a href="/mule-management-console/clusters">Clusters</a></li><li><i></i><a href="/mule-management-console/deployments">Deployments</a></li><li><i></i><a href="/mule-management-console/repository-of-applications">Repository of Applications</a></li><li><i></i><a href="/mule-management-console/server-groups">Server Groups</a></li><li><i></i><a href="/mule-management-console/servers">Servers</a></li><li><i></i><a href="/mule-management-console/user-groups">User Groups</a></li></ul></li>
+<li><i></i><a href="/mule-management-console/using-the-management-console-api">Using the Management Console API</a></li></ul></li>
+<li>
+<i></i>
+<a href="/mule-management-console/monitoring-with-mmc">Monitoring with MMC</a><ul>
+<li>
+<i></i>
+<a href="/mule-management-console/monitoring-a-server">Monitoring a Server</a><ul>
+<li><i></i><a href="/mule-management-console/monitoring-applications">Monitoring Applications</a></li><li><i></i><a href="/mule-management-console/viewing-server-alerts">Viewing Server Alerts</a></li><li><i></i><a href="/mule-management-console/viewing-system-memory">Viewing System Memory</a></li><li><i></i><a href="/mule-management-console/viewing-threads">Viewing Threads</a></li><li><i></i><a href="/mule-management-console/viewing-server-pools">Viewing Server Pools</a></li><li><i></i><a href="/mule-management-console/working-with-the-server-configuration-files">Working with the Server Configuration Files</a></li><li><i></i><a href="/mule-management-console/viewing-server-properties">Viewing Server Properties</a></li><li><i></i><a href="/mule-management-console/editing-server-settings">Editing Server Settings</a></li><li><i></i><a href="/mule-management-console/customizing-server-metrics-dashboard">Customizing Server Metrics Dashboard</a></li></ul></li>
+<li><i></i><a href="/mule-management-console/working-with-alerts">Working With Alerts</a></li><li><i></i><a href="/mule-management-console/defining-slas-and-alerts">Defining SLAs and Alerts</a></li><li><i></i><a href="/mule-management-console/adding-and-managing-alerts-and-slas">Adding and Managing Alerts and SLAs</a></li><li><i></i><a href="/mule-management-console/setting-up-alert-destinations-and-notifications">Setting Up Alert Destinations and Notifications</a></li><li>
+<i></i>
+<a href="/mule-management-console/analyzing-business-events">Analyzing Business Events</a><ul>
+<li><i></i><a href="/mule-management-console/business-events-use-cases">Business Events Use Cases</a></li><li><i></i><a href="/mule-management-console/tracking-and-querying-business-events">Tracking and Querying Business Events</a></li></ul></li>
+<li><i></i><a href="/mule-management-console/analyzing-flow-processing-and-payloads">Analyzing Flow Processing and Payloads</a></li><li><i></i><a href="/mule-management-console/viewing-server-os-resources">Viewing Server OS Resources</a></li><li><i></i><a href="/mule-management-console/viewing-jmx-information">Viewing JMX Information</a></li><li><i></i><a href="/mule-management-console/customizing-the-dashboard">Customizing the Dashboard</a></li></ul></li>
+<li>
+<i></i>
+<a href="/mule-management-console/working-with-logs">Working with Logs</a><ul>
+<li><i></i><a href="/mule-management-console/accessing-server-logs">Accessing Server Logs</a></li><li><i></i><a href="/mule-management-console/audit-logs">Audit Logs</a></li></ul></li>
+<li>
+<i></i>
+<a href="/mule-management-console/troubleshooting-with-mmc">Troubleshooting with MMC</a><ul>
+<li><i></i><a href="/mule-management-console/troubleshooting-tips">Troubleshooting Tips</a></li><li>
+<i></i>
+<a href="/mule-management-console/monitoring-and-debugging-applications">Monitoring and Debugging Applications</a><ul>
+<li><i></i><a href="/mule-management-console/tracking-flows">Tracking Flows</a></li><li><i></i><a href="/mule-management-console/analyzing-message-flows">Analyzing Message Flows</a></li><li><i></i><a href="/mule-management-console/debugging-message-processing">Debugging Message Processing</a></li><li><i></i><a href="/mule-management-console/debugging-the-loan-broker-example-application">Debugging the Loan Broker Example Application</a></li></ul></li>
+<li><i></i><a href="/mule-management-console/using-the-management-console-for-performance-tuning">Using the Management Console for Performance Tuning</a></li></ul></li>
+<li>
+<i></i>
+<a href="/mule-management-console/automating-tasks-using-scripts">Automating Tasks Using Scripts</a><ul>
+<li><i></i><a href="/mule-management-console/scripting-examples">Scripting Examples</a></li></ul></li>
+</ul></li>
+<li>
+<i></i>
+<a href="/mule-healthcare-toolkit/">Mule Healthcare Toolkit</a><ul>
+<li><i></i><a href="/mule-healthcare-toolkit/hl7-ack-component-reference">HL7 ACK Component Reference</a></li><li><i></i><a href="/mule-healthcare-toolkit/hl7-append-segment-component-reference">HL7 Append Segment Component Reference</a></li><li><i></i><a href="/mule-healthcare-toolkit/hl7-global-connector">HL7 Global Connector</a></li><li><i></i><a href="/mule-healthcare-toolkit/hl7-delete-segment-component-reference">HL7 Delete Segment Component Reference</a></li><li><i></i><a href="/mule-healthcare-toolkit/hl7-encoding-transformer">HL7 Encoding Transformer</a></li><li><i></i><a href="/mule-healthcare-toolkit/hl7-endpoint-reference">HL7 Endpoint Reference</a></li><li><i></i><a href="/mule-healthcare-toolkit/hl7-exception-strategy">HL7 Exception Strategy</a></li><li><i></i><a href="/mule-healthcare-toolkit/hl7-message-component">HL7 Message Component</a></li><li><i></i><a href="/mule-healthcare-toolkit/hl7-message-validation">HL7 Message Validation</a></li><li><i></i><a href="/mule-healthcare-toolkit/hl7-profile-validator-filter">HL7 Profile Validator Filter</a></li><li><i></i><a href="/mule-healthcare-toolkit/hl7-mule-expression-language-support">HL7 Mule Expression Language Support</a></li><li><i></i><a href="/mule-healthcare-toolkit/testing-with-hapi-testpanel">Testing with HAPI TestPanel</a></li></ul></li>
+<li>
+<i></i>
+<a href="/anypoint-platform-for-apis/">Anypoint Platform for APIs</a><ul>
+<li>
+<i></i>
+<a href="/anypoint-platform-for-apis/anypoint-platform-for-apis-walkthrough">Anypoint Platform for APIs Walkthrough</a><ul>
+<li><i></i><a href="/anypoint-platform-for-apis/walkthrough-intro-create">Walkthrough Intro Create</a></li><li><i></i><a href="/anypoint-platform-for-apis/walkthrough-design-new">Walkthrough Design New</a></li><li><i></i><a href="/anypoint-platform-for-apis/walkthrough-design-existing">Walkthrough Design Existing</a></li><li><i></i><a href="/anypoint-platform-for-apis/walkthrough-build">Walkthrough Build</a></li><li><i></i><a href="/anypoint-platform-for-apis/walkthrough-deploy-to-runtime">Walkthrough Deploy to Runtime</a></li><li><i></i><a href="/anypoint-platform-for-apis/walkthrough-proxy">Walkthrough Proxy</a></li><li><i></i><a href="/anypoint-platform-for-apis/walkthrough-deploy-to-gateway">Walkthrough Deploy to Gateway</a></li><li><i></i><a href="/anypoint-platform-for-apis/walkthrough-manage">Walkthrough Manage</a></li><li>
+<i></i>
+<a href="/anypoint-platform-for-apis/walkthrough-engage">Walkthrough Engage</a><ul>
+<li><i></i><a href="/anypoint-platform-for-apis/walkthrough-notebook">Walkthrough Notebook</a></li></ul></li>
+<li><i></i><a href="/anypoint-platform-for-apis/walkthrough-intro-consume">Walkthrough Intro Consume</a></li></ul></li>
+<li>
+<i></i>
+<a href="/anypoint-platform-for-apis/anypoint-platform-for-apis-user-guide">Anypoint Platform for APIs User Guide</a><ul>
+<li><i></i><a href="/anypoint-platform-for-apis/creating-your-api-in-the-anypoint-platform">Creating Your API in the Anypoint Platform</a></li><li><i></i><a href="/anypoint-platform-for-apis/designing-your-api">Designing Your API</a></li><li>
+<i></i>
+<a href="/anypoint-platform-for-apis/building-your-api">Building Your API</a><ul>
+<li><i></i><a href="/anypoint-platform-for-apis/apikit-basic-anatomy">APIkit Basic Anatomy</a></li><li><i></i><a href="/anypoint-platform-for-apis/apikit-tutorial">APIkit Tutorial</a></li><li><i></i><a href="/anypoint-platform-for-apis/apikit-beyond-the-basics">APIkit Beyond the Basics</a></li><li><i></i><a href="/anypoint-platform-for-apis/creating-an-apikit-project-with-maven">Creating an APIkit project with Maven</a></li></ul></li>
+<li><i></i><a href="/anypoint-platform-for-apis/setting-your-api-url">Setting Your API URL</a></li><li>
+<i></i>
+<a href="/anypoint-platform-for-apis/proxying-your-api">Proxying Your API</a><ul>
+<li><i></i><a href="/anypoint-platform-for-apis/https-api-proxy-example">HTTPS API Proxy Example</a></li><li><i></i><a href="/anypoint-platform-for-apis/managing-internal-links-in-api-proxies">Managing Internal Links in API Proxies</a></li></ul></li>
+<li>
+<i></i>
+<a href="/anypoint-platform-for-apis/deploying-your-api-or-proxy">Deploying Your API or Proxy</a><ul>
+<li><i></i><a href="/anypoint-platform-for-apis/api-auto-discovery">API Auto-Discovery</a></li></ul></li>
+<li><i></i><a href="/anypoint-platform-for-apis/accessing-your-api-behind-a-firewall">Accessing Your API Behind a Firewall</a></li><li>
+<i></i>
+<a href="/anypoint-platform-for-apis/managing-your-api">Managing Your API</a><ul>
+<li>
+<i></i>
+<a href="/anypoint-platform-for-apis/applying-runtime-policies">Applying Runtime Policies</a><ul>
+<li><i></i><a href="/anypoint-platform-for-apis/ldap-security-manager">LDAP Security Manager</a></li><li><i></i><a href="/anypoint-platform-for-apis/oauth-2.0-provider-and-aes-oauth-2.0-token-enforcement-policies">OAuth 2.0 Provider and AES OAuth 2.0 Token Enforcement Policies</a></li><li><i></i><a href="/anypoint-platform-for-apis/pingfederate-oauth-token-enforcement-policy">PingFederate OAuth Token Enforcement Policy</a></li><li><i></i><a href="/anypoint-platform-for-apis/client-id-based-policies">Client ID Based Policies</a></li><li><i></i><a href="/anypoint-platform-for-apis/applying-custom-policies">Applying Custom Policies</a></li><li><i></i><a href="/anypoint-platform-for-apis/creating-a-policy-walkthrough">Creating a Policy Walkthrough</a></li><li><i></i><a href="/anypoint-platform-for-apis/http-basic-authentication-policy">HTTP Basic Authentication Policy</a></li><li><i></i><a href="/anypoint-platform-for-apis/defining-sla-tiers">Defining SLA Tiers</a></li><li><i></i><a href="/anypoint-platform-for-apis/managing-api-versions">Managing API Versions</a></li><li><i></i><a href="/anypoint-platform-for-apis/adding-terms-and-conditions">Adding Terms and Conditions</a></li></ul></li>
+</ul></li>
+<li><i></i><a href="/anypoint-platform-for-apis/engaging-users-of-your-api">Engaging Users of Your API</a></li></ul></li>
+<li><i></i><a href="/anypoint-platform-for-apis/creating-an-api-notebook">Creating an API Notebook</a></li><li><i></i><a href="/anypoint-platform-for-apis/browsing-and-accessing-apis">Browsing and Accessing APIs</a></li><li><i></i><a href="/anypoint-platform-for-apis/viewing-api-analytics">Viewing API Analytics</a></li><li><i></i><a href="/anypoint-platform-for-apis/analytics-event-api">Analytics Event API</a></li><li><i></i><a href="/anypoint-platform-for-apis/anypoint-platform-for-apis-system-architecture">Anypoint Platform for APIs System Architecture</a></li><li>
+<i></i>
+<a href="/anypoint-platform-for-apis/anypoint-platform-for-apis-administration">Anypoint Platform for APIs Administration</a><ul>
+<li>
+<i></i>
+<a href="/anypoint-platform-for-apis/configuring-an-api-gateway">Configuring an API Gateway</a><ul>
+<li><i></i><a href="/anypoint-platform-for-apis/api-gateway-101">API Gateway 101</a></li><li><i></i><a href="/anypoint-platform-for-apis/configuring-proxy-access-to-the-anypoint-platform-for-apis">Configuring Proxy Access to the Anypoint Platform for APIs</a></li><li><i></i><a href="/anypoint-platform-for-apis/localhost-behavior-on-the-api-gateway">Localhost Behavior on the API Gateway</a></li></ul></li>
+</ul></li>
+<li><i></i><a href="/anypoint-platform-for-apis/managing-users-and-roles-in-the-anypoint-platform">Managing Users and Roles in the Anypoint Platform</a></li><li><i></i><a href="/anypoint-platform-for-apis/anypoint-platform-for-apis-glossary">Anypoint Platform for APIs Glossary</a></li><li><i></i><a href="/anypoint-platform-for-apis/anypoint-platform-for-apis-faq">Anypoint Platform for APIs FAQ</a></li></ul></li>
+<li>
+<i></i>
+<a href="/anypoint-platform-administration/">Anypoint Platform Administration</a><ul>
+<li><i></i><a href="/anypoint-platform-administration/creating-an-account">Creating an Account</a></li><li><i></i><a href="/anypoint-platform-administration/troubleshooting-anypoint-platform-access">Troubleshooting Anypoint Platform Access</a></li><li><i></i><a href="/anypoint-platform-administration/setting-up-external-identity">Setting Up External Identity</a></li><li><i></i><a href="/anypoint-platform-administration/managing-accounts-roles-and-permissions">Managing Accounts Roles and Permissions</a></li><li><i></i><a href="/anypoint-platform-administration/managing-cloudhub-specific-settings">Managing CloudHub Specific Settings</a></li><li><i></i><a href="/anypoint-platform-administration/managing-cloudhub-environments">Managing CloudHub Environments</a></li></ul></li>
+<li>
+<i></i>
+<a href="/anypoint-data-gateway/">Anypoint Data Gateway</a><ul>
+<li><i></i><a href="/anypoint-data-gateway/installing-anypoint-data-gateway">Installing Anypoint Data Gateway</a></li><li><i></i><a href="/anypoint-data-gateway/creating-and-configuring-a-gateway">Creating and Configuring a Gateway</a></li><li><i></i><a href="/anypoint-data-gateway/managing-gateways">Managing Gateways</a></li><li><i></i><a href="/anypoint-data-gateway/quick-guide-to-accessing-gateways-and-objects">Quick Guide to Accessing Gateways and Objects</a></li></ul></li>
+<li class="expanded">
+<i></i>
+<a href="/anypoint-connector-devkit/">Anypoint Connector DevKit</a><ul style="display: block;">
+<li><i></i><a href="/anypoint-connector-devkit/tutorial-barn-connector">Tutorial - Barn Connector</a></li><li><i></i><a href="/anypoint-connector-devkit/anypoint-connector-development">Anypoint Connector Development</a></li><li><i></i><a href="/anypoint-connector-devkit/setting-up-your-dev-environment">Setting Up Your Dev Environment</a></li><li><i></i><a href="/anypoint-connector-devkit/setting-up-api-access">Setting Up API Access</a></li><li><i></i><a href="/anypoint-connector-devkit/creating-an-anypoint-connector-project">Creating an Anypoint Connector Project</a></li><li><i></i><a href="/anypoint-connector-devkit/connector-project-structure">Connector Project Structure</a></li><li><i></i><a href="/anypoint-connector-devkit/implementing-a-rest-connector">Implementing a REST Connector</a></li><li><i></i><a href="/anypoint-connector-devkit/shading-libraries">Shading Libraries</a></li><li><i></i><a href="/anypoint-connector-devkit/annotation-reference">Annotation Reference</a></li><li>
+<i></i>
+<a href="/anypoint-connector-devkit/authentication">Authentication</a><ul>
+<li><i></i><a href="/anypoint-connector-devkit/authentication-methods">Authentication Methods</a></li><li><i></i><a href="/anypoint-connector-devkit/connection-management">Connection Management</a></li><li><i></i><a href="/anypoint-connector-devkit/connector-connection-strategies">Connector Connection Strategies</a></li><li><i></i><a href="/anypoint-connector-devkit/oauth-v1">OAuth V1</a></li><li><i></i><a href="/anypoint-connector-devkit/oauth-v2">OAuth V2</a></li><li><i></i><a href="/anypoint-connector-devkit/http-basic-authentication">HTTP Basic Authentication</a></li><li><i></i><a href="/anypoint-connector-devkit/no-authentication">No Authentication</a></li></ul></li>
+<li>
+<i></i>
+<a href="/anypoint-connector-devkit/defining-attributes-operations-and-data-model">Defining Attributes Operations and Data Model</a><ul>
+<li><i></i><a href="/anypoint-connector-devkit/defining-message-sources">Defining Message Sources</a></li><li><i></i><a href="/anypoint-connector-devkit/creating-message-processors">Creating Message Processors</a></li><li><i></i><a href="/anypoint-connector-devkit/defining-connector-attributes">Defining Connector Attributes</a></li><li><i></i><a href="/anypoint-connector-devkit/complex-data-types-attributes">Complex Data Types Attributes</a></li><li><i></i><a href="/anypoint-connector-devkit/adding-datasense">Adding DataSense</a></li><li><i></i><a href="/anypoint-connector-devkit/adding-datasense-query-language">Adding DataSense Query Language</a></li><li><i></i><a href="/anypoint-connector-devkit/adding-query-pagination-support">Adding Query Pagination Support</a></li><li><i></i><a href="/anypoint-connector-devkit/building-a-batch-enabled-connector">Building a Batch Enabled Connector</a></li></ul></li>
+<li><i></i><a href="/anypoint-connector-devkit/installing-and-testing-your-connector-in-studio">Installing and Testing Your Connector in Studio</a></li><li><i></i><a href="/anypoint-connector-devkit/developing-devkit-connector-tests">Developing DevKit Connector Tests</a></li><li><i></i><a href="/anypoint-connector-devkit/connector-reference-documentation">Connector Reference Documentation</a></li><li><i></i><a href="/anypoint-connector-devkit/packaging-your-connector-for-release">Packaging Your Connector for Release</a></li><li class="expanded">
+<i></i>
+<a href="/anypoint-connector-devkit/anypoint-connector-examples">Anypoint Connector Examples</a><ul style="display: block;">
+<li><i></i><a href="/anypoint-connector-devkit/creating-a-connector-using-a-java-sdk">Creating a Connector Using a Java SDK</a></li><li><i></i><a href="/anypoint-connector-devkit/creating-a-connector-for-a-soap-service-via-cxf-client">Creating a Connector for a SOAP Service Via CXF Client</a></li><li class="active"><i></i><a href="/anypoint-connector-devkit/creating-a-connector-for-a-restful-api-using-jersey">Creating a Connector for a RESTful API Using Jersey</a></li><li><i></i><a href="/anypoint-connector-devkit/creating-a-connector-for-a-restful-api-using-@restcall-annotations">Creating a Connector for a RESTful API using @RESTCall Annotations</a></li></ul></li>
+</ul></li>
+<li>
+<i></i>
+<a href="/release-notes/">Release Notes</a><ul>
+<li>
+<i></i>
+<a href="/release-notes/release-bulletins">Release Bulletins</a><ul>
+<li><i></i><a href="/release-notes/http-connector-security-update">HTTP Connector Security Update</a></li><li><i></i><a href="/release-notes/mule-enterprise-management-console-security-update">Mule Enterprise Management Console Security Update</a></li><li><i></i><a href="/release-notes/xml-issues-in-mule-esb">XML Issues in Mule ESB</a></li></ul></li>
+<li>
+<i></i>
+<a href="/release-notes/mule-esb">Mule ESB</a><ul>
+<li><i></i><a href="/release-notes/mule-esb-3.6.2-release-notes">Mule ESB 3.6.2 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.6.1-release-notes">Mule ESB 3.6.1 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.6.0-release-notes">Mule ESB 3.6.0 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.5.3-release-notes">Mule ESB 3.5.3 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.5.2-release-notes">Mule ESB 3.5.2 Release Notes</a></li><li><i></i><a href="/release-notes/mule-3.5.0-andes-release-notes">Mule 3.5.0 Andes Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.4.3-release-notes">Mule ESB 3.4.3 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.4.2-release-notes">Mule ESB 3.4.2 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.4.1-release-notes">Mule ESB 3.4.1 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.4.0-release-notes">Mule ESB 3.4.0 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.4.0-beta-release-notes">Mule ESB 3.4.0 Beta Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.4.0-early-preview-2-release-notes">Mule ESB 3.4.0 Early Preview 2 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.4.0-early-preview-release-notes">Mule ESB 3.4.0 Early Preview Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.3.3-release-notes">Mule ESB 3.3.3 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.3.2-release-notes">Mule ESB 3.3.2 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.3.1-release-notes">Mule ESB 3.3.1 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.3.0-release-notes">Mule ESB 3.3.0 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.2.4-release-notes">Mule ESB 3.2.4 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.2.3-release-notes">Mule ESB 3.2.3 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.2.2-release-notes">Mule ESB 3.2.2 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.2.1-release-notes">Mule ESB 3.2.1 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.2.0-release-notes">Mule ESB 3.2.0 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.2.0-m1-release-notes">Mule ESB 3.2.0 M1 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.1.4-release-notes">Mule ESB 3.1.4 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.1.3-release-notes">Mule ESB 3.1.3 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.1.2-release-notes">Mule ESB 3.1.2 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.1.1-release-notes">Mule ESB 3.1.1 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.1.0-ee-release-notes">Mule ESB 3.1.0 EE Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.1.0-ce-release-notes">Mule ESB 3.1.0 CE Release Notes</a></li><li>
+<i></i>
+<a href="/release-notes/legacy-mule-release-notes">Legacy Mule Release Notes</a><ul>
+<li><i></i><a href="/release-notes/mule-esb-3.0.1-release-notes">Mule ESB 3.0.1 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.0.0-release-notes">Mule ESB 3.0.0 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.0.0-rc2-release-notes">Mule ESB 3.0.0 RC2 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.0.0-rc1-release-notes">Mule ESB 3.0.0 RC1 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.0.0-m4-release-notes">Mule ESB 3.0.0 M4 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.0.0-m3-release-notes">Mule ESB 3.0.0 M3 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-3.0.0-m2-release-notes">Mule ESB 3.0.0 M2 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-2.2.8-release-notes">Mule ESB 2.2.8 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-2.2.7-release-notes">Mule ESB 2.2.7 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-2.2.6-release-notes">Mule ESB 2.2.6 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-console-2.2.5-release-notes">Mule ESB Console 2.2.5 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-2.2.5-release-notes">Mule ESB 2.2.5 Release Notes</a></li><li><i></i><a href="/release-notes/mule-2.2.1-release-notes">Mule 2.2.1 Release Notes</a></li><li><i></i><a href="/release-notes/mule-2.2.0-release-notes">Mule 2.2.0 Release Notes</a></li><li><i></i><a href="/release-notes/mule-esb-2.2-release-notes">Mule ESB 2.2 Release Notes</a></li><li><i></i><a href="/release-notes/mule-2.1.2-release-notes">Mule 2.1.2 Release Notes</a></li><li><i></i><a href="/release-notes/mule-2.1.1-release-notes">Mule 2.1.1 Release Notes</a></li><li><i></i><a href="/release-notes/mule-2.1.0-release-notes">Mule 2.1.0 Release Notes</a></li><li><i></i><a href="/release-notes/mule-2.0.2-release-notes">Mule 2.0.2 Release Notes</a></li><li><i></i><a href="/release-notes/mule-2.0.1-release-notes">Mule 2.0.1 Release Notes</a></li><li><i></i><a href="/release-notes/mule-2.0-release-notes">Mule 2.0 Release Notes</a></li><li><i></i><a href="/release-notes/mule-1.4.4-release-notes">Mule 1.4.4 Release Notes</a></li><li><i></i><a href="/release-notes/mule-1.4.3-release-notes">Mule 1.4.3 Release Notes</a></li><li><i></i><a href="/release-notes/mule-1.4.2-release-notes">Mule 1.4.2 Release Notes</a></li><li><i></i><a href="/release-notes/mule-1.4.1-release-notes">Mule 1.4.1 Release Notes</a></li><li><i></i><a href="/release-notes/mule-1.4-release-notes">Mule 1.4 Release Notes</a></li><li><i></i><a href="/release-notes/mule-1.3.3-release-notes">Mule 1.3.3 Release Notes</a></li><li><i></i><a href="/release-notes/mule-1.3.2-release-notes">Mule 1.3.2 Release Notes</a></li><li><i></i><a href="/release-notes/mule-1.3.1-release-notes">Mule 1.3.1 Release Notes</a></li><li><i></i><a href="/release-notes/mule-1.3-release-notes">Mule 1.3 Release Notes</a></li><li><i></i><a href="/release-notes/mule-1.3-rc5-release-notes">Mule 1.3 RC5 Release Notes</a></li><li><i></i><a href="/release-notes/mule-1.3-rc5-release-notes">Mule 1.3-RC5 Release Notes</a></li><li><i></i><a href="/release-notes/mule-1.3-rc4-release-notes">Mule 1.3-RC4 Release Notes</a></li><li><i></i><a href="/release-notes/mule-1.3-rc3-release-notes">Mule 1.3-RC3 Release Notes</a></li><li><i></i><a href="/release-notes/mule-1.3-rc2-release-notes">Mule 1.3-RC2 Release Notes</a></li><li><i></i><a href="/release-notes/mule-1.3-rc1-release-notes">Mule 1.3-RC1 Release Notes</a></li><li><i></i><a href="/release-notes/mule-1.2-release-notes">Mule 1.2 Release Notes</a></li><li><i></i><a href="/release-notes/mule-1.1-release-notes">Mule 1.1 Release Notes</a></li><li><i></i><a href="/release-notes/mule-1.1-rc1-release-notes">Mule 1.1-RC1 Release Notes</a></li><li><i></i><a href="/release-notes/mule-1.0-release-notes">Mule 1.0 Release Notes</a></li><li><i></i><a href="/release-notes/mule-1.0-rc3-release-notes">Mule 1.0-RC3 Release Notes</a></li><li><i></i><a href="/release-notes/mule-1.0-rc2-release-notes">Mule 1.0-RC2 Release Notes</a></li><li><i></i><a href="/release-notes/mule-1.0-rc1-release-notes">Mule 1.0-RC1 Release Notes</a></li><li><i></i><a href="/release-notes/mule-0.9.3-release-notes">Mule 0.9.3 Release Notes</a></li><li><i></i><a href="/release-notes/mule-0.9.2.1-release-notes">Mule 0.9.2.1 Release Notes</a></li><li><i></i><a href="/release-notes/mule-0.9.2-release-notes">Mule 0.9.2 Release Notes</a></li><li><i></i><a href="/release-notes/mule-0.9.1-release-notes">Mule 0.9.1 Release Notes</a></li><li><i></i><a href="/release-notes/mule-0.9-beta1-release-notes">Mule 0.9 beta1 Release Notes</a></li><li><i></i><a href="/release-notes/mule-0.8-release-notes">Mule 0.8 Release Notes</a></li><li>
+<i></i>
+<a href="/release-notes/legacy-mule-ide-release-notes">Legacy Mule IDE Release Notes</a><ul>
+<li><i></i><a href="/release-notes/mule-ide-1.3-beta-1-release-notes">Mule IDE 1.3 Beta 1 Release Notes</a></li><li><i></i><a href="/release-notes/mule-ide-1.3-release-notes">Mule IDE 1.3 Release Notes</a></li><li><i></i><a href="/release-notes/mule-ide-1.4.3-release-notes">Mule IDE 1.4.3 Release Notes</a></li><li><i></i><a href="/release-notes/mule-ide-2.0.x-release-notes">Mule IDE 2.0.x Release Notes</a></li><li><i></i><a href="/release-notes/mule-ide-2.1.x-release-notes">Mule IDE 2.1.x Release Notes</a></li></ul></li>
+</ul></li>
+<li>
+<i></i>
+<a href="/release-notes/legacy-mule-migration-notes">Legacy Mule Migration Notes</a><ul>
+<li><i></i><a href="/release-notes/migrating-mule-3.1-to-3.2">Migrating Mule 3.1 to 3.2</a></li><li><i></i><a href="/release-notes/migrating-mule-3.0-to-3.1">Migrating Mule 3.0 to 3.1</a></li><li><i></i><a href="/release-notes/migrating-mule-esb-2.2-to-mule-esb-3.0">Migrating Mule ESB 2.2 to Mule ESB 3.0</a></li><li><i></i><a href="/release-notes/migrating-mule-2.x-ce-to-ee">Migrating Mule 2.x CE to EE</a></li><li><i></i><a href="/release-notes/migrating-mule-2.1-to-2.2">Migrating Mule 2.1 to 2.2</a></li><li><i></i><a href="/release-notes/migrating-mule-2.0-to-2.1">Migrating Mule 2.0 to 2.1</a></li><li><i></i><a href="/release-notes/migrating-mule-1.x-to-2.0">Migrating Mule 1.x to 2.0</a></li><li><i></i><a href="/release-notes/1.4.1-migration-guide">1.4.1 Migration Guide</a></li><li><i></i><a href="/release-notes/1.4-migration-guide">1.4 Migration Guide</a></li></ul></li>
+</ul></li>
+<li>
+<i></i>
+<a href="/release-notes/anypoint-studio">Anypoint Studio</a><ul>
+<li><i></i><a href="/release-notes/anypoint-studio-march-2015-with-3.6.1-runtime-update-site-1-release-notes">Anypoint Studio March 2015 with 3.6.1 Runtime - Update Site 1 Release Notes</a></li><li><i></i><a href="/release-notes/anypoint-studio-march-2015-with-3.6.1-runtime-release-notes">Anypoint Studio March 2015 with 3.6.1 Runtime Release Notes</a></li><li><i></i><a href="/release-notes/anypoint-studio-january-2015-with-3.6.1-runtime-update-site-2-release-notes">Anypoint Studio January 2015 with 3.6.1 Runtime - Update Site 2 Release Notes</a></li><li><i></i><a href="/release-notes/anypoint-studio-january-2015-with-3.6.0-runtime-update-site-1-release-notes">Anypoint Studio January 2015 with 3.6.0 Runtime - Update Site 1 Release Notes</a></li><li><i></i><a href="/release-notes/anypoint-studio-january-2015-with-3.6.0-runtime-release-notes">Anypoint Studio January 2015 with 3.6.0 Runtime Release Notes</a></li><li><i></i><a href="/release-notes/anypoint-studio-october-2014-release-notes">Anypoint Studio October 2014 Release Notes</a></li><li><i></i><a href="/release-notes/anypoint-studio-july-2014-with-3.5.1-runtime-update-site-2-release-notes">Anypoint Studio July 2014 with 3.5.1 Runtime - Update Site 2 Release Notes</a></li><li><i></i><a href="/release-notes/anypoint-studio-july-2014-with-3.5.1-runtime-release-notes">Anypoint Studio July 2014 with 3.5.1 Runtime Release Notes</a></li><li><i></i><a href="/release-notes/anypoint-studio-may-2014-with-3.5.0-runtime-release-notes">Anypoint Studio May 2014 with 3.5.0 Runtime Release Notes</a></li><li><i></i><a href="/release-notes/anypoint-studio-with-3.5.0-m4-runtime-early-access-release-notes">Anypoint Studio with 3.5.0-M4 Runtime Early Access Release Notes</a></li><li><i></i><a href="/release-notes/mule-studio-december-2013-release-notes">Mule Studio December 2013 Release Notes</a></li><li><i></i><a href="/release-notes/mule-studio-october-2013-release-notes">Mule Studio October 2013 Release Notes</a></li><li><i></i><a href="/release-notes/mule-studio-release-notes-march-21-2012">Mule Studio Release Notes - March 21 2012</a></li><li><i></i><a href="/release-notes/mule-studio-release-notes-january-24-2012">Mule Studio Release Notes - January 24 2012</a></li></ul></li>
+<li>
+<i></i>
+<a href="/release-notes/anypoint-connector-release-notes">Anypoint Connector Release Notes</a><ul>
+<li><i></i><a href="/release-notes/amazon-sqs-connector-release-notes">Amazon SQS Connector Release Notes</a></li><li><i></i><a href="/release-notes/amazon-s3-connector-release-notes">Amazon S3 Connector Release Notes</a></li><li><i></i><a href="/release-notes/cassandra-connector-release-notes">Cassandra Connector Release Notes</a></li><li><i></i><a href="/release-notes/cmis-connector-release-notes">CMIS Connector Release Notes</a></li><li><i></i><a href="/release-notes/concur-connector-release-notes">Concur Connector Release Notes</a></li><li><i></i><a href="/release-notes/dotnet-connector-release-notes">DotNet Connector Release Notes</a></li><li><i></i><a href="/release-notes/hdfs-connector-release-notes">HDFS Connector Release Notes</a></li><li><i></i><a href="/release-notes/hl7-connector-release-notes">HL7 Connector Release Notes</a></li><li><i></i><a href="/release-notes/magento-connector-release-notes">Magento Connector Release Notes</a></li><li><i></i><a href="/release-notes/marketo-connector-release-notes">Marketo Connector Release Notes</a></li><li><i></i><a href="/release-notes/microsoft-dynamics-crm-connector-release-notes">Microsoft Dynamics CRM Connector Release Notes</a></li><li><i></i><a href="/release-notes/microsoft-service-bus-connector-release-notes">Microsoft Service Bus Connector Release Notes</a></li><li><i></i><a href="/release-notes/microsoft-sharepoint-connector-release-notes">Microsoft SharePoint Connector Release Notes</a></li><li><i></i><a href="/release-notes/msmq-connector-release-notes">MSMQ Connector Release Notes</a></li><li><i></i><a href="/release-notes/netsuite-connector-release-notes">NetSuite Connector Release Notes</a></li><li><i></i><a href="/release-notes/oracle-e-business-suite-ebs-connector-release-notes">Oracle E-Business Suite (EBS) Connector Release Notes</a></li><li><i></i><a href="/release-notes/peoplesoft-connector-release-notes">PeopleSoft Connector Release Notes</a></li><li><i></i><a href="/release-notes/salesforce-connector-release-notes">Salesforce Connector Release Notes</a></li><li><i></i><a href="/release-notes/salesforce-analytics-cloud-connector-release-notes">Salesforce Analytics Cloud Connector Release Notes</a></li><li><i></i><a href="/release-notes/servicenow-connector-release-notes">ServiceNow Connector Release Notes</a></li><li><i></i><a href="/release-notes/siebel-connector-release-notes">Siebel Connector Release Notes</a></li><li><i></i><a href="/release-notes/twitter-connector-release-notes">Twitter Connector Release Notes</a></li><li><i></i><a href="/release-notes/workday-connector-release-notes">Workday Connector Release Notes</a></li></ul></li>
+<li>
+<i></i>
+<a href="/release-notes/anypoint-enterprise-security-release-notes">Anypoint Enterprise Security Release Notes</a><ul>
+<li><i></i><a href="/release-notes/anypoint-enterprise-security-1.2-release-notes">Anypoint Enterprise Security 1.2 Release Notes</a></li></ul></li>
+<li><i></i><a href="/release-notes/anypoint-platform-for-apis-release-notes">Anypoint Platform for APIs Release Notes</a></li><li><i></i><a href="/release-notes/anypoint-data-gateway-release-notes">Anypoint Data Gateway Release Notes</a></li><li>
+<i></i>
+<a href="/release-notes/anypoint-connector-devkit-release-notes">Anypoint Connector DevKit Release Notes</a><ul>
+<li><i></i><a href="/release-notes/connector-migration-guide-mule-3.5-to-3.6">Connector Migration Guide - Mule 3.5 to 3.6</a></li><li><i></i><a href="/release-notes/anypoint-connector-devkit-3.6.1-release-notes">Anypoint Connector DevKit 3.6.1 Release Notes</a></li><li><i></i><a href="/release-notes/anypoint-connector-devkit-3.6.0-release-notes">Anypoint Connector DevKit 3.6.0 Release Notes</a></li><li><i></i><a href="/release-notes/anypoint-connector-devkit-3.5.0-release-notes">Anypoint Connector DevKit 3.5.0 Release Notes</a></li><li><i></i><a href="/release-notes/anypoint-connector-devkit-3.5.2-release-notes">Anypoint Connector DevKit 3.5.2 Release Notes</a></li></ul></li>
+<li>
+<i></i>
+<a href="/release-notes/gateway-runtime">Gateway Runtime</a><ul>
+<li><i></i><a href="/release-notes/gateway-1.3.2-release-notes">Gateway 1.3.2 Release Notes</a></li><li><i></i><a href="/release-notes/gateway-1.3.1-release-notes">Gateway 1.3.1 Release Notes</a></li><li><i></i><a href="/release-notes/gateway-1.0.1-release-notes">Gateway 1.0.1 Release Notes</a></li></ul></li>
+<li><i></i><a href="/release-notes/anypoint-exchange-release-notes">Anypoint Exchange Release Notes</a></li><li>
+<i></i>
+<a href="/release-notes/cloudhub-release-notes">CloudHub Release Notes</a><ul>
+<li><i></i><a href="/release-notes/cloudhub-r40-migration-guide">CloudHub R40 Migration Guide</a></li></ul></li>
+<li>
+<i></i>
+<a href="/release-notes/deprecated-products">Deprecated Products</a><ul>
+<li>
+<i></i>
+<a href="/release-notes/api-manager-release-notes">API Manager Release Notes</a><ul>
+<li><i></i><a href="/release-notes/api-manager-6.0.x-release-notes">API Manager 6.0.X Release Notes</a></li><li><i></i><a href="/release-notes/api-manager-5.0.x-release-notes">API Manager 5.0.X Release Notes</a></li></ul></li>
+<li>
+<i></i>
+<a href="/release-notes/anypoint-service-registry-release-notes">Anypoint Service Registry Release Notes</a><ul>
+<li><i></i><a href="/release-notes/anypoint-service-registry-4.0.0-release-notes">Anypoint Service Registry 4.0.0 Release Notes</a></li><li><i></i><a href="/release-notes/anypoint-service-registry-3.0.0-release-notes">Anypoint Service Registry 3.0.0 Release Notes</a></li><li><i></i><a href="/release-notes/anypoint-service-registry-r2-release-notes">Anypoint Service Registry R2 Release Notes</a></li><li><i></i><a href="/release-notes/anypoint-service-registry-r1-release-notes">Anypoint Service Registry R1 Release Notes</a></li></ul></li>
+</ul></li>
+</ul></li>
+
+
+                </ul>
+            </nav>
+        </div><!-- /sidebar-nav -->
+        <div class="article-content col-md-7"> <!-- article-content -->
+
+          <div class="breadcrumb-section" data-swiftype-index='false'><a href="./">Anypoint Connector DevKit</a>/<a href="anypoint-connector-examples">Anypoint Connector Examples</a>/<a href="creating-a-connector-for-a-restful-api-using-jersey" class="breadcrumb-active-link">Creating a Connector for a RESTful API Using Jersey</a></div>
+
+          <h1>Creating a Connector for a RESTful API Using Jersey</h1>
+
+          <div id="preamble"> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>This discussion presents the steps required to build a Jersey Client&nbsp;connector for a RESTful Web service. Jersey interacts with the service, and maps JSON to and from Java objects.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>This example uses Dropbox’s RESTful service. In practice, building a Dropbox connector might be more simply achieved using an existing Java client library, but nonetheless this serves as a useful example.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>This document leads you through building the connector, beginning with the service endpoint, documentation for the service, and its supported resources and operations. (A&nbsp;http://www.raml.org/[RAML]&nbsp;or&nbsp;https://developers.helloreverb.com/swagger/[Swagger]&nbsp;definition is an ideal source for this information, but any complete API documentation provides you what you need.)</p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="prerequisites"><a class="anchor" href="#prerequisites"></a>Prerequisites</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>This document assumes you are familiar with RESTful Web services, and have some understanding of Jersey. You can find useful background on Jersey in the&nbsp;https://jersey.java.net/documentation/1.7/user-guide.html[Jersey User Guide].</p> 
+  </div> 
+  <div class="admonitionblock note"> 
+   <table> 
+    <tbody> 
+     <tr> 
+      <td class="icon"> <i class="fa icon-note" title="Note"></i> </td> 
+      <td class="content"> 
+       <div class="paragraph"> 
+        <p>The straightforward path described here should produce a working connector for any RESTful API that uses JSON to represent requests and responses. Note that:</p> 
+       </div> 
+       <div class="ulist"> 
+        <ul> 
+         <li> <p>Jersey is the JAX-RS reference implementation, and is widely used for developing Java clients for RESTful Web services. Jersey also adds JAX-RS additional features and utilities, further simplifying RESTful service and client development.</p> </li> 
+         <li> <p>This example uses the common 1.x branch of Jersey. Mule currently uses Jersey v1.6, so refer to the <a href="https://jersey.java.net/documentation/1.6/user-guide.html">Jersey User Guide</a> for details where needed.</p> </li> 
+         <li> <p>Internally, Jersey Client uses Jackson to perform this mapping. Some implementation details in this discussion are Jackson-specific.</p> </li> 
+         <li> <p>This sample implements OAuth1 authentication. Find a more detailed discussion of implementing OAuth1 support (with reference to the same sample code) in <a href="/anypoint-connector-devkit/oauth-v1">OAuth V1</a>. Implementing OAuth2 support is similar; see <a href="/anypoint-connector-devkit/oauth-v2">OAuth V2</a> for more details.</p> </li> 
+         <li> <p>MuleSoft recommends and documents the Jersey Client-based approach, based on success with Jersey in MuleSoft-developed connectors; however you can also use other frameworks, such as Apache CXF, to create RESTful clients.</p> </li> 
+        </ul> 
+       </div> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="connector-architecture-with-jersey-client"><a class="anchor" href="#connector-architecture-with-jersey-client"></a>Connector Architecture with Jersey Client</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>In a new connector project:</p> 
+  </div> 
+  <div class="ulist"> 
+   <ul> 
+    <li> <p>Create a&nbsp;<code>@Connector</code> class and add authentication logic.</p> </li> 
+    <li> <p>Create Java classes (unless you are using Maps) that represent any entities passed to or returned from the service operations</p> </li> 
+    <li> <p>Build a Jersey-based client in Java that works against the web service API, and converts POJOs or Maps to and from JSON for use in Mule</p> </li> 
+    <li> <p>Wrap the Jersey-based client class with the&nbsp;<code>@Connector</code> class that integrates it with Mule</p> </li> 
+   </ul> 
+  </div> 
+  <div class="paragraph"> 
+   <p>The final architecture looks like the image below.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p><span class="image"><img src="../images/creating-a-connector-for-a-restful-api-using-jersey-1.png" alt="image"></span></p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="dropbox-restful-example-connector"><a class="anchor" href="#dropbox-restful-example-connector"></a>Dropbox RESTful Example Connector</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>The sample connector used in this discussion connects to&nbsp;https://www.dropbox.com/developers/core/docs[DropBox’s Core API]. Find the connector source code&nbsp;on&nbsp;https://github.com/mulesoft/devkit-documentation-rest-jersey[GitHub].</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>The connector exposes the API operation&nbsp;<code>GET&nbsp;https://api.dropbox.com/1/account/info</code> which retrieves information about the&nbsp;Dropbox Account resource, described in the <a href="https://www.dropbox.com/developers/core/docs#account-info">Dropbox documentation</a>.&nbsp;</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>A typical response to this method looks like this:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="CodeRay highlight"><code data-lang="java">{
+    <span class="string"><span class="delimiter">"</span><span class="content">referral_link</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">https://www.dropbox.com/referrals/r1a2n3d4m5s6t7</span><span class="delimiter">"</span></span>,
+    <span class="string"><span class="delimiter">"</span><span class="content">display_name</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">John P. User</span><span class="delimiter">"</span></span>,
+    <span class="string"><span class="delimiter">"</span><span class="content">uid</span><span class="delimiter">"</span></span>: <span class="integer">12345678</span>,
+    <span class="string"><span class="delimiter">"</span><span class="content">country</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">US</span><span class="delimiter">"</span></span>,
+    <span class="string"><span class="delimiter">"</span><span class="content">quota_info</span><span class="delimiter">"</span></span>: {
+        <span class="string"><span class="delimiter">"</span><span class="content">shared</span><span class="delimiter">"</span></span>: <span class="integer">253738410565</span>,
+        <span class="string"><span class="delimiter">"</span><span class="content">quota</span><span class="delimiter">"</span></span>: <span class="integer">107374182400000</span>,
+        <span class="string"><span class="delimiter">"</span><span class="content">normal</span><span class="delimiter">"</span></span>: <span class="integer">680031877871</span>
+    }
+}</code></pre> 
+   </div> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Note that the account information is a JSON object with several fields, which in turn contains a nested JSON object for account quota information. The connector has to translate both of these JSON objects to POJOs for the response to be consumable in Mule.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>The connector also exposes a second operation at the Mule level. <code>LogInfo</code>&nbsp;logs the OAuth access token and access token secret (but does not at any time call the Dropbox Web service). You may want to include similar debugging utility operations in a connector during development.</p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="development-process-outline"><a class="anchor" href="#development-process-outline"></a>Development Process Outline</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>There are several major tasks in developing a connector with Jersey Client; these are outlined below.</p> 
+  </div> 
+  <div class="olist arabic"> 
+   <ol class="arabic"> 
+    <li> <p>Assuming you’ve prepared an initial connector project:</p> 
+     <div class="olist loweralpha"> 
+      <ol class="loweralpha" type="a"> 
+       <li> <p>Add Jersey and Jackson dependencies to POM.</p> </li> 
+       <li> <p>Create any client or entities packages.</p> </li> 
+       <li> <p>Rebuild project with the new dependencies.</p> </li> 
+      </ol> 
+     </div> </li> 
+    <li> <p>Create the Jersey Client class.</p> 
+     <div class="olist loweralpha"> 
+      <ol class="loweralpha" type="a"> 
+       <li> <p>Enable Jersey Client JSON-POJO mapping.</p> </li> 
+      </ol> 
+     </div> </li> 
+    <li> <p>Create the Connector class.</p> 
+     <div class="olist loweralpha"> 
+      <ol class="loweralpha" type="a"> 
+       <li> <p>Add OAuth.</p> </li> 
+       <li> <p>Build and test connector.</p> </li> 
+      </ol> 
+     </div> </li> 
+    <li> <p>Add an operation.</p> 
+     <div class="olist loweralpha"> 
+      <ol class="loweralpha" type="a"> 
+       <li> <p>Add operation to client class, and add required POJOs to project.</p> </li> 
+       <li> <p>Expose client operation via Connector class.</p> </li> 
+       <li> <p>Build and test manually (Optional).</p> </li> 
+       <li> <p>Define and run unit tests and Javadoc examples.</p> </li> 
+      </ol> 
+     </div> </li> 
+   </ol> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="prepared-connector-project"><a class="anchor" href="#prepared-connector-project"></a>Prepared Connector Project</h3> 
+   <div class="paragraph"> 
+    <p>Once you have created a connector project as described in&nbsp;<a href="/anypoint-connector-devkit/creating-an-anypoint-connector-project">Creating an Anypoint Connector Project</a>, you must add Jersey, Jackson, and JSON-related dependencies to the POM, and create packages and classes you use in your connector before adding operations.</p> 
+   </div> 
+   <div class="sect3"> 
+    <h4 id="adding-dependencies-to-the-pom"><a class="anchor" href="#adding-dependencies-to-the-pom"></a>Adding Dependencies to the POM</h4> 
+    <div class="paragraph"> 
+     <p>The following <code>&lt;dependency&gt;</code> elements add Jersey, Jackson, and Mule JSON support to your project:</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="title">
+       POM Dependencies for Jersey, Jackson, and JSON 
+     </div> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="xml"><span class="comment">&lt;!-- Add this to use Jersey Client --&gt;</span>
+  <span class="tag">&lt;dependency&gt;</span>
+      <span class="tag">&lt;groupId&gt;</span>com.sun.jersey<span class="tag">&lt;/groupId&gt;</span>
+      <span class="tag">&lt;artifactId&gt;</span>jersey-client<span class="tag">&lt;/artifactId&gt;</span>
+      <span class="tag">&lt;version&gt;</span>${jersey.client.version}<span class="tag">&lt;/version&gt;</span>
+  <span class="tag">&lt;/dependency&gt;</span>
+
+<span class="comment">&lt;!-- Add this to use Mule support for JSON based on Jackson --&gt;</span>
+  <span class="tag">&lt;dependency&gt;</span>
+      <span class="tag">&lt;groupId&gt;</span>org.mule.modules<span class="tag">&lt;/groupId&gt;</span>
+      <span class="tag">&lt;artifactId&gt;</span>mule-module-json<span class="tag">&lt;/artifactId&gt;</span>
+      <span class="tag">&lt;version&gt;</span>${mule.version}<span class="tag">&lt;/version&gt;</span>
+      <span class="tag">&lt;scope&gt;</span>provided<span class="tag">&lt;/scope&gt;</span>
+  <span class="tag">&lt;/dependency&gt;</span></code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>Add these to the <code>&lt;dependencies&gt;</code> element in your POM, along with any other dependencies required by your project. For example, the Dropbox sample connector adds the following additional dependency for OAuth support:</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="xml"><span class="comment">&lt;!-- Add this to use OAuth support in DevKit--&gt;</span>
+  <span class="tag">&lt;dependency&gt;</span>
+      <span class="tag">&lt;groupId&gt;</span>oauth.signpost<span class="tag">&lt;/groupId&gt;</span>
+      <span class="tag">&lt;artifactId&gt;</span>signpost-core<span class="tag">&lt;/artifactId&gt;</span>
+      <span class="tag">&lt;version&gt;</span>1.2.1.2<span class="tag">&lt;/version&gt;</span>
+  <span class="tag">&lt;/dependency&gt;</span></code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>The complete POM for the Dropbox sample connector project as generated from the Devkit 3.6 connector Maven archetype is:</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="title">
+       Dropbox RESTful Connector pom.xml 
+     </div> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;project</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">"</span><span class="content">http://maven.apache.org/POM/4.0.0</span><span class="delimiter">"</span></span> <span class="attribute-name">xmlns:xsi</span>=<span class="string"><span class="delimiter">"</span><span class="content">http://www.w3.org/2001/XMLSchema-instance</span><span class="delimiter">"</span></span>
+       <span class="attribute-name">xsi:schemaLocation</span>=<span class="string"><span class="delimiter">"</span><span class="content">http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;modelVersion&gt;</span>4.0.0<span class="tag">&lt;/modelVersion&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>org.mule.samples.devkit<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>dropboxrest<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;version&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/version&gt;</span>
+  <span class="tag">&lt;packaging&gt;</span>mule-module<span class="tag">&lt;/packaging&gt;</span>
+  <span class="tag">&lt;name&gt;</span>Mule ${serviceName} Cloud Connector<span class="tag">&lt;/name&gt;</span>
+  <span class="tag">&lt;parent&gt;</span>
+      <span class="tag">&lt;groupId&gt;</span>org.mule.tools.devkit<span class="tag">&lt;/groupId&gt;</span>
+      <span class="tag">&lt;artifactId&gt;</span>mule-devkit-parent<span class="tag">&lt;/artifactId&gt;</span>
+      <span class="tag">&lt;version&gt;</span>3.6.1<span class="tag">&lt;/version&gt;</span>
+  <span class="tag">&lt;/parent&gt;</span>
+  <span class="tag">&lt;properties&gt;</span>
+      <span class="tag">&lt;junit.version&gt;</span>4.9<span class="tag">&lt;/junit.version&gt;</span>
+      <span class="tag">&lt;mockito.version&gt;</span>1.8.2<span class="tag">&lt;/mockito.version&gt;</span>
+      <span class="tag">&lt;jdk.version&gt;</span>1.7<span class="tag">&lt;/jdk.version&gt;</span>
+      <span class="tag">&lt;category&gt;</span>Cloud Connectors<span class="tag">&lt;/category&gt;</span>
+      <span class="tag">&lt;licensePath&gt;</span>LICENSE.md<span class="tag">&lt;/licensePath&gt;</span>
+      <span class="tag">&lt;devkit.studio.package.skip&gt;</span>false<span class="tag">&lt;/devkit.studio.package.skip&gt;</span>
+      <span class="tag">&lt;serviceName&gt;</span>DropBox REST Sample<span class="tag">&lt;/serviceName&gt;</span>
+
+      <span class="comment">&lt;!-- required for Jersey Client --&gt;</span>
+      <span class="tag">&lt;jersey.client.version&gt;</span>1.6<span class="tag">&lt;/jersey.client.version&gt;</span>
+      <span class="tag">&lt;jersey.multipart.version&gt;</span>1.3<span class="tag">&lt;/jersey.multipart.version&gt;</span>
+  <span class="tag">&lt;/properties&gt;</span>
+
+  <span class="tag">&lt;dependencies&gt;</span>
+    <span class="comment">&lt;!-- Add this to use OAuth support in DevKit--&gt;</span>
+    <span class="tag">&lt;dependency&gt;</span>
+        <span class="tag">&lt;groupId&gt;</span>oauth.signpost<span class="tag">&lt;/groupId&gt;</span>
+        <span class="tag">&lt;artifactId&gt;</span>signpost-core<span class="tag">&lt;/artifactId&gt;</span>
+        <span class="tag">&lt;version&gt;</span>1.2.1.2<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;/dependency&gt;</span>
+
+    <span class="comment">&lt;!-- Add this to use Jersey Client --&gt;</span>
+    <span class="tag">&lt;dependency&gt;</span>
+        <span class="tag">&lt;groupId&gt;</span>com.sun.jersey<span class="tag">&lt;/groupId&gt;</span>
+        <span class="tag">&lt;artifactId&gt;</span>jersey-client<span class="tag">&lt;/artifactId&gt;</span>
+        <span class="tag">&lt;version&gt;</span>${jersey.client.version}<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;/dependency&gt;</span>
+
+    <span class="comment">&lt;!-- Add this to use Mule support for JSON --&gt;</span>
+
+    <span class="tag">&lt;dependency&gt;</span>
+        <span class="tag">&lt;groupId&gt;</span>org.mule.modules<span class="tag">&lt;/groupId&gt;</span>
+        <span class="tag">&lt;artifactId&gt;</span>mule-module-json<span class="tag">&lt;/artifactId&gt;</span>
+        <span class="tag">&lt;version&gt;</span>${mule.version}<span class="tag">&lt;/version&gt;</span>
+        <span class="tag">&lt;scope&gt;</span>provided<span class="tag">&lt;/scope&gt;</span>
+    <span class="tag">&lt;/dependency&gt;</span>
+  <span class="tag">&lt;/dependencies&gt;</span>
+<span class="tag">&lt;/project&gt;</span></code></pre> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="sect3"> 
+    <h4 id="creating-packages-for-supporting-classes"><a class="anchor" href="#creating-packages-for-supporting-classes"></a>Creating Packages for Supporting Classes</h4> 
+    <div class="paragraph"> 
+     <p>The Dropbox REST Connector uses the following organization to support the different classes used in its connector:</p> 
+    </div> 
+    <div class="ulist"> 
+     <ul> 
+      <li> <p>Package <code>org.mule.examples.restjerseyconnector.client</code> contains the Jersey Client code class <code>DropboxClient.java</code></p> </li> 
+      <li> <p>Package <code>org.mule.examples.restjerseyconnector.exception</code> defines exceptions that can be thrown by the connector:&nbsp;</p> 
+       <div class="ulist"> 
+        <ul> 
+         <li> <p><code>DropboxRestConnectorTokenExpiredException</code>:&nbsp;a security and authentication exception</p> </li> 
+         <li> <p><code>DropboxRestConnectorException</code>:&nbsp;a catchall exception</p> </li> 
+        </ul> 
+       </div> </li> 
+      <li> <p>Package <code>org.mule.examples.restjerseyconnector.entities</code> contains two POJOs:&nbsp;<code>AccountInfo</code> and <code>QuotaInfo</code>, which represent the results from the Dropbox API</p> </li> 
+     </ul> 
+    </div> 
+    <div class="paragraph"> 
+     <p>The entity classes typically wind up as incoming or outgoing payloads for operations on your connector. One way to know whether your connector needs entity classes is to look at any documentation or metadata that you have about requests and responses. Wherever you see JSON Arrays or complex Objects, you need corresponding entity classes.</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>For now, create the package but don’t populate it with classes.</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>If your connector presents only Maps to Mule, you probably won’t need to create this package. Only use Maps if your connector is presenting a dynamic data model.</p> 
+    </div> 
+   </div> 
+   <div class="sect3"> 
+    <h4 id="rebuilding-the-project-with-new-dependencies"><a class="anchor" href="#rebuilding-the-project-with-new-dependencies"></a>Rebuilding the Project with New Dependencies</h4> 
+    <div class="paragraph"> 
+     <p>Now that your POM file includes these additions, perform a clean build and install of your project.&nbsp;Doing so now is a convenient way to spot any errors in your POM before you start doing any real coding.&nbsp;</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>Run the following Maven command on the command line from the directory where the project exists:</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p><code>mvn clean install</code></p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>This command invokes Maven with two goals:</p> 
+    </div> 
+    <div class="olist arabic"> 
+     <ol class="arabic"> 
+      <li> <p><strong>clean</strong> - Tells Maven to wipe out all previous build contents.</p> </li> 
+      <li> <p><strong>install</strong> - Tells Maven to:</p> 
+       <div class="ulist"> 
+        <ul> 
+         <li> <p>Compile all the code for the project</p> </li> 
+         <li> <p>Run any defined tests</p> </li> 
+         <li> <p>Package the compiled code as an Eclipse update site</p> </li> 
+         <li> <p>Install it in the local Maven repository</p> </li> 
+        </ul> 
+       </div> </li> 
+     </ol> 
+    </div> 
+    <div class="paragraph"> 
+     <p>Any failure during this process, such as a failed build or test, stops Maven from attempting subsequent goals. For further details on Maven builds, see <a href="http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html">Introduction to the Build Lifecycle</a>&nbsp;at the Apache Maven project.</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>Your preferred IDE should have support for this process as well. For example, in Eclipse if you have m2eclipse installed, you can select the project and invoke&nbsp;<strong>Run as</strong> &gt; <strong>Maven Build.</strong></p> 
+    </div> 
+   </div> 
+   <div class="sect3"> 
+    <h4 id="create-client-class-and-code-connector-code-class"><a class="anchor" href="#create-client-class-and-code-connector-code-class"></a>Create Client Class and <code>@Connector</code> Class</h4> 
+    <div class="paragraph"> 
+     <p>The client class does the real work of preparing and making calls to the remote Web service. It serializes and deserializes the request and response entities as JSON. The <code>@Connector</code> class creates an instance of the client class when needed, and calls methods to perform operations on resources. The two related tasks here are to create the client class, and update the&nbsp;<code>@Connector</code> class to instantiate and reference it.</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>The client class builds on functionality provided by the Jersey Client. See the <a href="https://jersey.java.net/documentation/1.7/user-guide.html#client-api">Jersey User Guide</a> for more information.&nbsp;</p> 
+    </div> 
+   </div> 
+   <div class="sect3"> 
+    <h4 id="required-imports-for-the-client-class"><a class="anchor" href="#required-imports-for-the-client-class"></a>Required Imports for the Client Class</h4> 
+    <div class="paragraph"> 
+     <p>To pick up Jackson and Jersey client functionality, the client class requires at least the following imports:</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">javax.ws.rs.core.MediaType</span>;
+<span class="keyword">import</span> <span class="include">com.sun.jersey.api.client</span>.*;
+<span class="keyword">import</span> <span class="include">com.sun.jersey.api.client.config.ClientConfig</span>;
+<span class="keyword">import</span> <span class="include">com.sun.jersey.api.client.config.DefaultClientConfig</span>;
+<span class="keyword">import</span> <span class="include">com.sun.jersey.api.json.JSONConfiguration</span>;</code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>Additional imports may be needed for Jersey and Jackson, depending on their use in your particular client. For example, the sample client uses the following imports for OAuth functionality in Jersey:</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">com.sun.jersey.oauth.client.OAuthClientFilter</span>;
+<span class="keyword">import</span> <span class="include">com.sun.jersey.oauth.signature.OAuthParameters</span>;
+<span class="keyword">import</span> <span class="include">com.sun.jersey.oauth.signature.OAuthSecrets</span>;</code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>The client class in the sample client does not make direct calls to Jackson, so no imports are required.</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>Expect to add more imports as you add operations, for example if you need to pick up any entity classes and exceptions.</p> 
+    </div> 
+   </div> 
+   <div class="sect3"> 
+    <h4 id="client-class-properties-and-constructor"><a class="anchor" href="#client-class-properties-and-constructor"></a>Client Class Properties and Constructor</h4> 
+    <div class="paragraph"> 
+     <p>The easiest way to understand how to build your client class constructor is to look at the constructor for the sample connector’s client class.</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">DropboxClient</span> {
+  <span class="directive">private</span> Client client; <span class="comment">/* a Jersey client instance */</span>
+  <span class="directive">private</span> WebResource apiResource;
+  <span class="directive">private</span> RestJerseyConnector connector;
+
+  <span class="directive">public</span> DropboxClient(RestJerseyConnector connector) {
+    setConnector(connector);
+    ClientConfig clientConfig = <span class="keyword">new</span> DefaultClientConfig();
+
+    <span class="comment">/* Enable support for JSON to POJO entity mapping in Jersey */</span>
+    clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, <span class="predefined-type">Boolean</span>.TRUE);
+    <span class="local-variable">this</span>.client = Client.create(clientConfig);
+    <span class="local-variable">this</span>.apiResource = <span class="local-variable">this</span>.client.resource(getConnector().getApiUrl() + <span class="string"><span class="delimiter">"</span><span class="content">/</span><span class="delimiter">"</span></span> + getConnector().getApiVersion());
+  }
+  ...
+  <span class="comment">/* getters, setters and other methods omitted */</span>
+}</code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p><strong>Notes:</strong></p> 
+    </div> 
+    <div class="ulist"> 
+     <ul> 
+      <li> <p>Certain&nbsp;<code>@Connector</code> class values are used frequently in the client class code:</p> 
+       <div class="ulist"> 
+        <ul> 
+         <li> <p>API URL and version</p> </li> 
+         <li> <p>Operations for OAuth:</p> 
+          <div class="ulist"> 
+           <ul> 
+            <li> <p>Consumer key</p> </li> 
+            <li> <p>Access token</p> </li> 
+            <li> <p>Consumer secret</p> </li> 
+            <li> <p>Access token secret</p> </li> 
+           </ul> 
+          </div> </li> 
+        </ul> 
+       </div> </li> 
+      <li> <p>Without passing <code>@Connector</code>&nbsp;class&nbsp;values to every operation or defining them in two places:</p> 
+       <div class="ulist"> 
+        <ul> 
+         <li> <p>Such values are defined as properties on the&nbsp;<code>@Connector</code> class</p> </li> 
+         <li> <p>An instance of the&nbsp;<code>@Connector</code> class is passed into the client class constructor and stored as a property on the client class</p> </li> 
+        </ul> 
+       </div> </li> 
+      <li> <p>Every client operation uses instances of&nbsp;<code>com.sun.jersey.api.Client</code>&nbsp;(the actual Jersey client instance) and <code>com.sun.jersey.api.client.WebResource</code>&nbsp;(which represents the top level resource on the service). So these instances are created in the constructor and stored on the client class’s&nbsp;<code>client.</code> and&nbsp;<code>apiResource</code>&nbsp;properties. (Getters and setters for these instances are defined, but that code is omitted here.)</p> </li> 
+     </ul> 
+    </div> 
+   </div> 
+   <div class="sect3"> 
+    <h4 id="enabling-jersey-client-json-to-pojo-mapping"><a class="anchor" href="#enabling-jersey-client-json-to-pojo-mapping"></a>Enabling Jersey Client JSON-to-POJO Mapping</h4> 
+    <div class="paragraph"> 
+     <p>To configure a Jersey client&nbsp;instance to enable optional functionality, such as support to map JSON content to POJOs, complete these steps:</p> 
+    </div> 
+    <div class="olist arabic"> 
+     <ol class="arabic"> 
+      <li> <p>Create an instance of <code>ClientConfig</code>.</p> </li> 
+      <li> <p>Set the desired options.</p> </li> 
+      <li> <p>Pass the <code>ClientConfig</code> to the <code>Client.create()</code>&nbsp;method. &nbsp;</p> </li> 
+     </ol> 
+    </div> 
+    <div class="paragraph"> 
+     <p>In this case, adding the feature&nbsp;<code>JSONConfiguration.FEATURE_POJO_MAPPING</code> &nbsp;enables the mapping of JSON responses to Java objects.</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>You need this functionality regardless of whether you are using a static data model with POJOs for your entities, or a dynamic data model with Maps for your entities.</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>Later, define the entities passed to and from the class with annotations on the entity classes to control how JSON documents are mapped to object instances.</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>Note that while Jackson is the default provider of serialization/deserialization for Jersey, you can substitute other providers, such as GSON. Also, note that using a different provider changes how you map the service’s JSON documents to your connector’s entity classes; for more information, refer to your serialization provider’s documentation.</p> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="client-class-code-before-adding-operations-and-authentication"><a class="anchor" href="#client-class-code-before-adding-operations-and-authentication"></a>Client Class Code, Before Adding Operations and Authentication</h3> 
+   <div class="paragraph"> 
+    <p>The complete code for our sample connector, before adding operations and references to entities used, is:</p> 
+   </div> 
+   <div class="listingblock"> 
+    <div class="title">
+      DropboxRESTClient.java Before Adding Operations 
+    </div> 
+    <div class="content"> 
+     <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">org.mule.examples.restjerseyconnector.client</span>;
+<span class="keyword">import</span> <span class="include">javax.ws.rs.core.MediaType</span>;
+<span class="keyword">import</span> <span class="include">com.sun.jersey.api.client</span>.*;
+<span class="keyword">import</span> <span class="include">com.sun.jersey.api.client.config.ClientConfig</span>;
+<span class="keyword">import</span> <span class="include">com.sun.jersey.api.client.config.DefaultClientConfig</span>;
+<span class="keyword">import</span> <span class="include">com.sun.jersey.api.json.JSONConfiguration</span>;
+<span class="keyword">import</span> <span class="include">com.sun.jersey.oauth.client.OAuthClientFilter</span>;
+<span class="keyword">import</span> <span class="include">com.sun.jersey.oauth.signature.OAuthParameters</span>;
+<span class="keyword">import</span> <span class="include">com.sun.jersey.oauth.signature.OAuthSecrets</span>;
+<span class="keyword">import</span> <span class="include">org.mule.examples.restjerseyconnector.RestJerseyConnector</span>;
+<span class="keyword">import</span> <span class="include">org.mule.examples.restjerseyconnector.entities.AccountInfo</span>;
+<span class="keyword">import</span> <span class="include">org.mule.examples.restjerseyconnector.exception.RestJerseyConnectorException</span>;
+<span class="keyword">import</span> <span class="include">org.mule.examples.restjerseyconnector.exception.RestJerseyConnectorTokenExpiredException</span>;
+
+<span class="directive">public</span> <span class="type">class</span> <span class="class">DropboxClient</span> {
+
+    <span class="directive">private</span> Client client;
+    <span class="directive">private</span> WebResource apiResource;
+    <span class="directive">private</span> RestJerseyConnector connector;
+
+    <span class="directive">public</span> DropboxClient(RestJerseyConnector connector) {
+        setConnector(connector);
+
+        ClientConfig clientConfig = <span class="keyword">new</span> DefaultClientConfig();
+        clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, <span class="predefined-type">Boolean</span>.TRUE);
+        <span class="local-variable">this</span>.client = Client.create(clientConfig);
+        <span class="local-variable">this</span>.apiResource = <span class="local-variable">this</span>.client.resource(getConnector().getApiUrl() + <span class="string"><span class="delimiter">"</span><span class="content">/</span><span class="delimiter">"</span></span> + getConnector().getApiVersion());
+    }
+
+    <span class="directive">public</span> Client getClient() {
+        <span class="keyword">return</span> client;
+    }
+
+    <span class="directive">public</span> <span class="type">void</span> setClient(Client client) {
+        <span class="local-variable">this</span>.client = client;
+    }
+
+    <span class="directive">public</span> WebResource getApiResource() {
+        <span class="keyword">return</span> addSignHeader(apiResource);
+    }
+
+    <span class="directive">public</span> <span class="type">void</span> setApiResource(WebResource apiResource) {
+        <span class="local-variable">this</span>.apiResource = apiResource;
+    }
+
+    <span class="directive">public</span> RestJerseyConnector getConnector() {
+        <span class="keyword">return</span> connector;
+    }
+
+    <span class="directive">public</span> <span class="type">void</span> setConnector(RestJerseyConnector connector) {
+        <span class="local-variable">this</span>.connector = connector;
+    }
+}</code></pre> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="completing-the-code-connector-code-class"><a class="anchor" href="#completing-the-code-connector-code-class"></a>Completing the <code>@Connector</code> Class</h3> 
+   <div class="paragraph"> 
+    <p>When you create your connector project, Maven generates a scaffold&nbsp;<code>@Connector</code> class for you. Now you can enhance it to add needed properties (some of them&nbsp;<code>@Configurable</code>),&nbsp;initialize the client class when the <code>@Connector</code> is initialized, and add authentication functionality.</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>Your connector uses&nbsp;<code>@Configurable</code>&nbsp;properties for a few purposes, such as:</p> 
+   </div> 
+   <div class="ulist"> 
+    <ul> 
+     <li> <p>Changing the API root resource URL and version for the service to target a specific sandbox or test system instead of a production environment</p> </li> 
+     <li> <p>Storing authentication-related values the user must configure:</p> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p>For OAuth: the API key and API secret</p> </li> 
+        <li> <p>For basic authentication: a username and password.</p> </li> 
+       </ul> 
+      </div> </li> 
+    </ul> 
+   </div> 
+   <div class="paragraph"> 
+    <p>There may also be properties that are not&nbsp;<code>@Configurable</code> but that are used internally. For the example, OAuth1 support needs certain properties for the&nbsp;access token and access token secret.</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>Create properties as needed for all of these:</p> 
+   </div> 
+   <div class="listingblock"> 
+    <div class="content"> 
+     <pre class="CodeRay highlight"><code data-lang="java"><span class="comment">/** * Dropbox API Url */</span>
+<span class="annotation">@Configurable</span> <span class="annotation">@Optional</span> <span class="annotation">@Default</span>(<span class="string"><span class="delimiter">"</span><span class="content">https://api.dropbox.com</span><span class="delimiter">"</span></span>)
+<span class="directive">private</span> <span class="predefined-type">String</span> apiUrl;
+
+<span class="comment">/** * Dropbox API version */</span>
+<span class="annotation">@Configurable</span> <span class="annotation">@Optional</span> <span class="annotation">@Default</span>(<span class="string"><span class="delimiter">"</span><span class="content">1</span><span class="delimiter">"</span></span>)
+<span class="directive">private</span> <span class="predefined-type">String</span> apiVersion;
+
+<span class="comment">/** * The ApiKey */</span>
+<span class="annotation">@Configurable</span> <span class="annotation">@OAuthConsumerKey</span>
+<span class="directive">private</span> <span class="predefined-type">String</span> consumerKey;
+<span class="comment">/** * The consumerSecret */</span>
+<span class="annotation">@Configurable</span> <span class="annotation">@OAuthConsumerSecret</span>
+<span class="directive">private</span> <span class="predefined-type">String</span> consumerSecret;
+
+<span class="annotation">@OAuthAccessToken</span>
+<span class="directive">private</span> <span class="predefined-type">String</span> accessToken;
+
+<span class="annotation">@OAuthAccessTokenSecret</span>
+<span class="directive">private</span> <span class="predefined-type">String</span> accessTokenSecret;</code></pre> 
+    </div> 
+   </div> 
+   <div class="paragraph"> 
+    <p><strong>Notes</strong>:</p> 
+   </div> 
+   <div class="ulist"> 
+    <ul> 
+     <li> <p>The use of <code>@Optional</code> and <code>@Default</code> with <code>@Configurable</code>. For more on these annotations, see&nbsp;<a href="/anypoint-connector-devkit/defining-connector-attributes">Defining Connector Attributes</a>&nbsp;and <a href="/anypoint-connector-devkit/annotation-reference">Annotation Reference</a>.</p> </li> 
+     <li> <p>The use of the OAuth annotations</p> </li> 
+    </ul> 
+   </div> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="connector-class-start-method-and-the-client-class"><a class="anchor" href="#connector-class-start-method-and-the-client-class"></a>@Connector Class&nbsp;@Start Method&nbsp;and the Client Class</h3> 
+   <div class="paragraph"> 
+    <p>The&nbsp;<code>@Connector</code> class in this instance does NOT have a constructor. Most of its instance properties are configuration properties.&nbsp;Instead, a <code>@Start</code> method&nbsp;leverages the Mule life cycle to create an instance of the client class when first needed. It is then saved in an instance variable on the <code>@Connector</code> class:</p> 
+   </div> 
+   <div class="listingblock"> 
+    <div class="content"> 
+     <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> DropboxClient client;
+
+<span class="annotation">@Start</span>
+  <span class="directive">public</span> <span class="type">void</span> init() {
+      setClient(<span class="keyword">new</span> DropboxClient(<span class="local-variable">this</span>));
+  }</code></pre> 
+    </div> 
+   </div> 
+   <div class="paragraph"> 
+    <p>See&nbsp;<a href="#">Integrating Connectors with the Mule Life Cycle</a>&nbsp;for details on the use of the&nbsp;<code>@Start</code> annotation.</p> 
+   </div> 
+   <div class="admonitionblock note"> 
+    <table> 
+     <tbody> 
+      <tr> 
+       <td class="icon"> <i class="fa icon-note" title="Note"></i> </td> 
+       <td class="content"> 
+        <div class="paragraph"> 
+         <p>This example illustrates a useful pattern you can follow in your own connectors.</p> 
+        </div> 
+        <div class="ulist"> 
+         <ul> 
+          <li> <p>The client class constructor takes a reference to the <code>@Connector</code> class instance. The properties of the <code>@Connector</code> class (including configurable properties) are readily available in the client by calling the getters and setters. This is far easier than passing <code>@Connector</code> properties to individual operations as single arguments. &nbsp;</p> </li> 
+          <li> <p>The <code>@Connector</code> class instance saves a reference to the client class instance, which can be used to call methods on the client class. This instance can also be used in a <code>@Stop</code> method, thus tying the lifecycle of the client class instance to the <code>@Connector</code> class instance.</p> </li> 
+         </ul> 
+        </div> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="adding-oauth-authentication"><a class="anchor" href="#adding-oauth-authentication"></a>Adding OAuth Authentication</h3> 
+   <div class="paragraph"> 
+    <p>Supporting OAuth 1.0a authentication requires that you make changes in both the&nbsp;<code>@Connector</code> class and the&nbsp;client class. These changes are outlined below.</p> 
+   </div> 
+   <div class="olist arabic"> 
+    <ol class="arabic"> 
+     <li> <p>Import OAuth packages.</p> </li> 
+     <li> <p>Add OAuth annotations to the&nbsp;<code>@Connector</code> class as required for authentication.</p> </li> 
+     <li> <p>Add OAuth-related <code>@Configurable</code>&nbsp;properties:</p> 
+      <div class="ulist"> 
+       <ul> 
+        <li> <p>API key</p> </li> 
+        <li> <p>API secret</p> </li> 
+        <li> <p>Access token</p> </li> 
+        <li> <p>Access token secret (including setters and getters)</p> </li> 
+       </ul> 
+      </div> </li> 
+     <li> <p>Include the client class code to pass OAuth 1.0a request headers with each request.</p> </li> 
+    </ol> 
+   </div> 
+   <div class="paragraph"> 
+    <p>For a detailed discussion on the code changes required for OAuth support, see<a href="/anypoint-connector-devkit/oauth-v1">Implementing OAuth 1.0 Authentication</a>, which references the same code sample used in this discussion.</p> 
+   </div> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="building-and-testing-your-connector"><a class="anchor" href="#building-and-testing-your-connector"></a>Building and Testing your Connector</h3> 
+   <div class="paragraph"> 
+    <p>At this point, your connector project has all the necessary elements to build and install in Studio. It’s a handy sanity check to perform testing before you begin adding operations.</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>The process is described in&nbsp;<a href="/anypoint-connector-devkit/installing-and-testing-your-connector-in-studio">Installing and Testing Your Connector</a>.&nbsp;</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>Building the bare-bones version of the Jersey client connector and installing it in Studio gives you a component in the palette to drag and drop into the canvas.&nbsp;</p> 
+   </div> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="adding-an-operation-to-the-connector"><a class="anchor" href="#adding-an-operation-to-the-connector"></a>Adding an Operation to the Connector</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>To add an operation to a connector:</p> 
+  </div> 
+  <div class="olist arabic"> 
+   <ol class="arabic"> 
+    <li> <p>Define any entity classes used with the operation, and any new exceptions to be raised.</p> </li> 
+    <li> <p>In the client class, add&nbsp;Jersey code to call the operation, and to serialize and deserialize results.</p> </li> 
+    <li> <p>Add a&nbsp;<code>@Processor</code> method to the <code>@Connector</code> class&nbsp;to expose the operation to Mule.</p> </li> 
+   </ol> 
+  </div> 
+  <div class="admonitionblock note"> 
+   <table> 
+    <tbody> 
+     <tr> 
+      <td class="icon"> <i class="fa icon-note" title="Note"></i> </td> 
+      <td class="content"> 
+       <div class="paragraph"> 
+        <p><strong>Apply a Test-Driven Approach</strong></p> 
+       </div> 
+       <div class="paragraph"> 
+        <p>When it comes to adding operations to your connector, many successful projects follow a cycle similar to&nbsp;test-driven development.</p> 
+       </div> 
+       <div class="paragraph"> 
+        <p>First, identify detailed requirements for the operation:</p> 
+       </div> 
+       <div class="ulist"> 
+        <ul> 
+         <li> <p>Entities (POJOs or Maps with specific content) it can accept as input or return as responses</p> </li> 
+         <li> <p>Responses expected for a range of valid and invalid inputs</p> </li> 
+         <li> <p>Any exceptions the operation may raise, in the event of service unavailability, authentication failure, invalid inputs, and so on</p> </li> 
+        </ul> 
+       </div> 
+       <div class="paragraph"> 
+        <p>Then, iterate through the following cycle until you have completed all of your planned functionality:</p> 
+       </div> 
+       <div class="olist arabic"> 
+        <ol class="arabic"> 
+         <li> <p>Create JUnit tests that cover the expected behaviors.</p> </li> 
+         <li> <p>Implement functionality to satisfy those requirements:</p> 
+          <div class="olist loweralpha"> 
+           <ol class="loweralpha" type="a"> 
+            <li> <p>Define entities (and annotate them&nbsp;as needed for mapping to/from JSON).</p> </li> 
+            <li> <p>Create or enhance a method in the client class and a <code>@Processor</code> method in the <code>@Connector</code> class.</p> </li> 
+            <li> <p>Update your <code>@Connector</code> class with&nbsp;required code snippet comments.</p> </li> 
+            <li> <p>Run a Maven build to run the JUnit tests and fix any errors until all tests pass.</p> </li> 
+           </ol> 
+          </div> </li> 
+        </ol> 
+       </div> 
+       <div class="paragraph"> 
+        <p>Continue until you cover all the functionality for each operation. When complete, you have a complete validation suite for your connector to catch any regressions in the event of changes in the target service, the connector itself, Mule ESB, or DevKit.</p> 
+       </div> 
+       <div class="paragraph"> 
+        <p>You may ask, "When do I try my connector in Studio?" It is useful, as well as gratifying, to manually test each operation as you go, in addition to the automated JUnit tests.</p> 
+       </div> 
+       <div class="paragraph"> 
+        <p>Testing each operation lets you:</p> 
+       </div> 
+       <div class="ulist"> 
+        <ul> 
+         <li> <p>See basic operation functionality in action as you work on it, which gives you a sense of progress.</p> </li> 
+         <li> <p>See how the connector appears in Studio, something the automated unit tests cannot show you. For example, text from the Javadoc comments is used to populate tooltips for the fields in the dialog boxes in the connector.</p> </li> 
+        </ul> 
+       </div> 
+       <div class="paragraph"> 
+        <p>Manual testing provides the opportunity to polish the appearance of the connector, improve the experience with sensible defaults, and so on.</p> 
+       </div> 
+       <div class="paragraph"> 
+        <p>However, this does not diminish the value of the test-driven approach. Many connector development projects have bogged down or produced hard-to-use connectors because of a failure to define tests as you define the operations, which it seems like (and is) more work up front, but does pay off – you get a better result, faster.</p> 
+       </div> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="defining-and-annotating-entity-classes"><a class="anchor" href="#defining-and-annotating-entity-classes"></a>Defining and Annotating Entity Classes</h3> 
+   <div class="paragraph"> 
+    <p>Defining entity classes (POJOs or Maps) used with your connector operations is up to you&nbsp;– you decide the object model your connector operations present to the rest of Mule. Once you define these classes, you also have to define how to map between the JSON structure and your POJOs. You should add these incrementally, as they are needed by the operations you build.</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>Internally, Jersey relies on a Jackson-based serialization provider to marshal and unmarshal JSON documents to the object classes passed to and from your connector. This process relies upon Jackson annotations that describe how to map the fields of your entity POJOs to the structure of the JSON content being returned by the Web service.&nbsp;</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>The details on the Jackson annotations used for this purpose are in the&nbsp;https://github.com/FasterXML/jackson-databind[Jackson Databind annotations documentation]&nbsp;and the&nbsp;https://github.com/FasterXML/jackson-annotations[full Jackson annotations documentation]. &nbsp;</p> 
+   </div> 
+   <div class="admonitionblock note"> 
+    <table> 
+     <tbody> 
+      <tr> 
+       <td class="icon"> <i class="fa icon-note" title="Note"></i> </td> 
+       <td class="content"> 
+        <div class="paragraph"> 
+         <p><strong>Notes:</strong></p> 
+        </div> 
+        <div class="ulist"> 
+         <ul> 
+          <li> <p>The&nbsp;<code>@Generated</code> annotation on class&nbsp;<code>AccountInfo</code> indicates that this class definition was produced using the &nbsp;<code>jsonschema2pojo</code> utility. If you don’t want to come up with your own data model, you can also make use of <code>jsonschema2pojo</code> to generate class definitions from sample JSON documents.</p> </li> 
+          <li> <p><strong>Online Tool</strong></p> 
+           <div class="paragraph"> 
+            <p>Covering all possible permutations of mapping a JSON schema or document to a POJO using Jackson is beyond the scope of this document.&nbsp;One way to quickly produce an object model from JSON documents returned by a Web service is to use the <a href="https://github.com/joelittlejohn/jsonschema2pojo">jsonschema2pojo project</a> and <a href="http://www.jsonschema2pojo.org/">online utility</a>. This utility was used to produce the entity classes in this example.</p> 
+           </div> 
+           <div class="paragraph"> 
+            <p>You can see the final results in the <a href="https://github.com/mulesoft/devkit-documentation-rest-jersey/tree/master/src/main/java/org/mule/examples/restjerseyconnector/entities">project entity class code in GitHub</a> and particularly for the above code snippet, the <a href="https://github.com/mulesoft/devkit-documentation-rest-jersey/tree/master/src/main/java/org/mule/examples/restjerseyconnector/entities">AccountInfo class</a>.&nbsp;</p> 
+           </div> </li> 
+         </ul> 
+        </div> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
+   <div class="paragraph"> 
+    <p>Mapping the class and its members to a JSON document requires that you make these changes:</p> 
+   </div> 
+   <div class="ulist"> 
+    <ul> 
+     <li> <p>Annotate the entity class to configure JSON serialization:</p> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@JsonSerialize</span>(include = JsonSerialize.Inclusion.NON_NULL)
+<span class="annotation">@Generated</span>(<span class="string"><span class="delimiter">"</span><span class="content">com.googlecode.jsonschema2pojo</span><span class="delimiter">"</span></span>)
+<span class="annotation">@JsonPropertyOrder</span>({ <span class="string"><span class="delimiter">"</span><span class="content">referral_link</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">display_name</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">uid</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">country</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">quota_info</span><span class="delimiter">"</span></span> })
+<span class="directive">public</span> <span class="type">class</span> <span class="class">AccountInfo</span> {
+...</code></pre> 
+       </div> 
+      </div> </li> 
+     <li> <p>Add the <code>@JsonProperty</code> annotation to&nbsp;the entity class instance properties (and their getters and setters):</p> 
+      <div class="listingblock"> 
+       <div class="content"> 
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@JsonProperty</span>(<span class="string"><span class="delimiter">"</span><span class="content">referral_link</span><span class="delimiter">"</span></span>)
+    <span class="directive">private</span> <span class="predefined-type">String</span> referralLink;
+    ...
+
+    <span class="annotation">@JsonProperty</span>(<span class="string"><span class="delimiter">"</span><span class="content">referral_link</span><span class="delimiter">"</span></span>)
+    <span class="directive">public</span> <span class="predefined-type">String</span> getReferralLink() {
+        <span class="keyword">return</span> referralLink;
+    }
+
+    <span class="annotation">@JsonProperty</span>(<span class="string"><span class="delimiter">"</span><span class="content">referral_link</span><span class="delimiter">"</span></span>)
+    <span class="directive">public</span> <span class="type">void</span> setReferralLink(<span class="predefined-type">String</span> referralLink) {
+        <span class="local-variable">this</span>.referralLink = referralLink;
+    }</code></pre> 
+       </div> 
+      </div> </li> 
+    </ul> 
+   </div> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="implement-the-operation-in-the-client-class"><a class="anchor" href="#implement-the-operation-in-the-client-class"></a>Implement the Operation in the Client Class&nbsp;</h3> 
+   <div class="paragraph"> 
+    <p>Add code to the client class to make the Web Service request via Jersey Client.</p> 
+   </div> 
+   <div class="sect3"> 
+    <h4 id="helper-adding-authentication-to-jersey-client-requests"><a class="anchor" href="#helper-adding-authentication-to-jersey-client-requests"></a>Helper: Adding Authentication to Jersey Client Requests</h4> 
+    <div class="paragraph"> 
+     <p>Depending on what method of authentication you are using, you probably have to make code changes in both the <code>@Connector</code> and client classes to implement each operation called on the target service.&nbsp;</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>In the sample connector, the DropBox API uses OAuth 1.0 to access protected resources. Authentication requires including an authorization header when sending each request.&nbsp;</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>Jersey provides a filter chaining mechanism for modifying requests, which can be used to add the header. Because this step is needed for any operation protected by OAuth, the sample uses the convenient method <code>addSignHeader</code>:</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java"><span class="comment">/** * Adds the required OAuthClientFilter to insert the required header * when the WebResource is used to access the protected resources * of the DropBox API * * @param webResource The WebResource in which the header is added */</span>
+  <span class="directive">private</span> WebResource addSignHeader(WebResource webResource) {
+    OAuthParameters params = <span class="keyword">new</span> OAuthParameters();
+    params.signatureMethod(<span class="string"><span class="delimiter">"</span><span class="content">PLAINTEXT</span><span class="delimiter">"</span></span>);
+    params.consumerKey(getConnector().getConsumerKey());
+    params.setToken(getConnector().getAccessToken());
+    OAuthSecrets secrets = <span class="keyword">new</span> OAuthSecrets();
+    secrets.consumerSecret(getConnector().getConsumerSecret());
+    secrets.setTokenSecret(getConnector().getAccessTokenSecret());
+    OAuthClientFilter filter = <span class="keyword">new</span> OAuthClientFilter(client.getProviders(), params, secrets);
+    webResource.addFilter(filter);
+    <span class="keyword">return</span> webResource;
+  }</code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>For more information, see the&nbsp;https://jersey.java.net/nonav/apidocs/1.12/jersey/contribs/jersey-oauth/oauth-client/com/sun/jersey/oauth/client/OAuthClientFilter.html[OAuthClientFilter documentation].</p> 
+    </div> 
+   </div> 
+   <div class="sect3"> 
+    <h4 id="helper-executing-a-request-via-jersey"><a class="anchor" href="#helper-executing-a-request-via-jersey"></a>Helper: Executing a Request via Jersey</h4> 
+    <div class="paragraph"> 
+     <p>Making any request requires:</p> 
+    </div> 
+    <div class="ulist"> 
+     <ul> 
+      <li> <p>Marshaling inbound objects to JSON</p> </li> 
+      <li> <p>Calling the Web service</p> </li> 
+      <li> <p>Unmarshaling the response</p> </li> 
+      <li> <p>Handling response status codes and exceptions</p> </li> 
+     </ul> 
+    </div> 
+    <div class="paragraph"> 
+     <p>As with authentication, use a helper method to encapsulate all these repeated steps. In the sample client class, method <code>execute()</code> implements all this logic, as shown below.</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java"><span class="comment">/** * Executes the Dropbox request * */</span>
+<span class="directive">private</span> &lt;T&gt; T execute(WebResource webResource, <span class="predefined-type">String</span> method, <span class="predefined-type">Class</span>&lt;T&gt; returnClass) <span class="directive">throws</span> RestJerseyConnectorTokenExpiredException,
+        RestJerseyConnectorException {
+    ClientResponse clientResponse = webResource.accept(MediaType.APPLICATION_JSON).method(method, ClientResponse.class);
+    <span class="keyword">if</span>(clientResponse.getStatus() == <span class="integer">200</span>) {
+        <span class="keyword">return</span> clientResponse.getEntity(returnClass);
+    } <span class="keyword">else</span> <span class="keyword">if</span> (clientResponse.getStatus() == <span class="integer">401</span>) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> RestJerseyConnectorTokenExpiredException(<span class="string"><span class="delimiter">"</span><span class="content">The access token has expired; </span><span class="delimiter">"</span></span> + clientResponse.getEntity(<span class="predefined-type">String</span>.class));
+    } <span class="keyword">else</span> {
+        <span class="keyword">throw</span> <span class="keyword">new</span> RestJerseyConnectorException(
+          <span class="predefined-type">String</span>.format(<span class="string"><span class="delimiter">"</span><span class="content">ERROR - statusCode: %d - message: %s</span><span class="delimiter">"</span></span>,
+            clientResponse.getStatus(), clientResponse.getEntity(<span class="predefined-type">String</span>.class)));
+    }
+}</code></pre> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="sect3"> 
+    <h4 id="handling-exceptions"><a class="anchor" href="#handling-exceptions"></a>Handling Exceptions</h4> 
+    <div class="paragraph"> 
+     <p>As already noted, define any exceptions that may arise in your connector in a separate exceptions package.&nbsp;At a minimum, you need a general catch-all exception. Specific exceptions may also be useful to diagnose failures more easily, such as authentication-related failures, application-level errors, and so on. The <code>execute()</code> method above is a good place to centralize your exception-handling code, since it passes all requests for all operations.</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p>For our sample connector, package <code>org.mule.examples.restjerseyconnector.exception</code> contains two exceptions: a catchall <code>RestJerseyConnectorException</code> and the OAuth-related <code>RestJerseyConnectorTokenExpiredException</code>.&nbsp;</p> 
+    </div> 
+    <div class="admonitionblock note"> 
+     <table> 
+      <tbody> 
+       <tr> 
+        <td class="icon"> <i class="fa icon-note" title="Note"></i> </td> 
+        <td class="content"> 
+         <div class="paragraph"> 
+          <p>Note also that the&nbsp;<code>execute()</code>&nbsp;method provides a well-formatted error message. This step improves your ability to diagnose the issue if your connector encounters an error. You may want to put more verbose information here, such as the message sent, the HTTP request method, and so on.</p> 
+         </div> 
+         <div class="paragraph"> 
+          <p>As you develop your test cases, your tests of invalid or failed requests can check for messages associated with the correct exception.&nbsp;</p> 
+         </div> </td> 
+       </tr> 
+      </tbody> 
+     </table> 
+    </div> 
+    <div class="paragraph"> 
+     <p>Use the <code>@InvalidateConnectionOn</code> annotation to handle the reconnection. If the connector uses&nbsp;<code>@OAuth</code> as the authentication method, use:</p> 
+    </div> 
+    <div class="paragraph"> 
+     <p><code>@OAuthInvalidateAccessTokenOn (exception = MyAccessTokenExpiredException.class)</code></p> 
+    </div> 
+   </div> 
+   <div class="sect3"> 
+    <h4 id="creating-the-operation-client-method"><a class="anchor" href="#creating-the-operation-client-method"></a>Creating the Operation Client Method</h4> 
+    <div class="paragraph"> 
+     <p>With those helper classes in place, the actual client method to make a request of a resource is quite short. For the example, the <code>getAccountInfo()</code> method makes a GET request of the <code>/account/info</code> resource:</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="CodeRay highlight"><code data-lang="java"><span class="comment">/** * Returns the Account Information of the user * * @return The AccountInfo * @throws org.mule.examples.restjerseyconnector.exceptions.RestJerseyConnectorException If the response is an error or the response cannot be parsed as an AccountInfo * @throws org.mule.examples.restjerseyconnector.exceptions.RestJerseyConnectorTokenExpiredException If the current token used for the call to the service is no longer valid */</span>
+<span class="directive">public</span> AccountInfo getAccountInfo()
+    <span class="directive">throws</span> RestJerseyConnectorException, RestJerseyConnectorTokenExpiredException {
+    WebResource webResource = getApiResource().path(<span class="string"><span class="delimiter">"</span><span class="content">account</span><span class="delimiter">"</span></span>).path(<span class="string"><span class="delimiter">"</span><span class="content">info</span><span class="delimiter">"</span></span>);
+    <span class="keyword">return</span> execute(webResource, <span class="string"><span class="delimiter">"</span><span class="content">GET</span><span class="delimiter">"</span></span>, AccountInfo.class);
+}</code></pre> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="exposing-the-operation-in-the-code-connector-code-class"><a class="anchor" href="#exposing-the-operation-in-the-code-connector-code-class"></a>Exposing the Operation in the&nbsp;<code>@Connector</code> Class</h3> 
+   <div class="paragraph"> 
+    <p>To expose an operation from the client class on the <code>@Connector</code> class, add a&nbsp;<code>@Processor</code> method&nbsp;that calls the corresponding method on the Jersey client.</p> 
+   </div> 
+   <div class="olist arabic"> 
+    <ol class="arabic"> 
+     <li> <p>Update the&nbsp;<code>@Connector</code> class to import any entity and exception classes needed to call the client class operation.&nbsp;</p> </li> 
+     <li> <p>Define a <code>@Processor</code> method on the <code>@Connector</code> class, named for the operation.&nbsp;</p> 
+      <div class="olist loweralpha"> 
+       <ol class="loweralpha" type="a"> 
+        <li> <p>Annotate the method as needed for authentication.</p> </li> 
+       </ol> 
+      </div> </li> 
+     <li> <p>The parameters to this method must match the parameters to expose at the Mule ESB level (in the XML configuration or in the property dialog).&nbsp;</p> 
+      <div class="olist loweralpha"> 
+       <ol class="loweralpha" type="a"> 
+        <li> <p>Annotate the parameters to control default and optional values, their desired positions in Studio property dialogs, etc.</p> </li> 
+       </ol> 
+      </div> </li> 
+     <li> <p>The method body should call the operation method on the client class, pass the appropriate object, and return the value to be set to the payload.</p> </li> 
+    </ol> 
+   </div> 
+   <div class="paragraph"> 
+    <p>For our <code>getAccountInfo</code> operation, we add the following imports in the <code>@Connector</code> class:</p> 
+   </div> 
+   <div class="listingblock"> 
+    <div class="content"> 
+     <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">org.mule.examples.restjerseyconnector.entities.AccountInfo</span>;
+<span class="keyword">import</span> <span class="include">org.mule.examples.restjerseyconnector.exceptions.RestJerseyConnectorException</span>;
+<span class="keyword">import</span> <span class="include">org.mule.examples.restjerseyconnector.exceptions.RestJerseyConnectorTokenExpiredException</span>;</code></pre> 
+    </div> 
+   </div> 
+   <div class="paragraph"> 
+    <p>The <code>@Processor</code> method that exposes the <code>getAccountInfo</code> operation is:</p> 
+   </div> 
+   <div class="listingblock"> 
+    <div class="content"> 
+     <pre class="CodeRay highlight"><code data-lang="java"><span class="comment">/** * Returns the Account Information of the user * * {@sample.xml ../../../doc/rest-jersey-connector.xml.sample rest-jersey:get-account-info} * * @return The AccountInfo object * @throws org.mule.examples.restjerseyconnector.exceptions.RestJerseyConnectorException If the response is an error or the response cannot be parsed as an AccountInfo * @throws org.mule.examples.restjerseyconnector.exceptions.RestJerseyConnectorTokenExpiredException If the current token used for the call to the service is no longer valid */</span>
+<span class="annotation">@OAuthProtected</span>
+<span class="annotation">@Processor</span>
+<span class="directive">public</span> AccountInfo getAccountInfo() <span class="directive">throws</span> RestJerseyConnectorException, RestJerseyConnectorTokenExpiredException {
+    <span class="keyword">return</span> getClient().getAccountInfo();
+}</code></pre> 
+    </div> 
+   </div> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="adding-xml-configuration-examples-for-javadoc"><a class="anchor" href="#adding-xml-configuration-examples-for-javadoc"></a>Adding XML Configuration Examples for JavaDoc</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>DevKit enforces Javadoc documentation of the connector’s operations, including samples of XML configuration for each supported operation. These are used in the generated JavaDoc for the connector. (To learn more about JavaDoc annotations for DevKit, see <a href="/anypoint-connector-devkit/connector-reference-documentation">Connector Reference Documentation</a>.)</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>In the <code>@Connector</code> class source code, the following comment links the method to its required XML sample:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="CodeRay highlight"><code data-lang="java"> * {<span class="annotation">@sample</span>.xml ../../../doc/rest-jersey-connector.xml.sample rest-jersey:get-account-info}</code></pre> 
+   </div> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Notice the sample code snippets file in the&nbsp;<code>doc</code> folder inside the DevKit generated project.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>DevKit created this file, but we need to populate it with example Mule XML configurations for each operation. For this example, add the following to the file to document the operation:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="CodeRay highlight"><code data-lang="java">&lt;!-- BEGIN_INCLUDE(rest-jersey:get-account-info) --&gt;
+    &lt;rest-jersey:get-account-info /&gt;
+&lt;!-- END_INCLUDE(rest-jersey:get-account-info) --&gt;</code></pre> 
+   </div> 
+  </div> 
+  <div class="paragraph"> 
+   <p>When you build the JavaDoc, the sample above is inserted into the documentation.</p> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="manually-testing-your-connector"><a class="anchor" href="#manually-testing-your-connector"></a>Manually Testing Your Connector</h3> 
+   <div class="paragraph"> 
+    <p>Once you have completed all of the steps above, you are ready to build and test your connector manually in Studio.&nbsp;See&nbsp;<a href="/anypoint-connector-devkit/installing-and-testing-your-connector-in-studio">Installing and Testing Your Connector</a>&nbsp;for the steps to follow to build your connector and import it into Studio.</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>DevKit does not force you to add unit tests for your connector, though as noted earlier, this is strongly recommended. If you have added unit tests that your connector does not pass, then your Maven builds fail. You can temporarily bypass your unit tests by&nbsp; adding the argument <code>-Dmaven.test.skip=true</code> to your Maven command. For example:</p> 
+   </div> 
+   <div class="listingblock"> 
+    <div class="content"> 
+     <pre class="CodeRay highlight"><code>mvn clean install -Dmaven.test.skip=true</code></pre> 
+    </div> 
+   </div> 
+   <div class="paragraph"> 
+    <p>Once you have imported your connector into Studio, the connector appears in the palette, and you can use it in flows. The Properties Editor shows your operations.&nbsp;</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p><span class="image"><img src="../images/creating-a-connector-for-a-restful-api-using-jersey-2.png" alt="image"></span></p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>Note the Authorize and Unauthorize operations that are added automatically by DevKit to any OAuth connector.</p> 
+   </div> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="next-steps"><a class="anchor" href="#next-steps"></a>Next Steps</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>Congratulations! You have a connector that works well enough to install in Studio and to pass basic unit tests. Now you can:</p> 
+  </div> 
+  <div class="ulist"> 
+   <ul> 
+    <li> <p>Continue to add operations through the iterative process described above, until you have your desired operations and test cases to validate all desired behaviors.&nbsp;</p> </li> 
+    <li> <p>Add tests to your test suite as described in&nbsp;<a href="/anypoint-connector-devkit/developing-devkit-connector-tests">Developing DevKit Connector Tests</a>.&nbsp;</p> </li> 
+    <li> <p>You can also return to the <a href="/anypoint-connector-devkit/anypoint-connector-development">Anypoint Connector Development</a>.</p> </li> 
+   </ul> 
+  </div> 
+ </div> 
+</div>
+
+        </div> <!-- /article-content -->
+        <!-- scroll-menu --><div class="col-md-2 scroll-menu-container" data-swiftype-index='false'><div class="scroll-menu">
+                <h4>In this article:</h4>
+                <ul><li><a class="scroll-menu-link" href="#prerequisites">Prerequisites</a></li><li><a class="scroll-menu-link" href="#connector-architecture-with-jersey-client">Connector Architecture with Jersey Client</a></li><li><a class="scroll-menu-link" href="#dropbox-restful-example-connector">Dropbox RESTful Example Connector</a></li><li><a class="scroll-menu-link" href="#development-process-outline">Development Process Outline</a></li><li><a class="scroll-menu-link" href="#adding-an-operation-to-the-connector">Adding an Operation to the Connector</a></li><li><a class="scroll-menu-link" href="#adding-xml-configuration-examples-for-javadoc">Adding XML Configuration Examples for JavaDoc</a></li><li><a class="scroll-menu-link" href="#next-steps">Next Steps</a></li></ul></div></div><!-- /scroll-menu -->
+      </div>
+    </div>
+  </body>
+</html>

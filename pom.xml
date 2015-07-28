@@ -10,6 +10,7 @@
     <modules>
         <module>mule-docs-builder</module>
         <module>mule-docs-builder-maven-plugin</module>
+        <module>mule-docs-sitemap-generator</module>
     </modules>
 
     <properties>
