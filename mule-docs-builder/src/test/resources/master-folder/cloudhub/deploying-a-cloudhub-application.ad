@@ -1,7 +1,6 @@
 = Deploying a CloudHub Application
 
-To deploy a CloudHub application, you simply upload it to CloudHub and
-the platform automatically deploys your application. 
+== Foo
 
 [cols=",",]
 |=======================================================================

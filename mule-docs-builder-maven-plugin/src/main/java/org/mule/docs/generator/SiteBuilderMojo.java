@@ -25,7 +25,7 @@ import org.apache.maven.plugins.annotations.Parameter;
 
 import java.io.File;
 
-import org.mule.docs.writer.SiteBuilder;
+import org.mule.docs.SiteBuilder;
 
 /**
  * Doc Site Builder Mojo
