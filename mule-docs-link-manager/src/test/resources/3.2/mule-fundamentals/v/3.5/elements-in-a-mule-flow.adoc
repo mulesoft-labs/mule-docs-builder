@@ -1,0 +1,13 @@
+= Elements in a Mule Flow
+
+Building upon the information presented in link:/mule-fundamentals/mule-concepts[Mule Concepts], this section offers more detailed descriptions of the different types of message sources and message processors, and what they do within a Mule flow.
+
+link:/mule-fundamentals/mule-connectors[image:elements-in-a-mule-flow-1.png[Connectors]]
+link:/mule-fundamentals/mule-components[image:elements-in-a-mule-flow-2.png[Components]]
+link:/mule-fundamentals/mule-transformers[image:elements-in-a-mule-flow-3.png[Transformers]]
+link:/mule-fundamentals/mule-filters-scopes-and-routers[image:elements-in-a-mule-flow-4.png[Exception Strategies]]
+
+== See Also
+
+* *NEXT STEP*: Start with link:/mule-fundamentals/mule-connectors[Mule Connectors], then read on about the various Mule message processors as listed above.
+* Skip ahead to understand the structure of a link:/mule-fundamentals/mule-message-structure[Mule message].

@@ -2,6 +2,7 @@ package org.mule.docs;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
+import org.mule.docs.util.Utilities;
 
 import java.io.File;
 import java.util.*;

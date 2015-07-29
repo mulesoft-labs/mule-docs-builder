@@ -1,6 +1,7 @@
 package org.mule.docs;
 
 import org.apache.commons.io.FilenameUtils;
+import org.mule.docs.util.Utilities;
 
 import java.io.File;
 import java.util.ArrayList;

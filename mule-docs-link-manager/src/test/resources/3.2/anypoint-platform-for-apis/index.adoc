@@ -1,0 +1,26 @@
+ 
+
+image:anypoint-platform-for-apis-18.png[image]
+
+link:/anypoint-platform-for-apis/anypoint-platform-for-apis-walkthrough[image:anypoint-platform-for-apis-19.png[image]]
+
+image:anypoint-platform-for-apis-20.png[image]
+
+https://anypoint.mulesoft.com/apiplatform/[image:anypoint-platform-for-apis-21.png[image]]
+
+https://anypoint.mulesoft.com/apiplatform/[Signing up for the Anypoint Platform]
+
+link:/anypoint-platform-for-apis/anypoint-platform-for-apis-system-architecture[image:anypoint-platform-for-apis-22.png[image]]
+
+link:/anypoint-platform-for-apis/anypoint-platform-for-apis-administration[image:anypoint-platform-for-apis-23.png[image]]
+
+link:/documentation/display/current/Anypoint+Platform+for+APIs+Glossary+previous+release[image:anypoint-platform-for-apis-24.png[image]]
+
+link:/release-notes/anypoint-platform-for-apis-release-notes[image:anypoint-platform-for-apis-25.png[image]]
+
+[NOTE]
+====
+*Looking for documentation for our previous release?* +
+
+If you created an account on a version of the platform released prior to July 30, 2014, documentation can be found link:/documentation/display/current/Anypoint+Platform+for+APIs+previous+release[here].
+====

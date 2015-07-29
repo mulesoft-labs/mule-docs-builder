@@ -7,10 +7,13 @@
     <groupId>org.mule.docs.sitemap-generator</groupId>
     <artifactId>mule-docs-sitemap-generator</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>../mule-docs-link-manager</module>
+    </modules>
 
     <name>MuleSoft Docs Sitemap Generator</name>
 
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
     <build>
         <testResources>
             <testResource>

@@ -1,0 +1,84 @@
+= Installing the Mule Agent
+:license-info: Enterprise
+:version-info: 3.6.0 and later
+:keywords: esb, agent, api, installing
+
+== Mule Agent Versions
+
+The Mule agent is only available for Mule Enterprise edition; however, a trial version is available for download. For details and download links, see link:#InstallingMuleAgent-dloads[below].
+
+== Assumptions
+
+This document assumes that, unless you are evaluating the Mule agent using the http://www.mulesoft.com/platform/soa/mule-esb-open-source-esb[trial version], you have the current version of Mule Enterprise already installed. Download the current version of Mule Enterprise from the http://www.mulesoft.com/support-login[customer portal] if you need to upgrade to this version.
+
+This document assumes that your enterprise license is current. Please see link:/mule-user-guide/installing-an-enterprise-license[Installing an Enterprise License] for information on obtaining and installing an enterprise license.
+
+== Downloading the Latest Agent and Mule EE Versions
+
+The Mule agent is a Mule plugin. To download the Mule agent, use the following links:
+
+* http://mule-agent.s3.amazonaws.com/1.0.0/mule-agent-plugin.zip[Mule agent production version] – requires an Enterprise license
+* http://www.mulesoft.com/platform/soa/mule-esb-open-source-esb[Mule agent trial version]
+* http://mule-agent.s3.amazonaws.com/1.0.0/agent-setup.jar[Mule agent quick-start setup script] – optional; for details, see link:#InstallingMuleAgent-quickstart[below]
+
+The production version of the agent is only available for Mule Enterprise Edition (EE) versions. To download the latest Mule EE version, visit the http://www.mulesoft.com/support-login[customer portal].
+
+== Installing the Agent
+
+The Mule agent comes packaged in a zip file. Since the agent is a Mule plugin, simply copy the zip file to the `$MULE_HOME/plugins` folder of your desired Mule installation.
+
+== Installing With the Quick-start Script
+
+You have the option to install the Mule agent using a quick-start script, which is http://mule-agent.s3.amazonaws.com/1.0.0/agent-setup.jar[available for download]. The script is a file called `agent-setup.jar`, which you must run on the server where your Mule installation resides.
+
+The quick-start script installs the Mule agent plugin in the Mule instance of your choice. Additionally, it adds a default `mule-agent.yml` file to the `conf/` folder in your `MULE_HOME`.
+
+After downloading `agent-setup.jar`, copy it to server that hosts the Mule installation where you want to install the agent. You have two options for running the script:
+
+*Option 1:*
+
+Run the script from any directory, specifying the directory where Mule is located using the `--mule-home` parameter, as shown below.
+
+*Option 2:*
+
+Copy the `agent-setup.jar` into `MULE_HOME/bin`, then run it with no parameters as shown below.
+
+=== Installation Options
+
+Running `agent-setup.jar`  provides you with several options, which are detailed in this section. +
+[NOTE]
+After running the installation script, you  need to restart Mule for these settings to take effect.
+
+==== Secure Connection Channel (S)
+
+This option configures the Mule agent to establish a TLS connection with an on-premises administration console. You  need to provide the truststore and keystore in JKS format. This option enables a TLS channel for REST communications only. Once you select the Secure connection Channel mode, you  see the following menu:
+
+*_Keystore location_*
+
+The location of the keystore file to encrypt the communication channel. The keystore must be in JKS format. It is mandatory to provide one.
+
+*_Truststore location_*
+
+The location where of the truststore file to accept incoming requests from the administration console. The truststore must be in JKS format and must not have a password.
+
+*_Keystore Password_*
+
+The password to read the keystore. The password is used by the agent to open the keystore.
+
+*_Keystore Alias_*
+
+The alias of the key stored in the keystore.
+
+*_Keystore Alias Password_*
+
+The alias password in the keystore.
+
+==== Insecure Connection Channel (I)
+
+This option configures the Mule agent to use an unencrypted connection. It is valid for the REST transport only. You are able to interact with the API using a browser or other tool for making HTTP requests.
+
+== Configuring the Agent
+
+=== Configuring `mule-agent.yml`
+
+At startup, the Mule agent reads its configuration from the file `$MULE_HOME/conf/mule-agent.yml`. You must manually add, then edit this file with your installation's configuration parameters. The file format is self-explanatory; a sample file is link:/documentation/download/attachments/120291704/mule-agent.yml?version=1&modificationDate=1417109464333[available for download].

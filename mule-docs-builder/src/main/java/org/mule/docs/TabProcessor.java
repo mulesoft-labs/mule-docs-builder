@@ -6,6 +6,7 @@ import org.asciidoctor.extension.BlockProcessor;
 import org.asciidoctor.extension.Reader;
 import org.jruby.javasupport.JavaEmbedUtils;
 import org.jruby.runtime.builtin.IRubyObject;
+import org.mule.docs.util.Utilities;
 
 import java.util.*;
 

@@ -1,6 +1,7 @@
 package org.mule.docs;
 
 import org.junit.Test;
+import org.mule.docs.util.Utilities;
 
 import java.io.File;
 
@@ -31,7 +32,7 @@ public class SiteBuilderTest {
     }
 
     private File getValidSourceDirectory() {
-        return new File(Utilities.getConcatPath(new String[] {TestUtilities.getTestResourcesPath(), "master-folder"}));
+        return new File(Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "master-folder" }));
     }
 
     private File getValidOutputDirectory() {

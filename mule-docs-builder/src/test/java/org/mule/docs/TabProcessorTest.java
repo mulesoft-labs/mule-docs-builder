@@ -1,10 +1,8 @@
 package org.mule.docs;
 
-import org.junit.Test;
+import org.mule.docs.util.Utilities;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by sean.osterberg on 5/28/15.
@@ -24,7 +22,7 @@ public class TabProcessorTest {
     }*/
 
     private File getValidFile() {
-        String path = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub.ad"});
+        String path = Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub.ad" });
         return new File(path);
     }
 

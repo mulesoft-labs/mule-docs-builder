@@ -1,8 +1,8 @@
-package org.mule.docs.SitemapGenerator;
+package org.mule.docs.sitemapgenerator;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
-import org.mule.docs.SitemapGenerator.Utilities.Utilities;
+import org.mule.docs.sitemapgenerator.Util.Utilities;
 
 import static org.junit.Assert.*;
 

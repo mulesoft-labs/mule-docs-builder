@@ -5,6 +5,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.mule.docs.util.Utilities;
 
 /**
  * Created by sean.osterberg on 2/20/15.

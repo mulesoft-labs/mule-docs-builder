@@ -1,6 +1,7 @@
 package org.mule.docs;
 
 import org.junit.Test;
+import org.mule.docs.util.Utilities;
 
 import java.io.File;
 import java.util.List;
@@ -21,7 +22,7 @@ public class SectionTest {
 
     @Test(expected = DocBuildException.class)
     public void fromDirectory_WithInvalidSectionDirectory_ThrowsException() {
-        File invalidDirectory = new File(Utilities.getConcatPath(new String[] {TestUtilities.getTestResourcesPath(), "empty"}));
+        File invalidDirectory = new File(Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "empty" }));
         Section section = Section.fromDirectory(invalidDirectory);
     }
 

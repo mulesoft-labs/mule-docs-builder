@@ -3,6 +3,7 @@ package org.mule.docs;
 import org.apache.commons.lang3.StringUtils;
 
 import org.junit.Test;
+import org.mule.docs.util.Utilities;
 
 import static org.junit.Assert.*;
 
@@ -86,7 +87,7 @@ public class AsciiDocPageTest {
     }
 
     private File getValidFile() {
-        String path = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "index.ad"});
+        String path = Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "index.ad" });
         return new File(path);
     }
 

@@ -1,6 +1,7 @@
 package org.mule.docs;
 
 import org.apache.log4j.Logger;
+import org.mule.docs.util.Utilities;
 
 /**
  * Created by sean.osterberg on 2/21/15.

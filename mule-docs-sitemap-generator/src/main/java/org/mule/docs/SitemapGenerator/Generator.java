@@ -1,10 +1,10 @@
-package org.mule.docs.SitemapGenerator;
+package org.mule.docs.sitemapgenerator;
 
 import com.redfin.sitemapgenerator.WebSitemapGenerator;
 import com.redfin.sitemapgenerator.WebSitemapUrl;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
-import org.mule.docs.SitemapGenerator.Utilities.Utilities;
+import org.mule.docs.sitemapgenerator.Util.Utilities;
 
 import java.io.File;
 import java.net.MalformedURLException;

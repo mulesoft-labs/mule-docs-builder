@@ -1,0 +1,27 @@
+= Mule Fundamentals
+
+*Mule* is a *lightweight integration platform* that enables you to connect anything, anywhere. Rather than creating multiple point-to-point integrations between systems, services, APIs, and devices, you can use Mule to intelligently manage message routing, data mapping, orchestration, reliability, security, and scalability between nodes. Plug other systems and applications into Mule and let it handle all the communication between systems, enabling you to track and monitor everything that happens. 
+
+Mule is so named because it “carries the heavy development load” of connecting systems.
+
+==== With Mule, you can...
+
+* *integrate* applications or systems on premise or in the cloud
+* use out-of-the-box connectors to create *SaaS integration* applications
+* build and *expose APIs*
+* *consume APIs*
+* create Web services which *orchestrate calls* to other services
+* create interfaces to expose applications for *mobile consumption*
+* *integrate B2B* with solutions that are secure, efficient, and quick to build and deploy
+* shift applications onto the *cloud*
+* connect *B2B e-commerce* activities
+
+image:mule-fundamentals-1.png[image]
+
+image:mule-fundamentals-2.png[image]
+
+image:mule-fundamentals-3.png[image]]
+
+image:mule-fundamentals-4.png[image]]
+
+image:mule-fundamentals-5.png[image]]

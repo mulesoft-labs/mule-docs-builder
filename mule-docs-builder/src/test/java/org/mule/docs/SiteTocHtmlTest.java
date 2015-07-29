@@ -3,6 +3,7 @@ package org.mule.docs;
 import org.apache.commons.lang3.StringUtils;
 
 import org.junit.Test;
+import org.mule.docs.util.Utilities;
 
 import java.io.File;
 
@@ -53,7 +54,7 @@ public class SiteTocHtmlTest {
     }
 
     public SiteTableOfContents getValidTocFile() {
-        String tocPath = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "_toc.adoc"});
+        String tocPath = Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "_toc.adoc" });
         return SiteTableOfContents.fromAsciiDocFile(new File(tocPath));
     }
 

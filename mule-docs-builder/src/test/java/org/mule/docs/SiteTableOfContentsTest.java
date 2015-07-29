@@ -1,6 +1,7 @@
 package org.mule.docs;
 
 import org.junit.Test;
+import org.mule.docs.util.Utilities;
 
 import static org.junit.Assert.*;
 
@@ -32,7 +33,7 @@ public class SiteTableOfContentsTest {
     }
 
     public File getValidTocFile() {
-        String tocPath = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "_toc.adoc"});
+        String tocPath = Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "_toc.adoc" });
         return new File(tocPath);
     }
 }

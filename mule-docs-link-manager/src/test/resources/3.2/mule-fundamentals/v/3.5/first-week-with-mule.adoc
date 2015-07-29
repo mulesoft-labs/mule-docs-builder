@@ -1,0 +1,21 @@
+= First Week with Mule
+
+image:first-week-with-mule-1.png[image]
+
+The third section of a three-part syllabus for learning link:/mule-fundamentals/[Mule Fundamentals], the contents in the *First Week with Mule* are designed to explore the architecture of Mule flows and apps, and how they work. 
+
+Further, this section highlights some key features in Mule, and offers some more details on applying security to Mule applications, and extending Mule with custom-built connectors. 
+
+[width="100%",cols=","]
+|===
+|*link:/mule-fundamentals/mule-application-architecture[Mule Application Architecture]* |Learn more about how Mule applications, processing strategies and flow configuration.
+|*link:/mule-fundamentals/flows-and-subflows[Flows and Subflows]* |Explore the ways in which asynchronous or synchronous flows can improve your application's performance.
+|*link:/mule-fundamentals/deploying-mule-applications[Deploying Mule Applications]* |Review the basics of deploying Mule applications to different topologies.
+|*link:/mule-fundamentals/mule-security[Mule Security]* |Explore Anypoint Enterprise Security, a collection of security features that enforces secure access to information in Mule applications.
+|*link:/mule-fundamentals/extending-mule[Extending Mule]* |Learn more about how you can extend or customize Mule elements to achieve your objectives, and how you can contribute to the open-source Mule ESB software.
+2+|_Much more to come!_
+|===
+
+== See Also
+
+link:/mule-fundamentals/anypoint-exchange[image:first-week-with-mule-2.png[image]]

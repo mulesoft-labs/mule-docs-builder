@@ -12,6 +12,7 @@ import java.util.*;
 
 import org.asciidoctor.ast.DocumentHeader;
 import org.jsoup.Jsoup;
+import org.mule.docs.util.Utilities;
 
 /**
  * Created by sean.osterberg on 2/20/15.

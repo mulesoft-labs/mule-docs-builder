@@ -1,0 +1,6 @@
+= API Manager Release Notes
+:keywords: release notes, api manager
+
+
+* link:/release-notes/api-manager-6.0.x-release-notes[API Manager 6.0.X Release Notes]
+* link:/release-notes/api-manager-5.0.x-release-notes[API Manager 5.0.X Release Notes]

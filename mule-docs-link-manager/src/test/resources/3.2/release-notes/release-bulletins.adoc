@@ -1,0 +1,9 @@
+= Mule Release Bulletins
+:keywords: release notes, security
+
+
+This section contains bulletins created by MuleSoft in response to key patches made to the products, especially around security vulnerabilities.
+
+* link:/release-notes/http-connector-security-update[HTTP Connector Security Update]
+* link:/release-notes/mule-enterprise-management-console-security-update[Mule Enterprise Management Console Security Update]
+* link:/release-notes/xml-issues-in-mule-esb[XML Issues in Mule ESB]

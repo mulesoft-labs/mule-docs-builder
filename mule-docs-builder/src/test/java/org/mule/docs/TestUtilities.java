@@ -1,6 +1,7 @@
 package org.mule.docs;
 
 import org.apache.commons.lang3.StringUtils;
+import org.mule.docs.util.Utilities;
 
 import java.io.File;
 import java.net.URL;
@@ -23,7 +24,7 @@ public class TestUtilities {
     }
 
     public static String getPathToMasterFolder() {
-        return Utilities.getConcatPath(new String[]{getTestResourcesPath(), "master-folder"});
+        return Utilities.getConcatPath(new String[] { getTestResourcesPath(), "master-folder" });
     }
 
     public static TocNode getValidRootNode() {

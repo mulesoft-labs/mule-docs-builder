@@ -1,6 +1,7 @@
 package org.mule.docs;
 
 import org.junit.Test;
+import org.mule.docs.util.Utilities;
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertThat;
@@ -23,7 +24,7 @@ public class PageTest {
 
     @Test(expected = DocBuildException.class)
     public void forSection_WithInvalidSection_ThrowsException() {
-        Section section = Section.fromDirectory(new File(Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "_templates"})));
+        Section section = Section.fromDirectory(new File(Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "_templates" })));
         List<Page> pages = Page.forSection(section, validSections(), validTemplates(), getSiteToc());
     }
 

@@ -1,6 +1,7 @@
 package org.mule.docs;
 
 import org.apache.log4j.Logger;
+import org.mule.docs.util.Utilities;
 
 import java.util.ArrayList;
 import java.util.Collections;

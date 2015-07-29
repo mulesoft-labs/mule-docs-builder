@@ -1,0 +1,186 @@
+= Managing Gateways
+:version-info: 3.6.0 and later
+:keywords: data gateway, salesforce, sap, oracle
+
+== Overview of Anypoint Data Gateway Designer
+
+When you login to Anypoint Data Gateway from your Salesforce account, you are taken to the Anypoint Data Gateway Designer screen. Here you can perform actions such as:
+
+* View, add or modify gateways
+* Configure connections and VPC
+* View gateway logs
+
+The image below shows the screen with two existing gateways. See the numbers below the image for reference.
+
+image:managing-gateways-1.png[image]
+
+[cols="2a*", options="header"]
+|===
+|No.|Description
+|1|List of gateways, in this case showing two gateways: `data gateway` and `Test2`.
+|2|*Add Gateway* button. Click to add a gateway (for details, see link:/anypoint-data-gateway/creating-and-configuring-a-gateway[Creating and Configuring a Gateway].)
+|3|Search gateways input box.
+|4|Gateway status indicator. The first gateway is **Started**, symbolized by a green circle; the second gateway is in *DRAFT* state, which means that its configuration was left unfinished.
+|5|link:#ManagingGateways-dropdown[Menu] for each gateway.
+|6|link:#ManagingGateways-global.not[Notifications] indicator.
+|7|link:#ManagingGateways-global.set[Global configuration] menu.
+|===
+
+== Global Settings
+
+The top right corner of the Anypoint Data Gateway Designer displays two indicator icons (items 6 and 7 in the imagemanaging-gateways-1.png[above]):
+
+* *Global Notifications:* Displays global notifications such as raised errors for any gateway
+* *Global Setting:* Allows you to configure settings for all gateways
+
+=== Global Notifications
+
+image:managing-gateways-1.png[image]
+
+Click to display notifications for all gateways, such as messages or errors.
+
+=== Global Settings
+
+Click to define the settings available in the drop-down, which are described below.
+
+image:managing-gateways-1.png[image]
+
+==== Connections
+
+Allows you to view, add or modify connections. Selecting this item from the drop-down takes you to the Connections screen, shown below.
+
+image:managing-gateways-1.png[image]
+
+To modify a connection, click the connection in the list. The *Update Connection* configuration dialog is displayed, allowing you to update the parameters for the desired connection.
+
+==== VPC Setup
+
+Here you can select from the available Virtual Private Cloud (VPC) types.
+
+image:managing-gateways-1.png[image]
+
+==== Contact Us
+
+Select this to send MuleSoft a message with suggestions or feedback.
+
+== Operating on a Gateway
+
+=== Operations Via the Gateway Drop-down Menu
+
+Clicking the ellipsis (...) button in the bottom right of each gateway entry brings up a menu that allows you to perform actions on the gateway.
+
+image:managing-gateways-1.png[image]
+
+As you can see in the image above, the available options are:
+
+* *Publish*
+* *Stop*
+* *Delete*
+* *Create Object*
+* *Settings*
+
+=== Operating on a Gateway By Selecting It
+
+You can also operate on or modify a gateway by selecting it in the gateway list. To select a gateway, click anywhere in the gateway entry in the list. The image below shows the mouse pointer selecting the first gateway in the list, data gateway.
+
+image:managing-gateways-1.png[image]
+
+Clicking a gateway entry as shown above takes you to the information screen for the gateway, shown below.
+
+image:managing-gateways-1.png[image]
+
+The information screen for the gateway displays a list of objects in the selected gateway (in the example displayed above, there is only one object). The left-hand menu pane allows you to see the link:#ManagingGateways-settingfs[settings] or link:#ManagingGateways-logs[logs] for the selected gateway.
+
+To go back to the list of existing gateways, click *Gateways* at the top of the left-hand menu.
+
+== Modifying an Object Status
+
+To modify the status of an object in a gateway, hover your mouse near the status indicator for the object (in the image below, the status is *Active*). Then, click the arrow that appears next to the status indicator, and select the desired action from the drop-down menu.
+
+image:managing-gateways-1.png[image]
+
+== Creating a New Object
+
+You can create a new object in a number of ways:
+
+* *From the list of gateways:* Click the link:#ManagingGateways-dropdown[drop-down menu] for the gateway you want to create an object in, then select *Create Object*
+* *From the gateway information screen:* +
+** In the link:#ManagingGateways-infopage[information screen] for the gateway, click **Create Object** +
+– OR –
+** In the information screen, click an existing object
+
+Selecting to create an new object takes you to the Create an External Object screen, shown below. Note that if you create an external object by clicking an existing object, the object table will be selected for you, and the table fields fetched automatically.
+
+image:managing-gateways-1.png[image]
+
+The image above shows the empty object creation screen. As the screen shows, in order to create an object, you need to:
+
+* Choose the table where the object will reside
+* Specify a name for the object
+* Describe the object
+
+=== Selecting the Table
+
+To choose the table for your object, start typing the table name in the *Choose table* input field. Anypoint Platform retrieves the possible table names for you to select. Table names are retrieved regardless of where your input string occurs in the name. This means that you can type any portion of a table name, not necessarily the beginning. The example below shows fetched table names containing the string vb. As you can see, search is case-insensitive.
+
+image:managing-gateways-1.png[image]
+
+When you select a table, the field selector in the *Create an External Object* screen becomes populated with the table fields. Search for the desired fields using the search box. Then, select each individual field by clicking it, as shown below.
+
+image:managing-gateways-1.png[image]
+
+=== Primary Keys
+
+To successfully create an object, one of the fields in the selected table must contain a primary key. If the table does not contain a field with a primary key, you can assign a field as a primary key when creating an object.
+
+To assign a field as primary key, simply click the key logo image:managing-gateways-1.png[image] next to the field name. The logo becomes highlighted as shown below.
+
+image:managing-gateways-1.png[image]
+
+If you attempt to create an object without a primary key, object creation fails with an error message.
+
+image:managing-gateways-1.png[image]
+
+If the selected table contains a primary key, attempting to assign a new key to your object also results in an error message.
+
+After you have specified the object name and description, and selected the primary key if necessary, click *Create Object*.
+
+image:managing-gateways-1.png[image]
+
+The Gateway designer displays the gateway with the objects it contains, including your newly-created object.
+
+image:managing-gateways-1.png[image]
+
+== Viewing or Modifying Gateway Settings
+
+To view or modify the settings for a gateway, you can proceed in one of two ways:
+
+* *From the list of gateways:* Click the link:#ManagingGateways-dropdown[drop-down menu] for the gateway whose settings you want to view or modify, then select *Settings*
+* *From the gateway information screen:* In the link:#ManagingGateways-infopage[information screen] for the gateway, click *Settings*
+
+Anypoint Gateway Designer displays the *Settings* screen for the gateway. The screen contains three tabs:
+
+* *Overview:* Allows you to view or modify the name, description, URL and connection for the gateway
+* *Policies:* Allows you to configure authentication and throttling
+* *Salesforce:* Allows you to publish the gateway in Salesforce
+
+image:managing-gateways-1.png[image]
+
+
+== Viewing Gateway Logs
+
+To view the logs for a gateway, follow these steps:
+
+. Select the gateway by clicking it in the list of gateways.
+. In the left-hand menu for the gateway, click **Logs**.
+
+As you can see in the image below, the log for the gateway is displayed in a scrollable pane in the browser window. Using this log viewer, you can:
+
+* Search for log entries using the search box above the log
+* Select to display the last 100 (default), 200 or 500 log entries
+* View entries for all log priorities (the default) or only for specific priorities such as `INFO`, `ERROR`, `WARN`, etc.
+* Download the log as a text file to your local machine
+
+To download the log, use the download button image:managing-gateways-1.png[image] at top right.
+
+image:managing-gateways-1.png[image]

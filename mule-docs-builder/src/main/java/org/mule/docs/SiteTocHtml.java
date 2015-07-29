@@ -1,5 +1,7 @@
 package org.mule.docs;
 
+import org.mule.docs.util.Utilities;
+
 import java.util.List;
 
 /**

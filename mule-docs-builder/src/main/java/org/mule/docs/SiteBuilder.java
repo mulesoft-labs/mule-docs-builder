@@ -6,6 +6,7 @@ import java.io.*;
 import java.util.*;
 
 import org.apache.log4j.Logger;
+import org.mule.docs.util.Utilities;
 import org.w3c.tidy.*;
 import org.w3c.dom.*;
 
@@ -48,7 +49,7 @@ public class SiteBuilder {
 
     private void writeSections() {
         for (Section section : this.sections) {
-            String sectionPath = Utilities.getConcatPath(new String[] {this.outputDirectory.getPath(), Utilities.removeLeadingSlashes(section.getUrl())});
+            String sectionPath = Utilities.getConcatPath(new String[] { this.outputDirectory.getPath(), Utilities.removeLeadingSlashes(section.getUrl()) });
             logger.info("Started creating directory for \"" + section.getPrettyName() + "\" section: " + sectionPath + "...");
             Utilities.makeTargetDirectory(sectionPath);
             logger.info("Finished creating section directory.");

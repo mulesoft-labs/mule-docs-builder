@@ -1,6 +1,7 @@
 package org.mule.docs;
 
 import org.junit.Test;
+import org.mule.docs.util.Utilities;
 
 import static org.junit.Assert.*;
 
@@ -31,7 +32,7 @@ public class SwiftTypeMetadataTest {
 
     @Test
     public void getFirstParagraph_WithAdmonition_ReturnsTextFromAdmonition() {
-        String path = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "deploying-a-cloudhub-application.ad"});
+        String path = Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "deploying-a-cloudhub-application.ad" });
         AsciiDocPage page = AsciiDocPage.fromFile(new File(path));
         String result = SwiftTypeMetadata.getDescription(page);
         assertTrue(result.equals("You can deploy an application to CloudHub directly from Anypoint™ Studio, or you can deploy it using the CloudHub console. This page covers deploym..."));

@@ -1,6 +1,7 @@
 package org.mule.docs;
 
 import org.junit.Test;
+import org.mule.docs.util.Utilities;
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertThat;
@@ -16,7 +17,7 @@ public class TemplateTest {
 
     @Test
     public void fromFile_WithValidFile_ReturnsNewInstance() {
-        Template template = Template.fromFile(new File(Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "master-folder", "_templates", "default.template"})));
+        Template template = Template.fromFile(new File(Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "master-folder", "_templates", "default.template" })));
         assertThat(template, instanceOf(Template.class));
     }
 

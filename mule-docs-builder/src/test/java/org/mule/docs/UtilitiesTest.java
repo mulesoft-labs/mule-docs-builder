@@ -5,6 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import org.mule.docs.util.Utilities;
 
 import java.io.File;
 

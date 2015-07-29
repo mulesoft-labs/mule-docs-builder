@@ -1,0 +1,12 @@
+= Deprecated Products
+:keywords: release notes
+
+
+Under this page you will find release notes for MuleSoft deprecated products, which have been superseded by newer solutions.
+
+The functionality of API Manager and Anypoint Service Registry is now provided by the link:/anypoint-platform-for-apis/[Anypoint Platform for APIs].
+
+For legacy Mule ESB notes, see link:/release-notes/legacy-mule-release-notes[Legacy Mule Release Notes] and link:/release-notes/legacy-mule-migration-notes[Legacy Mule Migration Notes] under link:/release-notes/mule-esb[Mule ESB].
+
+* link:/release-notes/api-manager-release-notes[API Manager Release Notes]
+* link:/release-notes/anypoint-service-registry-release-notes[Anypoint Service Registry Release Notes]

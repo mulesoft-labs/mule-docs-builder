@@ -1,6 +1,7 @@
 package org.mule.docs;
 
 import org.junit.Test;
+import org.mule.docs.util.Utilities;
 
 import static org.junit.Assert.*;
 
@@ -40,7 +41,7 @@ public class RootNodeInHtmlTocTest {
 
     @Test(expected = DocBuildException.class)
     public void getRootNodeFromRawTocHtml_FromTocDocWithMoreThanOneRootNode_ThrowsException() {
-        String path = Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "bad-files", "_toc.adoc"});
+        String path = Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "bad-files", "_toc.adoc" });
         AsciiDocPage page = AsciiDocPage.fromFile(new File(path));
         RootNodeFromHtmlToc htmlToc = RootNodeFromHtmlToc.fromTocAsciiDocPage(page);
     }
