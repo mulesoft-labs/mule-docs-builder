@@ -3,28 +3,22 @@ package org.mule.docs;
 import org.asciidoctor.ast.AbstractBlock;
 import org.asciidoctor.ast.Block;
 import org.asciidoctor.extension.BlockProcessor;
+import org.asciidoctor.extension.ContentModel;
+import org.asciidoctor.extension.Contexts;
 import org.asciidoctor.extension.Reader;
-import org.jruby.javasupport.JavaEmbedUtils;
-import org.jruby.runtime.builtin.IRubyObject;
+
 import org.mule.docs.util.Utilities;
 
 import java.util.*;
 
+@Contexts(Contexts.CONTEXT_LISTING)
+@ContentModel(ContentModel.COMPOUND)
 public class TabProcessor extends BlockProcessor {
 
-    private AsciiDocParser parser;
     private AsciiDocProcessor processor;
 
-    private static Map<String, Object> CONFIG = new HashMap<String, Object>() {{
-        put("contexts", Arrays.asList(":listing"));
-        put("content_model", ":compound");
-    }};
-
-    public TabProcessor(String name, Map<String, Object> config) {
-        super(name, CONFIG);
-        IRubyObject parserRubyClass = rubyRuntime.evalScriptlet("Asciidoctor::Parser");
+    public TabProcessor() {
         processor = AsciiDocProcessor.getProcessorInstance();
-        this.parser = (AsciiDocParser) JavaEmbedUtils.rubyToJava(rubyRuntime, parserRubyClass, AsciiDocParser.class);
     }
 
     @Override
@@ -36,32 +30,31 @@ public class TabProcessor extends BlockProcessor {
 
         int count = 0;
 
-        while (reader.hasMoreLines()) {
-            Block child = parser.nextBlock(reader, parent, new HashMap<String, Object>());
-            if (child != null) {
-                String tabTitle = child.title();
-                String uniqueId = Utilities.cleanPageFileNames(tabTitle) + "-" +
-                        Utilities.getRandomAlphaNumericString(5);
-                titleAndId.put(tabTitle, uniqueId);
+        parseContent(container, reader.readLines());
+        for (int i = 0; i < container.getBlocks().size(); i++) {
+            AbstractBlock child = container.getBlocks().get(i);
+            String tabTitle = child.getTitle();
+            String uniqueId = Utilities.cleanPageFileNames(tabTitle) + "-" +
+                    Utilities.getRandomAlphaNumericString(5);
+            titleAndId.put(tabTitle, uniqueId);
 
-                String singleTabHtmlOpen;
-                if (count == 0) {
-                    singleTabHtmlOpen = "<div class=\"tab-pane in active fade no-padding\" id=\"" + uniqueId + "\">";
-                } else {
-                    singleTabHtmlOpen = "<div class=\"tab-pane fade no-padding\" id=\"" + uniqueId + "\">";
-                }
-
-                String converted = processor.convertAsciiDocString(child.content().toString());
-                converted = Utilities.getOnlyContentDivFromHtml(converted);
-                converted = singleTabHtmlOpen + converted + "</div>";
-                Block block = createBlock(parent, "pass", converted, inherited, new HashMap<Object, Object>());
-
-                count++;
-
-                // NOTE workaround missing append method on the AbstractBlock interface
-                //JavaEmbedUtils.invokeMethod(rubyRuntime, container, "append", new Object[]{block}, Object.class);
-                container.blocks().add(block);
+            String singleTabHtmlOpen;
+            if (count == 0) {
+                singleTabHtmlOpen = "<div class=\"tab-pane in active fade no-padding\" id=\"" + uniqueId + "\">";
+            } else {
+                singleTabHtmlOpen = "<div class=\"tab-pane fade no-padding\" id=\"" + uniqueId + "\">";
             }
+
+            String converted = processor.convertAsciiDocString(child.content().toString());
+            converted = Utilities.getOnlyContentDivFromHtml(converted);
+            converted = singleTabHtmlOpen + converted + "</div>";
+            Block block = createBlock(parent, "pass", converted, inherited, new HashMap<Object, Object>());
+
+            count++;
+
+            // NOTE workaround missing append method on the AbstractBlock interface
+            //JavaEmbedUtils.invokeMethod(rubyRuntime, container, "append", new Object[]{block}, Object.class);
+            container.getBlocks().set(i, block);
         }
 
         String tabsOpen = "<div class=\"panel panel-default no-padding\">\n" +
@@ -85,11 +78,8 @@ public class TabProcessor extends BlockProcessor {
         tabsOpen += "</ul>\n</div>\n<div class=\"panel-body tab-content no-padding\">";
         String tabsClose = "</div></div>";
 
-        String containerContents = tabsOpen + container.content().toString() + tabsClose;
-        AbstractBlock containerNew = createBlock(parent, "pass", containerContents, inherited, new HashMap<Object, Object>());
-        container = containerNew;
-
-        return container;
+        String containerContents = tabsOpen + container.getContent().toString() + tabsClose;
+        return createBlock(parent, "pass", containerContents, inherited, new HashMap<Object, Object>());
     }
 }
 

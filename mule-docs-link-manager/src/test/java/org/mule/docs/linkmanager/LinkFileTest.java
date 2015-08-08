@@ -8,8 +8,6 @@ import static org.junit.Assert.*;
 
 import java.io.File;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Copyright (C) MuleSoft, Inc - All Rights Reserved
@@ -35,6 +33,17 @@ public class LinkFileTest {
         }
         String[] lines = contents.split("\n");
         assertEquals(875, lines.length);
+    }
+
+    @Test
+    public void outputCSVFileHasExpectedContentsAndFormat() {
+        String outputFilePath = Utilities.getConcatPath(new String[] { getTestResourcesPath(), "links.csv" });
+        File outputFile = new File(outputFilePath);
+        String contents = "";
+        if(outputFile.exists()) {
+            contents = Utilities.getFileContentsFromFile(outputFile);
+        }
+        contents.contains("OAuth V1,Anypoint Connector DevKit,oauth-v1.adoc,/anypoint-connector-devkit/oauth-v1");
     }
 
     public static String getTestResourcesPath() {

@@ -1,0 +1,1922 @@
+= Title
+
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+
+
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+link:/testing/testing[foo] asd;lkfajspoidja;lsdaf link:/bla/blah[blah].
+
+
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+Integration developers often spend great amounts of time simply trying to determine the parameters and types of data to pass to or are returned by a Web service. Having to resort to each API's documentation to find out what these parameters are is an inefficient, fallible, and often frustrating experience. Thanks to DataSense, this information can be readily available within Anypoint Studio at design-time. 
+
+DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
+
+* Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
+* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+
+. link:/testing/testing[foo]
+. link:/foo/bar[hello]
+
+alskdf a;lksdj a;lksjd;lksdkjsdj fk skdjf skdj link:/testing/testing[foo] link:/foo/bar[hello]
+

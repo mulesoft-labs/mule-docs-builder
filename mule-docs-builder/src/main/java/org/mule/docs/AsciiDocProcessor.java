@@ -46,8 +46,8 @@ public class AsciiDocProcessor {
     }
 
     public void registerExtensions() {
-        //JavaExtensionRegistry extensionRegistry = asciidoctor.javaExtensionRegistry();
-        //extensionRegistry.block("tabs", TabProcessor.class);
+        JavaExtensionRegistry extensionRegistry = asciidoctor.javaExtensionRegistry();
+        extensionRegistry.block("tabs", TabProcessor.class);
     }
 
     private Options getOptionsForConversion() {
@@ -67,7 +67,9 @@ public class AsciiDocProcessor {
         attributes.put("idseparator", "-");
         attributes.put("icons", "font");
         attributes.put("source-highlighter", "coderay");
+        //attributes.put("coderay-linenums-mode", "table");
         attributes.put("imagesdir", "../images");
+        attributes.put("prewrap", "false");
         return attributes;
     }
 }

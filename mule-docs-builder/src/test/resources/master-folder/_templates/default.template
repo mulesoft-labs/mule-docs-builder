@@ -1,76 +1,137 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <link href="/css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="/css/bootstrap.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-    <link href="/css/mule-docs.css" rel="stylesheet">
-    <script src="/js/jquery-1.11.2.min.js"></script>
-    <script src="/js/bootstrap.js"></script>
-    <title>MuleSoft Documentation - {{ page.title }}</title>
+    <title>MuleSoft Documentation // {{ page.title }}</title>
+    <link rel="stylesheet" type="text/css" href="../css/asciidoctor.css">
+    <link rel="stylesheet" type="text/css" href="../bootstrap-3.3.4-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet/less" type="text/css" href="../css/styles.less" />
+    <link rel="stylesheet/less" type="text/css" href="../css/scroll-menu.less" />
+    <link rel="stylesheet/less" type="text/css" href="../css/sidebar-menu.less" />
+    <link rel="stylesheet/less" type="text/css" href="../css/sub-header.less" />
+    <link rel="stylesheet/less" type="text/css" href="../css/article-content.less" />
+    <script src="../js/less.js"></script>
+    <script src="../js/jquery-1.11.2.min.js"></script>
+    <script src="../bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+    <script src="../js/scripts.js"></script>
+    <meta charset="utf-8">
+    {{ page.metadata }}
+    {{ page.swifttype-metadata }}
 </head>
 <body>
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-<div class="navbar navbar-inverse navbar-static-top">
-    <div class="navbar-inner">
-        <div class="container-fluid" id="top">
-            <img src="/img/mule-docs-logo.png">
-        </div>
+<!-- Swiftype Code -->
+
+<script type="text/javascript">
+(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','Y6NSC3YWFiMQgK63xPb7','2.0.0');
+</script>
+<style>
+.st-autocomplete-results, .st-ui-autocomplete {
+  font-family: "OpenSans", Helvetica, Arial, sans-serif;
+  width: 340px;
+}
+
+.st-ui-search-input, .st-default-search-input {
+  color: white;
+}
+</style>
+
+<!-- End Swiftype Code -->
+
+<!-- DUMMY HEADER -->
+<div class="row header" style="background:#323031;height:70px;"></div>
+<!-- /DUMMY HEADER -->
+
+<div class="container">
+    <div class="row sub-header" data-swiftype-index='false'>
+      <div class="search-box col-md-3 col-xs-8">
+          <form action="">
+              <a href="#"><i class="tree-icon glyphicon glyphicon-th-list"></i></a>
+              <i class="glyphicon glyphicon-search"></i><input class="search-field st-default-search-input" type="text" name="search-docs" placeholder="Search the docs">
+              <input type="submit" value="Submit">
+          </form>
+      </div>
+      <div class="toolbar col-md-4 col-xs-4">
+          <div class="toolbar-dropdown edit-github">
+              <a href="#"><img class="github-icon" alt="github-icon"/><span>Edit on GitHub</span></a>
+          </div>
+          <div class="toolbar-dropdown helpful">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdown-helpful" data-toggle="dropdown" aria-expanded="true">
+                  <i class="glyphicon glyphicon-star-empty"></i><span>Helpful?</span>
+              </button>
+
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-helpful">
+                  <li role="presentation">
+                      <i class="glyphicon glyphicon-star"></i>
+                      <i class="glyphicon glyphicon-star"></i>
+                      <i class="glyphicon glyphicon-star"></i>
+                      <i class="glyphicon glyphicon-star-empty"></i>
+                      <i class="glyphicon glyphicon-star-empty"></i>
+                  </li>
+                  <li role="presentation"><textarea name="feedback-textarea" id="" cols="30" rows="5" placeholder="Feedback..."></textarea></li>
+                  <li role="presentation"><input type="submit" value="Submit"></li>
+              </ul>
+          </div>
+          <div class="toolbar-dropdown export">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdown-export" data-toggle="dropdown" aria-expanded="true">
+                  <i class="glyphicon glyphicon-log-out"></i><span>Export</span>
+              </button>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-export">
+                  <li role="presentation"><a href="#">Export as FORMAT1</a></li>
+                  <li role="presentation"><a href="#">Export as FORMAT2</a></li>
+                  <li role="presentation"><a href="#">Export as FORMAT3</a></li>
+              </ul>
+          </div>
+
+      </div>
+
+
+
+
+      <div class="version-selector col-md-5 col-xs-12">
+          {{ page.version }}
+
+          <!--
+          <label for="version-selector">CloudHub Version</label>
+          <select id="version-selector">
+              <option value="1">v 1.1238327285739</option>
+              <option value="2">v 1.2348577374539</option>
+              <option value="3">v 1.3583456695739</option>
+              <option value="4">v 1.4238456875739</option>
+          </select> -->
+
+      </div>
+
     </div>
-</div>
-<div class="container" id="main">
     <div class="row">
-        <div class="col-md-3">
-            <ul class="toc">
+        <div class="sidebar-nav col-md-3" data-swiftype-index='false'>
+            <div class="marker"></div>
+            <div class="active-marker"></div>
+            <nav>
+                <ul class="tree">
 
-                {{ page.toc }}
+                  {{ page.toc }}
 
-            </ul>
+                </ul>
+            </nav>
+        </div><!-- /sidebar-nav -->
+        <div class="article-content col-md-7"> <!-- article-content -->
 
-        </div>
-        <!--/span-->
-        <div class="col-md-9">
-            <div id="content">
+          {{ page.breadcrumb }}
 
-                {{ page.breadcrumb }}
+          <h1>{{ page.title }}</h1>
 
-                <div id="header">
-                    <h1>{{ page.title }}</h1>
-                </div>
-                <div id="doc-metadata">
-                    <!--<span class="updated-date" style="color:#B1B1B1;">Updated: January 15, 2015</span>
-                   <span class="updated-date" style="color:#DDD; padding: 0 0 0 7px;">/</span>-->
-                    <span class="updated-date" style="color:#B1B1B1; padding: 0 0 0 0px;">Version: </span>
-       <span class="dropdown" style="padding: 0 7px 0 0px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Current <span class="caret"></span></a>
-        <ul class="dropdown-menu" role="menu">
-            <li><a href="#">January 2015</a></li>
-            <li><a href="#">October 2014</a></li>
-            <li><a href="#">July 2014</a></li>
-        </ul> </span>
-                    <span class="updated-date" style="color:#DDD; padding: 0 0 0 0px;">/</span>
-       <span class="dropdown" style="padding: 0 7px 0 7px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Export <span class="caret"></span></a>
-        <ul class="dropdown-menu" role="menu">
-            <li><a href="#">PDF - Only this page</a></li>
-            <li><a href="#">PDF - CloudHub section</a></li>
-            <li><a href="#">EPub - MuleSoft Docs</a></li>
-        </ul> </span>
-                    <span class="updated-date" style="color:#DDD; padding: 0 0 0 0px;">/</span>
-       <span class="dropdown" style="padding: 0 7px 0 7px;"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Feedback <span class="caret"></span></a>
-       <ul class="dropdown-menu" role="menu">
-           <li><a href="#">Rate this Topic</a></li>
-           <li><a href="#">Edit on GitHub</a></li>
-       </ul> </span>
-                </div>
+          {{ page.content }}
 
-                {{ page.content }}
-
-            </div>
-        </div>
+        </div> <!-- /article-content -->
+        {{ page.sections }}
+      </div>
     </div>
-</div>
-</body>
+    <!-- DUMMY HEADER -->
+    <div class="row header" style="background:#323031;height:472px;"></div>
+    <!-- /DUMMY HEADER -->
+  </body>
 </html>
