@@ -37,11 +37,6 @@ public class LinkFile {
             for (AsciiDocPage page : section.getPages()) {
                 sb.append(createCsvLine(section, page));
             }
-            for (Section versionSection : section.getVersions()) {
-                for (AsciiDocPage page : versionSection.getPages()) {
-                    sb.append(createCsvLine(section, page));
-                }
-            }
         }
         return sb.toString();
     }

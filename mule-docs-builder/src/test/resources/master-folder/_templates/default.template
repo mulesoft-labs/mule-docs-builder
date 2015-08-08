@@ -56,7 +56,7 @@ _st('install','Y6NSC3YWFiMQgK63xPb7','2.0.0');
       </div>
       <div class="toolbar col-md-4 col-xs-4">
           <div class="toolbar-dropdown edit-github">
-              <a href="#"><img class="github-icon" alt="github-icon"/><span>Edit on GitHub</span></a>
+              <a href="{{ page.github-link }}"><img class="github-icon" alt="github-icon"/><span>Edit on GitHub</span></a>
           </div>
           <div class="toolbar-dropdown helpful">
               <button class="btn btn-default dropdown-toggle" type="button" id="dropdown-helpful" data-toggle="dropdown" aria-expanded="true">
@@ -132,6 +132,25 @@ _st('install','Y6NSC3YWFiMQgK63xPb7','2.0.0');
     </div>
     <!-- DUMMY HEADER -->
     <div class="row header" style="background:#323031;height:472px;"></div>
+    <script>
+    $('#dropdown-helpful').click(function(){
+       var settings = {
+           "async": true,
+           "crossDomain": true,
+           "url": "http://docs-stg.mulesoft.com:8080/rate",
+           "method": "POST",
+           "headers": {
+               "content-type": "json"
+           },
+           "processData": false,
+           "data": "{\n    \"id\": 999,\n    \"comment\": \"Browser test\",\n    \"url\": \"http://docs-stg.mulesoft.com/mule-fundamentals/\",\n    \"rating\": 3\n}"
+       }
+
+       $.ajax(settings).done(function (response) {
+           console.log(response);
+       });
+    });
+    </script>
     <!-- /DUMMY HEADER -->
   </body>
 </html>

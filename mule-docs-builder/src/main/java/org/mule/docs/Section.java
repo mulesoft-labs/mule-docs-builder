@@ -22,7 +22,13 @@ public class Section {
     private String baseName;
     private List<Section> versions;
 
-    public Section(List<AsciiDocPage> pages, TocNode rootNode, List<Section> versions, String filepath, String url, String prettyName, String versionPrettyName) {
+    public Section(List<AsciiDocPage> pages,
+                   TocNode rootNode,
+                   List<Section> versions,
+                   String filepath,
+                   String url,
+                   String prettyName,
+                   String versionPrettyName) {
         validateInputParams(new Object[] {pages, rootNode, versions, filepath});
         this.pages = pages;
         this.rootNode = rootNode;

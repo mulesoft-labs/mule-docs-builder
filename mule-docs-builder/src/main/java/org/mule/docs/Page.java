@@ -21,16 +21,30 @@ public class Page {
         this.baseName = baseName;
     }
 
-    public static List<Page> forSection(Section section, List<Section> allSections, List<Template> templates, SiteTableOfContents toc) {
+    public static List<Page> forSection(Section section,
+                                        List<Section> allSections,
+                                        List<Template> templates,
+                                        SiteTableOfContents toc,
+                                        String gitHubRepoUrl,
+                                        String gitHubBranchName) {
+
         List<Page> pages = new ArrayList<Page>();
         for (AsciiDocPage page : section.getPages()) {
-            Page current = new Page(getCompletePageContent(section, allSections, toc, page, templates), page.getBaseName());
+            Page current = new Page(getCompletePageContent(
+                    section, allSections, toc, page, templates, gitHubRepoUrl, gitHubBranchName), page.getBaseName());
             pages.add(current);
         }
         return pages;
     }
 
-    public static String getCompletePageContent(Section section, List<Section> sections, SiteTableOfContents toc, AsciiDocPage page, List<Template> templates) {
+    public static String getCompletePageContent(Section section,
+                                                List<Section> sections,
+                                                SiteTableOfContents toc,
+                                                AsciiDocPage page,
+                                                List<Template> templates,
+                                                String gitHubRepoUrl,
+                                                String gitHubBranchName) {
+
         StringBuilder html = new StringBuilder(getTemplateContents(page, templates));
         html = Utilities.replaceText(html, "{{ page.title }}", getPageTitle(page));
         html = Utilities.replaceText(html, "{{ page.toc }}", getPageToc(toc, sections, section, page));
@@ -40,6 +54,7 @@ public class Page {
         html = Utilities.replaceText(html, "{{ page.sections }}", getSectionNavigator(page));
         html = Utilities.replaceText(html, "{{ page.metadata }}", getPageMetadata(page));
         html = Utilities.replaceText(html, "{{ page.swifttype-metadata }}", getSwiftTypeMetadata(page));
+        html = Utilities.replaceText(html, "{{ page.github-link }}", getGitHubRepoUrl(section, page, gitHubRepoUrl, gitHubBranchName));
         logger.info("Built page from template for \"" + getPageTitle(page) + "\".");
         return html.toString();
     }
@@ -54,6 +69,10 @@ public class Page {
         }
         // Todo: implement with logic for other templates and probably move to the org.mule.docs.Template class instead.
         return null;
+    }
+
+    private static String getGitHubRepoUrl(Section section, AsciiDocPage page, String gitHubRepoUrl, String gitHubBranchName) {
+        return Utilities.getConcatPath(new String[] { gitHubRepoUrl, "blob", gitHubBranchName, section.getUrl(), page.getBaseName() + ".adoc" });
     }
 
     private static String getPageTitle(AsciiDocPage page) {

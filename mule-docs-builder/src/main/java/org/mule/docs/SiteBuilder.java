@@ -19,19 +19,22 @@ public class SiteBuilder {
     private SiteTableOfContents toc;
     private File sourceDirectory;
     private File outputDirectory;
+    private String gitHubRepoUrl;
+    private String gitHubBranchName;
     private List<Template> templates;
 
-    public SiteBuilder(File sourceDirectory, File outputDirectory) {
+    public SiteBuilder(File sourceDirectory, File outputDirectory, String gitHubRepoUrl) {
         this.sourceDirectory = sourceDirectory;
         this.outputDirectory = outputDirectory;
         this.sections = getSections(sourceDirectory);
         this.toc = getSiteToc(sourceDirectory);
         this.templates = getTemplates(sourceDirectory);
+        this.gitHubRepoUrl = gitHubRepoUrl;
         writeSections();
     }
 
     public static void buildSite(File sourceDirectory, File outputDirectory) {
-        SiteBuilder builder = new SiteBuilder(sourceDirectory, outputDirectory);
+        SiteBuilder builder = new SiteBuilder(sourceDirectory, outputDirectory, "https://github.com/mulesoft/mulesoft-docs");
     }
 
     public List<Section> getSections(File sourceDirectory) {
@@ -88,7 +91,7 @@ public class SiteBuilder {
     }
 
     private void writePagesForSection(Section section) {
-        List<Page> pages = Page.forSection(section, this.sections, this.templates, this.toc);
+        List<Page> pages = Page.forSection(section, this.sections, this.templates, this.toc, this.gitHubRepoUrl, this.gitHubBranchName);
         for (Page page : pages) {
             String pagePath = Utilities.getConcatPath(new String[] {this.outputDirectory.getPath(), Utilities.removeLeadingSlashes(section.getUrl()), page.getBaseName()}) + ".html";
             logger.info("Started writing page \"" + pagePath + "\"...");
