@@ -1,9 +1,8 @@
 = Deploying a CloudHub Application
 
-To deploy a CloudHub application, you simply upload it to CloudHub and
-the platform automatically deploys your application. 
+== Foo
 
-[cols=",",]
+[cols="2"]
 |=======================================================================
 |image:/documentation/images/icons/emoticons/check.png[image] a|
 You can deploy an application to CloudHub directly from Anypoint™
@@ -83,7 +82,7 @@ Allocate one or more *workers* to your application. For each
 application, one or more workers are responsible for executing your
 application logic. 
 
-[cols=",",]
+[cols="2"]
 |=======================================================================
 |image:/documentation/images/icons/emoticons/information.png[image] |All
 applications are limited by default to no more than four workers.

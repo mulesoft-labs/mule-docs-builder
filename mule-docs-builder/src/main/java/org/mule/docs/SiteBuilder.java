@@ -33,8 +33,8 @@ public class SiteBuilder {
         writeSections();
     }
 
-    public static void buildSite(File sourceDirectory, File outputDirectory) {
-        SiteBuilder builder = new SiteBuilder(sourceDirectory, outputDirectory, "https://github.com/mulesoft/mulesoft-docs");
+    public static void buildSite(File sourceDirectory, File outputDirectory, String gitHubRepoUrl) {
+        SiteBuilder builder = new SiteBuilder(sourceDirectory, outputDirectory, gitHubRepoUrl);
     }
 
     public List<Section> getSections(File sourceDirectory) {

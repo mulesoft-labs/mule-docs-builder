@@ -87,7 +87,7 @@ public class AsciiDocPageTest {
     }
 
     private File getValidFile() {
-        String path = Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "index.ad" });
+        String path = Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "index.adoc" });
         return new File(path);
     }
 
@@ -104,15 +104,15 @@ public class AsciiDocPageTest {
     }
 
     private File getInvalidFile() {
-        String fooPath = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "foo.ad"});
+        String fooPath = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "foo.adoc"});
         return new File(fooPath);
     }
 
     private List<File> getInvalidFiles() {
         List<File> files = new ArrayList<File>();
-        String fooPath = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "foo.ad"});
+        String fooPath = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "foo.adoc"});
         files.add(new File(fooPath));
-        String barPath = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "bar.ad"});
+        String barPath = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "bar.adoc"});
         files.add(new File(barPath));
         return files;
     }

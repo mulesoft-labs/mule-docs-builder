@@ -12,7 +12,7 @@ public class SiteBuilderTest {
 
     @Test
     public void buildSite_withValidFolders_BuildsSite() {
-        SiteBuilder.buildSite(getValidSourceDirectory(), getValidOutputDirectory());
+        SiteBuilder.buildSite(getValidSourceDirectory(), getValidOutputDirectory(), "http://github.com/mulesoft/mule-docs");
     }
 
     /*@Test
@@ -28,7 +28,7 @@ public class SiteBuilderTest {
         //File source = new File("/Users/sean.osterberg/mulesoft-docs/_source/");
         File source = new File("/Users/sean.osterberg/mulesoft-docs/docsite-demo-connect/site-source/");
         File output = new File("/Users/sean.osterberg/mulesoft-docs/_output/");
-        SiteBuilder.buildSite(source, output);
+        SiteBuilder.buildSite(source, output, "http://github.com/mulesoft/mule-docs");
     }
 
     private File getValidSourceDirectory() {
