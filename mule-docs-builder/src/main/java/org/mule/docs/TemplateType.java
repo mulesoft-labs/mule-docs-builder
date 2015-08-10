@@ -6,4 +6,5 @@ package org.mule.docs;
 public enum TemplateType {
     DEFAULT,
     LANDING_PAGE,
+    PREVIEW
 }

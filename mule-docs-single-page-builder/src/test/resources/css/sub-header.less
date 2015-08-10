@@ -1,0 +1,263 @@
+@import "styles.less";
+
+.sub-header {
+
+  .search-box {
+    height: 65px;
+    background: @mulesoft-light-blue;
+    color: white;
+    padding: 19px 0px 0px 20px;
+    i{
+      margin-right: 10px;
+      font-size: 18px;
+    }
+    a > .tree-icon{
+      display: inline;
+      float: left;
+      padding-right: 10px;
+      margin-top: 2px;
+      border-right: 1px solid white;
+      color: rgba(255,255,255,1);
+    }
+    i.glyphicon:before {
+      content:"";
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+    }
+
+    i.glyphicon-search {
+      top: 3px;
+    }
+    i.glyphicon-search:before{
+      background: url('../img/search.svg') center 2px  no-repeat;
+    }
+
+    i.glyphicon-th-list:before{
+      background: url('../img/nav-hide.svg') center top  no-repeat;
+      background-size: 105%;
+    }
+    i.glyphicon-th-list.tree-closed:before{
+      background: url('../img/nav-show.svg') center top  no-repeat;
+      background-size: 120%;
+    }
+
+    .search-field {
+      background: transparent;
+      border: none;
+      width: 135px;
+      border-bottom: 1px solid rgba(255,255,255,0);
+      font-size: 14px;
+      padding: 5px 0;
+
+      &:focus{
+        outline: 0;
+      }
+      &:hover {
+        border-bottom: 1px solid rgba(255, 255, 255, .8);
+      }
+
+      &::-webkit-input-placeholder {
+        color: rgba(255,255,255,.8);
+      }
+      &:-moz-placeholder {
+        color: rgba(255,255,255,.8);
+      }
+      &:-ms-input-placeholder {
+        color: rgba(255,255,255,.8);
+      }
+    }
+    input[type=submit] {
+      display: none;
+    }
+
+  }
+  .toolbar {
+    height: 65px;
+    background: white;
+    border-bottom: 1px solid #ECEEEF;
+    padding: 16px 0px 0px 28px;
+    padding-right: 0;
+    text-align: left;
+
+    .toolbar-dropdown{
+      display: inline-block;
+
+      .btn{
+        padding: 6px;
+        font-size: 13px;
+      }
+
+      .dropdown-toggle{
+        border: none;
+        background: transparent;
+        color: @mulesoft-semidark-grey;
+
+        i{
+          margin-right: 5px;
+        }
+
+        i.glyphicon:before {
+          content:"";
+          display: inline-block;
+          width: 17px;
+          height: 17px;
+          opacity: .3;
+        }
+
+        &:focus{
+          outline: 0;
+          box-shadow: none;
+        }
+        &:hover{
+          color:@mulesoft-dark-grey;
+
+          > i.glyphicon:before {
+            opacity: .6;
+          }
+        }
+      }
+
+      .dropdown-menu{
+        padding: 20px;
+      }
+
+      &.helpful {
+
+        li {
+          margin-bottom: 10px;
+        }
+        .dropdown-menu{
+          left: 150px;
+        }
+        i.glyphicon-star-empty:before{
+          background: url('../img/star.svg') center center  no-repeat;
+          background-size: 100%;
+        }
+      }
+
+      &.export{
+        .dropdown-menu{
+          left: 245px;
+        }
+        i.glyphicon-log-out:before{
+          background: url('../img/link.svg') center 2px no-repeat;
+        }
+      }
+
+      &.edit-github{
+        a{
+          color: @mulesoft-semidark-grey;
+          display: inline-block;
+          text-decoration: none;
+          .github-icon{
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            margin-right: 10px;
+            opacity: .4;
+            background: url('../img/github-icon.png') center center no-repeat;
+          }
+          span {
+            vertical-align: middle;
+          }
+          &:hover{
+            color:@mulesoft-dark-grey;
+
+            .github-icon{
+              opacity: .75;
+            }
+          }
+        }
+      }/* /edit-github */
+    }/* /toolbar-dropdown */
+
+  }
+
+  .version-selector{
+    background: white;
+    border-bottom: 1px solid #ECEEEF;
+    text-align: right;
+    padding: 16px 0px 0px 28px;
+    height: 65px;
+    display: block;
+
+    label{
+      font-weight: normal;
+      color: @mulesoft-semidark-grey;
+      margin-right: 10px;
+    }
+    select{
+      min-width: 60px;
+      max-width: 165px;
+      appearance: none;
+      -webkit-appearance: none;
+      border: none;
+      border-radius: 0;
+      padding: 7px 25px 7px 13px;
+      background: @mulesoft-light-grey url('../img/nav-expand.svg') 85% 50% no-repeat;
+      background-size: 17px;
+
+      color: @mulesoft-semidark-grey;
+      text-align: right;
+
+      &:focus{
+        outline: 0;
+      }
+    }
+  }
+
+}
+
+@media (max-width: 992px) {
+  .sub-header {
+
+    .search-box{
+      .search-field {
+        padding-top: 0;
+      }
+      a > .tree-icon{
+        margin-top:0;
+      }
+      &.fullwidth{
+        width:100%;
+      }
+
+    }
+    .toolbar{
+      border-bottom: 1px solid white;
+
+      .toolbar-dropdown{
+        .dropdown-toggle span{
+          display: none;
+        }
+        .dropdown-toggle i{
+          margin-right: 0px;
+        }
+        &.edit-github span{
+          display: none;
+        }
+        &.helpful .dropdown-menu,
+        &.export .dropdown-menu{
+          right: 0;
+          left: auto;
+        }
+      }
+
+      &.hidecontent{
+        display: none;
+      }
+    }
+
+    .version-selector{
+      text-align: center;
+
+      select{
+        width: 250px;
+      }
+      &.hidecontent{
+        display: none;
+      }
+    }
+  }
+}

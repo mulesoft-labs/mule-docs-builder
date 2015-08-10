@@ -47,6 +47,8 @@ public class Template {
             return TemplateType.DEFAULT;
         } else if (baseName.equals("landing_page")) {
             return TemplateType.LANDING_PAGE;
+        } else if (baseName.equals("preview")) {
+            return TemplateType.PREVIEW;
         }
         String error = "org.mule.docs.Template file's type is not valid: \"" + file.getName() + "\".";
         throw new DocBuildException(error);

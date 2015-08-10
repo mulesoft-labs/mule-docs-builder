@@ -1,0 +1,57 @@
+@import "styles.less";
+
+.scroll-menu-container{
+  position: relative;
+  padding: 40px 0;
+
+  .scroll-menu{
+    padding: 20px;
+    padding-right: 0;
+    max-width: 170px;
+    background: white;
+    position: fixed;
+    top: 140px;
+
+
+    h4{
+      color: @mulesoft-links-unselected;
+      font-size: 14px;
+      font-weight: normal;
+      padding-bottom: 10px;
+    }
+
+    ul {
+      list-style-type: none;
+      margin:0px;
+      padding: 0;
+
+      li {
+        > a {
+          display: block;
+          color: @mulesoft-links-unselected;
+          text-decoration: none;
+          border-left: 5px solid @mulesoft-light-grey;
+          padding: 10px 0 10px 20px;
+          font-size: 13px;
+
+          &.active{
+            /*font-weight: bold;*/
+            border-left: 5px solid @mulesoft-light-blue;
+          }
+          &:hover {
+            /*font-weight: bold;*/
+            border-left: 5px solid @mulesoft-links-unselected;
+          }
+        }
+
+      }
+    }
+  }
+
+}
+
+@media screen and (max-width: 992px){
+  .scroll-menu-container{
+    display: none;
+  }
+}

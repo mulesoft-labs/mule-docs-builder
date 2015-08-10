@@ -18,14 +18,20 @@ public class SectionNavigator {
         Map<String, String> sectionTitlesAndUrls = new LinkedHashMap<String, String>();
         Document doc = Jsoup.parse(html, "UTF-8");
         List<Element> elements = doc.select("h2");
-        for (Element element : elements) {
-            String title = element.text();
-            String url = element.select("a").get(0).attr("href");
-            if (url != null) {
-                sectionTitlesAndUrls.put(url, title);
+        if(elements.size() == 0) {
+            elements = doc.select("h3");
+            if(elements.size() == 0) {
+                elements = doc.select("h4");
+                addHeadingToCollection(elements, sectionTitlesAndUrls);
+                return getHtml(sectionTitlesAndUrls);
+            } else {
+                addHeadingToCollection(elements, sectionTitlesAndUrls);
+                return getHtml(sectionTitlesAndUrls);
             }
+        } else {
+            addHeadingToCollection(elements, sectionTitlesAndUrls);
+            return getHtml(sectionTitlesAndUrls);
         }
-        return getHtml(sectionTitlesAndUrls);
     }
 
     public static String getHtml(Map<String, String> sectionTitlesAndUrls) {
@@ -44,5 +50,14 @@ public class SectionNavigator {
         return output;
     }
 
+    public static void addHeadingToCollection(List<Element> elements, Map<String, String> collection) {
+        for (Element element : elements) {
+            String title = element.text();
+            String url = element.select("a").get(0).attr("href");
+            if (url != null) {
+                collection.put(url, title);
+            }
+        }
+    }
 
 }

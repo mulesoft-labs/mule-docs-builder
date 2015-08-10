@@ -13,6 +13,7 @@
         <module>mule-docs-sitemap-generator</module>
         <module>mule-docs-link-manager</module>
         <module>mule-docs-pdf-generator</module>
+        <module>mule-docs-single-page-builder</module>
     </modules>
 
     <properties>

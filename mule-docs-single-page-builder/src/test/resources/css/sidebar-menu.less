@@ -1,0 +1,193 @@
+@import "styles.less";
+.container {
+
+  font-family: "OpenSans", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+
+  .sidebar-nav{
+    padding: 0;
+
+    /* Category items */
+    nav > ul > li.parent_li{
+      padding: 10px 20px;
+
+      > a {
+        font-family: "OpenSansSemiBold", arial, helvetica, sans-serif;
+        color: @mulesoft-dark-grey;
+      }
+      &:first-child {
+        padding: 20px 20px 10px 20px;
+      }
+    }
+
+  }
+
+  .sidebar-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+
+    li {
+      margin-top: 0.5em;
+      a {
+        font-size: 13px;
+        text-decoration: none;
+        color: @mulesoft-links-unselected;
+
+        display: inline-block;
+        width: 180px;
+      }
+      i{
+        margin-right: 5px;
+        cursor: pointer;
+        /*display: none;*/
+        display:inline-block;
+        vertical-align: top;
+        width:20px;
+        height: 14px;
+      }
+      &:not(.parent_li):hover,
+      &:not(.parent_li):hover > a{
+        color: @mulesoft-light-blue;
+      }
+    }
+    li.parent_li {
+      padding: 10px 0;
+      margin: 0;
+      color: #727272;
+
+      > a{
+        width: 170px;
+        padding: 5px 0;
+      }
+      i {
+        padding: 5px 0;
+      }
+      i.glyphicon-chevron-right,
+      i.glyphicon-chevron-down{
+        position: relative;
+        top: 1px;
+        display: inline-block;
+        width: 17px;
+      }
+      i.glyphicon {
+        content:"";
+      }
+      i.glyphicon-chevron-right:before{
+        background: url('../img/nav-collapse.svg') center center no-repeat;
+        content:"";
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+      }
+      i.glyphicon-chevron-down:before{
+        background: url('../img/nav-expand.svg') center center no-repeat;
+        content:"";
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+      }
+
+      &.expanded{
+        background: white;
+        color: @mulesoft-links-active;
+
+
+      }
+
+      > ul li {
+        margin-left: 0;
+        padding: 5px 0 5px 10px;
+      }
+
+    }
+  }
+  .sidebar-nav {
+    .marker, .active-marker {
+        background: @mulesoft-links-unselected;
+        width: 5px;
+        position: absolute;
+    }
+    .active-marker {
+      background: @mulesoft-light-blue;
+    }
+    //display: block;
+    &.hidecontent-desktop {
+      display: none;
+    }
+  }
+}
+
+
+/* Higher Levels Settings */
+
+/* Third level items */
+.sidebar-nav > nav > ul > li.parent_li.expanded > ul > li.parent_li > ul > li > a{
+  width: 170px;
+}
+/* Fourth level items */
+.sidebar-nav > nav > ul > li.parent_li.expanded > ul > li.parent_li > ul > li.parent_li > ul > li > a {
+  width: 160px;
+}
+
+/* Fifth level items */
+.sidebar-nav.col-md-3 > nav > ul > li.parent_li.expanded > ul > li.parent_li > ul > li.parent_li > ul > li.parent_li > ul > li > a{
+  width: 120px;
+}
+
+
+
+@media (max-width: 1200px) {
+  .container .sidebar-nav ul li a{
+    width: 150px;
+  }
+
+  /* Higher Levels Settings */
+
+  /* Second level items */
+  .container .sidebar-nav ul li.parent_li > a{
+    width: 150px;
+  }
+
+  /* Third level items */
+  .sidebar-nav > nav > ul > li.parent_li.expanded > ul > li.parent_li > ul > li > a{
+    width: 130px;
+  }
+  /* Fourth level items */
+  .sidebar-nav > nav > ul > li.parent_li.expanded > ul > li.parent_li > ul > li.parent_li > ul > li > a {
+    width: 100px;
+  }
+
+  /* Fifth level items */
+  .sidebar-nav.col-md-3 > nav > ul > li.parent_li.expanded > ul > li.parent_li > ul > li.parent_li > ul > li.parent_li > ul > li > a{
+    width: 90px;
+  }
+}
+
+
+
+@media (max-width: 992px) {
+
+  .container {
+    .sidebar-nav {
+      display: none;
+
+      &.showcontent {
+        display: block;
+
+        nav{
+          background: #f4f5f6;
+        }
+      }
+    }
+  }
+
+  .container .sidebar-nav ul li.parent_li > a,
+  .sidebar-nav > nav > ul > li.parent_li.expanded > ul > li.parent_li > ul > li > a,
+  .sidebar-nav > nav > ul > li.parent_li.expanded > ul > li.parent_li > ul > li.parent_li > ul > li > a,
+  .sidebar-nav.col-md-3 > nav > ul > li.parent_li.expanded > ul > li.parent_li > ul > li.parent_li > ul > li.parent_li > ul > li > a{
+    width: auto;
+  }
+
+}

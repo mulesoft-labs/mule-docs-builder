@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MuleSoft Documentation // {{ page.title }}</title>
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../css/asciidoctor.css">
+    <link rel="stylesheet" type="text/css" href="../bootstrap-3.3.4-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet/less" type="text/css" href="../css/styles.less" />
+    <link rel="stylesheet/less" type="text/css" href="../css/scroll-menu.less" />
+    <link rel="stylesheet/less" type="text/css" href="../css/sidebar-menu.less" />
+    <link rel="stylesheet/less" type="text/css" href="../css/sub-header.less" />
+    <link rel="stylesheet/less" type="text/css" href="../css/article-content.less" />
+    <script src="../js/less.js"></script>
+    <script src="../js/jquery-1.11.2.min.js"></script>
+    <script src="../bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+    <script src="../js/scripts.js"></script>
+    <meta charset="utf-8">
+</head>
+<body>
+
+<div class="container">
+    
+    <div class="row">
+        <!-- /sidebar-nav -->
+        <div class="article-content col-md-7"> 
+        
+        <h1>{{ page.title }}</h1>
+        {{ page.content }}
+        
+        </div
+        <!-- /article-content -->
+        
+        {{ page.sections }}
+      </div>
+    </div>
+  </div>
+</body>
+</html>
