@@ -23,7 +23,7 @@ public class UtilitiesTest {
     @Test
     public void validateAsciiDocFile_IsValidForAsciiDocExtension() {
         Utilities.validateAsciiDocFile(new File(Utilities.getConcatPath(
-                new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "index.ad" })));
+                new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "index.adoc" })));
         assertTrue(true);
     }
 
@@ -51,7 +51,7 @@ public class UtilitiesTest {
     @Test
     public void fileEndsWithValidAsciidocExtension_ReturnsTrueWithValidExtension() {
         boolean result = Utilities.fileEndsWithValidAsciidocExtension(Utilities.getConcatPath(
-                new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub.ad" }));
+                new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub.adoc" }));
         assertTrue(result);
     }
 
@@ -63,8 +63,8 @@ public class UtilitiesTest {
 
     @Test
     public void getConcatenatedFilepath_WithTwoDirectoriesAndFilename_IsValid() {
-        String path = Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub.ad" });
-        assertTrue(path.contentEquals(TestUtilities.getPathToMasterFolder() + "/cloudhub/cloudhub.ad"));
+        String path = Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub.adoc" });
+        assertTrue(path.contentEquals(TestUtilities.getPathToMasterFolder() + "/cloudhub/cloudhub.adoc"));
     }
 
     @Test
@@ -117,8 +117,8 @@ public class UtilitiesTest {
 
     @Test
     public void validateCtorObjectsAreNotNull_WithNonNullParams_IsValid() {
-        File file1 = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub-faq.ad" }));
-        File file2 = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub-at-a-glance.ad" }));
+        File file1 = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub-faq.adoc" }));
+        File file2 = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub-at-a-glance.adoc" }));
         Utilities.validateCtorObjectsAreNotNull(new Object[] { file1, file2 }, "MyClass");
     }
 
@@ -139,7 +139,7 @@ public class UtilitiesTest {
 
     @Test
     public void getOnlyContentDivFromHtml_WithValidHtml_ReturnsDesiredContent() {
-        File file = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "index.ad" }));
+        File file = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "index.adoc" }));
         AsciiDocPage page = AsciiDocPage.fromFile(file);
         assertTrue(!Utilities.getOnlyContentDivFromHtml(page.getHtml()).contains("<div id=\"content\">"));
     }
@@ -244,7 +244,7 @@ public class UtilitiesTest {
 
     @Test
     public void fileExists_WithValidFile_IsValid() {
-        File file = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "deploying-a-cloudhub-application.ad" }));
+        File file = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "deploying-a-cloudhub-application.adoc" }));
         Utilities.validateFileExists(file);
         assertTrue(true);
     }
@@ -264,7 +264,7 @@ public class UtilitiesTest {
 
     @Test(expected = DocBuildException.class)
     public void validateIsDirectory_WithFileNotDirectory_ThrowsException() {
-        File file = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub-faq.ad" }));
+        File file = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub-faq.adoc" }));
         Utilities.validateIsDirectory(file);
     }
 
@@ -345,7 +345,7 @@ public class UtilitiesTest {
 
     @Test(expected = DocBuildException.class)
     public void validateTemplateFile_WithInvalidFile_ThrowsException() {
-        Utilities.validateTemplateFile(new File(Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "master-folder", "anypoint-platform", "cloudhub.ad" })));
+        Utilities.validateTemplateFile(new File(Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "master-folder", "anypoint-platform", "cloudhub.adoc" })));
     }
 
 

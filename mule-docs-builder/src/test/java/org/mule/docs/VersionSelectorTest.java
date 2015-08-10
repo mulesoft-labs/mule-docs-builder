@@ -37,7 +37,7 @@ public class VersionSelectorTest {
         Section section = getValidSection();
         List<PageVersion> versions = new ArrayList<PageVersion>();
         VersionSelector.compareLatestPagesWithVersions(section, versions);
-        assertEquals(4, versions.size());
+        assertEquals(3, versions.size());
     }
 
     @Test

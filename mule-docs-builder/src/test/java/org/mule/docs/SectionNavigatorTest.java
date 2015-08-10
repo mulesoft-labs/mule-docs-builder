@@ -20,7 +20,7 @@ public class SectionNavigatorTest {
     }
 
     private File getValidFile() {
-        String path = Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "index.ad" });
+        String path = Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "index.adoc" });
         return new File(path);
     }
 }

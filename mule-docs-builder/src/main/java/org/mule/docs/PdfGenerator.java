@@ -14,12 +14,12 @@ import java.util.Map;
  * Copyright (C) MuleSoft, Inc - All Rights Reserved
  * Created by Sean Osterberg on 8/8/15.
  */
-public class PdfPage {
-    private static Logger logger = Logger.getLogger(PdfPage.class);
+public class PdfGenerator {
+    private static Logger logger = Logger.getLogger(PdfGenerator.class);
     private File outputDirectory;
     private Map<String, String> createdPdfRegistry;
 
-    public PdfPage(File outputDirectory) {
+    public PdfGenerator(File outputDirectory) {
         this.outputDirectory = outputDirectory;
         this.createdPdfRegistry = new HashMap<String, String>();
     }

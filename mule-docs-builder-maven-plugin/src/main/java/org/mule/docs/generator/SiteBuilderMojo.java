@@ -57,6 +57,10 @@ public class SiteBuilderMojo
         if(!sourceDirectory.exists()){
             throw new MojoExecutionException("Source directory doesn't exists: " + sourceDirectory);
         }
-        SiteBuilder.buildSite(sourceDirectory.getAbsoluteFile(), outputDirectory.getAbsoluteFile(), "http://github.com/mulesoft/mule-docs");
+        SiteBuilder builder = new SiteBuilder(sourceDirectory.getAbsoluteFile(),
+                outputDirectory.getAbsoluteFile(),
+                "http://github.com/mulesoft/mule-docs",
+                "master");
+        builder.buildSite();
     }
 }

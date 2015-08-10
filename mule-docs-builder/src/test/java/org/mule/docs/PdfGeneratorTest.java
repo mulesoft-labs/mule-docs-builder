@@ -1,7 +1,5 @@
 package org.mule.docs;
 
-import org.asciidoctor.Asciidoctor;
-import org.asciidoctor.OptionsBuilder;
 import org.junit.Test;
 import org.mule.docs.util.Utilities;
 
@@ -16,18 +14,18 @@ import static org.junit.Assert.*;
  * Copyright (C) MuleSoft, Inc - All Rights Reserved
  * Created by Sean Osterberg on 8/7/15.
  */
-public class PdfPageTest {
+public class PdfGeneratorTest {
 
     @Test
     public void createPdf_WithValidPageAndSection_CreatesPageWithValidRegistry() {
         AsciiDocPage page = AsciiDocPage.fromFile(getValidFile());
         Section section = getValidSection();
         String sectionFilePath = Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "pdf-output", "cloudhub" });
-        PdfPage pdfPage = new PdfPage(new File(""));
-        pdfPage.createPdf(page, section, sectionFilePath);
+        PdfGenerator pdfGenerator = new PdfGenerator(new File(""));
+        pdfGenerator.createPdf(page, section, sectionFilePath);
         String createdFileName = "mulesoft-docs--" + section.getBaseName() + "--" + page.getBaseName() + ".pdf";
         String createdPath = Utilities.getConcatPath(new String[] { sectionFilePath, createdFileName });
-        Map<String, String> createdPdfRegistry = pdfPage.getCreatedPdfRegistry();
+        Map<String, String> createdPdfRegistry = pdfGenerator.getCreatedPdfRegistry();
         String originalFile = Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "index.adoc" });
         String createdPdf = Utilities.getConcatPath(new String[] { sectionFilePath, createdFileName });
 
@@ -39,11 +37,11 @@ public class PdfPageTest {
     public void processSection_WithValidPagesAndSection_CreatesPagesWithValidRegistry() {
         Section section = getValidSection();
         String pdfFilePath = Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "pdf-output", });
-        PdfPage pdfPage = new PdfPage(new File(pdfFilePath));
-        pdfPage.processSection(section);
+        PdfGenerator pdfGenerator = new PdfGenerator(new File(pdfFilePath));
+        pdfGenerator.processSection(section);
         File createdDirectory = new File(Utilities.getConcatPath(new String[] { pdfFilePath, section.getUrl() }));
         File[] files = createdDirectory.listFiles();
-        Map<String, String> createdPdfRegistry = pdfPage.getCreatedPdfRegistry();
+        Map<String, String> createdPdfRegistry = pdfGenerator.getCreatedPdfRegistry();
 
         String originalFile = Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "index.adoc" });
         String createdPdf = Utilities.getConcatPath(new String[] { pdfFilePath, "cloudhub", "mulesoft-docs--cloudhub--index.pdf"});
@@ -62,8 +60,8 @@ public class PdfPageTest {
 
 
         String pdfFilePath = Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "pdf-output", });
-        PdfPage pdfPage = new PdfPage(new File(pdfFilePath));
-        pdfPage.processAllSections(sections);
+        PdfGenerator pdfGenerator = new PdfGenerator(new File(pdfFilePath));
+        pdfGenerator.processAllSections(sections);
 
         File createdDirectory = new File(Utilities.getConcatPath(new String[] { pdfFilePath, section.getUrl() }));
         File createdDirectory2 = new File(Utilities.getConcatPath(new String[] { pdfFilePath, section2.getUrl() }));

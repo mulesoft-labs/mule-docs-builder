@@ -7,8 +7,6 @@ import java.util.*;
 
 import org.apache.log4j.Logger;
 import org.mule.docs.util.Utilities;
-import org.w3c.tidy.*;
-import org.w3c.dom.*;
 
 /**
  * Created by sean.osterberg on 2/22/15.
@@ -23,20 +21,25 @@ public class SiteBuilder {
     private String gitHubBranchName;
     private List<Template> templates;
 
-    public SiteBuilder(File sourceDirectory, File outputDirectory, String gitHubRepoUrl) {
+    public SiteBuilder(File sourceDirectory, File outputDirectory, String gitHubRepoUrl, String gitHubBranchName) {
         this.sourceDirectory = sourceDirectory;
         this.outputDirectory = outputDirectory;
-        this.sections = getSections(sourceDirectory);
+        this.gitHubRepoUrl = gitHubRepoUrl;
+        this.gitHubBranchName = gitHubBranchName;
+    }
+
+    public void buildSite() {
+        this.sections = getSections(this.sourceDirectory);
         this.toc = getSiteToc(sourceDirectory);
         this.templates = getTemplates(sourceDirectory);
-        this.gitHubRepoUrl = gitHubRepoUrl;
         writeSections();
     }
 
-    public static void buildSite(File sourceDirectory, File outputDirectory, String gitHubRepoUrl) {
-        SiteBuilder builder = new SiteBuilder(sourceDirectory, outputDirectory, gitHubRepoUrl);
-    }
-
+    /**
+     * Gets sections from the source directory.
+     * @param sourceDirectory The directory from where to get the sections.
+     * @return A list of sections.
+     */
     public List<Section> getSections(File sourceDirectory) {
         List<Section> sections = new ArrayList<Section>();
         if (sourceDirectory.isDirectory()) {
@@ -50,6 +53,9 @@ public class SiteBuilder {
         return sections;
     }
 
+    /**
+     *
+     */
     private void writeSections() {
         for (Section section : this.sections) {
             String sectionPath = Utilities.getConcatPath(new String[] { this.outputDirectory.getPath(), Utilities.removeLeadingSlashes(section.getUrl()) });
@@ -63,7 +69,7 @@ public class SiteBuilder {
                 Utilities.makeTargetDirectory(versionPath);
                 writePagesForSection(version);
             }
-            logger.info("Finished writing pages for section \"" + section + "\".");
+            logger.info("Finished writing pages for section \"" + section.getPrettyName() + "\".");
         }
     }
 
@@ -100,16 +106,6 @@ public class SiteBuilder {
         }
     }
 
-    private String tidyHtml(String html) {
-        Tidy tidy = new Tidy();
-        boolean xhtml = false;
-        tidy.setXHTML(xhtml);
-        InputStream htmlStream = new ByteArrayInputStream(html.getBytes());
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        Document doc = tidy.parseDOM(htmlStream, outputStream);
-        tidy.pprint(doc, outputStream);
-        return outputStream.toString();
-    }
 
     private SiteTableOfContents getSiteToc(File masterDirectory) {
         File masterTocFile = new File(Utilities.getConcatPath(new String[] {masterDirectory.getPath(), "_toc.adoc"}));

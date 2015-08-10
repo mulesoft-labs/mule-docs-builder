@@ -76,15 +76,15 @@ public class SiteTocHtmlTest {
     }
 
     private AsciiDocPage getValidAsciiDocPage() {
-        return AsciiDocPage.fromFile(new File(Utilities.getConcatPath(new String[] {TestUtilities.getPathToMasterFolder(), "cloudhub", "deploying-a-cloudhub-application.ad"})));
+        return AsciiDocPage.fromFile(new File(Utilities.getConcatPath(new String[] {TestUtilities.getPathToMasterFolder(), "cloudhub", "deploying-a-cloudhub-application.adoc"})));
     }
 
     private AsciiDocPage getValidOldAsciiDocPage() {
-        return AsciiDocPage.fromFile(new File(Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "v", "4.0", "deploying-a-cloudhub-application.ad"})));
+        return AsciiDocPage.fromFile(new File(Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "v", "4.0", "deploying-a-cloudhub-application.adoc"})));
     }
 
     private AsciiDocPage getOrphanedAsciiDocPage() {
-        return AsciiDocPage.fromFile(new File(Utilities.getConcatPath(new String[] {TestUtilities.getPathToMasterFolder(), "cloudhub", "index.ad"})));
+        return AsciiDocPage.fromFile(new File(Utilities.getConcatPath(new String[] {TestUtilities.getPathToMasterFolder(), "cloudhub", "index.adoc"})));
     }
 
 }
