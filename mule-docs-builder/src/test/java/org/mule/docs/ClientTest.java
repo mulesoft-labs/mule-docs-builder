@@ -58,7 +58,7 @@ public class ClientTest {
                 "-d", Utilities.getConcatPath(new String[] {TestUtilities.getTestResourcesPath(), "output" }),
         };
         Client.main(args);
-        assertEquals("No source directory specified", outContent.toString().trim());
+        assertEquals("MuleSoft Docs Builder: No source directory specified", outContent.toString().trim());
     }
 
     @Test
@@ -67,7 +67,7 @@ public class ClientTest {
                 "-s", Utilities.getConcatPath(new String[] {TestUtilities.getTestResourcesPath(), "output" }),
         };
         Client.main(args);
-        assertEquals("No destination directory specified", outContent.toString().trim());
+        assertEquals("MuleSoft Docs Builder: No destination directory specified", outContent.toString().trim());
     }
 
     @Test
@@ -77,7 +77,7 @@ public class ClientTest {
                 "-s", Utilities.getConcatPath(new String[] {TestUtilities.getTestResourcesPath(), "output" }),
                 "-github-repo", "foo" };
         Client.main(args);
-        assertEquals("No branch was specified for GitHub repo", outContent.toString().trim());
+        assertEquals("MuleSoft Docs Builder: No branch was specified for GitHub repo", outContent.toString().trim());
     }
 
     @Test
@@ -87,7 +87,7 @@ public class ClientTest {
                 "-s", Utilities.getConcatPath(new String[] {TestUtilities.getTestResourcesPath(), "output" }),
                 "-github-branch", "foo" };
         Client.main(args);
-        assertEquals("No repo was specified for GitHub branch", outContent.toString().trim());
+        assertEquals("MuleSoft Docs Builder: No repo was specified for GitHub branch", outContent.toString().trim());
     }
 
     public void cleanupFiles() {
