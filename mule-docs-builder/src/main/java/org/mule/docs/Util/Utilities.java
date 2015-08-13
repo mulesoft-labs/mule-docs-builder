@@ -121,14 +121,22 @@ public class Utilities {
     }
 
     public static String cleanPageFileNames(String originalFilename) {
-        if (originalFilename != null) {
-            String finalFilename;
-            finalFilename = originalFilename.toLowerCase();
-            finalFilename = StringUtils.replacePattern(finalFilename, "((\\%28)|(\\%29))", "-");
-            finalFilename = StringUtils.replacePattern(finalFilename, "(\\+)(\\+*)", "-");
-            finalFilename = StringUtils.replacePattern(finalFilename, "(\\-)(\\-*)", "-");
-            finalFilename = StringUtils.replacePattern(finalFilename, " ", "-");
-            return finalFilename;
+        if(originalFilename != null) {
+            String result = originalFilename;
+            try {
+                result = java.net.URLDecoder.decode(originalFilename, "UTF-8");
+            } catch(UnsupportedEncodingException e) {
+                System.out.println("Couldn't decode filename: " + originalFilename + "\n" + e);
+            }
+            result = result.toLowerCase();
+            result = StringUtils.replacePattern(result, "(_[0-9].)", "-");
+            result = StringUtils.replacePattern(result, "(\\([0-9]\\))", "-");
+            result = StringUtils.replacePattern(result, "([^\\w\\/\\.\\-])", "-");
+            result = StringUtils.replacePattern(result, "(-)(-*)", "-");
+            if(result.endsWith("-")) {
+                result = result.substring(0, result.length() - 1);
+            }
+            return result;
         } else
             throw new NullPointerException("String references are null.");
     }

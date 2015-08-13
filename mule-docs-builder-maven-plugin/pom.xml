@@ -16,6 +16,8 @@
             <groupId>org.mule.docs.generator</groupId>
             <artifactId>mule-docs-builder</artifactId>
             <version>1.0.0-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>/Users/sean.osterberg/dev/mule-docs-builder/mule-docs-builder/target/mule-docs-builder-1.0.0-SNAPSHOT.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>org.apache.maven</groupId>

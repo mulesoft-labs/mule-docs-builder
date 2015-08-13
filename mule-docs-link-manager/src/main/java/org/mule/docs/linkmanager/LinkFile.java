@@ -1,11 +1,9 @@
 package org.mule.docs.linkmanager;
 
+import org.apache.commons.cli.*;
 import org.apache.commons.io.FilenameUtils;
 
-import org.mule.docs.AsciiDocPage;
-import org.mule.docs.Section;
-import org.mule.docs.SectionTableOfContents;
-import org.mule.docs.TocNode;
+import org.mule.docs.*;
 import org.mule.docs.util.Utilities;
 
 import java.io.File;
@@ -28,10 +26,14 @@ public class LinkFile {
     public void createFile(String path) {
         String output = getCsvPagesInSections();
         Utilities.writeFileToDirectory(path, output);
+        File outputFile = new File(path);
+        if(outputFile.exists()) {
+            System.out.println("Successfully created link file.");
+        }
     }
 
     public String getCsvPagesInSections() {
-        List<Section> sections = Section.fromMasterDirectory(this.masterDirectory);
+        List<Section> sections = org.mule.docs.linkmanager.Section.fromMasterDirectory(this.masterDirectory);
         StringBuilder sb = new StringBuilder();
         for (Section section : sections) {
             for (AsciiDocPage page : section.getPages()) {

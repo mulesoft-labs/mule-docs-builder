@@ -15,6 +15,7 @@ import java.net.URL;
  */
 public class LinkFileTest {
 
+    /*
     @Test
     public void fromDirectory_WithValidDirectory_CreatesFile() {
         LinkFile links = new LinkFile(Utilities.getConcatPath( new String[] { getTestResourcesPath(), "3.2" }));
@@ -57,4 +58,5 @@ public class LinkFileTest {
         }
         throw new RuntimeException("Test resources path was null.");
     }
+    */
 }

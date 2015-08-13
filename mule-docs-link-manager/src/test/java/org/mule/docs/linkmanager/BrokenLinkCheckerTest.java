@@ -19,6 +19,7 @@ import java.util.List;
  */
 public class BrokenLinkCheckerTest {
 
+    /*
     @Test
     public void getLinksInPage() {
         String path = Utilities.getConcatPath(new String[] { getTestResourcesPath(), "3.2", "mule-agent" });
@@ -40,5 +41,5 @@ public class BrokenLinkCheckerTest {
             }
         }
         throw new RuntimeException("Test resources path was null.");
-    }
+    }*/
 }
