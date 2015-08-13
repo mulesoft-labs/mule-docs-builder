@@ -3,16 +3,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.mule.docs.generator</groupId>
+    <groupId>com.mulesoft.documentation.builder</groupId>
     <artifactId>mule-docs-generator-parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
+
     <modules>
         <module>mule-docs-builder</module>
         <module>mule-docs-builder-maven-plugin</module>
         <module>mule-docs-sitemap-generator</module>
         <module>mule-docs-link-manager</module>
-        <module>mule-docs-pdf-generator</module>
         <module>mule-docs-single-page-builder</module>
     </modules>
 
@@ -20,6 +20,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdk.version>1.7</jdk.version>
     </properties>
+
     <build>
         <pluginManagement>
             <plugins>
