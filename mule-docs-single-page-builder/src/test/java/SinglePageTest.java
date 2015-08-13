@@ -1,9 +1,8 @@
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
-import org.mule.docs.SinglePage;
-import org.mule.docs.util.Utilities;
+import com.mulesoft.documentation.builder.SinglePage;
+import com.mulesoft.documentation.builder.util.Utilities;
 
-import java.io.File;
 import java.net.URL;
 
 /**

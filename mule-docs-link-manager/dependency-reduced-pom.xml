@@ -35,7 +35,7 @@
               <transformers>
                 <transformer />
                 <transformer>
-                  <mainClass>org.mule.docs.linkmanager.Client</mainClass>
+                  <mainClass>com.mulesoft.documentation.builder.linkmanager.Client</mainClass>
                 </transformer>
               </transformers>
             </configuration>

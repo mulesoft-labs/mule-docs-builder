@@ -36,7 +36,7 @@
               <transformers>
                 <transformer />
                 <transformer>
-                  <mainClass>org.mule.docs.Client</mainClass>
+                  <mainClass>com.mulesoft.documentation.builder.Client</mainClass>
                 </transformer>
               </transformers>
             </configuration>
