@@ -3,8 +3,6 @@ package com.mulesoft.documentation.builder.linkmanager;
 import com.mulesoft.documentation.builder.*;
 import com.mulesoft.documentation.builder.util.Utilities;
 
-import org.mule.docs.*;
-
 import java.io.File;
 import java.util.List;
 

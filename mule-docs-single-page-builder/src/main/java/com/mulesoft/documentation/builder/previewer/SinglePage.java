@@ -1,6 +1,6 @@
-package com.mulesoft.documentation.builder;
+package com.mulesoft.documentation.builder.previewer;
 
-import com.mulesoft.documentation.builder.util.Utilities;
+import com.mulesoft.documentation.builder.*;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
@@ -16,18 +16,21 @@ import java.net.URL;
 public class SinglePage {
     private static Logger logger = Logger.getLogger(SinglePage.class);
 
-    public static void fromAsciiDocFile(String asciiDocFilePath, String outputPath) {
+    public static void fromAsciiDocFile(String asciiDocFilePath, String outputDirPath) {
+        System.out.println("Converting file to html: " + asciiDocFilePath);
         AsciiDocPage page = AsciiDocPage.fromFile(new File(asciiDocFilePath));
         String result = buildPage(page);
-        logger.info("Built page from template for \"" + getPageTitle(page) + "\".");
-        logger.info("Writing page to file...");
-        File outputDir = new File(outputPath);
+        File outputDir = new File(outputDirPath);
         if(!outputDir.exists()) {
-            outputDir.mkdir();
+            boolean success = outputDir.mkdir();
+            if(!success) {
+                System.out.println("\nError creating directory for output file: " + outputDirPath);
+                System.exit(-1);
+            }
         }
-        String outputFilePath = Utilities.getConcatPath(new String[]{outputPath, page.getBaseName() + ".html"});
+        String outputFilePath = Utilities.getConcatPath(new String[]{outputDirPath, page.getBaseName() + ".html"});
         Utilities.writeFileToDirectory(outputFilePath, result);
-        logger.info("Saved file to path: " + outputPath);
+        System.out.println("Saved output file to: " + Utilities.getConcatPath(new String[] { outputDirPath, page.getBaseName() + ".html"}));
     }
 
     private static String buildPage(AsciiDocPage page) {
