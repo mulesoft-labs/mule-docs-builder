@@ -351,6 +351,11 @@ public class Utilities {
 
     public static void writeFileToDirectory(String filePath, String fileContents) {
         try {
+            File file = new File(filePath);
+            File dir = file.getParentFile();
+            if(!dir.exists()) {
+                makeTargetDirectory(dir.getAbsolutePath());
+            }
             BufferedWriter writer = null;
             writer = new BufferedWriter(new FileWriter(filePath));
             writer.write(fileContents);

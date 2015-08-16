@@ -29,7 +29,7 @@
                     <version>2.5</version>
                     <configuration>
                         <source>${jdk.version}</source>
-                        <target>${jdk.version}</target>
+                        <target>1.7</target>
                         <encoding>ISO-8859-1</encoding>
                     </configuration>
                 </plugin>
