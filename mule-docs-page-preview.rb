@@ -3,6 +3,7 @@ require "formula"
 class MuleDocsPagePreview < Formula
   homepage "https://github.com/mulesoft-labs/mule-docs-builder"
   url "https://github.com/mulesoft-labs/mule-docs-builder.git"
+  version "1.0-SNAPSHOT"
 
   depends_on "maven" => :build
   depends_on :java
