@@ -19,6 +19,14 @@ public class SinglePageTest {
 
     }
 
+    @Test
+    public void tmpFileTest() {
+        String adocFile = "/tmp/test.adoc";
+        String adocOutput = "/tmp";
+
+        SinglePage.fromAsciiDocFile(adocFile, adocOutput);
+    }
+
     public static String getTestResourcesPath() {
         URL pathToTestResources = SinglePageTest.class.getClassLoader().getResource("");
         String testResourcesPath = "";

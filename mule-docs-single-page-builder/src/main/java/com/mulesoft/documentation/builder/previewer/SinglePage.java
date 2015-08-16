@@ -1,12 +1,15 @@
 package com.mulesoft.documentation.builder.previewer;
 
 import com.mulesoft.documentation.builder.*;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 
 /**
@@ -61,8 +64,15 @@ public class SinglePage {
     }
 
     private static Template getTemplate() {
-        File templateFile = new File(Utilities.getConcatPath(new String[] { getResourcesPath(), "preview.template" }));
-        Template template = Template.fromFile(templateFile);
+        Template template = null;
+
+        try (InputStream contentStream = ClassLoader.class.getResourceAsStream("/preview.template")) {
+            String content = IOUtils.toString(contentStream);
+            template = Template.fromString(TemplateType.PREVIEW, content);
+        } catch (IOException e) {
+            throw new RuntimeException("Error reading contents of template.");
+        }
+
         return template;
     }
 

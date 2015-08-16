@@ -30,6 +30,10 @@ public class Template {
         return templates;
     }
 
+    public static Template fromString(TemplateType type, String contents) {
+        return new Template(contents, type);
+    }
+
     public static Template fromFile(File file) {
         Utilities.validateTemplateFile(file);
         String contents = getTemplateContents(file);
