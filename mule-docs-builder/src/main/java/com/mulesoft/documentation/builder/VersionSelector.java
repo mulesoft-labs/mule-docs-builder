@@ -11,7 +11,7 @@ import java.util.Map;
  * if a particular page existed in a previous version. Then, depending
  * on the page, output the version selector HTML contextual to the page.
  */
-public class VersionSelector {
+public class VersionSelector {/*
     Section section;
 
     public VersionSelector(Section section) {
@@ -42,11 +42,13 @@ public class VersionSelector {
         return output;
     }
 
+
     public static List<PageVersion> getAllVersionMappingsForSection(Section section) {
         List<PageVersion> pageVersions = new ArrayList<PageVersion>();
         compareLatestPagesWithVersions(section, pageVersions);
         return pageVersions;
     }
+
 
     public static void compareLatestPagesWithVersions(Section section, List<PageVersion> pageVersions) {
         for (AsciiDocPage latestPage : section.getPages()) {
@@ -103,5 +105,5 @@ public class VersionSelector {
         }
         return false;
     }
-
+*/
 }

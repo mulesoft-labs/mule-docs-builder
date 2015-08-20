@@ -64,11 +64,12 @@ public class SiteBuilder {
             logger.info("Finished creating section directory.");
             logger.info("Started writing pages for section \"" + section + "\".");
             writePagesForSection(section);
+            /*
             for (Section version : section.getVersions()) {
                 String versionPath = Utilities.getConcatPath(new String[] {this.outputDirectory.getPath(), Utilities.removeLeadingSlashes(version.getUrl())});
                 Utilities.makeTargetDirectory(versionPath);
                 writePagesForSection(version);
-            }
+            }*/
             logger.info("Finished writing pages for section \"" + section.getPrettyName() + "\".");
         }
     }

@@ -70,7 +70,7 @@ public class AsciiDocProcessor {
         attributes.put("icons", "font");
         attributes.put("source-highlighter", "coderay");
         attributes.put("coderay-linenums-mode", "table");
-        attributes.put("imagesdir", "../images");
+        attributes.put("imagesdir", "./_images");
         return attributes;
     }
 }

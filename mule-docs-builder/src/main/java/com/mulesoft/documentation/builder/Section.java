@@ -20,19 +20,16 @@ public class Section {
     private String prettyName;
     private String versionPrettyName;
     private String baseName;
-    private List<Section> versions;
 
     public Section(List<AsciiDocPage> pages,
                    TocNode rootNode,
-                   List<Section> versions,
                    String filepath,
                    String url,
                    String prettyName,
                    String versionPrettyName) {
-        validateInputParams(new Object[] {pages, rootNode, versions, filepath});
+        validateInputParams(new Object[] {pages, rootNode, filepath});
         this.pages = pages;
         this.rootNode = rootNode;
-        this.versions = versions;
         this.filepath = filepath;
         this.url = url;
         this.prettyName = prettyName;
@@ -69,10 +66,6 @@ public class Section {
         return baseName;
     }
 
-    public List<Section> getVersions() {
-        return versions;
-    }
-
     public static Section fromDirectory(File directory) {
         validateDirectory(directory);
         return getSectionFromDirectory(directory, "");
@@ -96,18 +89,9 @@ public class Section {
         List<AsciiDocPage> pages = AsciiDocPage.fromFiles(validFiles);
         File tocFile = new File(Utilities.getConcatPath(new String[]{directory.getPath(), "_toc.adoc"}));
         TocNode rootNode = SectionTableOfContents.fromAsciiDocFile(tocFile).getRootTocNode();
-        List<Section> versions = new ArrayList<Section>();
-        if (!url.contains(File.separator + "v" + File.separator)) {
-            if (url.isEmpty() && directory.getPath().contains(File.separator + "v" + File.separator)) {
-                url = getVersionUrl(directory.getPath(), getBaseName(directory.getPath()));
-            } else {
-                url = Utilities.getConcatPath(new String[]{url, directory.getPath().substring(directory.getPath().lastIndexOf(File.separator) + 1)});
-            }
-        }
-        if (Utilities.directoryContainsVersions(directory)) {
-            getVersions(directory, versions, url);
-        }
-        return new Section(pages, rootNode, versions, directory.getPath(), url, getPrettyName(directory), getVersionPrettyName(directory));
+        url = Utilities.getConcatPath(new String[]{url, directory.getPath().substring(directory.getPath().lastIndexOf(File.separator) + 1)});
+
+        return new Section(pages, rootNode, directory.getPath(), url, getPrettyName(directory), getVersionPrettyName(directory));
     }
 
     private static List<File> getValidAsciiDocFilesInSection(List<File> files) {
@@ -120,15 +104,6 @@ public class Section {
             }
         }
         return validFiles;
-    }
-
-    private static void getVersions(File directory, List<Section> versions, String url) {
-        File versionDirectory = new File(Utilities.getConcatPath(new String[] {directory.getPath(), "v"}));
-        for (File file : versionDirectory.listFiles()) {
-            if (file.isDirectory()) {
-                versions.add(getSectionFromDirectory(file, getVersionUrl(file.getPath(), url)));
-            }
-        }
     }
 
     public static String getVersionUrl(String directoryPath, String sectionName) {

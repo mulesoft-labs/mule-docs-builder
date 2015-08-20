@@ -50,7 +50,7 @@ public class AsciiDocProcessor {
     public void registerExtensions() {
         JavaExtensionRegistry extensionRegistry = asciidoctor.javaExtensionRegistry();
         extensionRegistry.preprocessor(CodeLineNumberPreProcessor.class);
-        extensionRegistry.block("tabs", TabProcessor.class);
+        extensionRegistry.block("tabs", com.mulesoft.documentation.builder.previewer.TabProcessor.class);
     }
 
     private Options getOptionsForConversion() {

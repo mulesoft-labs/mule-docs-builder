@@ -94,9 +94,13 @@ public class Page {
         return Utilities.getOnlyContentDivFromHtml(doc.html());
     }
 
+
     private static String getVersionHtml(Section section, AsciiDocPage page) {
+        /*
         VersionSelector version = VersionSelector.fromSection(section);
         return version.htmlForPage(page);
+        */
+        return null;
     }
 
     private static String getPageMetadata(AsciiDocPage page) {

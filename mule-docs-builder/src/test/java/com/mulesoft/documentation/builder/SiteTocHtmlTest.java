@@ -43,6 +43,7 @@ public class SiteTocHtmlTest {
         assertFalse(html.contains("Testing123"));
     }
 
+    /*
     @Test
     public void getTocHtmlForSectionAndPage_ForOldVersion_ReturnsValidHtml() {
         SiteTocHtml siteToc = SiteTocHtml.fromSiteTocAndSections(getValidTocFile(), getValidSections());
@@ -51,7 +52,7 @@ public class SiteTocHtmlTest {
         assertTrue(html.length() > 500);
         assertTrue(html.contains("<a href=\"/cloudhub/v/4.0/\">CloudHub</a>"));
         assertTrue(html.contains("<li class=\"active\"><i></i><a href=\"/cloudhub/v/4.0/deploying-a-cloudhub-application\">Deploying a CloudHub Application</a>"));
-    }
+    }*/
 
     public SiteTableOfContents getValidTocFile() {
         String tocPath = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "_toc.adoc"});

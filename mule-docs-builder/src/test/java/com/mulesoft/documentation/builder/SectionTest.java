@@ -51,6 +51,7 @@ public class SectionTest {
         assertEquals(TestUtilities.getPathToMasterFolder() + "/cloudhub", section.getFilepath());
     }
 
+    /*
     @Test
     public void fromDirectory_WithValidSectionDirectory_HasOneVersion() {
         Section section = getValidSection();
@@ -66,7 +67,7 @@ public class SectionTest {
         Section section = getValidSection();
         assertTrue(section.getVersions().size() == 1);
         assertTrue(section.getVersions().get(0).getUrl().equals("cloudhub/v/4.0"));
-    }
+    }*/
 
     @Test
     public void fromDirectory_WithValidSectionDirectory_VersionCorrectPrettyName() {
@@ -80,12 +81,13 @@ public class SectionTest {
         Section section = Section.fromDirectory(invalidDirectory);
     }
 
+    /*
     @Test
     public void fromDirectory_WithValidSectionButInvalidVersion_DoesNotHaveVersion() {
         File validDirectory = new File(Utilities.getConcatPath(new String[] {TestUtilities.getPathToMasterFolder(), "anypoint-platform"}));
         Section section = Section.fromDirectory(validDirectory);
         assertTrue(section.getVersions().size() == 0);
-    }
+    }*/
 
     @Test
     public void fromMasterDirectory_WithValidMasterDirectory_IsValid() {
