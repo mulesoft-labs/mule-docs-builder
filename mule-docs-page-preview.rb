@@ -2,7 +2,7 @@ require "formula"
 
 class MuleDocsPagePreview < Formula
   homepage "https://github.com/mulesoft-labs/mule-docs-builder"
-  url "https://github.com/mulesoft-labs/mule-docs-builder.git", :using => "git", :branch => "prod-refactor"
+  url "https://github.com/mulesoft-labs/mule-docs-builder.git", :using => "git", :branch => "version-refactor"
   version "1.0.0-SNAPSHOT"
   
   depends_on "maven" => :build
