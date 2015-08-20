@@ -2,8 +2,11 @@ package com.mulesoft.documentation.builder;
 
 import org.apache.commons.cli.*;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.DurationFormatUtils;
+import org.apache.commons.lang3.time.StopWatch;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Copyright (C) MuleSoft, Inc - All Rights Reserved
@@ -20,11 +23,15 @@ public class Client {
         CommandLineParser parser = new DefaultParser();
         Options options = getCliOptions();
         try {
+            StopWatch watch = new StopWatch();
+            watch.start();
             CommandLine line = parser.parse(options, args);
             validateHelp(line);
             validateInput(line);
             printStartMessage(line);
             buildSite(line);
+            watch.stop();
+            printSuccessMessage(watch);
         }
         catch( ParseException exp ) {
             System.out.println( clientName + exp.getMessage() );
@@ -34,8 +41,8 @@ public class Client {
     }
 
     public static void printStartMessage(CommandLine line) {
-        String output = "====================================================";
-        output += "Starting MuleSoft Documentation Builder with options:\n";
+        String output = "====================================================\n";
+        output += "Starting MuleSoft Documentation Builder with options:\n\n";
         output += "Source: \t" + line.getOptionValue("s") + "\n";
         output += "Destination: \t" + line.getOptionValue("d") + "\n";
 
@@ -52,6 +59,20 @@ public class Client {
         output += "====================================================\n";
 
         System.out.println(output);
+    }
+
+    private static String formatInterval(final long l)
+    {
+        return DurationFormatUtils.formatDuration(l, "HH:mm:ss.S");
+    }
+
+    public static void printSuccessMessage(StopWatch watch) {
+        String output = "\n====================================================\n";
+        output += "Successfully completed building the site.\n\n";
+        output += "Elapsed build time: " + watch.toString() + "\n";
+        output += "====================================================\n";
+        System.out.println(output);
+
     }
 
     public static Options getCliOptions() {

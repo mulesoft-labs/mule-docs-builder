@@ -1,10 +1,17 @@
 package com.mulesoft.documentation.builder.linkmanager;
 
+import org.junit.Test;
+
 /**
  * Copyright (C) MuleSoft, Inc - All Rights Reserved
  * Created by Sean Osterberg on 7/28/15.
  */
 public class LinkFileTest {
+
+    @Test
+    public void fromMasterDirectory_CreatesFile() {
+
+    }
 
     /*
     @Test

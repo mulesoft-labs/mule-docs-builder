@@ -49,6 +49,7 @@ public class AsciiDocProcessor {
         JavaExtensionRegistry extensionRegistry = asciidoctor.javaExtensionRegistry();
         extensionRegistry.preprocessor(CodeLineNumberPreProcessor.class);
         extensionRegistry.block("tabs", TabProcessor.class);
+        extensionRegistry.preprocessor(LinenumsProcessor.class);
     }
 
     private Options getOptionsForConversion() {
