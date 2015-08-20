@@ -5,12 +5,12 @@ class MuleDocsPagePreview < Formula
   url "https://github.com/mulesoft-labs/mule-docs-builder.git"
   branch "version-refactor"
   version "1.0.0-SNAPSHOT"
-
+  head "https://github.com/mulesoft-labs/mule-docs-builder.git", :branch => "prod-refactor"
+  
   depends_on "maven" => :build
   depends_on :java => "1.8+"
 
   def install
-    system "git checkout version-refactor"
     system "mvn clean install -DskipTests"
     
     libexec.install "mule-docs-single-page-builder/target/mule-docs-single-page-builder-1.0.0-SNAPSHOT.jar"
