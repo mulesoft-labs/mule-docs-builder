@@ -74,6 +74,8 @@ public class SiteBuilder {
         }
     }
 
+    private void 
+
     /**
      * There are multiple kinds of assets, including things like images, snippets, diagrams, etc.
      */
