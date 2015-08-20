@@ -6,7 +6,7 @@ class MuleDocsPagePreview < Formula
   version "1.0.0-SNAPSHOT"
 
   depends_on "maven" => :build
-  depends_on :java
+  depends_on :java => "1.8+"
 
   def install
     system "mvn clean install -DskipTests"
