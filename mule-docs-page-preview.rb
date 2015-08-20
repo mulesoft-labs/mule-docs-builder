@@ -2,10 +2,8 @@ require "formula"
 
 class MuleDocsPagePreview < Formula
   homepage "https://github.com/mulesoft-labs/mule-docs-builder"
-  url "https://github.com/mulesoft-labs/mule-docs-builder.git"
-  branch "version-refactor"
+  url "https://github.com/mulesoft-labs/mule-docs-builder.git", :branch => "prod-refactor"
   version "1.0.0-SNAPSHOT"
-  head "https://github.com/mulesoft-labs/mule-docs-builder.git", :branch => "prod-refactor"
   
   depends_on "maven" => :build
   depends_on :java => "1.8+"
