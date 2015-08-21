@@ -2,7 +2,10 @@ package com.mulesoft.documentation.builder; /**
  * Created by sean.osterberg on 2/22/15.
  */
 
+import com.mulesoft.documentation.builder.model.SectionVersion;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,99 +14,80 @@ import java.util.Map;
  * if a particular page existed in a previous version. Then, depending
  * on the page, output the version selector HTML contextual to the page.
  */
-public class VersionSelector {/*
+public class VersionSelector {
     Section section;
+    List<SectionVersion> sectionVersions;
 
-    public VersionSelector(Section section) {
+    public VersionSelector(Section section, List<SectionVersion> sectionVersions) {
         this.section = section;
+        this.sectionVersions = sectionVersions;
     }
 
-    public static VersionSelector fromSection(Section section) {
-        return new VersionSelector(section);
+    public static VersionSelector fromSectionAndVersions(Section section, List<SectionVersion> sectionVersions) {
+        return new VersionSelector(section, sectionVersions);
     }
 
-    public String htmlForPage(AsciiDocPage page) {
-        String output = "";
-        List<PageVersion> versions = getAllVersionMappingsForSection(this.section);
-        for (PageVersion version : versions) {
-            if (version.getBaseName().equals(page.getBaseName())) {
-                output += "<label for=\"version-selector\">" + this.section.getPrettyName() + " Version</label>\n";
-                output += "            <select id=\"version-selector\">\n";
-                int count = 1;
-                for (Map.Entry<String, String> entry : version.getVersionUrlAndPrettyName().entrySet()) {
-                    output += "                    <option value=\"" + count + "\"><a href=\"" + entry.getKey() + "\">"
-                            + entry.getValue() + "</a></option>\n";
-                    count++;
+    public String htmlForPage() {
+        Map<String, String> versionLinkMapping = getVersionLinkMappingAndOrder();
+        String latestVersion = getLatestVersionString();
+        boolean latestAlreadySet = false;
+        int count = 1; // factors in 0 index for currently selected version, which also may or may not be the latest version
+        String[] orderOfVersions = new String[versionLinkMapping.size()];
+
+        // Check if the size is bigger than 0 and the version name isn't "latest", which is the default name
+        if(versionLinkMapping.size() > 0 && !section.getVersionPrettyName().equals("latest")) {
+
+            for (Map.Entry<String, String> entry : versionLinkMapping.entrySet()) {
+                // First, get the current version
+                if (entry.getValue().equals(section.getVersionPrettyName())) {
+                    if(entry.getValue().equals(latestVersion)) { // first check if it's also the latest version
+                        orderOfVersions[0] = "<option value=\"" + entry.getKey() + "\">" + entry.getValue() + " (Latest)</option>";
+                        latestAlreadySet = true;
+                        count++;
+                    } else {
+                        orderOfVersions[0] = "<option value=\"" + entry.getKey() + "\">" + entry.getValue() + "</option>";
+                    }
+                // Then, get the latest version if it isn't the current version
+                } else if(!latestAlreadySet) {
+                    if(entry.getValue().equals(latestVersion)) {
+                        orderOfVersions[count] = "<option value=\"" + entry.getKey() + "\">" + entry.getValue() + "</option>";
+                    }
+                } else {
+                    orderOfVersions[count] = "<option value=\"" + entry.getKey() + "\">" + entry.getValue() + "</option>";
                 }
-                output += "    </select>\n";
             }
+        } else {
+            return ""; // there was only one version
         }
 
+        return addVersionOrderToOutputString(orderOfVersions);
+    }
+
+    private String addVersionOrderToOutputString(String[] outputOrder) {
+        String output = "<label for=\"version-selector\">" + this.section.getPrettyName() + " Version</label>";
+        output += "<select id=\"version-selector\">";
+
+        for(String version : outputOrder) {
+            output += version;
+        }
+        output += "</select>\n";
         return output;
     }
 
-
-    public static List<PageVersion> getAllVersionMappingsForSection(Section section) {
-        List<PageVersion> pageVersions = new ArrayList<PageVersion>();
-        compareLatestPagesWithVersions(section, pageVersions);
-        return pageVersions;
-    }
-
-
-    public static void compareLatestPagesWithVersions(Section section, List<PageVersion> pageVersions) {
-        for (AsciiDocPage latestPage : section.getPages()) {
-            for (Section version : section.getVersions()) {
-                compareCurrentPageWithPagesInSection(version, latestPage, pageVersions);
+    private String getLatestVersionString() {
+        for(SectionVersion version : this.sectionVersions) {
+            if(version.isLatestVersion()) {
+                return version.getVersionName();
             }
         }
+        return ""; // return an empty string, because site builder shouldn't fail if there isn't a match
     }
 
-    private static void compareCurrentPageWithPagesInSection(Section section, AsciiDocPage current, List<PageVersion> pageVersions) {
-        List<AsciiDocPage> pages = section.getPages();
-        for (AsciiDocPage page : pages) {
-            if (current.getBaseName().equals(page.getBaseName())) {
-                // There's an older version of this page; Add it
-                matchPageAndCreateIfNotExist(current, pageVersions, section);
-            }
-            // Also add the other page even if it's not a match
-            matchPageAndCreateIfNotExist(page, pageVersions, section);
+    public Map<String, String> getVersionLinkMappingAndOrder() {
+        Map<String, String> mapping = new HashMap<>();
+        for(SectionVersion version : this.sectionVersions) {
+            mapping.put(version.getVersionUrl(), version.getVersionName());
         }
+        return mapping;
     }
-
-    private static void matchPageAndCreateIfNotExist(AsciiDocPage page, List<PageVersion> pageVersions, Section section) {
-        PageVersion match = getInstanceOfPageVersionIfMatch(page.getBaseName(), pageVersions);
-        if (match == null) {
-            PageVersion version = new PageVersion(page.getBaseName());
-            version.addUrlAndName(removeRootFromSectionUrl(section.getUrl()), section.getVersionPrettyName());
-            pageVersions.add(version);
-        } else {
-            if (!checkIfUrlAndNameAlreadyContains(match, section.getUrl(), section.getVersionPrettyName())) {
-                match.addUrlAndName(removeRootFromSectionUrl(section.getUrl()), section.getVersionPrettyName());
-            }
-        }
-    }
-
-    private static String removeRootFromSectionUrl(String sectionUrl) {
-        int index = sectionUrl.indexOf("/") + 1; // consume the slash as well as the section path
-        return sectionUrl.substring(index, sectionUrl.length());
-    }
-
-    private static PageVersion getInstanceOfPageVersionIfMatch(String baseName, List<PageVersion> pageVersions) {
-        for (PageVersion version : pageVersions) {
-            if (version.getBaseName().equals(baseName)){
-                return version;
-            }
-        }
-        return null;
-    }
-
-    private static boolean checkIfUrlAndNameAlreadyContains(PageVersion version, String url, String prettyName) {
-        for (Map.Entry<String, String> item : version.getVersionUrlAndPrettyName().entrySet()) {
-            if (item.getKey().equals(url) && item.getValue().equals(prettyName)) {
-                return true;
-            }
-        }
-        return false;
-    }
-*/
 }

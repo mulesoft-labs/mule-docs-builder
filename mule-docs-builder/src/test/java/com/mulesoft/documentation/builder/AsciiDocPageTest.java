@@ -87,13 +87,13 @@ public class AsciiDocPageTest {
     }
 
     private File getValidFile() {
-        String path = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "index.adoc"});
+        String path = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "v", "4.0", "index.adoc"});
         return new File(path);
     }
 
     private List<File> getValidFiles() {
         List<File> files = new ArrayList<File>();
-        String path = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub"});
+        String path = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "v", "4.0"});
         File cloudhubDir = new File(path);
         for (File file : cloudhubDir.listFiles()) {
             if (Utilities.fileEndsWithValidAsciidocExtension(file.getName())) {

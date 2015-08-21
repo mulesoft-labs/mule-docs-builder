@@ -1,5 +1,6 @@
 package com.mulesoft.documentation.builder;
 
+import com.mulesoft.documentation.builder.model.SectionVersion;
 import com.mulesoft.documentation.builder.util.Utilities;
 import org.apache.commons.lang3.StringUtils;
 
@@ -61,23 +62,24 @@ public class SiteTocHtmlTest {
 
     private List<Section> getValidSections() {
         List<Section> sections = new ArrayList<Section>();
-        File section1 = new File(Utilities.getConcatPath(new String[] {TestUtilities.getPathToMasterFolder(), "cloudhub"}));
-        File section2 = new File(Utilities.getConcatPath(new String[] {TestUtilities.getPathToMasterFolder(), "anypoint-platform"}));
-        sections.add(Section.fromDirectory(section1));
-        sections.add(Section.fromDirectory(section2));
+        File section1 = new File(Utilities.getConcatPath(new String[] {TestUtilities.getPathToMasterFolder(), "cloudhub", "v", "4.0"}));
+        sections.add(Section.fromDirectoryAndSectionVersion(section1, getValidSectionVersion()));
         return sections;
     }
 
     private Section getValidSection() {
-        return Section.fromDirectory(new File(Utilities.getConcatPath(new String[] {TestUtilities.getPathToMasterFolder(), "cloudhub"})));
+        return Section.fromDirectoryAndSectionVersion(
+                new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "v", "4.0"})),
+                getValidSectionVersion());
     }
 
-    private Section getOldVersionSection() {
-        return Section.fromDirectory(new File(Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "v", "4.0"})));
+    private SectionVersion getValidSectionVersion() {
+        return new SectionVersion("CloudHub", "cloudhub", "cloudhub/v/", "latest", true);
     }
+
 
     private AsciiDocPage getValidAsciiDocPage() {
-        return AsciiDocPage.fromFile(new File(Utilities.getConcatPath(new String[] {TestUtilities.getPathToMasterFolder(), "cloudhub", "deploying-a-cloudhub-application.adoc"})));
+        return AsciiDocPage.fromFile(new File(Utilities.getConcatPath(new String[] {TestUtilities.getPathToMasterFolder(), "cloudhub", "v", "4.0", "deploying-a-cloudhub-application.adoc"})));
     }
 
     private AsciiDocPage getValidOldAsciiDocPage() {
@@ -85,7 +87,7 @@ public class SiteTocHtmlTest {
     }
 
     private AsciiDocPage getOrphanedAsciiDocPage() {
-        return AsciiDocPage.fromFile(new File(Utilities.getConcatPath(new String[] {TestUtilities.getPathToMasterFolder(), "cloudhub", "index.adoc"})));
+        return AsciiDocPage.fromFile(new File(Utilities.getConcatPath(new String[] {TestUtilities.getPathToMasterFolder(), "cloudhub", "v", "4.0", "index.adoc"})));
     }
 
 }

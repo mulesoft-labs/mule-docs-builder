@@ -67,6 +67,11 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
+        <repository>
+            <id>Sonatype-public</id>
+            <name>SnakeYAML repository</name>
+            <url>http://oss.sonatype.org/content/groups/public/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -120,6 +125,11 @@
             <groupId>org.jruby</groupId>
             <artifactId>jruby-complete</artifactId>
             <version>1.7.20</version>
+        </dependency>
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.17-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

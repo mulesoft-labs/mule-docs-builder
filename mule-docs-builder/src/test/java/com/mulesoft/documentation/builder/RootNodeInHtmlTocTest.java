@@ -1,5 +1,6 @@
 package com.mulesoft.documentation.builder;
 
+import com.mulesoft.documentation.builder.model.TocNode;
 import com.mulesoft.documentation.builder.util.Utilities;
 import org.junit.Test;
 
@@ -59,7 +60,7 @@ public class RootNodeInHtmlTocTest {
     }
 
     private AsciiDocPage getValidPage() {
-        String path = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "_toc.adoc"});
+        String path = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "v", "4.0", "_toc.adoc"});
         AsciiDocPage page = AsciiDocPage.fromFile(new File(path));
         return page;
     }

@@ -1,7 +1,7 @@
 package com.mulesoft.documentation.builder.linkmanager;
 
 import com.mulesoft.documentation.builder.AsciiDocPage;
-import com.mulesoft.documentation.builder.TocNode;
+import com.mulesoft.documentation.builder.model.TocNode;
 import com.mulesoft.documentation.builder.util.Utilities;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;

@@ -1,5 +1,6 @@
 package com.mulesoft.documentation.builder;
 
+import com.mulesoft.documentation.builder.model.TocNode;
 import com.mulesoft.documentation.builder.util.Utilities;
 import org.junit.Test;
 
@@ -35,7 +36,7 @@ public class SectionTableOfContentsTest {
     }
 
     public File getValidTocFile() {
-        String tocPath = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "_toc.adoc"});
+        String tocPath = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "v", "4.0", "_toc.adoc"});
         return new File(tocPath);
     }
 }

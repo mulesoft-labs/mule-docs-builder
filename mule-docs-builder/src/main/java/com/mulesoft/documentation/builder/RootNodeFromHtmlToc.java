@@ -1,5 +1,6 @@
 package com.mulesoft.documentation.builder;
 
+import com.mulesoft.documentation.builder.model.TocNode;
 import com.mulesoft.documentation.builder.util.Utilities;
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;

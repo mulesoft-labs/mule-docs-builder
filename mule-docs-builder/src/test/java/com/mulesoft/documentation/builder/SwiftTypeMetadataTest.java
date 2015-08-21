@@ -32,7 +32,7 @@ public class SwiftTypeMetadataTest {
 
     @Test
     public void getFirstParagraph_WithAdmonition_ReturnsTextFromAdmonition() {
-        String path = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "deploying-a-cloudhub-application.adoc"});
+        String path = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "v", "4.0", "deploying-a-cloudhub-application.adoc"});
         AsciiDocPage page = AsciiDocPage.fromFile(new File(path));
         String result = SwiftTypeMetadata.getDescription(page);
         assertTrue(result.equals("You can deploy an application to CloudHub directly from Anypoint™ Studio, or you can deploy it using the CloudHub console. This page covers deploym..."));
@@ -54,7 +54,7 @@ public class SwiftTypeMetadataTest {
 
     @Test
     public void getTitleMetadata_WithLongTitle_ReturnsExpectedResult() {
-        String path = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "deploying-a-cloudhub-application.adoc"});
+        String path = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "v", "4.0", "deploying-a-cloudhub-application.adoc"});
         AsciiDocPage page = AsciiDocPage.fromFile(new File(path));
         String result = SwiftTypeMetadata.getTitleMetadata(page);
         assertTrue(result.equals("<meta class=\"swiftype\" name=\"title\" data-type=\"string\" content=\"Deploying a CloudHub Application\" />\n"));
@@ -66,7 +66,7 @@ public class SwiftTypeMetadataTest {
     }
 
     private File getValidFile() {
-        String path = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "index.adoc"});
+        String path = Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "v", "4.0", "index.adoc"});
         return new File(path);
     }
 }

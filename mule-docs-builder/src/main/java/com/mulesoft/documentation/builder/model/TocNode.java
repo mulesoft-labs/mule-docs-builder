@@ -1,4 +1,4 @@
-package com.mulesoft.documentation.builder;
+package com.mulesoft.documentation.builder.model;
 
 import java.util.*;
 

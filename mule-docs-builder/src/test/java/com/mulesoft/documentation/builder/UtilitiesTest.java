@@ -1,5 +1,6 @@
 package com.mulesoft.documentation.builder;
 
+import com.mulesoft.documentation.builder.model.TocNode;
 import com.mulesoft.documentation.builder.util.Utilities;
 import org.apache.commons.lang3.StringUtils;
 
@@ -23,14 +24,14 @@ public class UtilitiesTest {
     @Test
     public void validateAsciiDocFile_IsValidForAsciiDocExtension() {
         Utilities.validateAsciiDocFile(new File(Utilities.getConcatPath(
-                new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "index.adoc"})));
+                new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub", "v", "4.0", "index.adoc"})));
         assertTrue(true);
     }
 
     @Test(expected = DocBuildException.class)
     public void validateAsciiDocFile_ThrowsExceptionForNonExistentFile() {
         Utilities.validateAsciiDocFile(new File(Utilities.getConcatPath(
-                new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "blah" })));
+                new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "v", "4.0", "blah" })));
         assertTrue(true);
     }
 
@@ -51,7 +52,7 @@ public class UtilitiesTest {
     @Test
     public void fileEndsWithValidAsciidocExtension_ReturnsTrueWithValidExtension() {
         boolean result = Utilities.fileEndsWithValidAsciidocExtension(Utilities.getConcatPath(
-                new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub.adoc" }));
+                new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "v", "4.0", "cloudhub.adoc" }));
         assertTrue(result);
     }
 
@@ -139,7 +140,7 @@ public class UtilitiesTest {
 
     @Test
     public void getOnlyContentDivFromHtml_WithValidHtml_ReturnsDesiredContent() {
-        File file = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "index.adoc" }));
+        File file = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "v", "4.0", "index.adoc" }));
         AsciiDocPage page = AsciiDocPage.fromFile(file);
         assertTrue(!Utilities.getOnlyContentDivFromHtml(page.getHtml()).contains("<div id=\"content\">"));
     }
@@ -244,7 +245,7 @@ public class UtilitiesTest {
 
     @Test
     public void fileExists_WithValidFile_IsValid() {
-        File file = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "deploying-a-cloudhub-application.adoc" }));
+        File file = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "v", "4.0", "deploying-a-cloudhub-application.adoc" }));
         Utilities.validateFileExists(file);
         assertTrue(true);
     }
@@ -264,13 +265,13 @@ public class UtilitiesTest {
 
     @Test(expected = DocBuildException.class)
     public void validateIsDirectory_WithFileNotDirectory_ThrowsException() {
-        File file = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "cloudhub-faq.adoc" }));
+        File file = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "v", "4.0", "cloudhub-faq.adoc" }));
         Utilities.validateIsDirectory(file);
     }
 
     @Test
     public void validateDirectoryContainsAsciiDocFile_WithAsciiDocFiles_IsValid() {
-        File file = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub" }));
+        File file = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "v", "4.0" }));
         Utilities.validateDirectoryContainsAsciiDocFile(file);
         assertTrue(true);
     }
@@ -283,7 +284,7 @@ public class UtilitiesTest {
 
     @Test
     public void validateDirectoryContainsTocFile_WithValidDirectory_IsValid() {
-        File file = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub" }));
+        File file = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "v", "4.0" }));
         Utilities.validateDirectoryContainsTocFile(file);
         assertTrue(true);
     }
@@ -306,13 +307,6 @@ public class UtilitiesTest {
         File file = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "anypoint-platform" }));
         boolean result = Utilities.directoryContainsVersions(file);
         assertFalse(result);
-    }
-
-    @Test
-    public void validatePrettyNameExists_WithValidDirectory_IsValid() {
-        File file = new File(Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub" }));
-        Utilities.validatePrettyNameExists(file);
-        assertTrue(true);
     }
 
     @Test(expected = DocBuildException.class)

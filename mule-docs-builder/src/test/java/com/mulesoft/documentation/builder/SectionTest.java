@@ -1,5 +1,6 @@
 package com.mulesoft.documentation.builder;
 
+import com.mulesoft.documentation.builder.model.SectionVersion;
 import com.mulesoft.documentation.builder.util.Utilities;
 import org.junit.Test;
 
@@ -23,7 +24,7 @@ public class SectionTest {
     @Test(expected = DocBuildException.class)
     public void fromDirectory_WithInvalidSectionDirectory_ThrowsException() {
         File invalidDirectory = new File(Utilities.getConcatPath(new String[]{TestUtilities.getTestResourcesPath(), "empty"}));
-        Section section = Section.fromDirectory(invalidDirectory);
+        Section section = Section.fromDirectoryAndSectionVersion(invalidDirectory, getValidSectionVersion());
     }
 
     @Test
@@ -78,7 +79,7 @@ public class SectionTest {
     @Test(expected = DocBuildException.class)
     public void fromDirectory_WithValidSectionDirectoryWithoutVersionFile_ThrowsException() {
         File invalidDirectory = new File(Utilities.getConcatPath(new String[] {TestUtilities.getPathToMasterFolder(), "_templates"}));
-        Section section = Section.fromDirectory(invalidDirectory);
+        Section section = Section.fromDirectoryAndSectionVersion(invalidDirectory, getValidSectionVersion());
     }
 
     /*
@@ -90,19 +91,6 @@ public class SectionTest {
     }*/
 
     @Test
-    public void fromMasterDirectory_WithValidMasterDirectory_IsValid() {
-        File validDirectory = new File(Utilities.getConcatPath(new String[] {TestUtilities.getPathToMasterFolder()}));
-        List<Section> sections = Section.fromMasterDirectory(validDirectory);
-        assertTrue(sections.size() == 2);
-    }
-
-    @Test(expected = DocBuildException.class)
-    public void fromMasterDirectory_WithInvalidMasterDirectory_ThrowsException() {
-        File invalidDirectory = new File(Utilities.getConcatPath(new String[] {TestUtilities.getTestResourcesPath(), "text-files"}));
-        List<Section> section = Section.fromMasterDirectory(invalidDirectory);
-    }
-
-    @Test
     public void getVersionUrl_WithValidParams_ReturnsValidVersionUrl() {
         String versionPath = TestUtilities.getPathToMasterFolder() + "/cloudhub/v/4.0";
         String sectionName = "cloudhub";
@@ -112,7 +100,11 @@ public class SectionTest {
 
     public Section getValidSection() {
         File validDirectory = new File(Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub"}));
-        return Section.fromDirectory(validDirectory);
+        return Section.fromDirectoryAndSectionVersion(validDirectory, getValidSectionVersion());
 
+    }
+
+    private SectionVersion getValidSectionVersion() {
+        return new SectionVersion("CloudHub", "cloudhub", "cloudhub/v/", "latest", true);
     }
 }

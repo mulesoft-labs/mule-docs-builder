@@ -4,6 +4,7 @@ import org.junit.Test;
 import com.mulesoft.documentation.builder.util.Utilities;
 
 import java.io.File;
+import java.util.List;
 
 /**
  * Created by sean.osterberg on 3/17/15.
@@ -15,6 +16,14 @@ public class SiteBuilderTest {
         SiteBuilder builder = new SiteBuilder(getValidSourceDirectory(), getValidOutputDirectory(),
                 "http://github.com/mulesoft/mule-docs", "master");
         builder.buildSite();
+    }
+
+    /*
+    @Test
+    public void getSections() {
+        SiteBuilder builder = new SiteBuilder(getValidSourceDirectory(), getValidOutputDirectory(),
+                "http://github.com/mulesoft/mule-docs", "master");
+        builder.getSections(getValidSourceDirectory());
     }
 
     /*@Test

@@ -9,7 +9,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import com.mulesoft.documentation.builder.DocBuildException;
-import com.mulesoft.documentation.builder.TocNode;
+import com.mulesoft.documentation.builder.model.TocNode;
 import org.w3c.tidy.Tidy;
 
 import java.io.*;

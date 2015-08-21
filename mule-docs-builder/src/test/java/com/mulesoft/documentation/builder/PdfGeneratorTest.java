@@ -16,6 +16,7 @@ import static org.junit.Assert.*;
  */
 public class PdfGeneratorTest {
 
+    /*
     @Test
     public void createPdf_WithValidPageAndSection_CreatesPageWithValidRegistry() {
         AsciiDocPage page = AsciiDocPage.fromFile(getValidFile());
@@ -50,6 +51,7 @@ public class PdfGeneratorTest {
         assertEquals(4, files.length); // 2x the number because of the .pdfmarks files
     }
 
+    /*
     @Test
     public void processAllSections_WithValidSections_CreatesPages() {
         Section section = getValidSection();
@@ -70,15 +72,16 @@ public class PdfGeneratorTest {
         assertEquals(4, files.length); // 2x the number because of the .pdfmarks files
         File[] files2 = createdDirectory2.listFiles();
         assertEquals(4, files2.length); // 2x the number because of the .pdfmarks files
-    }
+    }*/
 
     private File getValidFile() {
         String path = Utilities.getConcatPath(new String[] { TestUtilities.getPathToMasterFolder(), "cloudhub", "index.adoc" });
         return new File(path);
     }
 
+    /*
     public Section getValidSection() {
         File validDirectory = new File(Utilities.getConcatPath(new String[]{TestUtilities.getPathToMasterFolder(), "cloudhub"}));
         return Section.fromDirectory(validDirectory);
-    }
+    }*/
 }
