@@ -5,6 +5,7 @@ import com.mulesoft.documentation.builder.util.Utilities;
 
 import java.io.File;
 import java.util.List;
+import java.util.logging.LogManager;
 
 /**
  * Created by sean.osterberg on 3/17/15.
@@ -18,13 +19,31 @@ public class SiteBuilderTest {
         builder.buildSite();
     }
 
+
+    @Test
+    public void buildSite_WithTestDir_BuildsSite() {
+        File sourceDir = new File("/Users/sean.osterberg/docs-source/test-for-release");
+        File destDir = new File("/Users/sean.osterberg/docs-source/test-for-release-output");
+        SiteBuilder builder = new SiteBuilder(sourceDir, destDir, "http://github.com/mulesoft/mule-docs", "master");
+        builder.buildSite();
+    }
+
+    @Test
+    public void buildSite_WithRealDir_BuildsSite() {
+        File sourceDir = new File("/Users/sean.osterberg/docs-source/sandbox");
+        File destDir = new File("/Users/sean.osterberg/docs-source/test-for-release-output");
+        SiteBuilder builder = new SiteBuilder(sourceDir, destDir, "http://github.com/mulesoft/mule-docs", "master");
+
+        builder.buildSite();
+    }
+
     /*
     @Test
     public void getSections() {
         SiteBuilder builder = new SiteBuilder(getValidSourceDirectory(), getValidOutputDirectory(),
                 "http://github.com/mulesoft/mule-docs", "master");
         builder.getSections(getValidSourceDirectory());
-    }
+    }*/
 
     /*@Test
     public void buildSite_withRealFolders_BuildsSite() {

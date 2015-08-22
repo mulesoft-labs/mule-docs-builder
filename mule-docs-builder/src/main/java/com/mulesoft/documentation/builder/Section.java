@@ -22,6 +22,7 @@ public class Section {
     private String prettyName;
     private String versionPrettyName;
     private String baseName;
+    private SectionVersion sectionVersion;
 
     public Section(List<AsciiDocPage> pages,
                    TocNode rootNode,
@@ -29,7 +30,8 @@ public class Section {
                    String url,
                    String prettyName,
                    String versionPrettyName,
-                   String baseName
+                   String baseName,
+                   SectionVersion sectionVersion
                     ) {
         //validateInputParams(new Object[] {pages, rootNode, filepath});
         this.pages = pages;
@@ -39,6 +41,7 @@ public class Section {
         this.prettyName = prettyName;
         this.baseName = baseName;
         this.versionPrettyName = versionPrettyName;
+        this.sectionVersion = sectionVersion;
         logger.debug("Created Section for directory \"" + filepath + "\".");
     }
 
@@ -70,6 +73,8 @@ public class Section {
         return baseName;
     }
 
+    public SectionVersion getSectionVersion() { return sectionVersion; }
+
     public static Section fromDirectoryAndSectionVersion(File directory, SectionVersion sectionVersion) {
         validateDirectory(directory);
         return getSectionFromDirectory(directory, sectionVersion, "");
@@ -82,7 +87,7 @@ public class Section {
             List<AsciiDocPage> pages = AsciiDocPage.fromFiles(validFiles);
             File tocFile = new File(Utilities.getConcatPath(new String[] { directory.getPath(), "_toc.adoc" }));
             TocNode rootNode = SectionTableOfContents.fromAsciiDocFile(tocFile).getRootTocNode();
-            url = Utilities.getConcatPath(new String[] { url, directory.getPath().substring(directory.getPath().lastIndexOf(File.separator) + 1) });
+            url = Utilities.getConcatPath(new String[] { url, Utilities.removeLeadingSlashes(sectionVersion.getVersionUrl()) });
 
             return new Section(pages,
                     rootNode,
@@ -90,7 +95,8 @@ public class Section {
                     url,
                     sectionVersion.getSectionPrettyName(),
                     sectionVersion.getVersionName(),
-                    sectionVersion.getSectionBaseName()
+                    sectionVersion.getSectionBaseName(),
+                    sectionVersion
                     );
         } else {
             throw new DocBuildException("Section directory was empty: " + directory);

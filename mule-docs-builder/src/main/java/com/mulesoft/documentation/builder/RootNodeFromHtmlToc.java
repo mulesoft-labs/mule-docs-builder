@@ -88,6 +88,11 @@ public class RootNodeFromHtmlToc {
     }
 
     public static String cleanupLink(String link) {
+        if(link.contains("/")) {
+            int index = link.lastIndexOf("/");
+
+            link = link.substring(index + 1, link.length());
+        }
         link = removeHtmlExtension(link);
         link = removeIndexFromLink(link);
         return link;

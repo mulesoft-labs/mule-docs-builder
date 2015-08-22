@@ -43,23 +43,24 @@ public class VersionSelector {
                     if(entry.getValue().equals(latestVersion)) { // first check if it's also the latest version
                         orderOfVersions[0] = "<option value=\"" + entry.getKey() + "\">" + entry.getValue() + " (Latest)</option>";
                         latestAlreadySet = true;
-                        count++;
                     } else {
-                        orderOfVersions[0] = "<option value=\"" + entry.getKey() + "\">" + entry.getValue() + "</option>";
+                        orderOfVersions[0] = "<option value=\"" + entry.getKey() + "\">" + entry.getValue() + " (Active)</option>";
                     }
                 // Then, get the latest version if it isn't the current version
                 } else if(!latestAlreadySet) {
                     if(entry.getValue().equals(latestVersion)) {
-                        orderOfVersions[count] = "<option value=\"" + entry.getKey() + "\">" + entry.getValue() + "</option>";
+                        orderOfVersions[count] = "<option value=\"" + entry.getKey() + "\">" + entry.getValue() + " (Latest)</option>";
+                        count++;
                     }
                 } else {
                     orderOfVersions[count] = "<option value=\"" + entry.getKey() + "\">" + entry.getValue() + "</option>";
+                    count++;
                 }
             }
         } else {
             return ""; // there was only one version
         }
-
+        versionLinkMapping = null;
         return addVersionOrderToOutputString(orderOfVersions);
     }
 

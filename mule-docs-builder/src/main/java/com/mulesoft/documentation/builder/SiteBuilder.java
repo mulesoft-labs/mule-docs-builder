@@ -3,6 +3,8 @@ package com.mulesoft.documentation.builder;
 import com.mulesoft.documentation.builder.model.SectionConfiguration;
 import com.mulesoft.documentation.builder.model.SectionVersion;
 import com.mulesoft.documentation.builder.util.Utilities;
+import com.sun.javadoc.Doc;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.*;
@@ -65,27 +67,29 @@ public class SiteBuilder {
 
     /**
      * With the provided section version path (../mule-fundamentals/v/..), add sections and versions to instance collection.
-     * @param sectionVersionPath The version path for the section where the individual version folders are located.
+     * @param versionDir The version path for the section where the individual version folders are located.
      * @param versions A list of SectionVersions that will be appended to.
      */
-    private void getVersionSections(File sectionVersionPath, List<SectionVersion> versions) {
-        if(sectionVersionPath.isDirectory() && sectionVersionPath.getName().equals("v")) {
-            File[] versionSectionDirectories = sectionVersionPath.listFiles();
-            if(versionSectionDirectories != null) {
-                for (File versionDirectory : versionSectionDirectories) {
-                    if(isValidSectionDirectory(versionDirectory)) {
-                        SectionVersion sectionVersion = getVersionFromSectionAndConfiguration(versionDirectory);
-                        versions.add(sectionVersion);
-                        Section section = Section.fromDirectoryAndSectionVersion(versionDirectory, sectionVersion);
-                        this.sections.add(section);
+    private void getVersionSections(File sectionMasterPath, List<SectionVersion> versions) {
+        File versionDir = new File(Utilities.getConcatPath(new String[] { sectionMasterPath.getAbsolutePath(), "v" }));
+        if(versionDir.exists()) {
+            if (versionDir.isDirectory()) {
+                File[] versionSectionDirectories = versionDir.listFiles();
+                if (versionSectionDirectories != null) {
+                    for (File versionDirectory : versionSectionDirectories) {
+                        if (isValidSectionDirectory(versionDirectory)) {
+                            SectionVersion sectionVersion = getVersionFromSectionAndConfiguration(versionDirectory);
+                            versions.add(sectionVersion);
+                            Section section = Section.fromDirectoryAndSectionVersion(versionDirectory, sectionVersion);
+                            this.sections.add(section);
+                        }
                     }
+                } else {
+                    throw new DocBuildException("FAILED processing section version path because path was null: " + versionDir.getAbsolutePath());
                 }
-            } else {
-                throw new DocBuildException("FAILED processing section version path because path was null: " + sectionVersionPath.getAbsolutePath());
             }
         }
     }
-
 
     /**
      * Gets the version and section information from the version directory and its configuration file.
@@ -94,8 +98,14 @@ public class SiteBuilder {
      */
     private SectionVersion getVersionFromSectionAndConfiguration(File versionDirectory) {
         SectionConfiguration config = getConfigurationForSection(versionDirectory);
-        String sectionDirectoryBaseName = versionDirectory.getParentFile().getName();
-        String versionUrl = "/" + sectionDirectoryBaseName + "/v/";
+        File vDir = versionDirectory.getParentFile();
+        String sectionDirectoryBaseName = vDir.getParentFile().getName();
+        String versionUrl = "";
+        if(!config.getVersionName().equals("latest")) {
+            versionUrl = "/" + sectionDirectoryBaseName + "/v/" + config.getVersionName();
+        } else {
+            versionUrl = "/" + sectionDirectoryBaseName;
+        }
 
         return new SectionVersion(config.getSectionName(), sectionDirectoryBaseName, versionUrl, config.getVersionName(), config.isLatest());
     }
@@ -111,10 +121,10 @@ public class SiteBuilder {
             if (filesInSection != null) {
                 for (File file : filesInSection) {
                     // Get the configuration .yml file and process it
-                    if (file.getName().equals("_config") && FilenameUtils.getExtension(file.getName()).equals("yml")) {
+                    if (file.getName().equals("_config.yml")) {
                         InputStream input = null;
                         try {
-                            input = new FileInputStream("_config.yml");
+                            input = new FileInputStream(file);
                         } catch (FileNotFoundException e) {
                             throw new DocBuildException("Couldn't process _config.yml file for section: " + sectionDirectory.getAbsolutePath());
                         }
@@ -137,13 +147,13 @@ public class SiteBuilder {
         LinkedHashMap<String, Map<String, String>> map = (LinkedHashMap) yaml.load(input);
         if (map != null) {
             Map<String, String> configMap = map.get("configuration");
-            String versionName = configMap.get("versionName");
-            String latest = configMap.get("isLatest");
-            boolean isLatest = false;
-            if(latest.equals("true")) {
-                isLatest = true;
-            }
+            Object version = configMap.get("versionName");
+            String versionName = version.toString();
+            Object latest = configMap.get("isLatest");
+            boolean isLatest = (boolean) latest;
             String sectionName = configMap.get("sectionName");
+            map = null;
+            configMap = null;
             return new SectionConfiguration(sectionName, versionName, isLatest);
         } else {
             throw new DocBuildException("Couldn't parse _config.yml beacuse Yaml Map was null.");
@@ -155,21 +165,43 @@ public class SiteBuilder {
      */
     private void writeSections() {
         for (Section section : this.sections) {
-            String sectionPath = Utilities.getConcatPath(new String[]{this.outputDirectory.getPath(), Utilities.removeLeadingSlashes(section.getUrl())});
+            String sectionPath;
+            if(!section.getVersionPrettyName().contentEquals("latest")) {
+                sectionPath = Utilities.getConcatPath(new String[]{this.outputDirectory.getPath(), section.getBaseName(), "v", section.getVersionPrettyName()});
+            } else {
+                sectionPath = Utilities.getConcatPath(new String[]{this.outputDirectory.getPath(), section.getBaseName()});
+            }
             logger.info("Started creating directory for \"" + section.getPrettyName() + "\" section: " + sectionPath + "...");
             Utilities.makeTargetDirectory(sectionPath);
             logger.info("Finished creating section directory.");
-            logger.info("Started writing pages for section \"" + section + "\".");
-            writePagesForSection(section);
+            logger.info("Started writing pages for section \"" + section.getPrettyName() + "\".");
+            writePagesForSection(section, sectionPath);
             logger.info("Finished writing pages for section \"" + section.getPrettyName() + "\".");
+            writeAssets(section.getFilepath(), sectionPath);
         }
     }
 
     /**
      * There are multiple kinds of assets, including things like images, snippets, diagrams, etc.
      */
-    private void writeAssets() {
-
+    private void writeAssets(String originalSectionPath, String destSectionPath) {
+        File sectionDir = new File(originalSectionPath);
+        if(sectionDir.exists()) {
+            String imageDirPath = Utilities.getConcatPath(new String[] { sectionDir.getAbsolutePath(), "_images" });
+            File imageDir = new File(imageDirPath);
+            File destSectionDir = new File(destSectionPath);
+            if(imageDir.exists() && destSectionDir.exists()) {
+                try {
+                    File newImgDir = new File(Utilities.getConcatPath(new String[] { destSectionDir.getAbsolutePath(), "_images" }));
+                    if(!newImgDir.exists()) {
+                        Utilities.makeTargetDirectory(newImgDir.getAbsolutePath());
+                    }
+                    FileUtils.copyDirectory(imageDir, newImgDir);
+                } catch(IOException e) {
+                    throw new DocBuildException("Couldn't create destination image directory for section: " + imageDir.getAbsolutePath());
+                }
+            }
+        }
     }
 
 
@@ -199,11 +231,11 @@ public class SiteBuilder {
         return versionsForSection;
     }
 
-    private void writePagesForSection(Section section) {
+    private void writePagesForSection(Section section, String sectionPath) {
         List<SectionVersion> sectionVersions = getSectionVersionCollectionForSectionBaseName(section.getBaseName());
         List<Page> pages = Page.forSection(section, this.sections, this.templates, this.toc, this.gitHubRepoUrl, this.gitHubBranchName, sectionVersions);
         for (Page page : pages) {
-            String pagePath = Utilities.getConcatPath(new String[] {this.outputDirectory.getPath(), Utilities.removeLeadingSlashes(section.getUrl()), page.getBaseName()}) + ".html";
+            String pagePath = Utilities.getConcatPath(new String[] {sectionPath, page.getBaseName()}) + ".html";
             logger.info("Started writing page \"" + pagePath + "\"...");
             Utilities.writeFileToDirectory(pagePath, page.getContent());
             logger.info("Finished writing page.");

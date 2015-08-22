@@ -2,6 +2,8 @@ package com.mulesoft.documentation.builder.linkmanager;
 
 import org.junit.Test;
 
+import java.io.File;
+
 /**
  * Copyright (C) MuleSoft, Inc - All Rights Reserved
  * Created by Sean Osterberg on 7/28/15.
@@ -9,8 +11,10 @@ import org.junit.Test;
 public class LinkFileTest {
 
     @Test
-    public void fromMasterDirectory_CreatesFile() {
-
+    public void worksAsExpected() {
+        File master = new File("/Users/sean.osterberg/docs-source/mulesoft-docs/");
+        LinkFile file = new LinkFile(master.getAbsolutePath());
+        file.createFile("/tmp");
     }
 
     /*

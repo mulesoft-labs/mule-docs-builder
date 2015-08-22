@@ -2,3 +2,5 @@
 
 * link:cloudhub[CloudHub]
 * link:anypoint-platform-for-apis[Anypoint Platform for APIs]
+* link:/anypoint-connector-devkit/adding-datasense[Adding DataSense]
+* link:/anypoint-b2b/anypoint-b2b[Anypoint B2B]

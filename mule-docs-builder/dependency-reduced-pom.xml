@@ -56,6 +56,11 @@
       <name>oss-jfrog-artifactory-releases</name>
       <url>https://oss.jfrog.org/artifactory/oss-snapshot-local</url>
     </repository>
+    <repository>
+      <id>Sonatype-public</id>
+      <name>SnakeYAML repository</name>
+      <url>http://oss.sonatype.org/content/groups/public/</url>
+    </repository>
   </repositories>
   <dependencies>
     <dependency>

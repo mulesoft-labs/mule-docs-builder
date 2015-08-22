@@ -77,6 +77,8 @@ public class TabProcessor extends BlockProcessor {
         tabsOpen += "</ul>\n</div>\n<div class=\"panel-body tab-content no-padding\">";
         String tabsClose = "</div></div>";
 
+        titleAndId = null;
+        randAccess = null;
         String containerContents = tabsOpen + container.getContent().toString() + tabsClose;
         return createBlock(parent, "pass", containerContents, inherited, new HashMap<Object, Object>());
     }

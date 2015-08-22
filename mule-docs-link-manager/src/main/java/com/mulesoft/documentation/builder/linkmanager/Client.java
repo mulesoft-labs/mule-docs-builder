@@ -45,8 +45,6 @@ public class Client {
         output += "Starting " + clientName + "\n";
         output += "Source: \t" + line.getOptionValue("s") + "\n";
         output += "Destination: \t" + line.getOptionValue("d") + "\n";
-        output += "\n*NOTE* The CSV will only contain links for the latest version \n" +
-                "of a section, not all the versions. This is by design.\n";
         output += "====================================================\n";
 
         System.out.println(output);
