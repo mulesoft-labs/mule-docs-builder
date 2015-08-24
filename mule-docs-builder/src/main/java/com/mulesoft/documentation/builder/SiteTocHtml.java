@@ -67,22 +67,32 @@ public class SiteTocHtml {
         StringBuilder builder = new StringBuilder();
         for (TocNode node : this.toc.getNodes()) { // loop through each top-level root node
             for (Section currentSection : this.sections) { // loop through each section
-                if (currentSection.getUrl().equals(section.getUrl())) { // need to compare URLs because the section name isn't enough -- there are different versions with the same base section name
-                    if (node.getUrl().equals(section.getBaseName())) { //
-                        String fixedBaseName = Utilities.fixIndexBaseName(page.getBaseName());
-                        if (Utilities.isActiveUrlInSection(section.getRootNode(), fixedBaseName, false) && !alreadyAddedSectionBaseNames.contains(currentSection.getBaseName())) {
-                            builder.append(getSelectedSectionHtml(section, page));
-                            alreadyAddedSectionBaseNames.add(currentSection.getBaseName());
-                        } else if(!alreadyAddedSectionBaseNames.contains(currentSection.getBaseName())){
-                            builder.append(getUnselectedSectionHtml(currentSection));
-                            alreadyAddedSectionBaseNames.add(currentSection.getBaseName());
+
+                if(currentSection.getBaseName().equals(section.getBaseName())) {
+                    // if the current section is the right one (version and section name match), then use it
+                    if (currentSection.getUrl().equals(section.getUrl())) { // need to compare URLs because the section name isn't enough -- there are different versions with the same base section name
+                        if (node.getUrl().equals(section.getBaseName())) { //
+                            String fixedBaseName = Utilities.fixIndexBaseName(page.getBaseName());
+                            if (Utilities.isActiveUrlInSection(section.getRootNode(), fixedBaseName, false) && !alreadyAddedSectionBaseNames.contains(currentSection.getBaseName())) {
+                                builder.append(getSelectedSectionHtml(section, page));
+                                alreadyAddedSectionBaseNames.add(currentSection.getBaseName());
+                            } else if (!alreadyAddedSectionBaseNames.contains(currentSection.getBaseName())) {
+                                builder.append(getUnselectedSectionHtml(currentSection));
+                                alreadyAddedSectionBaseNames.add(currentSection.getBaseName());
+                            }
                         }
                     }
+                // if the current section has a different name
                 } else {
-                    for(Section s : this.sections) {
-                        if(s.getBaseName().equals(node.getUrl()) && s.getSectionVersion().isLatestVersion() && !alreadyAddedSectionBaseNames.contains(s.getBaseName())) { // get the TOC for the latest version of other root node
-                            builder.append(getUnselectedSectionHtml(s));
-                            alreadyAddedSectionBaseNames.add(s.getBaseName());
+                    if(!currentSection.getBaseName().equals(section.getBaseName())) { // need to make sure we keep looking for other versions of the current section
+                        for (Section s : this.sections) {
+                            if (s.getBaseName().equals(node.getUrl()) &&
+                                    s.getSectionVersion().isLatestVersion() &&
+                                    !alreadyAddedSectionBaseNames.contains(s.getBaseName()) &&
+                                    !s.getBaseName().equals(section.getBaseName())) { // get the TOC for the latest version of other root node
+                                builder.append(getUnselectedSectionHtml(s));
+                                alreadyAddedSectionBaseNames.add(s.getBaseName());
+                            }
                         }
                     }
                 }

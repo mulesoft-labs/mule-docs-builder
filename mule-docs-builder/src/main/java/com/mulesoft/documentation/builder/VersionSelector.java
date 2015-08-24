@@ -47,11 +47,11 @@ public class VersionSelector {
                         orderOfVersions[0] = "<option value=\"" + entry.getKey() + "\">" + entry.getValue() + " (Active)</option>";
                     }
                 // Then, get the latest version if it isn't the current version
-                } else if(!latestAlreadySet) {
-                    if(entry.getValue().equals(latestVersion)) {
+                } else if(!latestAlreadySet && entry.getValue().equals(latestVersion)) {
+
                         orderOfVersions[count] = "<option value=\"" + entry.getKey() + "\">" + entry.getValue() + " (Latest)</option>";
                         count++;
-                    }
+
                 } else {
                     orderOfVersions[count] = "<option value=\"" + entry.getKey() + "\">" + entry.getValue() + "</option>";
                     count++;
@@ -66,7 +66,7 @@ public class VersionSelector {
 
     private String addVersionOrderToOutputString(String[] outputOrder) {
         String output = "<label for=\"version-selector\">" + this.section.getPrettyName() + " Version</label>";
-        output += "<select id=\"version-selector\">";
+        output += "<select onChange=\"window.location.href=this.value\" id=\"version-selector\">";
 
         for(String version : outputOrder) {
             output += version;

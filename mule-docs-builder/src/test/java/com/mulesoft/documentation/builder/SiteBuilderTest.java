@@ -22,7 +22,7 @@ public class SiteBuilderTest {
 
     @Test
     public void buildSite_WithTestDir_BuildsSite() {
-        File sourceDir = new File("/Users/sean.osterberg/docs-source/test-for-release");
+        File sourceDir = new File("/Users/sean.osterberg/docs-source/mulesoft-docs");
         File destDir = new File("/Users/sean.osterberg/docs-source/test-for-release-output");
         SiteBuilder builder = new SiteBuilder(sourceDir, destDir, "http://github.com/mulesoft/mule-docs", "master");
         builder.buildSite();

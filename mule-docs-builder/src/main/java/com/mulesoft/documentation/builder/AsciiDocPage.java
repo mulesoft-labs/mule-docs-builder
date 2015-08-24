@@ -96,6 +96,10 @@ public class AsciiDocPage {
         return processor;
     }
 
+    public static void shutdownProcessor() {
+        processor.shutdown();
+    }
+
     public String getFilePath() {
         return filePath;
     }
