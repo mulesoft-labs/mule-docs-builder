@@ -14,7 +14,7 @@ public class LinkFileTest {
     public void worksAsExpected() {
         File master = new File("/Users/sean.osterberg/docs-source/mulesoft-docs/");
         LinkFile file = new LinkFile(master.getAbsolutePath());
-        file.createFile("/tmp");
+        file.createFile("/Users/sean.osterberg/docs-source/mulesoft-docs/links.csv");
     }
 
     /*

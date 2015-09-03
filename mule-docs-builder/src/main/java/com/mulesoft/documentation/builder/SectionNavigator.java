@@ -40,7 +40,7 @@ public class SectionNavigator {
             output = "<!-- scroll-menu -->" +
                     "<div class=\"col-md-2 scroll-menu-container\" data-swiftype-index='false'>" +
                     "<div class=\"scroll-menu\">\n" +
-                    "                <h4>In this article:</h4>\n" +
+                    "                <h4>In this topic:</h4>\n" +
                     "                <ul>";
             for (Map.Entry<String, String> entry : sectionTitlesAndUrls.entrySet()) {
                 output += "<li><a class=\"scroll-menu-link\" href=\"" + entry.getKey() + "\">" + entry.getValue() + "</a></li>";

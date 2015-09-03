@@ -45,9 +45,11 @@ public class Client {
         output += "Starting MuleSoft Documentation Builder with options:\n\n";
         output += "Source: \t" + line.getOptionValue("s") + "\n";
         output += "Destination: \t" + line.getOptionValue("d") + "\n";
+        output += "Base URL: \t" + line.getOptionValue("url") + "\n";
 
         String gitHubRepo = line.getOptionValue("github-repo");
         String gitHubBranch = line.getOptionValue("github-branch");
+        String siteRootUrl = line.getOptionValue("site-url");
 
         if(StringUtils.isBlank(gitHubRepo)) {
             gitHubRepo = "Not Specified";
@@ -79,10 +81,12 @@ public class Client {
         Options options = new Options();
         options.addOption( "s", "source", true, "The source directory to build the site from." );
         options.addOption( "d", "dest", true, "The destination directory to output the site contents." );
+        options.addOption( "url", "site-url", true, "The URL of the site.");
         options.addOption( "ghr", "github-repo", true, "(Optional) The fully-qualified path to the " +
                 "GitHub repo to create links to edit the page.");
         options.addOption( "ghb", "github-branch", true, "(Optional) The name of the GitHub branch. Required " +
                 "if you specified a GitHub repo.");
+
         options.addOption( "h", "help", false, "Help/usage information." );
 
         return options;
@@ -100,6 +104,9 @@ public class Client {
         if(!line.hasOption("d")) {
             throw new ClientException(clientName + "No destination directory specified");
         }
+        if(!line.hasOption("url")) {
+            throw new ClientException(clientName + "No site root url specified");
+        }
         if(line.hasOption("github-repo") && !line.hasOption("github-branch")) {
             throw new ClientException(clientName + "No branch was specified for GitHub repo");
         }
@@ -112,7 +119,7 @@ public class Client {
         if(line.hasOption("h")) {
             HelpFormatter formatter = new HelpFormatter();
             String usage = "-s /path/to/source/dir -d /path/to/dest/dir " +
-                    "-ghr https://github.com/my-org-name/my-repo-name -ghb master";
+                    "-url developer.mulesoft.com/docs -ghr https://github.com/my-org-name/my-repo-name -ghb master";
             formatter.printHelp(usage, getCliOptions());
             System.exit(0);
         }
@@ -123,8 +130,9 @@ public class Client {
         File destDir = new File(line.getOptionValue("d"));
         String gitHubRepo = line.getOptionValue("github-repo");
         String gitHubBranch = line.getOptionValue("github-branch");
+        String siteRootUrl = line.getOptionValue("url");
 
-        SiteBuilder builder = new SiteBuilder(sourceDir, destDir, gitHubRepo, gitHubBranch);
+        SiteBuilder builder = new SiteBuilder(sourceDir, destDir, gitHubRepo, gitHubBranch, siteRootUrl);
         builder.buildSite();
     }
 }

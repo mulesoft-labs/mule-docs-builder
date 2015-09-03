@@ -4,10 +4,7 @@ package com.mulesoft.documentation.builder; /**
 
 import com.mulesoft.documentation.builder.model.SectionVersion;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * This class needs to check the version of a section and determine
@@ -34,8 +31,13 @@ public class VersionSelector {
         int count = 1; // factors in 0 index for currently selected version, which also may or may not be the latest version
         String[] orderOfVersions = new String[versionLinkMapping.size()];
 
-        // Check if the size is bigger than 0 and the version name isn't "latest", which is the default name
-        if(versionLinkMapping.size() > 0 && !section.getVersionPrettyName().equals("latest")) {
+        // special for site index page
+        if(this.section.getBaseName().isEmpty()) {
+
+            return "";
+
+            // Check if the size is bigger than 0 and the version name isn't "latest", which is the default name
+        } else if (versionLinkMapping.size() > 0 && !section.getVersionPrettyName().equals("latest")) {
 
             for (Map.Entry<String, String> entry : versionLinkMapping.entrySet()) {
                 // First, get the current version
@@ -68,11 +70,33 @@ public class VersionSelector {
         String output = "<label for=\"version-selector\">" + this.section.getPrettyName() + " Version</label>";
         output += "<select onChange=\"window.location.href=this.value\" id=\"version-selector\">";
 
+        outputOrder = sortVersionOrder(outputOrder);
+
         for(String version : outputOrder) {
             output += version;
         }
         output += "</select>\n";
         return output;
+    }
+
+    private String[] sortVersionOrder(String[] original) {
+        String[] replacement;
+        if(original.length > 2) {
+            replacement = new String[original.length];
+            String[] tempArr = new String[original.length - 1];
+            String temp = original[0];
+            for(int i = 1; i < original.length; i++) {
+                tempArr[i - 1] = original[i];
+            }
+            Arrays.sort(tempArr, Collections.reverseOrder());
+            for(int i = 1; i <= tempArr.length; i++) {
+                replacement[i] = tempArr[i - 1];
+            }
+            replacement[0] = temp;
+            return replacement;
+        } else {
+            return original;
+        }
     }
 
     private String getLatestVersionString() {

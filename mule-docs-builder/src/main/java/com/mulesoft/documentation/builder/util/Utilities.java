@@ -362,7 +362,7 @@ public class Utilities {
             writer.close();
         } catch (IOException ioe) {
             String error = "Could not create file in directory: \"" + filePath + "\".";
-            logger.fatal(error);
+            logger.fatal(error + ioe.toString());
             throw new DocBuildException(error);
         }
     }

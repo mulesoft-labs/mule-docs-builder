@@ -1,6 +1,7 @@
 package com.mulesoft.documentation.builder;
 
 import org.junit.Test;
+import static org.junit.Assert.*;
 import com.mulesoft.documentation.builder.util.Utilities;
 
 import java.io.File;
@@ -15,7 +16,7 @@ public class SiteBuilderTest {
     @Test
     public void buildSite_withValidFolders_BuildsSite() {
         SiteBuilder builder = new SiteBuilder(getValidSourceDirectory(), getValidOutputDirectory(),
-                "http://github.com/mulesoft/mule-docs", "master");
+                "http://github.com/mulesoft/mule-docs", "master", "developer.mulesoft.com/docs");
         builder.buildSite();
     }
 
@@ -24,7 +25,7 @@ public class SiteBuilderTest {
     public void buildSite_WithTestDir_BuildsSite() {
         File sourceDir = new File("/Users/sean.osterberg/docs-source/mulesoft-docs");
         File destDir = new File("/Users/sean.osterberg/docs-source/test-for-release-output");
-        SiteBuilder builder = new SiteBuilder(sourceDir, destDir, "http://github.com/mulesoft/mule-docs", "master");
+        SiteBuilder builder = new SiteBuilder(sourceDir, destDir, "http://github.com/mulesoft/mule-docs", "master", "developer.mulesoft.com/docs");
         builder.buildSite();
     }
 
@@ -32,9 +33,17 @@ public class SiteBuilderTest {
     public void buildSite_WithRealDir_BuildsSite() {
         File sourceDir = new File("/Users/sean.osterberg/docs-source/sandbox");
         File destDir = new File("/Users/sean.osterberg/docs-source/test-for-release-output");
-        SiteBuilder builder = new SiteBuilder(sourceDir, destDir, "http://github.com/mulesoft/mule-docs", "master");
+        SiteBuilder builder = new SiteBuilder(sourceDir, destDir, "http://github.com/mulesoft/mule-docs", "master", "developer.mulesoft.com/docs");
 
         builder.buildSite();
+    }
+
+    @Test
+    public void writeHomePage_WithValidHomePage_CreatesHomePage() {
+        SiteBuilder builder = new SiteBuilder(getValidSourceDirectory(), getValidOutputDirectory(),
+                "http://github.com/mulesoft/mule-docs", "master", "developer.mulesoft.com/docs");
+        String indexPagePath = Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "master-folder", "index.adoc" });
+        builder.writeHomePage(indexPagePath);
     }
 
     /*
@@ -45,12 +54,15 @@ public class SiteBuilderTest {
         builder.getSections(getValidSourceDirectory());
     }*/
 
-    /*@Test
+    /*
+    @Test
     public void buildSite_withRealFolders_BuildsSite() {
         //File source = new File("/Users/sean.osterberg/mulesoft-docs/_source/");
-        File source = new File("/Users/sean.osterberg/mulesoft-docs/docsite-demo-connect/anypoint-connector-devkit/output/");
-        File output = new File("/Users/sean.osterberg/mulesoft-docs/_output/docs");
-        SiteBuilder.buildSite(source, output);
+        File source = new File("/Users/sean.osterberg/docs-source/sandbox/");
+        File output = new File("/Users/sean.osterberg/docs-source/test-for-release-output/");
+        SiteBuilder builder = new SiteBuilder(source, output, "", "", "docs-stg.mulesoft.com");
+        builder.buildSite();
+        assertTrue(true);
     }*/
 
     /*

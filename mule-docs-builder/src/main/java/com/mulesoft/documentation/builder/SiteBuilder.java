@@ -2,6 +2,7 @@ package com.mulesoft.documentation.builder;
 
 import com.mulesoft.documentation.builder.model.SectionConfiguration;
 import com.mulesoft.documentation.builder.model.SectionVersion;
+import com.mulesoft.documentation.builder.model.TocNode;
 import com.mulesoft.documentation.builder.util.Utilities;
 import com.sun.javadoc.Doc;
 import org.apache.commons.io.FileUtils;
@@ -26,12 +27,14 @@ public class SiteBuilder {
     private String gitHubBranchName;
     private List<Template> templates;
     private List<SectionVersion> allSectionVersions;
+    private String siteRootUrl;
 
-    public SiteBuilder(File sourceDirectory, File outputDirectory, String gitHubRepoUrl, String gitHubBranchName) {
+    public SiteBuilder(File sourceDirectory, File outputDirectory, String gitHubRepoUrl, String gitHubBranchName, String siteRootUrl) {
         this.sourceDirectory = sourceDirectory;
         this.outputDirectory = outputDirectory;
         this.gitHubRepoUrl = gitHubRepoUrl;
         this.gitHubBranchName = gitHubBranchName;
+        this.siteRootUrl = siteRootUrl;
         this.sections = new ArrayList<Section>();
     }
 
@@ -179,6 +182,27 @@ public class SiteBuilder {
             logger.info("Finished writing pages for section \"" + section.getPrettyName() + "\".");
             writeAssets(section.getFilepath(), sectionPath);
         }
+        writeHomePage(Utilities.getConcatPath(new String[] { this.sourceDirectory.getAbsolutePath(), "index.adoc" }));
+    }
+
+    /**
+     * Writes the home page for the website
+     */
+    public void writeHomePage(String pathToPage) {
+        AsciiDocPage adocPage = AsciiDocPage.fromFile(new File(pathToPage));
+        List<AsciiDocPage> adocPages = new ArrayList<AsciiDocPage>();
+        adocPages.add(adocPage);
+        SectionVersion sectionVersion = new SectionVersion("", "", "", "", true);
+        TocNode rootNode = new TocNode("", "MuleSoft Documentation Home", null);
+        Section section = new Section(adocPages, rootNode, pathToPage, "", "", "", "", sectionVersion);
+        List<SectionVersion> sectionVersions = new ArrayList<SectionVersion>();
+        sectionVersions.add(sectionVersion);
+        List<Page> page = Page.forSection(section, this.sections, this.templates, this.toc, this.gitHubRepoUrl, this.gitHubBranchName, sectionVersions, this.siteRootUrl);
+        Page createdPage = page.get(0);
+        String pagePath = Utilities.getConcatPath(new String[] {this.outputDirectory.getPath(), createdPage.getBaseName()}) + ".html";
+        logger.info("Started writing page \"" + pagePath + "\"...");
+        Utilities.writeFileToDirectory(pagePath, createdPage.getContent());
+        logger.info("Finished writing page.");
     }
 
     /**
@@ -233,7 +257,7 @@ public class SiteBuilder {
 
     private void writePagesForSection(Section section, String sectionPath) {
         List<SectionVersion> sectionVersions = getSectionVersionCollectionForSectionBaseName(section.getBaseName());
-        List<Page> pages = Page.forSection(section, this.sections, this.templates, this.toc, this.gitHubRepoUrl, this.gitHubBranchName, sectionVersions);
+        List<Page> pages = Page.forSection(section, this.sections, this.templates, this.toc, this.gitHubRepoUrl, this.gitHubBranchName, sectionVersions, this.siteRootUrl);
         for (Page page : pages) {
             String pagePath = Utilities.getConcatPath(new String[] {sectionPath, page.getBaseName()}) + ".html";
             logger.info("Started writing page \"" + pagePath + "\"...");
