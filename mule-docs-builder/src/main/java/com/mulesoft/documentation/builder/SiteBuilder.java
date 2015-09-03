@@ -4,7 +4,6 @@ import com.mulesoft.documentation.builder.model.SectionConfiguration;
 import com.mulesoft.documentation.builder.model.SectionVersion;
 import com.mulesoft.documentation.builder.model.TocNode;
 import com.mulesoft.documentation.builder.util.Utilities;
-import com.sun.javadoc.Doc;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 
