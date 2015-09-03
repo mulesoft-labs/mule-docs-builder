@@ -9,7 +9,7 @@ class MuleDocsPagePreview < Formula
   depends_on :java => "1.8+"
 
   def install
-    system "mvn clean package -DskipTests"
+    system "mvn clean package -DskipTests -X"
     
     libexec.install "mule-docs-single-page-builder/target/mule-docs-single-page-builder-1.0.0-SNAPSHOT.jar"
     
