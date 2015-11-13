@@ -1,10 +1,10 @@
 package com.mulesoft.documentation.builder;
 
+import java.util.List;
+
 import org.asciidoctor.ast.Document;
 import org.asciidoctor.extension.Preprocessor;
 import org.asciidoctor.extension.PreprocessorReader;
-
-import java.util.List;
 
 /**
  * Copyright (C) MuleSoft, Inc - All Rights Reserved
@@ -13,7 +13,7 @@ import java.util.List;
 public class LinenumsProcessor extends Preprocessor {
 
     @Override
-    public PreprocessorReader process(Document document, PreprocessorReader reader) {
+    public void process(Document document, PreprocessorReader reader) {
 
         //System.out.println(document.getAttributes());
 
@@ -41,7 +41,6 @@ public class LinenumsProcessor extends Preprocessor {
             }
             reader.restoreLine(line);
         }
-        return reader;
     }
 }
 

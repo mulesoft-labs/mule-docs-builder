@@ -1,7 +1,7 @@
 package com.mulesoft.documentation.builder;
 
 import com.mulesoft.documentation.builder.util.Utilities;
-import org.asciidoctor.ast.AbstractBlock;
+import org.asciidoctor.ast.StructuralNode;
 import org.asciidoctor.ast.Block;
 import org.asciidoctor.extension.BlockProcessor;
 import org.asciidoctor.extension.ContentModel;
@@ -21,17 +21,17 @@ public class TabProcessor extends BlockProcessor {
     }
 
     @Override
-    public Object process(AbstractBlock parent, Reader reader, Map<String, Object> attributes) {
+    public Object process(StructuralNode parent, Reader reader, Map<String, Object> attributes) {
         Map<String, Object> inherited = new HashMap<String, Object>();
 
-        AbstractBlock container = createBlock(parent, "open", (String)null, inherited, new HashMap<Object, Object>());
+        StructuralNode container = createBlock(parent, "open", (String)null, inherited, new HashMap<Object, Object>());
         Map<String, String> titleAndId = new LinkedHashMap<String, String>();
 
         int count = 0;
 
         parseContent(container, reader.readLines());
         for (int i = 0; i < container.getBlocks().size(); i++) {
-            AbstractBlock child = container.getBlocks().get(i);
+            StructuralNode child = container.getBlocks().get(i);
             String tabTitle = child.getTitle();
             String uniqueId = Utilities.cleanPageFileNames(tabTitle) + "-" +
                     Utilities.getRandomAlphaNumericString(5);
@@ -51,7 +51,7 @@ public class TabProcessor extends BlockProcessor {
 
             count++;
 
-            // NOTE workaround missing append method on the AbstractBlock interface
+            // NOTE workaround missing append method on the StructuralNode interface
             //JavaEmbedUtils.invokeMethod(rubyRuntime, container, "append", new Object[]{block}, Object.class);
             container.getBlocks().set(i, block);
         }
