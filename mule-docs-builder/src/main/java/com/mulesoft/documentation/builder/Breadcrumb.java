@@ -2,11 +2,12 @@ package com.mulesoft.documentation.builder;
 
 import com.mulesoft.documentation.builder.model.TocNode;
 import com.mulesoft.documentation.builder.util.Utilities;
-import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import org.apache.log4j.Logger;
 
 /**
  * Created by sean.osterberg on 2/22/15.
@@ -33,6 +34,7 @@ public class Breadcrumb {
 
     private String generateBreadcrumbsForActiveUrl(String activeUrl, String baseUrl) {
         List<TocNode> nodes = getBreadcrumbs(activeUrl);
+        logger.debug("Creating breadcrumb for \"" + baseUrl + "/" + activeUrl + "\".");
         StringBuilder html = new StringBuilder("<div class=\"breadcrumb-section\" data-swiftype-index='false'>");
         for (TocNode node : nodes) {
             if (node.getUrl().equals("")) { // This code is to make sure we can link to a section root properly
@@ -49,7 +51,7 @@ public class Breadcrumb {
             }
         }
         html.append("</div>");
-        logger.info("Created breadcrumb for \"" + baseUrl + "/" + activeUrl + "\".");
+
         return html.toString();
     }
 

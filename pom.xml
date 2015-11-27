@@ -17,7 +17,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jdk.version>1.7</jdk.version>
+        <jdk.version>1.8</jdk.version>
     </properties>
 
     <build>
@@ -28,7 +28,7 @@
                     <version>2.5</version>
                     <configuration>
                         <source>${jdk.version}</source>
-                        <target>1.7</target>
+                        <target>1.8</target>
                         <encoding>ISO-8859-1</encoding>
                     </configuration>
                 </plugin>

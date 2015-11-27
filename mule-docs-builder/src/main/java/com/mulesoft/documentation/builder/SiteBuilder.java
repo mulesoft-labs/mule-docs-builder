@@ -166,21 +166,18 @@ public class SiteBuilder {
      * Writes all of the section's pages to the output directory specified in the instance's outputDirectory parameter.
      */
     private void writeSections() {
-        for (Section section : this.sections) {
+        sections.parallelStream().forEach(section ->{
             String sectionPath;
             if(!section.getVersionPrettyName().contentEquals("latest")) {
                 sectionPath = Utilities.getConcatPath(new String[]{this.outputDirectory.getPath(), section.getBaseName(), "v", section.getVersionPrettyName()});
             } else {
                 sectionPath = Utilities.getConcatPath(new String[]{this.outputDirectory.getPath(), section.getBaseName()});
             }
-            logger.info("Started creating directory for \"" + section.getPrettyName() + "\" section: " + sectionPath + "...");
             Utilities.makeTargetDirectory(sectionPath);
-            logger.info("Finished creating section directory.");
-            logger.info("Started writing pages for section \"" + section.getPrettyName() + "\".");
+            logger.info("Writing pages for section \"" + section.getPrettyName() + "\".");
             writePagesForSection(section, sectionPath);
-            logger.info("Finished writing pages for section \"" + section.getPrettyName() + "\".");
             writeAssets(section.getFilepath(), sectionPath);
-        }
+        });
         writeHomePage(Utilities.getConcatPath(new String[] { this.sourceDirectory.getAbsolutePath(), "index.adoc" }));
     }
 
@@ -199,9 +196,8 @@ public class SiteBuilder {
         List<Page> page = Page.forSection(section, this.sections, this.templates, this.toc, this.gitHubRepoUrl, this.gitHubBranchName, sectionVersions, this.siteRootUrl);
         Page createdPage = page.get(0);
         String pagePath = Utilities.getConcatPath(new String[] {this.outputDirectory.getPath(), createdPage.getBaseName()}) + ".html";
-        logger.info("Started writing page \"" + pagePath + "\"...");
+        logger.info("Writing page \"" + pagePath + "\"...");
         Utilities.writeFileToDirectory(pagePath, createdPage.getContent());
-        logger.info("Finished writing page.");
     }
 
     /**
@@ -259,9 +255,8 @@ public class SiteBuilder {
         List<Page> pages = Page.forSection(section, this.sections, this.templates, this.toc, this.gitHubRepoUrl, this.gitHubBranchName, sectionVersions, this.siteRootUrl);
         for (Page page : pages) {
             String pagePath = Utilities.getConcatPath(new String[] {sectionPath, page.getBaseName()}) + ".html";
-            logger.info("Started writing page \"" + pagePath + "\"...");
+            logger.debug("Writing page \"" + pagePath + "\"...");
             Utilities.writeFileToDirectory(pagePath, page.getContent());
-            logger.info("Finished writing page.");
         }
     }
 

@@ -3,11 +3,13 @@ package com.mulesoft.documentation.builder;
 import com.mulesoft.documentation.builder.model.SectionVersion;
 import com.mulesoft.documentation.builder.model.TocNode;
 import com.mulesoft.documentation.builder.util.Utilities;
-import org.apache.commons.io.FilenameUtils;
-import org.apache.log4j.Logger;
 
 import java.io.File;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.apache.log4j.Logger;
 
 /**
  * Created by sean.osterberg on 2/22/15.
@@ -42,7 +44,6 @@ public class Section {
         this.baseName = baseName;
         this.versionPrettyName = versionPrettyName;
         this.sectionVersion = sectionVersion;
-        logger.debug("Created Section for directory \"" + filepath + "\".");
     }
 
     public List<AsciiDocPage> getPages() {
@@ -83,6 +84,7 @@ public class Section {
     private static Section getSectionFromDirectory(File directory, SectionVersion sectionVersion, String url) {
         File[] filesInDirectory = directory.listFiles();
         if(filesInDirectory != null) {
+            logger.info(String.format("Processing section located at [%s].",directory.getAbsolutePath()));
             List<File> validFiles = getValidAsciiDocFilesInSection(new ArrayList<File>(Arrays.asList(filesInDirectory)));
             List<AsciiDocPage> pages = AsciiDocPage.fromFiles(validFiles);
             File tocFile = new File(Utilities.getConcatPath(new String[] { directory.getPath(), "_toc.adoc" }));

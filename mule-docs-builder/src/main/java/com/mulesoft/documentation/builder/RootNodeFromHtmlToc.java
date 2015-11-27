@@ -22,10 +22,10 @@ public class RootNodeFromHtmlToc {
 
     public static RootNodeFromHtmlToc fromTocAsciiDocPage(AsciiDocPage asciiDocPage) {
         validateThatAsciiDocPageIsToc(asciiDocPage);
+        logger.info("Creating root node for TOC page \"" + asciiDocPage.getFilePath() + "\".");
         String contentHtml = Utilities.getOnlyContentDivFromHtml(asciiDocPage.getHtml());
         Document htmlToc = Jsoup.parse(contentHtml, "UTF-8");
         TocNode rootNode = getRootNodeFromRawTocHtml(htmlToc);
-        logger.info("Created root node for TOC page \"" + asciiDocPage.getFilePath() + "\".");
         return new RootNodeFromHtmlToc(rootNode);
     }
 

@@ -1,13 +1,13 @@
 package com.mulesoft.documentation.builder;
 
+import java.util.List;
+
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.safety.Whitelist;
-import org.apache.commons.lang3.StringEscapeUtils;
-
-import java.util.List;
 
 /**
  * Created by sean.osterberg on 7/5/15.
@@ -20,11 +20,10 @@ public class SwiftTypeMetadata {
     }
 
     public static String getMetadataEntries(AsciiDocPage page) {
-        logger.info("Started creating SwiftType metadata for page \"" + page.getTitle() + "\"...");
+        logger.debug("Creating SwiftType metadata for page \"" + page.getTitle() + "\"...");
         String result = "";
         result += getTitleMetadata(page);
         // result += getBodyMetadata(page);
-        logger.info("Finished creating SwiftType metadata for page.");
         return result;
     }
 

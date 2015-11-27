@@ -2,13 +2,14 @@ package com.mulesoft.documentation.builder;
 
 import com.mulesoft.documentation.builder.model.SectionVersion;
 import com.mulesoft.documentation.builder.util.Utilities;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by sean.osterberg on 2/22/15.
@@ -50,7 +51,7 @@ public class Page {
                                                 String gitHubBranchName,
                                                 List<SectionVersion> sectionVersions,
                                                 String siteRootUrl)  {
-
+        logger.info("Building page from template for \"" + getPageTitle(page) + "\".");
         StringBuilder html = new StringBuilder(getTemplateContents(page, templates));
         //html = appendRootUrlToInternalLinks(html, sections, siteRootUrl);
         html = Utilities.replaceText(html, "{{ page.title }}", getPageTitle(page));
@@ -65,7 +66,7 @@ public class Page {
         html = Utilities.replaceText(html, "{{ page.github-link }}", getGitHubRepoUrl(section, page, gitHubRepoUrl, gitHubBranchName));
         html = Utilities.replaceText(html, "{{ page.canonical }}", getCanonicalUrlText(siteRootUrl, section, page));
 
-        logger.info("Built page from template for \"" + getPageTitle(page) + "\".");
+
         return html.toString();
     }
 

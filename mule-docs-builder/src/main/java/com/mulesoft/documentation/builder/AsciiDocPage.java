@@ -1,16 +1,17 @@
 package com.mulesoft.documentation.builder;
 
-import com.mulesoft.documentation.builder.util.Utilities;
-import org.apache.commons.io.FilenameUtils;
-import org.apache.log4j.Logger;
-
 import static org.asciidoctor.Asciidoctor.Factory.create;
 
-import org.asciidoctor.Asciidoctor;
+import com.mulesoft.documentation.builder.util.Utilities;
 
 import java.io.File;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
+import org.apache.commons.io.FilenameUtils;
+import org.apache.log4j.Logger;
+import org.asciidoctor.Asciidoctor;
 import org.asciidoctor.ast.DocumentHeader;
 import org.jsoup.Jsoup;
 
@@ -38,11 +39,11 @@ public class AsciiDocPage {
     }
 
     public static List<AsciiDocPage> fromFiles(List<File> asciiDocFiles) {
-        List<AsciiDocPage> docPages = new ArrayList<AsciiDocPage>();
-        for (File file : asciiDocFiles) {
+        List<AsciiDocPage> docPages = new ArrayList<>();
+        asciiDocFiles.stream().forEach(file->{
+            logger.debug("Creating AsciiDocPage from file: \"" + file.getPath() + "\".");
             docPages.add(getPageFromFile(file));
-            logger.debug("Created AsciiDocPage from file: \"" + file.getPath() + "\".");
-        }
+        });
         return docPages;
     }
 
@@ -85,7 +86,7 @@ public class AsciiDocPage {
     }
 
     private static String getPageTitle(String html) {
-        return Jsoup.parse(html, "UTF-8").title().trim();
+        return Jsoup.parse(html).title().trim();
     }
 
     private void validateInputParams(String[] params) {

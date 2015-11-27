@@ -14,10 +14,9 @@ public class PageMetadata {
     }
 
     public static String getMetadataEntries(AsciiDocPage page) {
-        logger.info("Creating metadata for page \"" + page.getTitle() + "\"...");
+        logger.debug("Creating metadata for page \"" + page.getTitle() + "\"...");
         String result = "";
         result += getBodyMetadata(page);
-        logger.info("Finished creating metadata for page.");
         return result;
     }
 

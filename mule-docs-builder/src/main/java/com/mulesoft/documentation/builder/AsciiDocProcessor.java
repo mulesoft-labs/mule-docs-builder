@@ -1,16 +1,16 @@
 package com.mulesoft.documentation.builder;
 
-import org.apache.log4j.Logger;
-import org.asciidoctor.Asciidoctor;
-import org.asciidoctor.Options;
-import org.asciidoctor.SafeMode;
-import org.asciidoctor.extension.JavaExtensionRegistry;
+import static org.asciidoctor.Asciidoctor.Factory.create;
 
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.asciidoctor.Asciidoctor.Factory.create;
+import org.apache.log4j.Logger;
+import org.asciidoctor.Asciidoctor;
+import org.asciidoctor.Options;
+import org.asciidoctor.SafeMode;
+import org.asciidoctor.extension.JavaExtensionRegistry;
 
 /**
  * Created by MuleSoft.
@@ -19,7 +19,7 @@ public class AsciiDocProcessor {
 
     private static Logger logger = Logger.getLogger(AsciiDocProcessor.class);
     private static AsciiDocProcessor processor;
-    public Asciidoctor asciidoctor;
+    private Asciidoctor asciidoctor;
 
     public static AsciiDocProcessor getProcessorInstance() {
         if (processor == null) {
@@ -30,22 +30,21 @@ public class AsciiDocProcessor {
 
     private AsciiDocProcessor() {
         asciidoctor = create();
+        registerExtensions();
     }
 
     public String convertFile(File asciiDocFile) {
-        registerExtensions();
-        logger.info("Processing AsciiDoc file: \"" + asciiDocFile.getAbsolutePath());
+
+        logger.debug("Processing AsciiDoc file: \"" + asciiDocFile.getAbsolutePath());
         String result = asciidoctor.convertFile(asciiDocFile, getOptionsForConversion());
-        logger.info("Successfully processed AsciiDoc file: \"" + asciiDocFile.getAbsolutePath());
         return result;
     }
 
     public String convertAsciiDocString(String asciiDoc) {
-        registerExtensions();
         return asciidoctor.convert(asciiDoc, getOptionsForConversion());
     }
 
-    public void registerExtensions() {
+    private void registerExtensions() {
         JavaExtensionRegistry extensionRegistry = asciidoctor.javaExtensionRegistry();
         //extensionRegistry.preprocessor(CodeLineNumberPreProcessor.class);
         extensionRegistry.block("tabs", TabProcessor.class);
