@@ -33,8 +33,7 @@ public class TabProcessor extends BlockProcessor {
         for (int i = 0; i < container.getBlocks().size(); i++) {
             StructuralNode child = container.getBlocks().get(i);
             String tabTitle = child.getTitle();
-            String uniqueId = Utilities.cleanPageFileNames(tabTitle) + "-" +
-                    Utilities.getRandomAlphaNumericString(5);
+            String uniqueId = Utilities.cleanPageFileNames(tabTitle) + "-" + "tab-" + count;
             titleAndId.put(tabTitle, uniqueId);
 
             String singleTabHtmlOpen;
