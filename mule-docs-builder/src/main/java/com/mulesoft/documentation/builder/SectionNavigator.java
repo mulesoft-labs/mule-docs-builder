@@ -38,7 +38,7 @@ public class SectionNavigator {
         String output = "";
         if (sectionTitlesAndUrls.entrySet().size() > 0) {
             output = "<!-- scroll-menu -->" +
-                    "<div class=\"col-md-2 scroll-menu-container\" data-swiftype-index='false'>" +
+                    "<div class=\"col-md-1 scroll-menu-container\" data-swiftype-index='false'>" +
                     "<div class=\"scroll-menu\">\n" +
                     "                <h4>In this topic:</h4>\n" +
                     "                <ul>";
