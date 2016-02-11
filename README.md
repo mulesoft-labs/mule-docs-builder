@@ -1,7 +1,7 @@
 # mule-docs-builder
 Tools for building the new MuleSoft documentation site.
 
-## How to install.
+## How to install the single page previewer
 For Mac OSx users, you will need to have [Homebrew](http://brew.sh/) installed.
 To install it, you'll need to type the following command in your Terminal:
 ```
