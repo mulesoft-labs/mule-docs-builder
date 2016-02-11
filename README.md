@@ -19,7 +19,7 @@ brew install http://raw.githubusercontent.com/mulesoft-labs/mule-docs-builder/ma
 ```
 And follow the installation process (some other packages might be needed in order for ```mule-docs-builder``` to run).
 
-## How to use it.
+## How to use the single page previewer
 First, you'll need to define a variable. Name it the same as your .adoc file.
 For example, if you have a ```index.adoc``` file, then type:
 ```
