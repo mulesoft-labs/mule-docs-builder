@@ -221,6 +221,22 @@ public class SiteBuilder {
                 }
             }
         }
+
+        if (sectionDir.exists()) {
+            String attachmentsDirPath = Utilities.getConcatPath(new String[] { sectionDir.getAbsolutePath(), "_attachments" });
+            File attachmentsDir = new File(attachmentsDirPath);
+            File destSectionDir = new File(destSectionPath);
+            if ((attachmentsDir.exists()) && (destSectionDir.exists()))
+                try {
+                    File newAttachmentsDir = new File(Utilities.getConcatPath(new String[] { destSectionDir.getAbsolutePath(), "_attachments" }));
+                    if (!newAttachmentsDir.exists()) {
+                        Utilities.makeTargetDirectory(newAttachmentsDir.getAbsolutePath());
+                    }
+                    FileUtils.copyDirectory(attachmentsDir, newAttachmentsDir);
+                } catch (IOException e) {
+                    throw new DocBuildException("Couldn't create destination attachments directory for section: " + attachmentsDir.getAbsolutePath());
+                }
+        }
     }
 
 
