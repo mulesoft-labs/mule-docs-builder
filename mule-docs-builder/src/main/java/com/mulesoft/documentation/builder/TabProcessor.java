@@ -23,6 +23,7 @@ public class TabProcessor extends BlockProcessor {
     @Override
     public Object process(AbstractBlock parent, Reader reader, Map<String, Object> attributes) {
         Map<String, Object> inherited = new HashMap<String, Object>();
+        int tabHash = parent.toString().hashCode();
 
         AbstractBlock container = createBlock(parent, "open", (String)null, inherited, new HashMap<Object, Object>());
         Map<String, String> titleAndId = new LinkedHashMap<String, String>();
@@ -33,7 +34,7 @@ public class TabProcessor extends BlockProcessor {
         for (int i = 0; i < container.getBlocks().size(); i++) {
             AbstractBlock child = container.getBlocks().get(i);
             String tabTitle = child.getTitle();
-            String uniqueId = Utilities.cleanPageFileNames(tabTitle) + "-" + "tab-" + count;
+            String uniqueId = Utilities.cleanPageFileNames(tabTitle) + "-" + tabHash;
             titleAndId.put(tabTitle, uniqueId);
 
             String singleTabHtmlOpen;
