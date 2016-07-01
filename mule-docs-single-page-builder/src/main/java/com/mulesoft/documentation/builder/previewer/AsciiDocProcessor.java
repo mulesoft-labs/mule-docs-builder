@@ -2,7 +2,8 @@ package com.mulesoft.documentation.builder.previewer;
 
 import com.mulesoft.documentation.builder.CodeLineNumberPreProcessor;
 import com.mulesoft.documentation.builder.TabProcessor;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.asciidoctor.Asciidoctor;
 import org.asciidoctor.Options;
 import org.asciidoctor.SafeMode;
@@ -19,7 +20,7 @@ import static org.asciidoctor.Asciidoctor.Factory.create;
  */
 public class AsciiDocProcessor {
 
-    private static Logger logger = Logger.getLogger(AsciiDocProcessor.class);
+    private static Logger logger = LoggerFactory.getLogger(AsciiDocProcessor.class);
     private static AsciiDocProcessor processor;
     public Asciidoctor asciidoctor;
 

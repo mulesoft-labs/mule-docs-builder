@@ -9,14 +9,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by sean.osterberg on 2/22/15.
  */
 
 public class Section {
-    private static Logger logger = Logger.getLogger(Section.class);
+    private static Logger logger = LoggerFactory.getLogger(Section.class);
     private List<AsciiDocPage> pages;
     private TocNode rootNode;
     private String filepath;

@@ -20,16 +20,16 @@ import java.util.UUID;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.w3c.tidy.Tidy;
 
 /**
  * Created by sean.osterberg on 2/20/15.
  */
 public class Utilities {
-    static Logger logger = Logger.getLogger(Utilities.class);
+    static Logger logger = LoggerFactory.getLogger(Utilities.class);
 
     public static String getFileContentsFromFile(File file) {
         String contents = "";
@@ -38,11 +38,11 @@ public class Utilities {
             contents = IOUtils.toString(reader);
         } catch (FileNotFoundException ffe) {
             String error = "The file \"" + file.getName() + "\" was not found.";
-            logger.fatal(error, ffe);
+            logger.error(error, ffe);
             throw new DocBuildException(error);
         } catch (IOException ioe) {
             String error = "Cannot get file contents for \"" + file.getName() + "\".";
-            logger.fatal(error, ioe);
+            logger.error(error, ioe);
             throw new DocBuildException(error);
         }
         return contents;
@@ -56,11 +56,11 @@ public class Utilities {
                 fileContents.add(IOUtils.toString(reader));
             } catch (FileNotFoundException ffe) {
                 String error = "The file \"" + file.getName() + "\" was not found.";
-                logger.fatal(error, ffe);
+                logger.error(error, ffe);
                 throw new DocBuildException(error);
             } catch (IOException ioe) {
                 String error = "Cannot get file contents for \"" + file.getName() + "\".";
-                logger.fatal(error, ioe);
+                logger.error(error, ioe);
                 throw new DocBuildException(error);
             }
         }
@@ -77,12 +77,12 @@ public class Utilities {
     public static void validateAsciiDocFile(File asciiDocFile) {
         if (!asciiDocFile.exists()) {
             String error = "AsciiDoc file does not exist: \"" + asciiDocFile.getPath() + "\".";
-            logger.fatal(error);
+            logger.error(error);
             throw new DocBuildException(error);
         }
         if (!fileEndsWithValidAsciidocExtension(asciiDocFile.getName())) {
             String error = "Presumed AsciiDoc file does not have valid extension: \"" + asciiDocFile.getName() + "\".";
-            logger.fatal(error);
+            logger.error(error);
             throw new DocBuildException(error);
         }
     }
@@ -120,7 +120,7 @@ public class Utilities {
         for (String param : params) {
             if (StringUtils.isBlank(param)) {
                 String error = "Constructor input parameter for " + className + " cannot be null, empty, or whitespace.";
-                logger.fatal(error);
+                logger.error(error);
                 throw new DocBuildException(error);
             }
         }
@@ -151,7 +151,7 @@ public class Utilities {
         for (Object obj : params) {
             if (obj == null) {
                 String error = "Constructor input parameter for " + className + " cannot be null.";
-                logger.fatal(error);
+                logger.error(error);
                 throw new DocBuildException(error);
             }
             if (obj.getClass().getSimpleName().equals("String")) {
@@ -199,7 +199,7 @@ public class Utilities {
             return;
         } else if (!isActiveUrlInSection(root, activeUrl, false)) {
             String error = "Active URL does not exist in nodes for TOC: \"" + activeUrl + "\".";
-            logger.fatal(error);
+            logger.error(error);
             throw new DocBuildException(error);
         }
     }
@@ -207,7 +207,7 @@ public class Utilities {
     public static void validateFileExists(File file) {
         if (!file.exists()) {
             String error = "File or directory does not exist: \"" + file.getPath() + "\".";
-            logger.fatal(error);
+            logger.error(error);
             throw new DocBuildException(error);
         }
     }
@@ -216,7 +216,7 @@ public class Utilities {
         validateFileExists(directory);
         if (!directory.isDirectory()) {
             String error = "File is not a directory as expected: \"" + directory.getPath() + "\".";
-            logger.fatal(error);
+            logger.error(error);
             throw new DocBuildException(error);
         }
     }
@@ -234,7 +234,7 @@ public class Utilities {
     public static void validateDirectoryContainsAsciiDocFile(File directory) {
         if (!directoryContainsAsciiDocFile(directory)) {
             String error = "Directory does not contain valid AsciiDoc file(s) as expected: \"" + directory.getPath() + "\".";
-            logger.fatal(error);
+            logger.error(error);
             throw new DocBuildException(error);
         }
     }
@@ -252,7 +252,7 @@ public class Utilities {
     public static void validateDirectoryContainsTocFile(File directory) {
         if (!directoryContainsTocFile(directory)) {
             String error = "Directory does not contain a TOC file: \"" + directory.getPath() + "\".";
-            logger.fatal(error);
+            logger.error(error);
             throw new DocBuildException(error);
         }
     }
@@ -266,7 +266,7 @@ public class Utilities {
         }
         if (!exists) {
             String error = "Directory does not contain version file: \"" + directory.getPath() + "\".";
-            logger.fatal(error);
+            logger.error(error);
             throw new DocBuildException(error);
         }
     }
@@ -308,12 +308,12 @@ public class Utilities {
                 }
                 if (!containsDirectory) {
                     String error = "Master directory does not contain valid section directories: \"" + masterDirectory.getPath() + "\".";
-                    logger.fatal(error);
+                    logger.error(error);
                     throw new DocBuildException(error);
                 }
             } else {
                 String error = "Master directory does not contain files or directories: \"" + masterDirectory.getPath() + "\".";
-                logger.fatal(error);
+                logger.error(error);
                 throw new DocBuildException(error);
             }
         }
@@ -323,7 +323,7 @@ public class Utilities {
         validateFileExists(templateFile);
         if (!FilenameUtils.getExtension(templateFile.getName()).equals("template")) {
             String error = "Template file does not have valid '.template' extension: \"" + templateFile.getPath() + "\".";
-            logger.fatal(error);
+            logger.error(error);
             throw new DocBuildException(error);
         }
     }
@@ -336,7 +336,7 @@ public class Utilities {
             result = output.mkdirs();
         } catch (SecurityException se) {
             String error = "Do not have permission to create directory \"" + directoryPath + "\"";
-            logger.fatal(error, se);
+            logger.error(error, se);
             throw new DocBuildException(error);
         }
         return result;
@@ -349,7 +349,7 @@ public class Utilities {
             result = output.delete();
         } catch (SecurityException se) {
             String error = "Do not have permission to delete directory \"" + directoryName + "\"";
-            logger.fatal(error, se);
+            logger.error(error, se);
             throw new DocBuildException(error);
         }
         return result;
@@ -368,7 +368,7 @@ public class Utilities {
             writer.close();
         } catch (IOException ioe) {
             String error = "Could not create file in directory: \"" + filePath + "\".";
-            logger.fatal(error + ioe.toString());
+            logger.error(error + ioe.toString());
             throw new DocBuildException(error);
         }
     }
@@ -378,16 +378,5 @@ public class Utilities {
             return "";
         }
         return baseName;
-    }
-
-    public static String tidyHtml(String html) {
-        Tidy tidy = new Tidy();
-        boolean xhtml = false;
-        tidy.setXHTML(xhtml);
-        InputStream htmlStream = new ByteArrayInputStream(html.getBytes());
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        org.w3c.dom.Document doc = tidy.parseDOM(htmlStream, outputStream);
-        tidy.pprint(doc, outputStream);
-        return outputStream.toString();
     }
 }

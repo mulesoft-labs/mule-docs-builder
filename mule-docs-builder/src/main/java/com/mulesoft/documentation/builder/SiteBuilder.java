@@ -10,14 +10,15 @@ import org.apache.commons.io.FilenameUtils;
 import java.io.*;
 import java.util.*;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.yaml.snakeyaml.Yaml;
 
 /**
  * Created by sean.osterberg on 2/22/15.
  */
 public class SiteBuilder {
-    private static Logger logger = Logger.getLogger(SiteBuilder.class);
+    private static Logger logger = LoggerFactory.getLogger(SiteBuilder.class);
     private List<Section> sections;
     private SiteTableOfContents toc;
     private File sourceDirectory;

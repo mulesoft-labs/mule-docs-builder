@@ -6,7 +6,8 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.asciidoctor.Asciidoctor;
 import org.asciidoctor.Options;
 import org.asciidoctor.SafeMode;
@@ -17,7 +18,7 @@ import org.asciidoctor.extension.JavaExtensionRegistry;
  */
 public class AsciiDocProcessor {
 
-    private static Logger logger = Logger.getLogger(AsciiDocProcessor.class);
+    private static Logger logger = LoggerFactory.getLogger(AsciiDocProcessor.class);
     private static AsciiDocProcessor processor;
     private Asciidoctor asciidoctor;
 

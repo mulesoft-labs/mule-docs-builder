@@ -1,16 +1,16 @@
 package com.mulesoft.documentation.builder;
 
 import com.mulesoft.documentation.builder.util.Utilities;
-import org.apache.log4j.Logger;
 import org.asciidoctor.Asciidoctor;
 import org.asciidoctor.Options;
 import org.asciidoctor.SafeMode;
-import org.jruby.exceptions.RaiseException;
 
 import java.io.File;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static org.asciidoctor.Asciidoctor.Factory.create;
 
@@ -20,7 +20,7 @@ import static org.asciidoctor.Asciidoctor.Factory.create;
  */
 public class PdfAsciiDocProcessor {
 
-    private static Logger logger = Logger.getLogger(PdfAsciiDocProcessor.class);
+    private static Logger logger = LoggerFactory.getLogger(PdfAsciiDocProcessor.class);
     private static PdfAsciiDocProcessor processor;
     public Asciidoctor asciidoctor;
 
@@ -41,8 +41,6 @@ public class PdfAsciiDocProcessor {
         try {
             asciidoctor.convert(asciiDoc, getOptionsForConversion(outputFilePath));
             success = true;
-        } catch (RaiseException e) {
-            logger.error("FAILED: PDF conversion failed for file: " + originalFilePath, e);
         } catch (Exception e) {
             logger.error("FAILED: PDF conversion failed for file: " + originalFilePath, e);
         }

@@ -3,7 +3,8 @@ package com.mulesoft.documentation.builder.previewer;
 import com.mulesoft.documentation.builder.*;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -17,7 +18,7 @@ import java.net.URL;
  * Created by Sean Osterberg on 8/9/15.
  */
 public class SinglePage {
-    private static Logger logger = Logger.getLogger(SinglePage.class);
+    private static Logger logger = LoggerFactory.getLogger(SinglePage.class);
 
     public static void fromAsciiDocFile(String asciiDocFilePath, String outputDirPath) {
         System.out.println("Converting file to html: " + asciiDocFilePath);
