@@ -14,9 +14,8 @@ public class CodeLineNumberPreProcessor extends Preprocessor {
     }
 
     @Override
-    public PreprocessorReader process(Document document, PreprocessorReader reader) {
+    public void process(Document document, PreprocessorReader reader) {
         document.getAttributes().put("coderay-linenums-mode", "table");
-        return reader;
     }
 }
 

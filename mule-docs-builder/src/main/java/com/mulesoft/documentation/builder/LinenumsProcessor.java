@@ -13,7 +13,7 @@ import org.asciidoctor.extension.PreprocessorReader;
 public class LinenumsProcessor extends Preprocessor {
 
     @Override
-    public PreprocessorReader process(Document document, PreprocessorReader reader) {
+    public void process(Document document, PreprocessorReader reader) {
 
         //System.out.println(document.getAttributes());
 
@@ -41,7 +41,6 @@ public class LinenumsProcessor extends Preprocessor {
             }
             reader.restoreLine(line);
         }
-        return reader;
     }
 }
 
