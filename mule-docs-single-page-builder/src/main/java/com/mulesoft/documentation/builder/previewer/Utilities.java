@@ -10,7 +10,6 @@ import org.jsoup.nodes.Document;
 
 import com.mulesoft.documentation.builder.DocBuildException;
 import com.mulesoft.documentation.builder.model.TocNode;
-import org.w3c.tidy.Tidy;
 
 import java.io.*;
 
@@ -367,16 +366,5 @@ public class Utilities {
             return "";
         }
         return baseName;
-    }
-
-    public static String tidyHtml(String html) {
-        Tidy tidy = new Tidy();
-        boolean xhtml = false;
-        tidy.setXHTML(xhtml);
-        InputStream htmlStream = new ByteArrayInputStream(html.getBytes());
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        org.w3c.dom.Document doc = tidy.parseDOM(htmlStream, outputStream);
-        tidy.pprint(doc, outputStream);
-        return outputStream.toString();
     }
 }

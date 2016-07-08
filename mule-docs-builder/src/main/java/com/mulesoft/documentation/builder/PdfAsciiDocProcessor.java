@@ -5,7 +5,6 @@ import org.apache.log4j.Logger;
 import org.asciidoctor.Asciidoctor;
 import org.asciidoctor.Options;
 import org.asciidoctor.SafeMode;
-import org.jruby.exceptions.RaiseException;
 
 import java.io.File;
 import java.net.URL;
@@ -41,8 +40,6 @@ public class PdfAsciiDocProcessor {
         try {
             asciidoctor.convert(asciiDoc, getOptionsForConversion(outputFilePath));
             success = true;
-        } catch (RaiseException e) {
-            logger.error("FAILED: PDF conversion failed for file: " + originalFilePath, e);
         } catch (Exception e) {
             logger.error("FAILED: PDF conversion failed for file: " + originalFilePath, e);
         }
