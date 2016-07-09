@@ -9,8 +9,10 @@
     </parent>
 
     <artifactId>mule-docs-builder</artifactId>
-    <name>MuleSoft Documentation Site Builder</name>
     <packaging>jar</packaging>
+
+    <name>MuleSoft Documentation Site Builder</name>
+    <description>This is the client jar that builds the HTML pages from AsciiDoc source and copies linked assets for the MuleSoft Documentation website.</description>
 
     <dependencies>
         <dependency>

@@ -9,8 +9,10 @@
     </parent>
 
     <artifactId>mule-docs-single-page-builder</artifactId>
-    <name>MuleSoft Documentation Single Page Builder</name>
     <packaging>jar</packaging>
+
+    <name>MuleSoft Documentation Single Page Builder</name>
+    <description>This is the client jar that builds a single HTML page from AsciiDoc source and copies linked assets for the purpose of previewing a page of the MuleSoft Documentation website.</description>
 
     <dependencies>
         <dependency>
