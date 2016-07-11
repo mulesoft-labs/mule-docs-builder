@@ -74,6 +74,12 @@
             <artifactId>asciidoctorj-pdf</artifactId>
             <version>1.5.0-alpha.9</version>
             <scope>runtime</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.asciidoctor</groupId>
+                    <artifactId>asciidoctorj</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- NOTE jruby 9.1.x.x is bumping into a StackOverFlow error when running CodeRay -->
         <dependency>
