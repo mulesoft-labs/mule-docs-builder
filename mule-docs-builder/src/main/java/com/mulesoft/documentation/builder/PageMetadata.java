@@ -1,13 +1,14 @@
 package com.mulesoft.documentation.builder;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by sean.osterberg on 7/6/15.
  */
 public class PageMetadata {
 
-    private static Logger logger = Logger.getLogger(PageMetadata.class);
+    private static Logger logger = LoggerFactory.getLogger(PageMetadata.class);
 
     public static String fromAsciiDocPage(AsciiDocPage page) {
         return getMetadataEntries(page);

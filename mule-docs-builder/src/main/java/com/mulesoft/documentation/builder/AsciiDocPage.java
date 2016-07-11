@@ -10,7 +10,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.io.FilenameUtils;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.asciidoctor.Asciidoctor;
 import org.asciidoctor.ast.DocumentHeader;
 import org.jsoup.Jsoup;
@@ -20,7 +21,7 @@ import org.jsoup.Jsoup;
  */
 public class AsciiDocPage {
 
-    private static Logger logger = Logger.getLogger(AsciiDocPage.class);
+    private static Logger logger = LoggerFactory.getLogger(AsciiDocPage.class);
     private static Asciidoctor processor;
     private String baseName;
     private String filePath;

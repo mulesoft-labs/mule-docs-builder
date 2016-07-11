@@ -10,14 +10,15 @@ import org.apache.commons.io.FilenameUtils;
 import java.io.*;
 import java.util.*;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.yaml.snakeyaml.Yaml;
 
 /**
  * Created by sean.osterberg on 2/22/15.
  */
 public class SiteBuilder {
-    private static Logger logger = Logger.getLogger(SiteBuilder.class);
+    private static Logger logger = LoggerFactory.getLogger(SiteBuilder.class);
     private List<Section> sections;
     private SiteTableOfContents toc;
     private File sourceDirectory;
@@ -220,6 +221,22 @@ public class SiteBuilder {
                     throw new DocBuildException("Couldn't create destination image directory for section: " + imageDir.getAbsolutePath());
                 }
             }
+        }
+
+        if (sectionDir.exists()) {
+            String attachmentsDirPath = Utilities.getConcatPath(new String[] { sectionDir.getAbsolutePath(), "_attachments" });
+            File attachmentsDir = new File(attachmentsDirPath);
+            File destSectionDir = new File(destSectionPath);
+            if ((attachmentsDir.exists()) && (destSectionDir.exists()))
+                try {
+                    File newAttachmentsDir = new File(Utilities.getConcatPath(new String[] { destSectionDir.getAbsolutePath(), "_attachments" }));
+                    if (!newAttachmentsDir.exists()) {
+                        Utilities.makeTargetDirectory(newAttachmentsDir.getAbsolutePath());
+                    }
+                    FileUtils.copyDirectory(attachmentsDir, newAttachmentsDir);
+                } catch (IOException e) {
+                    throw new DocBuildException("Couldn't create destination attachments directory for section: " + attachmentsDir.getAbsolutePath());
+                }
         }
     }
 

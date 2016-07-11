@@ -7,13 +7,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by sean.osterberg on 2/22/15.
  */
 public class Breadcrumb {
-    private static Logger logger = Logger.getLogger(Breadcrumb.class);
+    private static Logger logger = LoggerFactory.getLogger(Breadcrumb.class);
     private TocNode root;
 
     public Breadcrumb(TocNode root) {

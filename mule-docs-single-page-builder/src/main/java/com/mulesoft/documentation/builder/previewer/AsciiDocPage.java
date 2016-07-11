@@ -2,7 +2,8 @@ package com.mulesoft.documentation.builder.previewer;
 
 import com.mulesoft.documentation.builder.util.Utilities;
 import org.apache.commons.io.FilenameUtils;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.asciidoctor.Asciidoctor;
 import org.asciidoctor.ast.DocumentHeader;
 import org.jsoup.Jsoup;
@@ -19,7 +20,7 @@ import static org.asciidoctor.Asciidoctor.Factory.create;
  */
 public class AsciiDocPage {
 
-    private static Logger logger = Logger.getLogger(AsciiDocPage.class);
+    private static Logger logger = LoggerFactory.getLogger(AsciiDocPage.class);
     private static Asciidoctor processor;
     private String baseName;
     private String filePath;

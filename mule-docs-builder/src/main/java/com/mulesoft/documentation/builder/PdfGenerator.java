@@ -2,7 +2,8 @@ package com.mulesoft.documentation.builder;
 
 import com.mulesoft.documentation.builder.util.Utilities;
 import org.apache.commons.io.FileUtils;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,7 +16,7 @@ import java.util.Map;
  * Created by Sean Osterberg on 8/8/15.
  */
 public class PdfGenerator {
-    private static Logger logger = Logger.getLogger(PdfGenerator.class);
+    private static Logger logger = LoggerFactory.getLogger(PdfGenerator.class);
     private File outputDirectory;
     private Map<String, String> createdPdfRegistry;
 

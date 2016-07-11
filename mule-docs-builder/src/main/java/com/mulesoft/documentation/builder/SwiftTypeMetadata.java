@@ -3,17 +3,18 @@ package com.mulesoft.documentation.builder;
 import java.util.List;
 
 import org.apache.commons.lang3.StringEscapeUtils;
-import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.safety.Whitelist;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by sean.osterberg on 7/5/15.
  */
 public class SwiftTypeMetadata {
-    private static Logger logger = Logger.getLogger(SwiftTypeMetadata.class);
+    private static Logger logger = LoggerFactory.getLogger(SwiftTypeMetadata.class);
 
     public static String fromAsciiDocPage(AsciiDocPage page) {
         return getMetadataEntries(page);

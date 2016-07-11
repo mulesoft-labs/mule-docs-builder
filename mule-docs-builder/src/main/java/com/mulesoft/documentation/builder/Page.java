@@ -6,16 +6,17 @@ import com.mulesoft.documentation.builder.util.Utilities;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by sean.osterberg on 2/22/15.
  */
 public class Page {
-    private static Logger logger = Logger.getLogger(Page.class);
+    private static Logger logger = LoggerFactory.getLogger(Page.class);
     private String content;
     private String baseName;
 

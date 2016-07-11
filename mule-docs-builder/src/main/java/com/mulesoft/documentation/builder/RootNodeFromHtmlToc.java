@@ -2,7 +2,8 @@ package com.mulesoft.documentation.builder;
 
 import com.mulesoft.documentation.builder.model.TocNode;
 import com.mulesoft.documentation.builder.util.Utilities;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -12,7 +13,7 @@ import org.jsoup.select.Elements;
  * Created by sean.osterberg on 2/20/15.
  */
 public class RootNodeFromHtmlToc {
-    private static Logger logger = Logger.getLogger(RootNodeFromHtmlToc.class);
+    private static Logger logger = LoggerFactory.getLogger(RootNodeFromHtmlToc.class);
     private TocNode rootNode;
 
     public RootNodeFromHtmlToc(TocNode rootNode) {
@@ -82,7 +83,7 @@ public class RootNodeFromHtmlToc {
     private static void validateOnlyOneRootNode(Elements elements) {
         if (elements.size() == 0) {
             String error = "TOC file has more than one root node and appears to be malformed.";
-            logger.fatal(error);
+            logger.error(error);
             throw new DocBuildException(error);
         }
     }
@@ -116,7 +117,7 @@ public class RootNodeFromHtmlToc {
     private static void validateThatAsciiDocPageIsToc(AsciiDocPage page) {
         if (!page.getFilePath().endsWith("_toc.adoc")) {
             String error = "AsciiDoc page appears to be invalid for processing table of contents: \"" + page.getFilePath() + "\".";
-            logger.fatal(error);
+            logger.error(error);
             throw new DocBuildException(error);
         }
     }

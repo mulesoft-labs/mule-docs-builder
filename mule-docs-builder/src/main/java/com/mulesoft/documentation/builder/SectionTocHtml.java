@@ -2,13 +2,14 @@ package com.mulesoft.documentation.builder;
 
 import com.mulesoft.documentation.builder.model.TocNode;
 import com.mulesoft.documentation.builder.util.Utilities;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by sean.osterberg on 2/21/15.
  */
 public class SectionTocHtml {
-    private static Logger logger = Logger.getLogger(SectionTocHtml.class);
+    private static Logger logger = LoggerFactory.getLogger(SectionTocHtml.class);
     private String html;
 
     public SectionTocHtml(String html) {
