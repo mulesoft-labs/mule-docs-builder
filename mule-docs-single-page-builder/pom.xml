@@ -19,6 +19,7 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>mule-docs-builder</artifactId>
             <version>${project.version}</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

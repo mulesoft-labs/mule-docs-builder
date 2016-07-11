@@ -37,6 +37,7 @@
             <groupId>org.asciidoctor</groupId>
             <artifactId>asciidoctorj</artifactId>
             <version>1.6.0-alpha.3</version>
+            <scope>compile</scope>
             <exclusions>
                 <exclusion>
                     <groupId>com.beust</groupId>
