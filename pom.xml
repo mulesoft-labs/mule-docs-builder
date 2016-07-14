@@ -110,7 +110,7 @@
                       <stagingDescription>Ready to go!</stagingDescription>
                       <skipStagingRepositoryClose>false</skipStagingRepositoryClose>
                       <!--
-                      Pass `-DautoReleaseAfterClose=true` in CI env or run `mvn nexus-staging:release` as secondary task
+                      Pass `-DautoReleaseAfterClose=true` in CI to auto-release
                       <autoReleaseAfterClose>false</autoReleaseAfterClose>
                       -->
                   </configuration>
@@ -120,6 +120,18 @@
     </build>
 
     <profiles>
+        <!--
+        Commands to perform full release from CI:
+
+        $ mvn -B -Prelease -DscmCommentPrefix= release:prepare
+        $ mvn -Prelease release:perform
+        $ mvn -f target/checkout/pom.xml -Prelease nexus-staging:release
+
+        ...or combine last two steps using:
+
+        $ mvn -B -Prelease -DscmCommentPrefix= release:prepare
+        $ mvn -Prelease release:perform -DautoReleaseAfterClose=true
+        -->
         <profile>
             <id>release</id>
             <properties>
