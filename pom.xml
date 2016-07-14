@@ -131,6 +131,7 @@
                       <groupId>org.sonatype.plugins</groupId>
                       <artifactId>nexus-staging-maven-plugin</artifactId>
                     </plugin>
+                    <!--
                     <plugin>
                         <artifactId>maven-gpg-plugin</artifactId>
                         <executions>
@@ -143,6 +144,7 @@
                             </execution>
                         </executions>
                     </plugin>
+                    -->
                     <plugin>
                       <artifactId>maven-javadoc-plugin</artifactId>
                       <executions>
