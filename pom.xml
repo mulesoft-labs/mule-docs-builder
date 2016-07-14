@@ -109,7 +109,7 @@
                       <stagingDescription>Ready to go!</stagingDescription>
                       <skipStagingRepositoryClose>false</skipStagingRepositoryClose>
                       <!--
-                      Pass `-PautoReleaseAfterClose=true` in CI env or run `mvn nexus-staging:release` as secondary task
+                      Pass `-DautoReleaseAfterClose=true` in CI env or run `mvn nexus-staging:release` as secondary task
                       <autoReleaseAfterClose>false</autoReleaseAfterClose>
                       -->
                   </configuration>
