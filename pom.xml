@@ -43,6 +43,14 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdk.version>1.8</jdk.version>
+        <dist.serverId>mule-releases</dist.serverId>
+        <dist.serverName>Mule Releases Repository</dist.serverName>
+        <dist.nexusUrl>https://repository-master.mulesoft.org/nexus/</dist.nexusUrl>
+        <!--
+        <dist.serverId>central-releases-repository</dist.serverId>
+        <dist.serverName>Central Releases Repository</dist.serverName>
+        <dist.nexusUrl>https://oss.sonatype.org/</dist.nexusUrl>
+        -->
     </properties>
 
     <modules>
@@ -90,6 +98,22 @@
                     <artifactId>maven-source-plugin</artifactId>
                     <version>3.0.1</version>
                 </plugin>
+                <plugin>
+                  <groupId>org.sonatype.plugins</groupId>
+                  <artifactId>nexus-staging-maven-plugin</artifactId>
+                  <version>1.6.7</version>
+                  <extensions>true</extensions>
+                  <configuration>
+                      <serverId>${dist.serverId}</serverId>
+                      <nexusUrl>${dist.nexusUrl}</nexusUrl>
+                      <stagingDescription>Ready to go!</stagingDescription>
+                      <skipStagingRepositoryClose>false</skipStagingRepositoryClose>
+                      <!--
+                      Pass `-PautoReleaseAfterClose=true` in CI env or run `mvn nexus-staging:release` as secondary task
+                      <autoReleaseAfterClose>false</autoReleaseAfterClose>
+                      -->
+                  </configuration>
+              </plugin>
             </plugins>
         </pluginManagement>
     </build>
@@ -103,6 +127,10 @@
             <build>
                 <defaultGoal>deploy</defaultGoal>
                 <plugins>
+                    <plugin>
+                      <groupId>org.sonatype.plugins</groupId>
+                      <artifactId>nexus-staging-maven-plugin</artifactId>
+                    </plugin>
                     <plugin>
                         <artifactId>maven-gpg-plugin</artifactId>
                         <executions>
@@ -143,17 +171,15 @@
     </profiles>
 
     <distributionManagement>
-        <!--
+        <!-- Only used by the native Maven deploy plugin, not the Nexus deploy plugin -->
         <repository>
-            <id>central-releases-repository</id>
-            <name>Central Releases Repository</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-        -->
-        <repository>
-            <id>mule-releases</id>
-            <name>Mule Release Repository</name>
-            <url>https://repository-master.mulesoft.org/nexus/content/repositories/releases</url>
+            <id>${dist.serverId}</id>
+            <name>${dist.serverName}</name>
+            <url>${dist.nexusUrl}service/local/staging/deploy/maven2</url>
+            <!-- Use the following url to skip staging and upload artifacts directly -->
+            <!--
+            <url>${dist.nexusUrl}content/repositories/releases</url>
+            -->
         </repository>
     </distributionManagement>
 </project>
