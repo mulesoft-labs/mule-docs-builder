@@ -46,10 +46,12 @@
         <dist.serverId>mule-releases</dist.serverId>
         <dist.serverName>Mule Releases Repository</dist.serverName>
         <dist.nexusUrl>https://repository-master.mulesoft.org/nexus/</dist.nexusUrl>
+        <dist.nexusStagingProfileId>ci-releases</dist.nexusStagingProfileId>
         <!--
         <dist.serverId>central-releases-repository</dist.serverId>
         <dist.serverName>Central Releases Repository</dist.serverName>
         <dist.nexusUrl>https://oss.sonatype.org/</dist.nexusUrl>
+        <dist.nexusStagingProfileId/>
         -->
     </properties>
 
@@ -106,6 +108,7 @@
                   <configuration>
                       <serverId>${dist.serverId}</serverId>
                       <nexusUrl>${dist.nexusUrl}</nexusUrl>
+                      <stagingProfileId>${dist.nexusStagingProfileId}</stagingProfileId>
                       <stagingDescription>Ready to go!</stagingDescription>
                       <skipStagingRepositoryClose>false</skipStagingRepositoryClose>
                       <!--
