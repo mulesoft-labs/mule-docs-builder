@@ -110,13 +110,15 @@
                       <nexusUrl>${dist.nexusUrl}</nexusUrl>
                       <stagingProfileId>${dist.nexusStagingProfileId}</stagingProfileId>
                       <stagingDescription>Ready to go!</stagingDescription>
+                      <!-- Set skipStagingRepositoryClose to true to prevent staging repository from being closed. -->
                       <skipStagingRepositoryClose>false</skipStagingRepositoryClose>
                       <!--
-                      Pass `-DautoReleaseAfterClose=true` in CI env or run `mvn nexus-staging:release` as secondary task.
+                      Set autoReleaseAfterClose to true or run `mvn nexus-staging:release` as secondary task.
                       <autoReleaseAfterClose>false</autoReleaseAfterClose>
                       -->
                       <!--
-                      Pass `-DskipRemoteStaging=true` if you want to perform a dry run of the release.
+                      Set skipRemoteStaging to true if you want to perform a dry run of the release.
+                      <skipRemoteStaging>true</skipRemoteStaging>
                       -->
                   </configuration>
               </plugin>
