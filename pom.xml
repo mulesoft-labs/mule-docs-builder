@@ -95,8 +95,8 @@
                         <autoVersionSubmodules>true</autoVersionSubmodules>
                         <tagNameFormat>v@{project.version}</tagNameFormat>
                         <useReleaseProfile>false</useReleaseProfile>
-                        <mavenExecutorId>forked-path</mavenExecutorId>
-                        <arguments>${arguments} -Prelease</arguments>
+                        <!-- During release:perform, enable the "release" profile -->
+                        <releaseProfiles>release</releaseProfiles>
                     </configuration>
                 </plugin>
                 <plugin>
