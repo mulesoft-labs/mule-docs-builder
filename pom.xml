@@ -46,10 +46,12 @@
         <dist.serverId>mule-releases</dist.serverId>
         <dist.serverName>Mule Releases Repository</dist.serverName>
         <dist.nexusUrl>https://repository-master.mulesoft.org/nexus/</dist.nexusUrl>
+        <dist.nexusStagingProfileId>releases</dist.nexusStagingProfileId>
         <!--
         <dist.serverId>central-releases-repository</dist.serverId>
         <dist.serverName>Central Releases Repository</dist.serverName>
         <dist.nexusUrl>https://oss.sonatype.org/</dist.nexusUrl>
+        <dist.nexusStagingProfileId/>
         -->
     </properties>
 
@@ -99,22 +101,6 @@
                     <artifactId>maven-source-plugin</artifactId>
                     <version>3.0.1</version>
                 </plugin>
-                <plugin>
-                  <groupId>org.sonatype.plugins</groupId>
-                  <artifactId>nexus-staging-maven-plugin</artifactId>
-                  <version>1.6.7</version>
-                  <extensions>true</extensions>
-                  <configuration>
-                      <serverId>${dist.serverId}</serverId>
-                      <nexusUrl>${dist.nexusUrl}</nexusUrl>
-                      <stagingDescription>Ready to go!</stagingDescription>
-                      <skipStagingRepositoryClose>false</skipStagingRepositoryClose>
-                      <!--
-                      Pass `-DautoReleaseAfterClose=true` in CI to auto-release
-                      <autoReleaseAfterClose>false</autoReleaseAfterClose>
-                      -->
-                  </configuration>
-              </plugin>
             </plugins>
         </pluginManagement>
     </build>
@@ -125,12 +111,6 @@
 
         $ mvn -B -Prelease -DscmCommentPrefix= release:prepare
         $ mvn -Prelease release:perform
-        $ mvn -f target/checkout/pom.xml -Prelease nexus-staging:release
-
-        ...or combine last two steps using:
-
-        $ mvn -B -Prelease -DscmCommentPrefix= release:prepare
-        $ mvn -Prelease release:perform -DautoReleaseAfterClose=true
         -->
         <profile>
             <id>release</id>
@@ -140,10 +120,7 @@
             <build>
                 <defaultGoal>deploy</defaultGoal>
                 <plugins>
-                    <plugin>
-                        <groupId>org.sonatype.plugins</groupId>
-                        <artifactId>nexus-staging-maven-plugin</artifactId>
-                    </plugin>
+                    <!--
                     <plugin>
                         <artifactId>maven-gpg-plugin</artifactId>
                         <executions>
@@ -156,6 +133,7 @@
                             </execution>
                         </executions>
                     </plugin>
+                    -->
                     <plugin>
                       <artifactId>maven-javadoc-plugin</artifactId>
                       <executions>
@@ -188,11 +166,11 @@
         <repository>
             <id>${dist.serverId}</id>
             <name>${dist.serverName}</name>
-            <url>${dist.nexusUrl}service/local/staging/deploy/maven2</url>
-            <!-- Use the following url to skip staging and upload artifacts directly -->
             <!--
-            <url>${dist.nexusUrl}content/repositories/releases</url>
+            <url>${dist.nexusUrl}service/local/staging/deploy/maven2</url>
             -->
+            <!-- Use the following url to skip staging and upload artifacts directly -->
+            <url>${dist.nexusUrl}content/repositories/${dist.nexusStagingProfileId}</url>
         </repository>
     </distributionManagement>
 </project>
