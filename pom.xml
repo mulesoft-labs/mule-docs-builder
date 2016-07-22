@@ -35,9 +35,10 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:git://github.com/mulesoft-labs/mule-docs-builder.git</connection>
+        <connection>scm:git:https://github.com/mulesoft-labs/mule-docs-builder.git</connection>
         <developerConnection>scm:git:git@github.com:mulesoft-labs/mule-docs-builder.git</developerConnection>
         <url>https://github.com/mulesoft-labs/mule-docs-builder</url>
+        <tag>HEAD</tag>
     </scm>
 
     <properties>
@@ -51,7 +52,7 @@
         <dist.serverId>central-releases-repository</dist.serverId>
         <dist.serverName>Central Releases Repository</dist.serverName>
         <dist.nexusUrl>https://oss.sonatype.org/</dist.nexusUrl>
-        <dist.nexusStagingProfileId/>
+        <dist.nexusStagingProfileId />
         -->
     </properties>
 
