@@ -44,6 +44,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdk.version>1.8</jdk.version>
+        <executor.args />
         <dist.serverId>mule-releases</dist.serverId>
         <dist.serverName>Mule Releases Repository</dist.serverName>
         <dist.nexusUrl>https://repository-master.mulesoft.org/nexus/</dist.nexusUrl>
@@ -104,6 +105,7 @@
                         <tagNameFormat>v@{project.version}</tagNameFormat>
                         <useReleaseProfile>false</useReleaseProfile>
                         <!-- During release:perform, enable the "release" profile -->
+                        <arguments>${executor.args}</arguments>
                         <releaseProfiles>release</releaseProfiles>
                     </configuration>
                 </plugin>
