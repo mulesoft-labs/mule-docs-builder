@@ -1,11 +1,11 @@
-/.classpath
-/.idea/
-/.project
-/.settings/
 /*.iml
 /*.ipr
 /*.iws
-*.DS_Store
 /WORKLOG.adoc
 /release.properties
+.DS_Store
+.classpath
+.project
+.idea/
+.settings/
 target/

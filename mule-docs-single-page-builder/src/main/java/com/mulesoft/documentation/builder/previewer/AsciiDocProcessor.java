@@ -1,19 +1,19 @@
 package com.mulesoft.documentation.builder.previewer;
 
-import com.mulesoft.documentation.builder.CodeLineNumberPreProcessor;
-import com.mulesoft.documentation.builder.TabProcessor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.asciidoctor.Asciidoctor;
-import org.asciidoctor.Options;
-import org.asciidoctor.SafeMode;
-import org.asciidoctor.extension.JavaExtensionRegistry;
+import static org.asciidoctor.Asciidoctor.Factory.create;
 
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.asciidoctor.Asciidoctor.Factory.create;
+import org.asciidoctor.Asciidoctor;
+import org.asciidoctor.Options;
+import org.asciidoctor.SafeMode;
+import org.asciidoctor.extension.JavaExtensionRegistry;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.mulesoft.documentation.builder.CodeLineNumberPreProcessor;
 
 /**
  * Created by MuleSoft.
@@ -51,7 +51,8 @@ public class AsciiDocProcessor {
     public void registerExtensions() {
         JavaExtensionRegistry extensionRegistry = asciidoctor.javaExtensionRegistry();
         extensionRegistry.preprocessor(CodeLineNumberPreProcessor.class);
-        extensionRegistry.block("tabs", com.mulesoft.documentation.builder.previewer.TabProcessor.class);
+        extensionRegistry.block("tab", TabProcessor.class);
+        extensionRegistry.block("tabs", TabsProcessor.class);
     }
 
     private Options getOptionsForConversion() {
