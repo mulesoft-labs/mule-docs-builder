@@ -89,10 +89,9 @@ public class RootNodeFromHtmlToc {
     }
 
     public static String cleanupLink(String link) {
-        if(link.contains("/")) {
-            int index = link.lastIndexOf("/");
-
-            link = link.substring(index + 1, link.length());
+        int lastSlashOffset = link.lastIndexOf("/");
+        if (lastSlashOffset >= 0) {
+            link = link.substring(lastSlashOffset + 1);
         }
         link = removeHtmlExtension(link);
         link = removeIndexFromLink(link);
@@ -100,14 +99,11 @@ public class RootNodeFromHtmlToc {
     }
 
     private static String removeHtmlExtension(String link) {
-        return link.replace(".html", "");
+        return link.replaceFirst("\\.html$", "");
     }
 
     private static String removeIndexFromLink(String link) {
-        if (link.equals("index")) {
-            link = "";
-        }
-        return link;
+        return link.equals("index") ? "" : link;
     }
 
     private void validateInputParams(Object[] params) {

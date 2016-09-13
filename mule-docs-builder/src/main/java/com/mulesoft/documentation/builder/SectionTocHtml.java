@@ -39,11 +39,17 @@ public class SectionTocHtml {
     }
 
     private static void generateTocHtml(TocNode parent, StringBuilder html, boolean isFirstItem, String activeUrl, String baseUrl) {
-        String closed = "<li>\n<i></i>\n<a href=\"" + getCompleteUrl(baseUrl, parent.getUrl()) +
+        String completeUrl = getCompleteUrl(baseUrl, parent.getUrl());
+        // FIXME there are random cases when either parent.getUrl() is ./ or baseUrl has a trailing ./
+        if (completeUrl.endsWith("/./")) {
+            logger.info("removed trailing ./ segment from path: " + completeUrl);
+            completeUrl = completeUrl.substring(0, completeUrl.length() - 2);
+        }
+        String closed = "<li>\n<i></i>\n<a href=\"" + completeUrl +
                 "\">" + parent.getTitle() + "</a><ul>\n";
-        String opened = "<li class=\"expanded\">\n<i></i>\n<a href=\"" + getCompleteUrl(baseUrl, parent.getUrl()) +
+        String opened = "<li class=\"expanded\">\n<i></i>\n<a href=\"" + completeUrl +
                 "\">" + parent.getTitle() + "</a><ul style=\"display: block;\">\n";
-        String selected = "<li class=\"active expanded\">\n<i></i>\n<a href=\"" + getCompleteUrl(baseUrl, parent.getUrl()) +
+        String selected = "<li class=\"active expanded\">\n<i></i>\n<a href=\"" + completeUrl +
                 "\">" + parent.getTitle() + "</a><ul style=\"display: block;\">\n";
 
         if (activeUrl != null) {
