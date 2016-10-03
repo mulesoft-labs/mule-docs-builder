@@ -1,17 +1,11 @@
 package com.mulesoft.documentation.builder.util;
 
-import com.mulesoft.documentation.builder.DocBuildException;
-import com.mulesoft.documentation.builder.model.TocNode;
-
 import java.io.BufferedWriter;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +14,13 @@ import java.util.UUID;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.mulesoft.documentation.builder.DocBuildException;
+import com.mulesoft.documentation.builder.model.TocNode;
 
 /**
  * Created by sean.osterberg on 2/20/15.

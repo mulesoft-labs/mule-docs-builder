@@ -1,16 +1,16 @@
 package com.mulesoft.documentation.builder;
 
-import com.mulesoft.documentation.builder.model.SectionVersion;
-import com.mulesoft.documentation.builder.util.Utilities;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.mulesoft.documentation.builder.model.SectionVersion;
+import com.mulesoft.documentation.builder.util.Utilities;
 
 /**
  * Created by sean.osterberg on 2/22/15.
@@ -54,36 +54,19 @@ public class Page {
                                                 String siteRootUrl)  {
         logger.info("Building page from template for \"" + getPageTitle(page) + "\".");
         StringBuilder html = new StringBuilder(getTemplateContents(page, templates));
-        //html = appendRootUrlToInternalLinks(html, sections, siteRootUrl);
         html = Utilities.replaceText(html, "{{ page.title }}", getPageTitle(page));
         html = Utilities.replaceText(html, "{{ page.toc }}", getPageToc(toc, sections, section, page));
         html = Utilities.replaceText(html, "{{ page.breadcrumb }}", getBreadcrumbHtml(section, page));
         html = Utilities.replaceText(html, "{{ page.content }}", getContentHtml(page));
-        html = Utilities.replaceText(html, "{{ page.version }}", getVersionHtml(section, sectionVersions));
-        html = Utilities.replaceText(html, "{{ page.version-notification }}", getVersionNotificationHtml(section, sectionVersions));
+        html = Utilities.replaceText(html, "{{ page.version }}", getVersionHtml(sections, section, sectionVersions, page));
+        html = Utilities.replaceText(html, "{{ page.version-notification }}", getVersionNotificationHtml(sections, section, sectionVersions, page));
         html = Utilities.replaceText(html, "{{ page.sections }}", getSectionNavigator(page));
         html = Utilities.replaceText(html, "{{ page.metadata }}", getPageMetadata(page));
         html = Utilities.replaceText(html, "{{ page.swifttype-metadata }}", getSwiftTypeMetadata(page));
         html = Utilities.replaceText(html, "{{ page.github-link }}", getGitHubRepoUrl(section, page, gitHubRepoUrl, gitHubBranchName));
         html = Utilities.replaceText(html, "{{ page.canonical }}", getCanonicalUrlText(siteRootUrl, section, page));
 
-
         return html.toString();
-    }
-
-    // This adds the root path to the pages so that the links can be fixed when we're using a different root URL
-    private static StringBuilder appendRootUrlToInternalLinks(StringBuilder html, List<Section> sections, String siteRootUrl) {
-        Document doc = Jsoup.parse(html.toString(), "UTF-8");
-        List<Element> elements = doc.select("a");
-        for(Element element : elements) {
-            for(Section s : sections) {
-                String link = element.attr("href");
-                if(link.startsWith(s.getBaseName())) {
-                    element.attr("href", Utilities.getConcatPath(new String[] {siteRootUrl, link}));
-                }
-            }
-        }
-        return new StringBuilder(doc.toString());
     }
 
     private static String getTemplateContents(AsciiDocPage page, List<Template> templates) {
@@ -128,34 +111,38 @@ public class Page {
     }
 
 
-    private static String getVersionHtml(Section section, List<SectionVersion> sectionVersions) {
-        VersionSelector version = VersionSelector.fromSectionAndVersions(section, sectionVersions);
-        return version.htmlForPage();
+    private static String getVersionHtml(List<Section> sections, Section section, List<SectionVersion> sectionVersions, AsciiDocPage page) {
+        return new VersionSelector(sections, section, sectionVersions).htmlForPage(page);
     }
 
     private static String getPageMetadata(AsciiDocPage page) {
-        String metadata = PageMetadata.fromAsciiDocPage(page);
-        return metadata;
+        return PageMetadata.fromAsciiDocPage(page);
     }
 
     private static String getSwiftTypeMetadata(AsciiDocPage page) {
-        String metadata = SwiftTypeMetadata.fromAsciiDocPage(page);
-        return metadata;
+        return SwiftTypeMetadata.fromAsciiDocPage(page);
     }
 
-    private static String getVersionNotificationHtml(Section section, List<SectionVersion> sectionVersions) {
-        SectionVersion newestVersion = null;
-        for(SectionVersion sectionVersion : sectionVersions) {
-            if(sectionVersion.isLatestVersion()) {
-                newestVersion = sectionVersion;
-            }
-        }
-        if(newestVersion != null) {
-            if (!section.getVersionPrettyName().equals(newestVersion.getVersionName())) {
-                String versionText = "<div class=\"older-version-notification col-md-9\" data-swiftype-index='false'>" +
-                        "You are viewing an older version of this section. Click <a href=\"" +
-                        newestVersion.getVersionUrl() + "\">here</a> to see the latest version.</div>";
-                return versionText;
+    // FIXME move this method to the VersionSelector
+    private static String getVersionNotificationHtml(List<Section> sections, Section section, List<SectionVersion> sectionVersions, AsciiDocPage page) {
+        for (SectionVersion version : sectionVersions) {
+            if (version.isLatestVersion()) {
+                if (section.getSectionVersion().equals(version)) {
+                    break;
+                }
+                else {
+                    String target = version.getVersionUrl();
+                    String relativePageUrl = page.getRelativeUrl();
+                    if (!relativePageUrl.isEmpty()) {
+                        Optional<Section> sectionForVersion = sections.stream().filter(s -> s.getSectionVersion().equals(version)).findFirst();
+                        if (sectionForVersion.isPresent() && sectionForVersion.get().containsPageMatching(page)) {
+                            target = target.concat("/").concat(relativePageUrl);
+                        }
+                    }
+                    return "<div class=\"older-version-notification col-md-9\" data-swiftype-index='false'>" +
+                            "You are viewing an older version of this section. Click <a href=\"" +
+                            target + "\">here</a> to navigate to the latest version.</div>";
+                }
             }
         }
         return "";
