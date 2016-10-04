@@ -147,7 +147,7 @@ public class SiteBuilder {
     @SuppressWarnings("unchecked")
     private SectionConfiguration getConfigurationFromInputYaml(InputStream input) {
         Yaml yaml = new Yaml();
-        LinkedHashMap<String, Map<String, String>> map = (LinkedHashMap) yaml.load(input);
+        LinkedHashMap<String, Map<String, String>> map = (LinkedHashMap<String, Map<String, String>>) yaml.load(input);
         if (map != null) {
             Map<String, String> configMap = map.get("configuration");
             Object version = configMap.get("versionName");

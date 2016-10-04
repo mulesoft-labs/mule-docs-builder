@@ -1,9 +1,5 @@
 package com.mulesoft.documentation.builder;
 
-import com.mulesoft.documentation.builder.model.SectionVersion;
-import com.mulesoft.documentation.builder.model.TocNode;
-import com.mulesoft.documentation.builder.util.Utilities;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,6 +7,10 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.mulesoft.documentation.builder.model.SectionVersion;
+import com.mulesoft.documentation.builder.model.TocNode;
+import com.mulesoft.documentation.builder.util.Utilities;
 
 /**
  * Created by sean.osterberg on 2/22/15.
@@ -75,7 +75,29 @@ public class Section {
         return baseName;
     }
 
-    public SectionVersion getSectionVersion() { return sectionVersion; }
+    public boolean containsPageMatching(AsciiDocPage page) {
+        // in this case, the section has the same version as the page
+        if (getPages().contains(page)) {
+            return true;
+        }
+        else {
+            String baseName = page.getBaseName();
+            for (AsciiDocPage candidate : getPages()) {
+                if (candidate.getBaseName().equals(baseName)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean isRoot() {
+        return baseName.isEmpty();
+    }
+
+    public SectionVersion getSectionVersion() {
+        return sectionVersion;
+    }
 
     public static Section fromDirectoryAndSectionVersion(File directory, SectionVersion sectionVersion) {
         validateDirectory(directory);
@@ -154,9 +176,5 @@ public class Section {
         Utilities.validateIsDirectory(directory);
         Utilities.validateDirectoryContainsAsciiDocFile(directory);
         Utilities.validateDirectoryContainsTocFile(directory);
-    }
-
-    private static void validateInputParams(Object[] params) {
-        Utilities.validateCtorObjectsAreNotNull(params, Section.class.getSimpleName());
     }
 }

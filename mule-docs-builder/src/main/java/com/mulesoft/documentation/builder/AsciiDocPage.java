@@ -122,5 +122,12 @@ public class AsciiDocPage {
         return title;
     }
 
+    /**
+     * Get the URL segment that should be appended to the section URL.
+     */
+    public String getRelativeUrl() {
+        return baseName.equals("index") ? "" : baseName;
+    }
+
 }
 
