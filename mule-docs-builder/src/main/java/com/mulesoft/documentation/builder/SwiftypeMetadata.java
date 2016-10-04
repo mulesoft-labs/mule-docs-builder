@@ -13,37 +13,37 @@ import org.slf4j.LoggerFactory;
 /**
  * Created by sean.osterberg on 7/5/15.
  */
-public class SwiftTypeMetadata {
-    private static Logger logger = LoggerFactory.getLogger(SwiftTypeMetadata.class);
+public class SwiftypeMetadata {
+    private static Logger logger = LoggerFactory.getLogger(SwiftypeMetadata.class);
 
-    public static String fromAsciiDocPage(AsciiDocPage page) {
-        return getMetadataEntries(page);
+    public static String fromAsciiDocPage(Section section, AsciiDocPage page) {
+        return getMetadataEntries(section, page);
     }
 
-    public static String getMetadataEntries(AsciiDocPage page) {
-        logger.debug("Creating SwiftType metadata for page \"" + page.getTitle() + "\"...");
-        String result = "";
-        result += getTitleMetadata(page);
-        // result += getBodyMetadata(page);
+    public static String getMetadataEntries(Section section, AsciiDocPage page) {
+        logger.debug("Creating Swiftype metadata for page \"" + page.getTitle() + "\"...");
+        String result = getTitleMetadata(page);
+        String versionMetadata = getVersionMetadata(section);
+        if (!versionMetadata.isEmpty()) {
+            result += "\n    " + versionMetadata;
+        }
         return result;
     }
 
     public static String getTitleMetadata(AsciiDocPage page) {
-        String result = "<meta class=\"swiftype\" name=\"title\" data-type=\"string\" content=";
-        result += "\"" + page.getTitle().trim() + "\" />\n";
-        return result;
+        return "<meta class=\"swiftype\" name=\"title\" data-type=\"string\"" +
+            " content=\"" + page.getTitle().trim() + "\" />";
     }
 
-    public static String getBodyMetadata(AsciiDocPage page) {
-        String bodyText = getDescription(page);
-        if (bodyText.length() > 0) {
-            String result = "    <meta class=\"swiftype\" name=\"body\" data-type=\"text\" content=";
-            result += "\"" + bodyText + "\" />\n";
-            return result;
+    public static String getVersionMetadata(Section section) {
+        if (section.isRoot() || section.isVersionless()) {
+            return "";
         }
-        return "";
+        
+        return "<meta class=\"swiftype\" name=\"version\" data-type=\"string\"" +
+            " content=\"" + section.getVersionPrettyName() + "\" />";
     }
-
+    
     public static String getDescription(AsciiDocPage page) {
         String result = "";
         Document doc = Jsoup.parse(page.getHtml(), "UTF-8");
@@ -86,5 +86,4 @@ public class SwiftTypeMetadata {
 
         return text;
     }
-
 }

@@ -74,7 +74,19 @@ public class Section {
     public String getBaseName() {
         return baseName;
     }
+    
+    public SectionVersion getSectionVersion() {
+        return sectionVersion;
+    }
 
+    public boolean isRoot() {
+        return baseName.isEmpty();
+    }
+    
+    public boolean isVersionless() {
+        return versionPrettyName.equals("latest");
+    }
+    
     public boolean containsPageMatching(AsciiDocPage page) {
         // in this case, the section has the same version as the page
         if (getPages().contains(page)) {
@@ -89,14 +101,6 @@ public class Section {
             }
         }
         return false;
-    }
-
-    public boolean isRoot() {
-        return baseName.isEmpty();
-    }
-
-    public SectionVersion getSectionVersion() {
-        return sectionVersion;
     }
 
     public static Section fromDirectoryAndSectionVersion(File directory, SectionVersion sectionVersion) {

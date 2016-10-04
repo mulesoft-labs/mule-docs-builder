@@ -62,7 +62,7 @@ public class Page {
         html = Utilities.replaceText(html, "{{ page.version-notification }}", getVersionNotificationHtml(sections, section, sectionVersions, page));
         html = Utilities.replaceText(html, "{{ page.sections }}", getSectionNavigator(page));
         html = Utilities.replaceText(html, "{{ page.metadata }}", getPageMetadata(page));
-        html = Utilities.replaceText(html, "{{ page.swifttype-metadata }}", getSwiftTypeMetadata(page));
+        html = Utilities.replaceText(html, "{{ page.swifttype-metadata }}", getSwiftypeMetadata(section, page));
         html = Utilities.replaceText(html, "{{ page.github-link }}", getGitHubRepoUrl(section, page, gitHubRepoUrl, gitHubBranchName));
         html = Utilities.replaceText(html, "{{ page.canonical }}", getCanonicalUrlText(siteRootUrl, section, page));
 
@@ -119,8 +119,8 @@ public class Page {
         return PageMetadata.fromAsciiDocPage(page);
     }
 
-    private static String getSwiftTypeMetadata(AsciiDocPage page) {
-        return SwiftTypeMetadata.fromAsciiDocPage(page);
+    private static String getSwiftypeMetadata(Section section, AsciiDocPage page) {
+        return SwiftypeMetadata.fromAsciiDocPage(section, page);
     }
 
     // FIXME move this method to the VersionSelector

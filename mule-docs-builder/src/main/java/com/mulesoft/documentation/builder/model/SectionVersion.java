@@ -46,4 +46,8 @@ public class SectionVersion {
     public boolean isRoot() {
         return sectionBaseName.isEmpty();
     }
+    
+    public boolean isVersionless() {
+        return versionName.equals("latest");
+    }
 }
