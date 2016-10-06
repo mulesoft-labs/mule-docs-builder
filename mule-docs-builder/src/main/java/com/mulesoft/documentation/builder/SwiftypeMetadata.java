@@ -25,7 +25,7 @@ public class SwiftypeMetadata {
         String result = getTitleMetadata(page);
         String versionMetadata = getVersionMetadata(section);
         if (!versionMetadata.isEmpty()) {
-            result += "\n    " + versionMetadata;
+            result += "\n  " + versionMetadata;
         }
         return result;
     }
@@ -40,7 +40,7 @@ public class SwiftypeMetadata {
             return "";
         }
         
-        return "<meta class=\"swiftype\" name=\"version\" data-type=\"string\"" +
+        return "<meta class=\"swiftype\" name=\"version\" data-type=\"enum\"" +
             " content=\"" + section.getVersionPrettyName() + "\" />";
     }
     
