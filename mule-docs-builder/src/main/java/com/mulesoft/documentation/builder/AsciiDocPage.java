@@ -129,5 +129,8 @@ public class AsciiDocPage {
         return baseName.equals("index") ? "" : baseName;
     }
 
+    public boolean isIndex() {
+        return baseName.equals("index");
+    }
 }
 

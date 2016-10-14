@@ -35,7 +35,7 @@ public class VersionSelector {
         String[] orderOfVersions = new String[versionLinkMapping.size()];
 
         // special for site index page
-        if (section.isRoot()) {
+        if (section.isSiteRoot()) {
             return "";
         // Check if the size is bigger than 0 and the version name isn't "latest", which is the default name
         }
@@ -114,7 +114,7 @@ public class VersionSelector {
 
     public Map<String, String> getVersionLinkMapping(AsciiDocPage page) {
         // root section (aka space) has no versions, so just return
-        if (sectionVersions.size() == 1 && sectionVersions.get(0).isRoot()) {
+        if (sectionVersions.size() == 1 && sectionVersions.get(0).isSiteRoot()) {
             return Collections.<String, String>emptyMap();
         }
 

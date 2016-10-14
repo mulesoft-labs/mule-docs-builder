@@ -149,23 +149,17 @@ public class Page {
     }
 
     private static String getCanonicalUrlText(String siteRootUrl, Section section, AsciiDocPage page) {
-        if(!section.getVersionPrettyName().equals("latest")) {
-            String relativeUrl;
-            if(!page.getBaseName().equals("index")) {
-                relativeUrl = Utilities.getConcatPath(new String[] { section.getBaseName(), "v", section.getVersionPrettyName(), page.getBaseName() });
-            } else {
-                relativeUrl = Utilities.getConcatPath(new String[] { section.getBaseName(), "v", section.getVersionPrettyName() });
-            }
-            return "<link rel=\"canonical\" href=\"" + Utilities.getConcatPath(new String[] { siteRootUrl, relativeUrl }) + "\" />";
-        } else {
-            String relativeUrl;
-            if(!page.getBaseName().equals("index")) {
-                relativeUrl = Utilities.getConcatPath(new String[] { section.getBaseName(), page.getBaseName() });
-            } else {
-                relativeUrl = section.getBaseName();
-            }
-            return "<link rel=\"canonical\" href=\"" + Utilities.getConcatPath(new String[] { siteRootUrl, relativeUrl }) + "\" />";
+        String canonicalUrl = null;
+        if (section.isSiteRoot()) {
+            canonicalUrl = siteRootUrl;
         }
+        else if (section.isVersionless()) {
+            canonicalUrl = Utilities.getConcatPath(new String[] { siteRootUrl, section.getBaseName(), page.getRelativeUrl() });
+        }
+        else {
+            canonicalUrl = Utilities.getConcatPath(new String[] { siteRootUrl, section.getBaseName(), "v", section.getVersionPrettyName(), page.getRelativeUrl() });
+        }
+        return "<link rel=\"canonical\" href=\"" + canonicalUrl + "\" />";
     }
 
     private static String getSectionNavigator(AsciiDocPage page) {

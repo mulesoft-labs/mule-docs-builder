@@ -43,7 +43,7 @@ public class SectionVersion {
         return latestVersion;
     }
 
-    public boolean isRoot() {
+    public boolean isSiteRoot() {
         return sectionBaseName.isEmpty();
     }
     
