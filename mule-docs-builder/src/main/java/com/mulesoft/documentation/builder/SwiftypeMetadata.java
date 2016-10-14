@@ -36,7 +36,7 @@ public class SwiftypeMetadata {
     }
 
     public static String getVersionMetadata(Section section) {
-        if (section.isRoot() || section.isVersionless()) {
+        if (section.isSiteRoot() || section.isVersionless()) {
             return "";
         }
         

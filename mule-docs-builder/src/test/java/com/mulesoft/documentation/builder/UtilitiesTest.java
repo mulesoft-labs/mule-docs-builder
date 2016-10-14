@@ -1,20 +1,20 @@
 package com.mulesoft.documentation.builder;
 
-import com.mulesoft.documentation.builder.model.TocNode;
-import com.mulesoft.documentation.builder.util.Utilities;
-import org.apache.commons.lang3.StringUtils;
-
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import org.apache.commons.lang3.StringUtils;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.ExpectedException;
+
+import com.mulesoft.documentation.builder.model.TocNode;
+import com.mulesoft.documentation.builder.util.Utilities;
 
 /**
  * Created by sean.osterberg on 2/20/15.
@@ -152,7 +152,7 @@ public class UtilitiesTest {
         sampleText.add(1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit.");
         String sampleFilePath = Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "text-files" });
         File[] sampleFiles = new File(sampleFilePath).listFiles();
-        List<File> filesInSampleDirectory = filesInSampleDirectory = Arrays.asList(sampleFiles);
+        List<File> filesInSampleDirectory = Arrays.asList(sampleFiles);
         List<String> fileText = Utilities.getFileContentsFromFiles(filesInSampleDirectory);
         for (int i = 0; i < fileText.size(); i++) {
             assertTrue(fileText.get(i).equalsIgnoreCase(sampleText.get(i)));
@@ -163,8 +163,7 @@ public class UtilitiesTest {
     public void getFileContentsFromFiles_FilesDoNotExist_ThrowsException() {
         String sampleFilePath1 = Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "text-files", "foo.txt" });
         String sampleFilePath2 = Utilities.getConcatPath(new String[] { TestUtilities.getTestResourcesPath(), "text-files", "bar.txt" });
-        List<File> files = new ArrayList<File>() {
-        };
+        List<File> files = new ArrayList<File>();
         files.add(new File(sampleFilePath1));
         files.add(new File(sampleFilePath2));
         Utilities.getFileContentsFromFiles(files);

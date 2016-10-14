@@ -79,7 +79,7 @@ public class Section {
         return sectionVersion;
     }
 
-    public boolean isRoot() {
+    public boolean isSiteRoot() {
         return baseName.isEmpty();
     }
     
