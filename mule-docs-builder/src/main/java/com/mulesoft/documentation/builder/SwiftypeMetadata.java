@@ -1,6 +1,8 @@
 package com.mulesoft.documentation.builder;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.jsoup.Jsoup;
@@ -24,8 +26,15 @@ public class SwiftypeMetadata {
         logger.debug("Creating Swiftype metadata for page \"" + page.getTitle() + "\"...");
         String result = getTitleMetadata(page);
         String versionMetadata = getVersionMetadata(section);
+        String pageKeywords = getPageKeywords(page);
         if (!versionMetadata.isEmpty()) {
             result += "\n  " + versionMetadata;
+        }
+        if (!versionMetadata.isEmpty()) {
+            result += "\n  " + versionMetadata;
+        }
+        if (!pageKeywords.isEmpty()) {
+            result += "\n  " + pageKeywords;
         }
         return result;
     }
@@ -42,6 +51,18 @@ public class SwiftypeMetadata {
         
         return "<meta class=\"swiftype\" name=\"version\" data-type=\"enum\"" +
             " content=\"" + section.getVersionPrettyName() + "\" />";
+    }
+    
+    public static String getPageKeywords(AsciiDocPage page) {
+    	Pattern p = Pattern.compile(":keywords:\\s+\\K(.*)");
+ 		Matcher m = p.matcher(page.toString());
+ 		boolean b = m.matches();
+        if (!b) {
+            return "";
+        }
+        
+        return "<meta class=\"swiftype\" name=\"keywords\" data-type=\"string\"" +
+            " content=\"" + m.group() + "\" />";
     }
     
     public static String getDescription(AsciiDocPage page) {
