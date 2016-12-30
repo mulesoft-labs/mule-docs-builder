@@ -30,9 +30,6 @@ public class SwiftypeMetadata {
         if (!versionMetadata.isEmpty()) {
             result += "\n  " + versionMetadata;
         }
-        if (!versionMetadata.isEmpty()) {
-            result += "\n  " + versionMetadata;
-        }
         if (!pageKeywords.isEmpty()) {
             result += "\n  " + pageKeywords;
         }
