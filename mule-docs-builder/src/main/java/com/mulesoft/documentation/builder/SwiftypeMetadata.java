@@ -51,7 +51,7 @@ public class SwiftypeMetadata {
     }
     
     public static String getPageKeywords(AsciiDocPage page) {
-    	Pattern p = Pattern.compile(":keywords:\\s+\\K(.*)");
+    	Pattern p = Pattern.compile(":keywords:\\s+(.*)");
  		Matcher m = p.matcher(page.toString());
  		boolean b = m.matches();
         if (!b) {
@@ -59,7 +59,7 @@ public class SwiftypeMetadata {
         }
         
         return "<meta class=\"swiftype\" name=\"keywords\" data-type=\"string\"" +
-            " content=\"" + m.group() + "\" />";
+            " content=\"" + m.group(1) + "\" />";
     }
     
     public static String getDescription(AsciiDocPage page) {
