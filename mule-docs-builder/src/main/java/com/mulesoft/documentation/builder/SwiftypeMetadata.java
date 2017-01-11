@@ -51,9 +51,9 @@ public class SwiftypeMetadata {
     }
     
     public static String getPageKeywords(AsciiDocPage page) {
-    	Pattern p = Pattern.compile(":keywords:\\s+(.*)");
- 		Matcher m = p.matcher(page.toString());
- 		boolean b = m.matches();
+        Pattern p = Pattern.compile(":keywords:\\s+(.*)");
+ 		Matcher m = p.matcher(page.getAsciiDoc());
+        boolean b = m.find();
         if (!b) {
             return "";
         }
