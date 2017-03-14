@@ -45,8 +45,8 @@ public class SectionTocHtml {
             logger.info("removed trailing ./ segment from path: " + completeUrl);
             completeUrl = completeUrl.substring(0, completeUrl.length() - 2);
         }
-        String closed = "<li>\n<i></i>\n<a href=\"" + completeUrl +
-                "\">" + parent.getTitle() + "</a><ul>\n";
+        String closed = "<li>\n<i></i>\n<span><a href=\"" + completeUrl +
+                "\">" + parent.getTitle() + "</a><span><ul>\n";
         String opened = "<li class=\"expanded\">\n<i></i>\n<a href=\"" + completeUrl +
                 "\">" + parent.getTitle() + "</a><ul style=\"display: block;\">\n";
         String selected = "<li class=\"active expanded\">\n<i></i>\n<a href=\"" + completeUrl +
@@ -90,8 +90,8 @@ public class SectionTocHtml {
                 if (activeUrl != null && activeUrl.equalsIgnoreCase(child.getUrl())) {
                     html.append(" class=\"active\"");
                 }
-                html.append("><i></i><a href=\"" + getCompleteUrl(baseUrl, child.getUrl()) + "\">");
-                html.append(child.getTitle() + "</a></li>");
+                html.append("><i></i><span><a href=\"" + getCompleteUrl(baseUrl, child.getUrl()) + "\">");
+                html.append(child.getTitle() + "</a><span></li>");
             }
         }
     }
