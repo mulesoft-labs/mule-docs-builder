@@ -21,5 +21,13 @@ public class PageMetadata {
     public static String getBodyMetadata(AsciiDocPage page) {
         String bodyText = SwiftypeMetadata.getDescription(page);
         return bodyText.isEmpty() ? "" : "<meta name=\"description\" content=\"" + bodyText + "\" />";
+
+    }
+
+    public static String setNoIndex(AsciiDocPage page) {
+        if (page.containsAttribute("noindex")) {
+            return "<meta name=\"robots\" content=\"noindex\" />";
+        }
+            return "";
     }
 }
