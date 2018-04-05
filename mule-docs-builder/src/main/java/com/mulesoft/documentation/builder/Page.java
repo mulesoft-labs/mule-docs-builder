@@ -148,7 +148,7 @@ public class Page {
                     //DOCS-2108: Changing the wording of the old version banner.
                         return "<div class=\"older-version-notification col-md-9\" data-swiftype-index='false'>" +
                                 "You are viewing an older version of this section. " +
-                                "Use the version drop-down menu in the upper right to choose the version you want to see.</div>";
+                                "If you want to read about a different version, use the version drop-down menu in the upper right.</div>";
 //                      return "<div class=\"older-version-notification col-md-9\" data-swiftype-index='false'>" +
 //                            "You are viewing an older version of this section. Click <a href=\"" +
 //                            target + "\">here</a> to navigate to the latest version.</div>";
