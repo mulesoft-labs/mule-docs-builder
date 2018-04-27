@@ -146,12 +146,11 @@ public class Page {
                         }
                     }
                     //DOCS-2108: Changing the wording of the old version banner.
-                        return "<div class=\"older-version-notification col-md-9\" data-swiftype-index='false'>" +
-                                "You are viewing an older version of this section. " +
-                                "If you want to read about a different version, use the version drop-down menu in the upper right.</div>";
-//                      return "<div class=\"older-version-notification col-md-9\" data-swiftype-index='false'>" +
-//                            "You are viewing an older version of this section. Click <a href=\"" +
-//                            target + "\">here</a> to navigate to the latest version.</div>";
+                    //DOCS-2160: Make the old version notification banner interactive.
+                    return "<div class=\"older-version-notification col-md-9\" data-swiftype-index=\"false\">\n" +
+                            "You are viewing an older version of this topic. To go to a different version, use the version menu at the upper-right.\n" +
+                            "<span class=\"close-button\">+</span>\n" +
+                            "</div>";
                 }
             }
         }
