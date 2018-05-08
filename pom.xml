@@ -4,7 +4,7 @@
 
     <groupId>com.mulesoft.documentation.builder</groupId>
     <artifactId>mule-docs-builder-parent</artifactId>
-    <version>1.0.10-SNAPSHOT</version>
+    <version>1.0.8-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>MuleSoft Documentation Builder Parent</name>
